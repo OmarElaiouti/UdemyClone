@@ -1,0 +1,39 @@
+<h1 class="header23">Shopping Cart</h1>
+    <div id="cartItems" class="section cart">
+        <div>
+            <p><span id="cartTotal">0</span><span>Courses in Cart</span></p>
+            <div class="bdLight">
+                <div id="emptyCart" class="empty">
+                    <img src="assets\images\emptyCart.jpg">
+                    <p>Your cart is empty. Keep shopping to find a course!</p>
+                    <button class="btn btnH blueBtn">Keep shopping</button>
+                </div>
+                <div id="cart" class="nonEmpty"></div>
+            </div>
+            <p>Saved for later</p>
+            <div id="savedItems" class="section cart saved">
+                <p id="saved0">You haven't saved any courses for later.</p>
+                <div id="saved" class="bdLight"></div>
+            </div>
+            <div id= "showOnLog">
+                <p>Recently wishlisted</p>
+                <div id="savedItems" class="section cart saved">
+                    <p id="wished0">You haven't added any courses to your wishlist.</p>
+                    <div id="wished" class="bdLight"></div>
+                </div>
+            </div>
+        </div>
+        <div class="ckeckout nonEmpty">
+            <p>Total:</p>
+            <h1><span>₹</span><span id="totalBill">0</span></h1>
+            <div id="priceOff"></div>
+            <button id="checkout" type="submit" class="btn blueBtn maxWidth">Checkout</button>
+            <h3>Promotions</h3>
+            <div><a class="cross" href=""><img class="icon" src="assets\images\cancel.png"></a><span id="couponName">No Coupon</span><span> is Applied</span></div>
+            <form id="coupon">
+                <input type="text" placeholder="Enter Coupon" id="couponCode">
+                <input class="btn blueBtn couponBtn" type="submit" value="Apply" id="applyCoupon">
+            </form>
+            <!-- <button class="cartBtn">Cart</button> -->
+        </div>
+    </div>

@@ -1,0 +1,206 @@
+
+
+        #header {
+          background-color: #ff000000;
+          height: 70px;
+          box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.274);
+          margin-bottom: 50px;
+          font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+          Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+          segoe ui symbol;
+        font-size: 0.9rem;
+        font-weight: 400;
+        }
+
+        .logo > img {
+          float: left;
+          width: 90px;
+          height: 100%;
+          cursor: pointer;
+       
+        }
+        
+        /*Navigatinon of udemy sites start from here8*/
+        .main-menu {
+          float: left;
+          width: 100px;
+          height: 100%;
+          /* border:1px solid black;*/
+          border-left: 1px solid rgba(255, 255, 255, 0.45);
+         
+        }
+        
+      
+
+
+
+        .search-container {
+          flex-direction: row-reverse;
+          display: flex;
+          align-items: center;
+          height: 100%;
+          padding-right: 1rem;          
+          border-radius: 25px;
+          width: 100%;
+          height: 45px;
+          font-size: 1rem;
+          background-color: #F7F9FA;
+          outline: none;
+          border: 1px solid #020202;
+          color: #2d2f31;
+        }
+
+        #search-bar {
+          width: 100%;
+          border: none;
+          outline: none;          
+          background-color:transparent
+        
+        }
+
+
+        .search-btn{
+          align-items: center;
+          border: none;
+          cursor: pointer;
+          display: inline-flex;
+          justify-content: center;
+          height: 100%;
+          background-color: transparent;
+          width: 3rem;
+        }
+        
+ 
+
+
+
+        .shopping-cart-btn {
+          float: left;
+          cursor: pointer;
+
+        }
+
+        .header_login_btn,
+        .header_signup_btn {
+          padding: 7px 17px ;
+          font-weight: 700;
+          cursor: pointer;
+        }
+          
+
+
+        .header_login_btn{
+          color: #1c1d1f;
+          background-color: transparent;
+          border: 1px solid #1c1d1f;
+        }
+
+        .header_signup_btn {
+          color: #ffffff;
+          background-color: black;
+          border: 1px solid black;
+        }
+
+        .header_login_btn:hover {
+          background-color: #E2E7EA;
+
+        }
+        .header_signup_btn:hover {
+          opacity: 0.7;
+        }
+
+       
+       
+
+        
+        .dropdown:hover>.dropdown-menu {
+          display: block;
+          cursor: pointer;
+          
+      
+        }
+        
+        .dropdown>.dropdown-toggle:active {
+          /*Without this, clicking will make it sticky*/
+            pointer-events: none;
+        }
+      
+        .Catbtn{
+          background: transparent;
+          border: none;
+          height: 100%;
+          margin-top: 0.2em;
+        }
+        .dropdown{
+          position: relative;
+
+        }
+
+        .dropdown-menu {
+          animation: popUp 0.2s ease forwards;
+          border-radius: 0;
+          position: relative;
+          width: 15rem;
+          height: 20rem;
+
+      }
+      
+      @keyframes popUp {
+          from {
+              transform: scale(0.9);
+              opacity: 0;
+          }
+          to {
+              transform: scale(1);
+              opacity: 1;
+          }
+      }
+      
+    
+  
+    
+    .dropdown-menu li:hover .sub-menu {
+        display: block;
+    }
+
+    .sub-sub-menu,.sub-menu {
+      position: absolute;
+        top: 0.2;
+        bottom: 0;
+        left: 99%;
+
+        margin-top: 0;
+        margin-left: 0; /* Remove any margin */
+        display: none;
+        animation:none
+  }
+
+  .sub-menu li:hover .sub-sub-menu {
+    display: block;
+}
+
+.dropdown-toggle::after{
+  border-top: none; 
+}
+
+/* Align the text to the left */
+.drop-toggle {
+  display: flex;
+  align-items: center;
+}
+
+
+.drop-toggle::after {
+  content: "\f105"; /* Unicode character for Font Awesome angle-right-solid icon */
+  font-family: "Font Awesome 5 Free"; /* Specify the Font Awesome font family */
+  font-weight: 900; /* Specify the font weight if needed */
+  font-size: 10px; /* Adjust the font size to control the size of the arrow */
+  margin-left: auto; /* Adjust the spacing between text and arrow */
+}
+
+.Catbtn:hover{
+  color: #A435F0;
+}
+
+
+
