@@ -1,0 +1,186 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(https://img-c.udemycdn.com/notices/web_banner/image_udlite/dc2bc81a-a342-474d-9d09-0ba3c2bfa687.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(100%);
+}
+
+.hero-content {
+  position: relative;
+  float: left;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  text-align: left;
+  margin: 0.625rem;
+  padding: 20px;
+  margin-right: 60%;
+  width: 36%;
+  height: 65%;
+}
+
+.hero-content>h1 {
+  font-size: 3rem;
+  font-family: SuisseWorks, Georgia, Times, times new roman, serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+  font-weight: 700;
+  letter-spacing: -0.15rem;
+  color: black;
+}
+
+.hero-content>p {
+  color: black;
+}
+
+.hero-content>button {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  height: 45px;
+  width: 280px;
+}
+
+.hh {
+  text-align: center;
+  margin: 50px auto;
+  font-size: 50px;
+}
+
+.table {
+  width: 90%;
+  text-align: center;
+  font-size: x-large;
+  margin-top: 30px;
+  margin-bottom: 100px;
+  margin-left: 80px;
+  border-collapse: collapse;
+  /* Collapse table borders */
+}
+
+.table td {
+  border: none;
+  padding: 20px;
+}
+
+.table img {
+  max-width: 100%;
+}
+
+.table h1 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.table p {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+
+
+
+
+
+.maincontainer1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  margin-top: 5%;
+  background-color: #f6f4f4;
+
+}
+
+.container1-image {
+  margin: 0 30px;
+}
+
+.insidecontainer-11 {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  max-width: 40rem;
+}
+
+.container1-heading {
+  font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.05rem;
+  margin-bottom: 0.9rem;
+}
+
+.conatiner1-content {
+  font-size: 1.2rem;
+  font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+    Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1.9rem;
+}
+
+.insidecontainer-11-btn {
+  background-color: #1c1d1f;
+  color: #fff;
+  height: 4.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  align-items: center;
+  padding: 0.9rem 1.2rem;
+  font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
+    segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02rem;
+  font-size: 1rem;
+}
+
+
+
+.llast {
+  text-align: center;
+  background-color: #f6f4f4;
+  height: 350px;
+  padding: 90px ;
+  font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
+  segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+  segoe ui symbol;
+  padding-bottom: 50px;
+
+}
+.llast button{
+  background-color: black;
+  color: white;
+  padding: 10px 100px;
+  font-weight: bold;
+  
+}
+.llast p{
+ padding: 20px;
+ font-size: 20px;
+
+}
