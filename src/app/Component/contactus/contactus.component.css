@@ -1,0 +1,215 @@
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hero {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://img-c.udemycdn.com/notices/web_banner/image_udlite/dc2bc81a-a342-474d-9d09-0ba3c2bfa687.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(100%);
+  }
+  
+  .hero-content {
+    position: relative;
+    float: left;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    text-align: left;
+    margin: 0.625rem;
+    padding: 20px;
+    margin-right: 60%;
+    width: 36%;
+    height: 65%;
+  }
+  
+  .hero-content > h1 {
+    font-size: 3rem;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 700;
+    letter-spacing: -0.15rem;
+    color: black;
+  }
+  
+  .prag {
+    text-align: center;
+    margin: 100px;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-size: larger;
+  }
+  
+  .maincontainer1 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 6.9%;
+    margin-bottom: 3rem;
+    margin-top: 5%;
+  }
+  
+  .container1-image {
+    margin: 0 6.4rem;
+  }
+  
+  .insidecontainer-11 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    max-width: 40rem;
+  }
+  
+  .container1-heading {
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.05rem;
+    margin-bottom: 0.9rem;
+  }
+  
+  .conatiner1-content {
+    font-size: 1.2rem;
+    font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 1.9rem;
+  }
+  
+  .insidecontainer-11-btn {
+    background-color: #1c1d1f;
+    color: #fff;
+    height: 4.8rem;
+    text-decoration: none;
+    cursor: pointer;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto, segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02rem;
+    font-size: 1rem;
+  }
+  
+  .table {
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: small;
+    margin-bottom: 2rem;
+  }
+  
+  .table td {
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 1rem;
+    padding-top: 2px;
+    text-align: left;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    direction: rtl;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    margin-top: 10px;
+  }
+  
+  .grid-item {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Media queries for responsiveness */
+  
+  @media screen and (max-width: 768px) {
+    .hero {
+      height: 50vh;
+    }
+  
+    .hero-content {
+      margin-right: 0;
+      width: 100%;
+    }
+  
+    .maincontainer1 {
+      flex-direction: column;
+    }
+  
+    .container1-image {
+      margin: 1.5rem 0;
+    }
+  
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .hero {
+      height: 40vh;
+    }
+  
+    .hero-content {
+      padding: 10px;
+      width: 100%;
+      height: auto;
+    }
+  
+    .hero-content > h1 {
+      font-size: 2rem;
+    }
+  
+    .prag {
+      margin: 50px;
+    }
+  
+    .maincontainer1 {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  
+    .insidecontainer-11 {
+      max-width: 100%;
+    }
+  
+    .table {
+      font-size: x-small;
+    }
+  
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+    }
+  }
