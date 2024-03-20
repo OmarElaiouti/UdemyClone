@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CourcesComponent } from '../cources/cources.component';
 import { CourseSliderComponent } from "../CourseSlider/course-slider/course-slider.component";
+import { TabsToggleComponent } from "../TabsToggle/tabs-toggle/tabs-toggle.component";
 
 
 @Component({
@@ -8,7 +9,7 @@ import { CourseSliderComponent } from "../CourseSlider/course-slider/course-slid
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [CourcesComponent, CourseSliderComponent]
+    imports: [CourcesComponent, CourseSliderComponent, TabsToggleComponent]
 })
 export class HomeComponent {
 
