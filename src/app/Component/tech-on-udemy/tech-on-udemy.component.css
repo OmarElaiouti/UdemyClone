@@ -185,6 +185,7 @@ body {
   padding: 20px;
   font-size: 20px;
 
+<<<<<<< HEAD
 }
 .last{
   display: flex;
@@ -200,4 +201,6 @@ height: 500px;
   width: 350px;
   height: 500px;
 
+=======
+>>>>>>> c3bbbab70f00f3925282c1e1403bb94030adfc26
 }
