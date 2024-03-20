@@ -165,22 +165,39 @@ body {
   text-align: center;
   background-color: #f6f4f4;
   height: 350px;
-  padding: 90px ;
+  padding: 90px;
   font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
-  segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
-  segoe ui symbol;
+    segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
   padding-bottom: 50px;
 
 }
-.llast button{
+
+.llast button {
   background-color: black;
   color: white;
   padding: 10px 100px;
   font-weight: bold;
-  
+
 }
-.llast p{
- padding: 20px;
- font-size: 20px;
+
+.llast p {
+  padding: 20px;
+  font-size: 20px;
+
+}
+.last{
+  display: flex;
+}
+
+.last .twoLast{
+margin: 200px 30px auto 150px;
+width: 550px;
+height: 500px;
+
+}
+.last img{
+  width: 350px;
+  height: 500px;
 
 }

@@ -204,3 +204,26 @@
 
 
 
+/* styles.css */
+
+.hover-content {
+  display: none;
+  position: absolute;
+  top: 50px; 
+  left: 900px; 
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.hover {
+  position: relative; 
+
+}
+
+.hover:hover + .hover-content {
+  display: block; 
+}
+
+
