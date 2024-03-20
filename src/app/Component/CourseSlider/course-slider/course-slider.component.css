@@ -1,0 +1,31 @@
+
+.card {
+    text-align: left; /* Left-align text */
+    border: none;
+  }
+  
+  img{
+    width: 243px;
+    height: 136px;
+  }
+  
+  .truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* Optionally, specify a max-width to prevent the text from overflowing its container */
+    max-width: 230px; /* Adjust as needed */
+  }
+  .fa-star {
+    color: gold; /* Color of full stars */
+  }
+  .half-star::before {
+    content: '\f089'; /* Unicode character for half star (adjust as needed) */
+    font-family: 'FontAwesome'; /* Assuming you're using FontAwesome for icons */
+  }
+  
+  .instr {
+    color: #6a6f73;  
+    font-size: 0.9rem;
+    
+  }
