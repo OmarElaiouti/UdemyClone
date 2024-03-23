@@ -8,17 +8,18 @@ import { CartComponent } from './Component/cart/cart.component';
 
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
+import { CategoryComponent } from "./Component/category/category.component";
+import { CourseDetailsComponent } from "./Component/course-details/course-details.component";
+import { CourseLessonComponent } from "./Component/CourseLessons/course-lesson/course-lesson.component";
 
 
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-
-  imports: [RouterOutlet,FooterComponent,NavbarComponent,HomeComponent,MyLearningComponent,AccountProfileComponent,SearchComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
-
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent, CourseLessonComponent]
 })
 export class AppComponent {
   title = 'graduation_proj';

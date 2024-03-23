@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { CourcesComponent } from '../cources/cources.component';
 import { CourseSliderComponent } from '../CourseSlider/course-slider/course-slider.component';
 import { DataViewModule } from 'primeng/dataview';
 
@@ -11,7 +10,6 @@ import { DataViewModule } from 'primeng/dataview';
   styleUrl: './cart.component.css',
   imports: [
     CommonModule,
-    CourcesComponent,
     CourseSliderComponent,
     DataViewModule,
   ],
