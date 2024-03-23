@@ -12,6 +12,7 @@ import { SearchComponent } from './Component/search/search.component';
   imports: [RouterOutlet,FooterComponent,NavbarComponent,HomeComponent,SearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
+
 })
 export class AppComponent {
   title = 'graduation_proj';
