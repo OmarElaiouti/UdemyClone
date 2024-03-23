@@ -1,0 +1,201 @@
+<div class="course-content-header">
+
+    <div class="row col-9 col-md-auto justify-content-center items-header-logo ">
+        <div class="d-flex col-auto justify-content-center ">
+            <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg" alt="udemy"
+                title="udemy logo" width="100px" />
+        </div>
+    </div>
+
+    <div class="items-header-name">
+        <span>Course name</span>
+        
+    </div>
+
+    <div class="items-header-prog">
+        <p-progressBar [value]="85">
+            <ng-template pTemplate="content" let-value>
+                <span>85/100</span>
+            </ng-template>
+        </p-progressBar>
+      
+        
+    </div>
+
+    <div class="items-header-btn">
+        <i class="fa-solid fa-trophy"></i>
+    </div>
+
+
+
+    
+    <div class="items-header-btn">
+        <div class="btn-icon">
+            <i class="fa-solid fa-star"></i>
+    </div>
+    </div>
+   
+</div>
+
+<div class="main">
+    <div id="video-container">
+        <div class="video-player-wrapper">
+            <vg-player>
+                <vg-overlay-play></vg-overlay-play>
+                <vg-buffering></vg-buffering>
+                <vg-scrub-bar>
+                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                    <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                </vg-scrub-bar>
+                <vg-controls>
+                    <vg-play-pause></vg-play-pause>
+                    <vg-playback-button></vg-playback-button>
+                    <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                    <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                    <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+                    <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                    <vg-track-selector></vg-track-selector>
+                    <vg-mute></vg-mute>
+                    <vg-volume></vg-volume>
+                    <vg-fullscreen></vg-fullscreen>
+                </vg-controls>
+                <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin>
+                    <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+                    <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
+                    <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
+                </video>
+            </vg-player>
+          </div>
+          
+
+
+        
+        <div class="tab-view" id="comments-tab">
+            <div class="comments">
+                <!-- Comments content here -->
+                Comments...
+            </div>
+        </div>
+        <div style="padding: 10px;">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0"
+                        role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Python</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab"
+                        aria-controls="simple-tabpanel-1" aria-selected="false">Development</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab"
+                        aria-controls="simple-tabpanel-2" aria-selected="false">Excel</a>
+                </li>
+            </ul>
+            <div class="tab-content pt-5" id="tab-content">
+                <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
+
+                </div>
+                <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
+                    hi</div>
+                <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
+                    hello
+                    <pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            556
+
+
+
+
+
+
+
+
+
+
+
+                            685
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            65
+
+
+
+
+
+
+
+
+
+
+
+                        </pre>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="sidebar-wrapper">
+        <div class="accordion fixed-header">
+            <p>Course Content</p>
+        </div>
+        <div id="sidebar">
+            <!-- Sidebar content here -->
+
+            <div class="sections-wrapper">
+                @for(section of sections;track $index){
+                <div class="accordion">
+                  <div class="accordion-header" (click)="toggleAccordion(section.title)">{{ section.title }}</div>
+                  <div class="accordion-content" id="{{ section.title }}">
+                    <ul>
+                        @for(lesson of section.lessons;track $index){
+                      <li (click)="loadVideo(lesson.url)">{{ lesson.title }}</li>
+                      <input type="checkbox" [(ngModel)]="lesson.watched" (change)="updateWatchedStatus(lesson.title)"> <!-- Add checkbox -->
+
+                        }
+                    </ul>
+                  </div>
+                </div>
+            }
+              </div>
+
+        </div>
+    </div>
+</div>
