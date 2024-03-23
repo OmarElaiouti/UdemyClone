@@ -8,6 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .hero::before {
   content: "";
@@ -64,6 +65,12 @@ body {
   color: black;
 }
 
+
+
+
+
+
+
 /* slider */
 * {
   -webkit-box-sizing: border-box;
@@ -96,8 +103,7 @@ body {
   margin-right: 30px;
 }
 
-#unorderedlist {
-}
+
 
 .product-container2 {
   padding: 15px;
@@ -236,8 +242,7 @@ body {
   font-weight: 700;
 }
 
-.bestseller {
-}
+
 /* course item ends */
 /* sliderbox */
 
@@ -525,5 +530,12 @@ body {
 .conatiner1-content {
   max-width: 25rem;
   font-size: 1.4rem;
+}
+
+#p{
+font-size: 30px;
+font-weight: bold;
+margin-top: 100px;
+margin-left: 50px;
 }
 

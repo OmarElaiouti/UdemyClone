@@ -1,8 +1,11 @@
 <p-carousel [value]="courses" [numVisible]="4" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
-            <ng-template pTemplate="header">
+            <!-- <ng-template pTemplate="header">
 <h2>All Python courses</h2>
-    <p>See why millions of people turn to Udemy's real-world experts to learn Python. Learn at your own pace with hands-on exercises and quizzes. Our courses are frequently updated so you'll always be working from the latest information. This is the training you'll need to become a professional Python developer.</p>           </ng-template>
+
+    <p>See why millions of people turn to Udemy’s real-world experts to learn Python. Learn at your own pace with hands-on exercises and quizzes. Our courses are frequently updated so you’ll always be working from the latest information. This is the training you’ll need to become a professional Python developer.</p>    
+       </ng-template> -->
             <ng-template let-course pTemplate="item">
+
                 <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
                     <div class="card">
                         <div class="mb-3">
@@ -17,13 +20,13 @@
                             @for(star of getStarArray(course.rating);track $index){
                             <span>
                                 <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
-                            </span> 
+                            </span>
                         }
-                        <span class="num-reviewers">({{ course.numReviewers }})</span>                       
+                        <span class="num-reviewers">({{ course.numReviewers }})</span>
                         </div>
                             </div>
                             <p class="mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
-                         
+
                         </div>
                     </div>
                 </div>
@@ -38,4 +41,3 @@
                 <i class="fa-solid fa-circle-chevron-right"></i>
             </ng-template>
         </p-carousel>
-   

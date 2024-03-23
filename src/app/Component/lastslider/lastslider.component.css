@@ -1,0 +1,11 @@
+.fa-star {
+    color: gold; /* Color of full stars */
+  }
+
+  .total{
+    display: flex;
+    margin-bottom: 30px;
+  }
+  img{
+    margin-right: 15px;
+  }
