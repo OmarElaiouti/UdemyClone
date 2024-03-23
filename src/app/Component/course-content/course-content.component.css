@@ -1,0 +1,45 @@
+.photo{
+  display: flex;
+  margin-left: 130px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  margin: 20px;
+}
+.right{
+  margin-left: 50px;
+  margin-top: 40px;
+
+
+}
+h5{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+hr{
+  width: 40%;
+  margin-left: 150px;
+}
+h3{
+  margin-left: 150px;
+  margin-top: 20px;
+}
+.fa-star {
+  color: gold;
+  /* Color of full stars */
+}
+
+.half-star::before {
+  content: '\f089';
+
+  font-family: 'FontAwesome';
+
+}
+.inst{
+  font-size: 20px;
+}
+
+
