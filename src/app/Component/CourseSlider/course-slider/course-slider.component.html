@@ -1,0 +1,42 @@
+<p-carousel [value]="courses" [numVisible]="4" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+            <!-- <ng-template pTemplate="header">
+<h2>All Python courses</h2>
+    <p>See why millions of people turn to Udemy’s real-world experts to learn Python. Learn at your own pace with hands-on exercises and quizzes. Our courses are frequently updated so you’ll always be working from the latest information. This is the training you’ll need to become a professional Python developer.</p>
+   </ng-template> -->
+
+    <ng-template let-course pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                    <div class="card">
+                        <div class="mb-3">
+                            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240304152903/python-tutorial-2.webp" [alt]="course.name" class="w-6 shadow-2" />
+                        </div>
+                        <div>
+                            <h5 class="mb-1 truncate">{{ course.name }}</h5>
+                                <p class="mb-1 truncate instr">Instructor: {{ course.instructor }}</p>
+                            <div class="star-ratings-css">
+                                <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+                                    <span><b>{{ course.rating }} </b> </span>
+                            @for(star of getStarArray(course.rating);track $index){
+                            <span>
+                                <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+                            </span>
+                        }
+                        <span class="num-reviewers">({{ course.numReviewers }})</span>
+                        </div>
+                            </div>
+                            <p class="mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
+
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <!-- <p>Footer content</p> -->
+            </ng-template>
+            <ng-template pTemplate="previousicon">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+            </ng-template>
+            <ng-template pTemplate="nexticon">
+                <i class="fa-solid fa-circle-chevron-right"></i>
+            </ng-template>
+        </p-carousel>

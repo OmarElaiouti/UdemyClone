@@ -1,0 +1,192 @@
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://img-c.udemycdn.com/notices/web_banner/image_udlite/dc2bc81a-a342-474d-9d09-0ba3c2bfa687.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(100%);
+}
+
+.hero-content {
+    position: relative;
+    float: left;
+    font-family: "Monserrat", sans-serif;
+    color: white;
+    text-align: left;
+    margin: 0.625rem;
+    padding: 20px;
+    margin-right: 60%;
+    width: 36%;
+    height: 65%;
+}
+
+.hero-content>h1 {
+    font-size: 3rem;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+        apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 700;
+    letter-spacing: -0.15rem;
+    color: black;
+}
+
+
+/* div */
+.Black {
+    width: 100%;
+    height: 70px;
+    background-color: black;
+    color: white;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+        apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-size: xx-large;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.headTwo{
+    text-align: center;
+    margin: 80px;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol;
+}
+.pt {
+    text-align: center;
+   padding: 70px;
+
+}
+
+.pt button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+    apple color emoji, segoe ui emoji, segoe ui symbol;
+}
+.table{
+    width: 1200px;
+    height: 500px;
+    text-align: center;
+    margin-left:150px;
+    font-size: x-large;
+}
+.table td
+{
+    border: none;
+    margin-left: 20px;
+    padding-right: 50px;
+    padding-top: 2px;
+    text-align: left;
+
+
+
+}
+
+.table span
+{
+margin-left:5px ;
+color: violet;
+}
+.table .fa-solid fa-quote-left{
+    color: violet;
+}
+
+
+.maincontainer1 {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 6.9%;
+    margin-bottom: 3rem;
+    margin-top: 5%;
+  }
+  .container1-image {
+    margin: 0 6.4rem;
+  }
+  .insidecontainer-11 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    max-width: 40rem;
+  }
+  .container1-heading {
+    font-family: SuisseWorks, Georgia, Times, times new roman, serif,
+      apple color emoji, segoe ui emoji, segoe ui symbol;
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 1.25;
+    letter-spacing: -0.05rem;
+    margin-bottom: 0.9rem;
+  }
+  .conatiner1-content {
+    font-size: 1.2rem;
+    font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+      Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+      segoe ui symbol;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 1.9rem;
+  }
+  .insidecontainer-11-btn {
+    background-color: #1c1d1f;
+    color: #fff;
+    height: 4.8rem;
+    text-decoration: none;
+    cursor: pointer;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+  
+    font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
+      segoe ui, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+      segoe ui symbol;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02rem;
+    font-size: 1rem;
+  }
+
+ 
+  .ltable{
+    width: 1200px;
+    height: 500px;
+    text-align: center;
+    margin-left:150px;
+    font-size: x-large;
+    margin-top: 100px;
+     margin-bottom: 100px; 
+    border-spacing: 10px;
+    border-collapse: separate; 
+    border-spacing: 40px; 
+}
+.ltable td
+{
+    border: none;
+    margin-left: 20px;
+    padding-right: 50px;
+    padding-top: 2px;
+    text-align: left;
+    border-spacing: 10px;
+
+
+}

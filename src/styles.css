@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* .p-carousel-container{
+    padding: 1.5rem;
+  } */
+
+.p-carousel-header,.nav-tabs{
+    margin: 0 77px 0 55px;
+}
+.p-carousel-prev, .p-carousel-next {
+
+    background-color: transparent;
+    border:none;
+    height: 50px;
+    transform: translateY(-50%);
+}
+
+/* .p-disabled{
+    opacity: 0.3;
+} */
+
+.fa-circle-chevron-right,
+.fa-circle-chevron-left
+{
+    font-size: 2rem;
+}
+

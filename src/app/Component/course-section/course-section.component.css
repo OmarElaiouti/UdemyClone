@@ -1,0 +1,16 @@
+.btn-link{
+  text-decoration-line: none;
+  color: black;
+  font-weight: bold;
+  }
+  h5{
+    display: flex;
+  }
+h6{margin-top: 10px; opacity: 70%;margin-left: 450px;}
+
+.dis{
+  display: flex;
+}
+.right{
+  margin-left: 670px;
+}
