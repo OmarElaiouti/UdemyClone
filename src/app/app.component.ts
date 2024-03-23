@@ -7,12 +7,14 @@ import { MyLearningComponent } from './Component/my-learning/my-learning.compone
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FooterComponent,NavbarComponent,HomeComponent,MyLearningComponent,AccountProfileComponent],
+  imports: [RouterOutlet,FooterComponent,NavbarComponent,HomeComponent,MyLearningComponent,AccountProfileComponent,SearchComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
+
 })
 export class AppComponent {
   title = 'graduation_proj';

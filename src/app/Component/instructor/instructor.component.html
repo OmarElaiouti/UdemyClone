@@ -1,0 +1,38 @@
+<p-carousel [value]="Instructors" [numVisible]="3" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+
+    <ng-template let-course pTemplate="item">
+        <div class="photo border-1 surface-border border-round m-2 text-center">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
+                            [alt]="course.name" class="w-100 shadow-2" />
+                    </div>
+                    <div class="col-md-8  two">
+                        <div>
+                            <h5 class="card-title">{{ course.instructor }}</h5>
+                            <p class="card-text mb-1"> {{ course.c_name }}</p>
+
+                            <div class="star-ratings-css">
+                                <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+                                    <span><b>{{ course.rating }} </b> <i class="fa fa-star"></i>instructor rate</span>
+                                  
+                                </div>
+                            </div>
+                            <p class="card-text mt-0 mb-1"><b>{{ course.students }}</b>students</p>
+
+                            <p class="card-text mt-0 mb-1"><b>{{ course.nOfCourse }}</b>Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+   
+    <ng-template pTemplate="previousicon">
+        <i class="fa-solid fa-circle-chevron-left"></i>
+    </ng-template>
+    <ng-template pTemplate="nexticon">
+        <i class="fa-solid fa-circle-chevron-right"></i>
+    </ng-template>
+</p-carousel>
