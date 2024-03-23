@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
  categories: any = [
     { id: 1, name: "Category 1", parentId: null },
@@ -50,13 +50,55 @@ export class NavbarComponent {
     { id: 30, name: "Subcategory 2", parentId: 15 },
     { id: 31, name: "Subcategory 3", parentId: 15 },
   ];
+
+
+  Cart:any = [
+    // {id: 1, name: "fdbdfbhfsbvdfbdfbddbd", instructor:"fdfgfbgdfbgsgbsffhdhdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65}
+
+  ]
+
+  Wishlist:any = [
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65},
+    // {id: 1, name: "fdbd", instructor:"fdf" , img:"fsvgsfg", price:65}
+  ]
+
+  Note:any = [
+    {content: "accepted", date: "2/2/2022", status:"readed"},
+    
+
+  ]
+
+  CartTotalPrice = 0;
+
   activeCategory: any;
   activeSubCategory:any;
+
+  signedin:any;
   ngOnInit() {
     // Set the first category as active by default
     this.activeCategory = this.categories[0];
     this.activeSubCategory = this.subcategories[0];
 
+    let flagValue = localStorage.getItem("flag")??null;
+
+    // Check if the value is not null before parsing it
+    if (flagValue == null) {
+        // Parse the value as JSON
+    localStorage.setItem("flag",JSON.stringify(true))
+    }else{
+            this.signedin = true;
+        }
+//         if(this.Cart.length!=0){
+//         let prices = this.Cart.map(item => item.price);
+// this.CartTotalPrice = prices.reduce((acc, curr) => acc + curr, 0);
+//         }
+    
 
   }
 
