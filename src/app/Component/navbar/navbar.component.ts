@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
@@ -13,6 +13,8 @@ import { SearchComponent } from '../search/search.component';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild('div1') div1!: ElementRef;
+  @ViewChild('div2') div2!: ElementRef;
 
  categories: any = [
     { id: 1, name: "Category 1", parentId: null },
@@ -96,6 +98,7 @@ export class NavbarComponent implements OnInit {
     }else{
             this.signedin = true;
         }
+
 //         if(this.Cart.length!=0){
 //         let prices = this.Cart.map(item => item.price);
 // this.CartTotalPrice = prices.reduce((acc, curr) => acc + curr, 0);
@@ -124,6 +127,21 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  ngAfterViewInit() {
+    this.setDiv1Height(); // Call the function initially
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setDiv1Height(); // Call the function whenever the window resizes
+  }
+
+  setDiv1Height() {
+    // Accessing nativeElement to get the height
+    const div2Height = this.div1.nativeElement.offsetHeight;
+    // Setting height of div1 to be equal to the height of div2
+    this.div2.nativeElement.style.height = div2Height + 'px';
+  }
 
 
 

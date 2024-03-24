@@ -1,11 +1,12 @@
 import { Component,ElementRef, ViewChild, AfterViewInit, OnInit, HostListener  } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-course-slider',
   standalone: true,
-  imports: [CarouselModule,ButtonModule],  
+  imports: [CarouselModule,ButtonModule,RouterModule],  
   templateUrl: './course-slider.component.html',
   styleUrl: './course-slider.component.css'
 })

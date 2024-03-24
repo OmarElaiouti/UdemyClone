@@ -3,7 +3,7 @@ import { CourseSliderComponent } from "../CourseSlider/course-slider/course-slid
 import { TabsToggleComponent } from "../TabsToggle/tabs-toggle/tabs-toggle.component";
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
-declare var $:any
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -11,16 +11,8 @@ declare var $:any
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [ CourseSliderComponent, TabsToggleComponent,CarouselModule ,ButtonModule]
+    imports: [ CourseSliderComponent, TabsToggleComponent,CarouselModule ,ButtonModule,RouterModule]
 })
-export class HomeComponent implements AfterViewInit {
-  @ViewChild('carouselExampleControls', { static: false })
-  carousel!: ElementRef;
-
-  ngAfterViewInit() {
-    // Initialize the carousel
-    if (this.carousel && this.carousel.nativeElement) {
-      $(this.carousel.nativeElement).carousel();
-    }
-  }
+export class HomeComponent{
+ 
 }
