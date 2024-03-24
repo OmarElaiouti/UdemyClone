@@ -13,6 +13,14 @@
   background-color: #fff;
 }
 
+.categories-nav{
+  height: 50px;
+}
+
+.logo{
+  text-align: center;
+}
+
 .logo>img {
   float: left;
   width: 90px;

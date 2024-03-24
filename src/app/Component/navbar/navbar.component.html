@@ -7,7 +7,7 @@
       </div>
       
         <!--Main logo of website-->
-        <div class="row logo topBtn col-9 col-md-auto justify-content-center">
+        <div class="row logo topBtn col-9 col-md-auto justify-content-center ">
           <a [routerLink]="['']" routerLinkActive="router-link-active" ><div class="col-auto">
             <img
             src="https://i.ibb.co/QnJ7Bws/default-meta-image-v2-2-1-removebg-preview.png"
@@ -79,7 +79,6 @@
 
         <!--search bar of website-->
         <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5" >
-
           <form class="search-container">
             
             <input
@@ -304,14 +303,18 @@
           </div>
       </div>
         <!-- log in  -->
-        <div class="header-white-btn d-none d-md-block" routerLink="/login" >Log in</div>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"> <div class="header-white-btn d-none d-md-block" routerLink="/login" >Log in</div></a>
 
         
       
         <!-- sign Up  -->
-        <div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div>
+        <a [routerLink]="['/signup']" routerLinkActive="router-link-active" ><div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div></a>
 
       }
+
+      <div class="categories-nav">
+
+      </div>
       </div>
       <div #div2 ></div>
       <div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">

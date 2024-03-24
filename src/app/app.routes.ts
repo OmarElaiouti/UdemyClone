@@ -13,7 +13,7 @@ import { SearchComponent } from './Component/search/search.component';
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
 
-
+SignupComponent
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'home' },
   { path: 'category', component: CategoryComponent, title: 'category' },
@@ -30,7 +30,9 @@ export const routes: Routes = [
   { path: 'profile', component: AccountProfileComponent },
   { path: 'mylearning', component: MyLearningComponent },
   { path: 'teachUdemy', component: TechOnUdemyComponent },
-
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'lessons', component: CourseDetailsComponent },
 
 
 
