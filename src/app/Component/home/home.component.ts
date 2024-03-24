@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { IcourseSmallCard } from '../../Models/ICourse';
 import { HomeCourseService } from '../../Services/home-course-service/home-course.service';
 import { CategoryService } from '../../Services/category-service/category.service';
+import { SearchService } from '../../Services/search-service/search.service';
 
 
 @Component({
@@ -26,8 +27,10 @@ export class HomeComponent {
     designCategories: any[] = [];
 
     lastSearchedKeyword: string | null = null;
-    featcherdCategories = ["Development", "Business", "IT and Software", "IT and Software"]
-    constructor(private homecourseService: HomeCourseService, private categoryService: CategoryService) { }
+    constructor(
+      private homecourseService: HomeCourseService,
+       private categoryService: CategoryService,
+       private searchservice: SearchService) { }
 
 
 
@@ -45,22 +48,14 @@ export class HomeComponent {
         });
 
         // Fetch searched courses
-        // this.lastSearchedKeyword = this.searchHistoryService.getLastSearch();
-        // if (this.lastSearchedKeyword) {
-        //     this.getCoursesByKeyword(this.lastSearchedKeyword);
-        // }
-
-        // this.getfeatuerdCategories();
-
-
-        // const keyword = 'searchKeyword'; // Retrieve keyword from session/local storage
-        // this.homecourseService.searchCoursesByKeyword(keyword).subscribe(courses => {
-        //     this.searchedCourses = courses;
-        // });
+        this.lastSearchedKeyword = localStorage.getItem('lastSearchQuery');
+        if (this.lastSearchedKeyword) {
+          this.getCoursesByKeyword(this.lastSearchedKeyword);
+        }
     }
 
     getCoursesByKeyword(keyword: string): void {
-        this.homecourseService.searchCoursesByKeyword(keyword).subscribe(courses => {
+        this.searchservice.searchCoursesByKeywordForHome(keyword).subscribe(courses => {
             this.searchedCourses = courses
         });
     }

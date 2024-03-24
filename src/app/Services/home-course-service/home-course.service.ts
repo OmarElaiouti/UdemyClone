@@ -20,8 +20,5 @@ export class HomeCourseService {
     return this.http.get<IcourseSmallCard[]>('/api/top-rated-courses');
   }
 
-  // Method to fetch courses based on search keyword
-  searchCoursesByKeyword(keyword: string): Observable<IcourseSmallCard[]> {
-    return this.http.get<IcourseSmallCard[]>(`/api/search?keyword=${keyword}`);
-  }
+  
 }

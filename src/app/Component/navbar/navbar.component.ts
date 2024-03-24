@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IcategoryForNav } from '../../Models/ICategory';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
 import { NotificationService } from '../../Services/Notification-service/notification.service';
 import { IcourseSmallCard, IuserCourse } from '../../Models/ICourse';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
+import { SearchService } from '../../Services/search-service/search.service';
 
 @Component({
   selector: 'app-navbar',
@@ -30,11 +31,14 @@ export class NavbarComponent implements OnInit {
   activeSubCategory: any;
   CartTotalPrice = 0;
   signedin: any;
+  isSidebarOpen: boolean = false;
 
   constructor(
     private catService: CategoryService,
     private notifService: NotificationService,
-    private userCoursesService: UserCoursesService
+    private userCoursesService: UserCoursesService,
+    private searchService: SearchService,
+    private router: Router
   ) { }
 
 
@@ -124,7 +128,14 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  isSidebarOpen: boolean = false;
+
+  search(query: string): void {
+    this.searchService.searchCoursesForSearchResult(query).subscribe(courses => {
+      this.router.navigate(['/searchresult']);
+    });
+  }
+
+
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
