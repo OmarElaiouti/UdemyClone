@@ -9,10 +9,14 @@ import { IcourseSmallCard } from '../../Models/ICourse';
 export class HomeCourseService {
 
   constructor(private http: HttpClient) { }
-
+  
   // Method to fetch courses based on selected category
   getCoursesByCategory(category: string): Observable<IcourseSmallCard[]> {
     return this.http.get<IcourseSmallCard[]>(`/api/courses?category=${category}`);
+  }
+
+  getRandomCourses(): Observable<IcourseSmallCard[]> {
+    return this.http.get<IcourseSmallCard[]>(`/api/courses?random-courses`);
   }
 
   // Method to fetch courses with highest scores

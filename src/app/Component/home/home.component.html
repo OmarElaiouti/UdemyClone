@@ -102,8 +102,15 @@
   <div class="home-inner-wrapper">
 
     <div class="first-info">
-      <h2>Because you searched for “Angular”</h2>
-      <app-course-slider></app-course-slider>
+      @if(lastSearchedKeyword){
+      <h2>Because you searched for "{{lastSearchedKeyword}}"</h2>
+      <app-course-slider [courses]="searchedCourses"></app-course-slider>
+      }
+      @else {
+
+        <h2>Browse our collections</h2>
+      <app-course-slider [courses]="randomCourses"></app-course-slider>
+      }
     </div>
   <!-- second slider ends -->
   <!-- top categories section starts -->
@@ -223,7 +230,13 @@
 
   <div class="first-info">
     <h2>Short and sweet courses for you</h2>
-    <app-course-slider></app-course-slider>
+    <app-course-slider [courses]="randomCourses"></app-course-slider>
+  </div>
+
+  <div class="first-info">
+
+  <h2>Our top courses</h2>
+    <app-course-slider [courses]="topRatedCourses"></app-course-slider>
   </div>
   <!-- udemy main business section starts -->
 

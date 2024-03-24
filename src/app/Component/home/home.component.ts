@@ -18,7 +18,7 @@ import { SearchService } from '../../Services/search-service/search.service';
     imports: [CourseSliderComponent, CarouselModule, ButtonModule, RouterModule, TabsToggleComponent]
 })
 export class HomeComponent {
-    categoryCourses: IcourseSmallCard[] = [];
+    randomCourses: IcourseSmallCard[] = [];
     topRatedCourses: IcourseSmallCard[] = [];
     searchedCourses: IcourseSmallCard[] = [];
     developmentCategories: any[] = [];
@@ -37,15 +37,15 @@ export class HomeComponent {
 
 
     ngOnInit(): void {
-        // Fetch courses based on selected category
-        this.homecourseService.getCoursesByCategory('selectedCategory').subscribe(courses => {
-            this.categoryCourses = courses;
-        });
 
         // Fetch top-rated courses
-        this.homecourseService.getTopRatedCourses().subscribe(courses => {
-            this.topRatedCourses = courses;
+        this.homecourseService.getRandomCourses().subscribe(courses => {
+            this.randomCourses = courses;
         });
+
+        this.homecourseService.getTopRatedCourses().subscribe(courses => {
+          this.topRatedCourses = courses;
+      });
 
         // Fetch searched courses
         this.lastSearchedKeyword = localStorage.getItem('lastSearchQuery');

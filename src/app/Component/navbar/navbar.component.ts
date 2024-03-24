@@ -21,9 +21,45 @@ export class NavbarComponent implements OnInit {
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
 
-  categories: IcategoryForNav[] = [];
-  subcategories: IcategoryForNav[] = [];
-  topics: IcategoryForNav[] = [];
+  categories: IcategoryForNav[] = [
+    {id:1,
+      name:"cat"},
+      {id:1,
+        name:"cat"},
+        {id:1,
+          name:"cat"},
+          {id:1,
+            name:"cat"},
+            {id:1,
+              name:"cat"},
+              {id:1,
+                name:"cat"}
+                
+  ];
+  subcategories: IcategoryForNav[] = [{id:1,
+    name:"cat"},
+    {id:1,
+      name:"cat"},
+      {id:1,
+        name:"cat"},
+        {id:1,
+          name:"cat"},
+          {id:1,
+            name:"cat"},
+            {id:1,
+              name:"cat"}];
+  topics: IcategoryForNav[] = [{id:1,
+    name:"cat"},
+    {id:1,
+      name:"cat"},
+      {id:1,
+        name:"cat"},
+        {id:1,
+          name:"cat"},
+          {id:1,
+            name:"cat"},
+            {id:1,
+              name:"cat"}];
   Cart: IuserCourse[] = [];
   notifications: INotification[] = [];
   Wishlist: IuserCourse[] = [];

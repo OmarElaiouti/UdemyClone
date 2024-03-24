@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CourseSliderComponent } from "../../CourseSlider/course-slider/course-slider.component";
 import { HomeCourseService } from '../../../Services/home-course-service/home-course.service';
 
@@ -9,12 +9,15 @@ import { HomeCourseService } from '../../../Services/home-course-service/home-co
     styleUrl: './tabs-toggle.component.css',
     imports: [CourseSliderComponent]
 })
-export class TabsToggleComponent {
+export class TabsToggleComponent implements OnInit {
     coursesByTab: any[] = [];
   
   constructor(private homecourseService: HomeCourseService) {
-    // Fetch courses for each tab when the component initializes
-    this.fetchCoursesForTabs();
+    
+  }
+  ngOnInit(): void {
+// Fetch courses for each tab when the component initializes
+this.fetchCoursesForTabs();
   }
 
   fetchCoursesForTabs() {

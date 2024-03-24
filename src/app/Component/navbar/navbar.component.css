@@ -185,6 +185,7 @@ a {
   padding: 0.2rem;
   width: 500px;
   background: none;
+
 }
 
 @keyframes popUp {
@@ -211,6 +212,9 @@ a {
   height: 20rem;
 }
 
+.fsection{box-shadow: 6px 8px 16px 0 rgba(0, 0, 0, 0.2);}
+.secsection{box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.2);}
+.thdsection{box-shadow: 9px 8px 16px 0 rgba(0, 0, 0, 0.2);}
 
 .CatAnch.active {
   color: #A435F0;
@@ -577,7 +581,7 @@ a {
 
 .dropdown-card-nots {
   padding: 0;
-  width: 20rem;
+  width: 25rem;
 
 }
 
