@@ -1,5 +1,5 @@
 
-    <div id="header" class="d-flex align-items-center justify-content-between p-3 py-md-0 px-md-5" >
+    <div #div1 id="header" class="d-flex align-items-center justify-content-between p-3 py-md-0 px-md-4" >
 
       <div class="col-1 col-md-auto d-block d-md-none">
         <!-- Hamburger menu icon (visible on small screens) -->
@@ -7,15 +7,15 @@
       </div>
       
         <!--Main logo of website-->
-        <div class="row logo topBtn col-9 col-md-auto justify-content-center" (click)="logolink()">
-          <div class="col-auto">
+        <div class="row logo topBtn col-9 col-md-auto justify-content-center ">
+          <a [routerLink]="['']" routerLinkActive="router-link-active" ><div class="col-auto">
             <img
             src="https://i.ibb.co/QnJ7Bws/default-meta-image-v2-2-1-removebg-preview.png"
             alt="udemy"
             title="udemy logo"
             width="100px"
           />
-        </div>
+        </div></a>
         </div>
 
         
@@ -29,40 +29,37 @@
         
         <div class="col-1 col-sm-auto text-right d-md-none text-end">
             <!-- Icons for  cart  -->
-            <i class="fas fa-shopping-cart"></i>
+            <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><i class="fas fa-shopping-cart"></i></a>
           </div>
 
         <!--Main maineu of website-->
-        <div class="dropdown d-none d-md-block">
-            <button class="Catbtn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown" aria-expanded="false" routerLink="/category"><span>Categories</span></button>
+        <div class="dropdown d-none d-md-block px-1">
+            <button class="Catbtn category-btn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown" aria-expanded="false" routerLink="/category"><span>Categories</span></button>
             <div class="dropdown-menu double" aria-labelledby="dropdownSec">
               <div class="dropdown-section fsection">
                 <ul>
                     @for(category of categories;track category.id){
-                        @if(category.parentId == null){
-                  <li class=""  (mouseover)="setActiveCategory(category)" ><a class="CatAnch" href="#" [ngClass]="{ 'active': activeCategory==category }">{{category.name}}</a></li>
-                }
+                  <li class=""  (mouseover)="setActiveCategory(category)" ><a class="CatAnch" [routerLink]="['/category']" [ngClass]="{ 'active': activeCategory==category }">{{category.name}}</a></li>
+                
                 }
           
                 </ul>
               </div>
               <div class="dropdown-section with-hover secsection">
                 <ul>
-                    @for(sub of subcategories;track subcategories.id){
-                        @if(sub.parentId == activeCategory.id){
+                    @for(sub of subcategories;track sub.id){
 
-                  <li class="" (mouseover)="setActiveSubCategory(sub)" ><a href="#">{{sub.name}}</a></li>
+                  <li class="" (mouseover)="setActiveSubCategory(sub)" ><a [routerLink]="['/category']">{{sub.name}}</a></li>
                           }
-                        }
+                        
                 </ul>
                 <div class="dropdown-section third-dropdown thdsection">
                     
                   <ul>
                     @for(topic of topics;track topic.id){
-                        @if(topic.parentId == activeSubCategory.id){
 
-                  <li class=""  ><a href="#">{{topic.name}}</a></li>
-                          }
+                  <li class=""  ><a [routerLink]="['/category']" routerLinkActive="router-link-active" >{{topic.name}}</a></li>
+                          
                         }
                   </ul>
                 </div>
@@ -78,16 +75,11 @@
 
 
         <!--search bar of website-->
-        <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5" >
 
-          <form class="search-container">
-            
-            <input 
-              type="text"
-              id="search-bar"
-              placeholder="Search for anything"
-            />
-              <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+        <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5">
+          <form class="search-container" (ngSubmit)="search(searchQuery.value)">
+            <input type="text" id="search-bar" placeholder="Search for anything" #searchQuery />
+            <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>
 
@@ -120,22 +112,29 @@
                     <div class="text-btn">
                     Turn what you know into an opportunity and reach millions around the world.
                 </div>
-                    <button class="header-black-btn bisns-btn">Learn More</button>
+                <a [routerLink]="['/teachUdemy']" routerLinkActive="router-link-active"><button class="header-black-btn bisns-btn">Learn More</button></a>
                 </div>
             </div>
         </div>
 
       
-        
+       
 
 
       @if(signedin == true){
 
+         <!--My learning button-->
+         <div class="dropdownC d-none d-lg-block ">
+          <a [routerLink]="['/mylearning']" routerLinkActive="router-link-active"><button class="Catbtn dropdown-toggle">
+               My learning
+           </button></a> 
+       </div>
+
         <!--Wishlist Button-->
-        <div class="dropdownC d-none d-md-block">
-          <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdownC dropdownB d-none d-md-block">
+          <a [routerLink]="['/mylearning']" routerLinkActive="router-link-active" ><button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
             <i class="fa-regular fa-heart"></i>
-          </button>
+          </button></a>
           <div class="dropdown-content" aria-labelledby="dropdownCard">
               <div class="dropdown-card dropdown-card-courses">
                 @if(Wishlist.length == 0){
@@ -144,7 +143,7 @@
                     Your wishlist is empty.                
                   </div>
                   
-                  <button class="bisns-btn header-cart-keep-shopping-btn">Explore courses</button>
+                  <a [routerLink]="['']" routerLinkActive="router-link-active" ><button class="bisns-btn header-cart-keep-shopping-btn">Explore courses</button></a>
                 </div>
                 }
                 @else {
@@ -152,12 +151,12 @@
                   @for(course of Wishlist.slice(0,3);track course.id){
                     <div class="item-in-wishlist">
                     <div class="course-card wishlist-card">
-                      <div class="course-img">
+                      <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><div class="course-img">
                       <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg" alt="Course Image">
-                    </div>
+                    </div></a>
                     
                       <div class="course-details">
-                        <p>{{course.name}}</p>
+                        <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><p>{{course.name}}</p></a>
                         <p class="ins-font">{{course.instructor}}</p>
                         <p class="price-font">${{course.price}}</p>
                       </div>
@@ -179,10 +178,15 @@
 
       <!--Shopping cart button-->
 
-      <div class="dropdownC d-none d-md-block">
+      <div class="dropdownC dropdownB d-none d-md-block">
         <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="alert alert-cart">+5</div>
+            <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><i class="fa-solid fa-cart-shopping"></i></a>
+            @if(Cart.length != 0 && Cart.length < 6){
+            <div class="alert alert-cart">{{Cart.length}}</div>
+            }
+            @else if (Cart.length>5) {
+              <div class="alert alert-cart">{{+5}}</div>
+            }
         </button>
         <div class="dropdown-content" aria-labelledby="dropdownCard">
             <div class="dropdown-card dropdown-card-courses">
@@ -191,17 +195,17 @@
                 <div class="text-btn text-empty">
                 Your Cart is Empty.                
                 </div>
-                <button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button>
+                <a  [routerLink]="['']"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
                 </div>
               }
               @else{
                 @for(course of Cart.slice(0,3);track course.id){
                 <div class="course-card">
-                  <div class="course-img">
+                  <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><div class="course-img">
                   <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg" alt="Course Image">
-                </div>
+                </div></a>
                   <div class="course-details">
-                    <p>{{course.name}}</p>
+                    <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><p>{{course.name}}</p></a>
                     <p class="ins-font">{{course.instructor}}</p>
                     <p class="price-font">${{course.price}}</p>
                   </div>
@@ -210,7 +214,7 @@
               }
               <div class="GoToCart-btn">
               <div class="total-price-cart">Total : $ {{CartTotalPrice}} </div>
-              <button class="header-black-btn bisns-btn">Go to cart</button>
+              <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><button class="header-black-btn bisns-btn">Go to cart</button></a>
             </div>
             }
             </div>
@@ -219,11 +223,13 @@
 
     <!--Notification button-->
 
-    <div class="dropdownC d-none d-md-block">
+    <div class="dropdownC  dropdownB d-none d-md-block">
       <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
         <i class="fa-regular fa-bell"></i>
-        <div class="alert alert-solid alert-notification"></div>
+        @if(notifications.length != 0){
 
+        <div class="alert alert-solid alert-notification"></div>
+        }
       </button>
       <div class="dropdown-content" aria-labelledby="dropdownCard">
           <div class="dropdown-card dropdown-card-nots">
@@ -232,14 +238,14 @@
               <h5>Notifications</h5>
               <a>setting</a>
             </div>
-            @if(Note.length == 0){
+            @if(notifications.length == 0){
 
               <div class="text-btn text-empty">
               No notifications.                
               </div>
             }
             @else {
-              @for(n of Note.slice(0,5);track n.id){
+              @for(n of notifications.slice(0,5);track n.id){
                 <div class="note-list">
                   <div class="note-content">
                       <p>{{n.content}}</p>
@@ -261,13 +267,17 @@
 
    <!--Profile button-->
 
-   <div class="dropdownC d-none d-md-block">
+   <div class="dropdownC  dropdownB d-none d-md-block">
     <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-      <div class="circle">
+      <a [routerLink]="['/profile']" routerLinkActive="router-link-active"> <div class="circle">
         <span class="initials">AB</span>
-      </div>    
+      </div>    </a>
+
+      @if(notifications.length != 0 || Cart.length != 0){
+
       <div class="alert alert-solid"></div>
 
+      }
     </button>
     <div class="dropdown-content" aria-labelledby="dropdownCard">
         <div class="dropdown-card">
@@ -284,29 +294,33 @@
         <!--Shopping cart button-->
 
         <div class="dropdownC d-none d-md-block">
-          <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+          <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-cart-shopping"></i>
-          </button>
+          </button></a>
           <div class="dropdown-content" aria-labelledby="dropdownCard">
               <div class="dropdown-card">
                   <div class="text-btn text-empty">
                   Your Cart is Empty.                
                   </div>
-                  <button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button>
+                  <a [routerLink]="['']" routerLinkActive="router-link-active" ><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
               </div>
           </div>
       </div>
         <!-- log in  -->
-        <div class="header-white-btn d-none d-md-block" routerLink="/login" >Log in</div>
+        <a [routerLink]="['/login']" routerLinkActive="router-link-active"> <div class="header-white-btn d-none d-md-block" routerLink="/login" >Log in</div></a>
 
         
       
         <!-- sign Up  -->
-        <div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div>
+        <a [routerLink]="['/signup']" routerLinkActive="router-link-active" ><div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div></a>
 
       }
-      </div>
 
+      <div class="categories-nav">
+
+      </div>
+      </div>
+      <div #div2 ></div>
       <div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
         <div class="close-btn" (click)="toggleSidebar()" [ngClass]="{ 'active': isSidebarOpen }">
             <i class="fas fa-times"></i>
@@ -315,3 +329,5 @@
         <div class="py-1"><a>Sign in</a></div>
         
         </div>
+
+      

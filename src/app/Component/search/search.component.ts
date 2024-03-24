@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { Icourses } from '../../Models/icourses';
+import { Icourses } from '../../Models/ICourse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../Service1/data.service';

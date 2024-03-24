@@ -1,108 +1,121 @@
+#header {
+  background-color: #ff000000;
+  height: 70px;
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.274);
+  font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
+    Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
+    segoe ui symbol;
+  font-size: 0.9rem;
+  font-weight: 400;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+}
 
+.categories-nav{
+  height: 50px;
+}
 
-        #header {
-          background-color: #ff000000;
-          height: 70px;
-          box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.274);
-          margin-bottom: 50px;
-          font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
-          Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji,
-          segoe ui symbol;
-        font-size: 0.9rem;
-        font-weight: 400;
-        }
+.logo{
+  text-align: center;
+}
 
-        .logo > img {
-          float: left;
-          width: 90px;
-          height: 100%;
-          cursor: pointer;
-       
-        }
-        
-        /*Navigatinon of udemy sites start from here8*/
-     
-      
+.logo>img {
+  float: left;
+  width: 90px;
+  height: 100%;
+  cursor: pointer;
 
-        .search-container {
-          flex-direction: row-reverse;
-          display: flex;
-          align-items: center;
-          height: 100%;
-          padding-right: 1rem;          
-          border-radius: 25px;
-          width: 100%;
-          height: 45px;
-          font-size: 1rem;
-          background-color: #F7F9FA;
-          outline: none;
-          border: 1px solid #020202;
-          color: #2d2f31;
-        }
+}
 
-        #search-bar {
-          width: 100%;
-          border: none;
-          outline: none;          
-          background-color:transparent
-        
-        }
-
-
-        .search-btn{
-          align-items: center;
-          border: none;
-          cursor: pointer;
-          display: inline-flex;
-          justify-content: center;
-          height: 100%;
-          background-color: transparent;
-          width: 3rem;
-        }
-        
- 
+/*Navigatinon of udemy sites start from here8*/
 
 
 
-        .shopping-cart-btn {
-          float: left;
-          cursor: pointer;
+.search-container {
+  flex-direction: row-reverse;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 1rem;
+  border-radius: 25px;
+  width: 100%;
+  height: 45px;
+  font-size: 1rem;
+  background-color: #F7F9FA;
+  outline: none;
+  border: 1px solid #020202;
+  color: #2d2f31;
+}
 
-        }
+.search-box {
+  padding-right: 1rem;
+}
 
-        .header-white-btn,
-        .header-black-btn {
-          padding: 7px 17px ;
-          font-weight: 700;
-          cursor: pointer;
-        }
-          
-
-
-        .header-white-btn{
-          color: #1c1d1f;
-          background-color: transparent;
-          border: 1px solid #1c1d1f;
-        }
-
-        .header-black-btn{
-          color: #ffffff;
-          background-color: black;
-          border: 1px solid black;
-        }
-
-        .header-white-btn:hover {
-          background-color: #E2E7EA;
-
-        }
-        .header-black-btn:hover {
-          opacity: 0.7;
-        }
+#search-bar {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent
+}
 
 
-        .bisns-btn{
-          width: 100%;
-                }
+.search-btn {
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  height: 100%;
+  background-color: transparent;
+  width: 3rem;
+}
+
+
+
+
+
+.shopping-cart-btn {
+  float: left;
+  cursor: pointer;
+
+}
+
+.header-white-btn,
+.header-black-btn {
+  padding: 7px 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+
+.header-white-btn {
+  color: #1c1d1f;
+  background-color: transparent;
+  border: 1px solid #1c1d1f;
+}
+
+.header-black-btn {
+  color: #ffffff;
+  background-color: black;
+  border: 1px solid black;
+}
+
+.header-white-btn:hover {
+  background-color: #E2E7EA;
+
+}
+
+.header-black-btn:hover {
+  opacity: 0.7;
+}
+
+
+.bisns-btn {
+  width: 100%;
+}
 
 
 /* styles.css */
@@ -110,8 +123,8 @@
 .hover-content {
   display: none;
   position: absolute;
-  top: 50px; 
-  left: 900px; 
+  top: 50px;
+  left: 900px;
   background-color: #f9f9f9;
   padding: 20px;
   border: 1px solid #ccc;
@@ -119,12 +132,12 @@
 }
 
 .hover {
-  position: relative; 
+  position: relative;
 
 }
 
-.hover:hover + .hover-content {
-  display: block; 
+.hover:hover+.hover-content {
+  display: block;
 }
 
 
@@ -135,8 +148,13 @@
   display: inline-block;
   height: 100%;
 }
-.Catbtn::after{
+
+.Catbtn::after {
   content: none;
+}
+
+.category-btn{
+  padding: 0 1rem
 }
 .Catbtn {
   color: #000;
@@ -145,8 +163,18 @@
   background: none;
   height: 100%;
 }
+
+.dropdownB {
+  padding: 0 0.5rem;
+}
+
 .Catbtn:hover {
   color: #A435F0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 .dropdown-menu {
@@ -161,34 +189,42 @@
 
 @keyframes popUp {
   from {
-      transform: scale(0.9);
-      opacity: 0;
+    transform: scale(0.9);
+    opacity: 0;
   }
+
   to {
-      transform: scale(1);
-      opacity: 1;
+    transform: scale(1);
+    opacity: 1;
   }
 }
+
 .dropdown-section {
   float: left;
-  width: calc(100% / 2);  background-color: #f9f9f9;
+  width: calc(100% / 2);
+  background-color: #f9f9f9;
   padding: 10px;
   box-sizing: border-box;
-  position: relative; /* Added position relative */
+  position: relative;
+  /* Added position relative */
   background-color: #ffffff;
   height: 20rem;
 }
 
 
-.CatAnch.active{
+.CatAnch.active {
   color: #A435F0;
 }
+
 .dropdown-section.with-hover:hover .third-dropdown {
   display: block;
   position: absolute;
-  top: 0; /* Position the third dropdown below the second dropdown */
-  left: 100%; /* Align the third dropdown with the second dropdown */
-  width: 100%; /* Make the third dropdown span the entire width */
+  top: 0;
+  /* Position the third dropdown below the second dropdown */
+  left: 100%;
+  /* Align the third dropdown with the second dropdown */
+  width: 100%;
+  /* Make the third dropdown span the entire width */
 }
 
 .dropdown-section h4 {
@@ -206,7 +242,7 @@
 .dropdown:hover>.dropdown-menu {
   display: block;
   cursor: pointer;
-  
+
 
 }
 
@@ -220,13 +256,14 @@
   color: #000;
 }
 
-.fa-cart-shopping:hover,.dropdown-section ul li:hover a{
-color: #A435F0;
+.fa-cart-shopping:hover,
+.dropdown-section ul li:hover a {
+  color: #A435F0;
 }
 
 .active {
   color: #A435F0;
- /* Change the color as desired */
+  /* Change the color as desired */
 }
 
 .third-dropdown {
@@ -234,14 +271,21 @@ color: #A435F0;
 }
 
 .dropdown-section ul li a::after {
-  content: "\f105"; /* Unicode character for Font Awesome angle-right-solid icon */
-  font-family: "Font Awesome 5 Free"; /* Specify the Font Awesome font family */
-  font-weight: 900; /* Specify the font weight if needed */
-  font-size: 10px; /* Adjust the font size to control the size of the arrow */
+  content: "\f105";
+  /* Unicode character for Font Awesome angle-right-solid icon */
+  font-family: "Font Awesome 5 Free";
+  /* Specify the Font Awesome font family */
+  font-weight: 900;
+  /* Specify the font weight if needed */
+  font-size: 10px;
+  /* Adjust the font size to control the size of the arrow */
   position: absolute;
-  top: 50%; /* Align vertically */
-  right: 0; /* Position at the right edge */
-  transform: translateY(-50%); /* Center vertically */
+  top: 50%;
+  /* Align vertically */
+  right: 0;
+  /* Position at the right edge */
+  transform: translateY(-50%);
+  /* Center vertically */
 }
 
 .third-dropdown ul li a::after {
@@ -252,16 +296,17 @@ color: #A435F0;
 
 
 
-.dropdownC{
+.dropdownC {
   position: relative;
   height: 100%;
 }
+
 /* Style for dropdown content */
 .dropdown-content {
   display: none;
   position: absolute;
   min-width: 160px;
-  background:none;
+  background: none;
   z-index: 1;
   right: 0;
   animation: popUp 0.2s ease forwards;
@@ -283,9 +328,9 @@ color: #A435F0;
 
 }
 
-.text-btn{
+.text-btn {
   padding-bottom: 0.5rem;
-    width: 100%;
+  width: 100%;
 }
 
 /* Style for dropdown button on hover */
@@ -293,20 +338,21 @@ color: #A435F0;
   display: block;
 }
 
-.fa-solid,.fa-regular{
+.fa-solid,
+.fa-regular {
   font-size: 1.2rem;
   padding-top: 0.4rem;
 }
 
-.text-empty{
+.text-empty {
   color: gray;
-  font-weight:normal
+  font-weight: normal
 }
 
-.header-cart-keep-shopping-btn{
+.header-cart-keep-shopping-btn {
   color: #A435F0;
   background: none;
-  border:none;
+  border: none;
   font-weight: bold;
 }
 
@@ -314,7 +360,8 @@ color: #A435F0;
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Initially hidden off-screen */
+  left: -250px;
+  /* Initially hidden off-screen */
   width: 250px;
   height: 100%;
   background: #fff;
@@ -327,14 +374,16 @@ color: #A435F0;
 
 
 .sidebar.active {
-  left: 0; /* Slide in from left when active */
+  left: 0;
+  /* Slide in from left when active */
 }
 
 
 .close-btn {
   position: absolute;
   top: 20px;
-  right: -50px; /* Align to the right edge of the sidebar */
+  right: -50px;
+  /* Align to the right edge of the sidebar */
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -344,18 +393,19 @@ color: #A435F0;
   align-items: center;
   cursor: pointer;
   border: 1px solid #343a40;
-opacity: 0;
-transition: all 1s ease-in;
+  opacity: 0;
+  transition: all 1s ease-in;
 
 }
 
-.close-btn.active{
+.close-btn.active {
   opacity: 1;
 
 }
 
 .close-btn i {
-  color: #343a40; /* Change the color as needed */
+  color: #343a40;
+  /* Change the color as needed */
 }
 
 .circle {
@@ -379,33 +429,36 @@ transition: all 1s ease-in;
   top: 0.3rem;
   right: -0.5rem;
   position: absolute;
-    top: 0.5rem;
-    background-color: #A435F0;
-    color: white;
-    border-radius: 50%;
-    width: fit-content;
-    height: fit-content;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.2rem;
-    font-size: 0.8rem;
+  top: 0.5rem;
+  background-color: #A435F0;
+  color: white;
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  font-size: 0.8rem;
 }
 
-.alert-cart{
+.alert-cart {
   left: 50%;
 }
-.alert-solid,.alert-profile{
+
+.alert-solid,
+.alert-profile {
   top: 1.2rem;
-  right: 0;
+  right: 0.5rem;
   width: 0.7rem;
-    height: 0.7rem;
+  height: 0.7rem;
 }
 
-.dropdown-card-courses{
-padding: 0;
+.dropdown-card-courses {
+  padding: 0;
 }
+
 .course-card {
   display: flex;
   align-items: center;
@@ -413,107 +466,121 @@ padding: 0;
   width: 100%;
   border-bottom: 1px solid #ccc;
 }
+
 .course-img {
   width: 3.5rem;
   height: 3.5rem;
   margin-right: 10px;
 }
-.course-img img{
+
+.course-img img {
   width: 100%;
   height: 100%;
 }
-.course-details{
+
+.course-details {
   width: 70%;
 }
-.course-details p{
-text-align: start;
-margin: 0;
-overflow: hidden;
-white-space: nowrap;
-text-overflow: ellipsis;
+
+.course-details p {
+  text-align: start;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
 }
-.course-details h5{
 
-    font-size: 1.25rem;
+.course-details h5 {
+
+  font-size: 1.25rem;
 }
 
-.ins-font{
+.ins-font {
   color: #6a6f73;
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
-.price-font{
+.price-font {
   font-weight: bold;
 }
 
-.total-price-cart{
+.total-price-cart {
   text-align: start;
   font-size: large;
-  color:gray;
+  color: gray;
   margin-bottom: 10px;
 
 
 }
-.GoToCart-btn{
-  padding:10px
+
+.GoToCart-btn {
+  padding: 10px
 }
-.item-in-wishlist{
+
+.item-in-wishlist {
   border-bottom: 1px solid #ccc;
 
 }
 
-.wishlist-card{
+.wishlist-card {
   border: none;
   padding-bottom: 0;
 }
 
-.wishlist-btn{
-  padding:10px
+.wishlist-btn {
+  padding: 10px
 }
 
-.empty-list{
-  padding: 1rem;}
+.empty-list {
+  padding: 1rem;
+}
 
-  .notif-header{
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    padding: 10px;
-  }
-  .notif-header>a{
-    color: #A435F0;
-  }
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px;
+}
 
-  .note-list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align items at the start of the cross axis */
-    border-bottom: 1px solid black;
-    padding: 10px;
-    width: 100%;
+.notif-header>a {
+  color: #A435F0;
+}
+
+.note-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Align items at the start of the cross axis */
+  border-bottom: 1px solid black;
+  padding: 10px;
+  width: 100%;
 }
 
 .note-content {
   overflow: hidden;
-  text-overflow: ellipsis; /* Display ellipsis for overflowing text */
-  white-space: nowrap; /* Prevent text from wrapping */
-  max-width: 90% /* Adjust the value according to your layout */
+  text-overflow: ellipsis;
+  /* Display ellipsis for overflowing text */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
+  max-width: 90%
+    /* Adjust the value according to your layout */
 }
 
 
 .note-date p {
-    margin: 0; /* Remove default margin */
-    font-weight: normal;
+  margin: 0;
+  /* Remove default margin */
+  font-weight: normal;
 
 }
-.dropdown-card-nots
-{
+
+.dropdown-card-nots {
   padding: 0;
   width: 20rem;
-  
+
 }
 
-.see-all-btn{
+.see-all-btn {
   padding: 10px;
 }
