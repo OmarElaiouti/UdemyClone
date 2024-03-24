@@ -3,50 +3,69 @@ import { Icourses } from '../../Models/ICourse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../Service1/data.service';
+import { LastsliderComponent } from '../lastslider/lastslider.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,LastsliderComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
-export class SearchComponent  {
-  courses: any[]= [];
-  searchTerm: string='';
+export class SearchComponent  implements OnChanges {
 
-  // constructor(private dataservice: DataService) { }
+   //sidebar
+   expandedItems: { [key: string]: boolean } = {};
 
-  // ngOnInit(): void {
-  //   this.courses = this.dataservice.getCourses();
-  // }
+   toggleCollapse(collapseId: string): void {
+     this.expandedItems[collapseId] = !this.expandedItems[collapseId];
+   }
+ 
+   isExpanded(collapseId: string): boolean {
+     return this.expandedItems[collapseId] || false;
+   }
+     //end slider
 
-  // ngOnChanges(): void {
-    //    search(): void {
-    //   if (this.searchTerm) {
-    //     this.courses = this.courses.filter(course =>
-    //       course.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    //     );
-    //   } else {
-    //     this.courses = this.dataservice.getCourses();
-    //   }
-    // }
-    // );
+     getStarArray(rating: number): number[] {
+      const fullStars = Math.floor(rating);
+      const halfStars = Math.ceil(rating - fullStars);
+      const starArray = Array(fullStars).fill(0);
+      if (halfStars > 0) {
+          starArray.push(halfStars); // Add half star if applicable
+      }
+      return starArray;
+    }
 
 
 
 
-    // results: any[]=[];
-    // query: string = '';
 
-    // constructor(private dataserice: DataService) { }
+
+
+
+    
+
+    constructor(private dataserice: DataService) { }
   
-    // search(query: string): void {
-    //   this.dataserice.search(query)
-    //     .subscribe((data: any) => {
-    //       this.results = data.results;
-    //     });
-    // }
+
+    searchTerm: string='';
+    results: any[]=[];
+
+
+      // search() {
+      //   this.dataserice.searchProducts(this.searchTerm).subscribe(data => {
+      //     this.results = data;
+      //   });
+      // }
+
+      ngOnChanges(): void {
+        this.dataserice.searchProducts(this.searchTerm).subscribe((data) => {
+          this.results = data;
+        })
+      
+      }
+ 
+
+
+
   }
-
-
