@@ -168,68 +168,52 @@
   <!-- Featured topics by category -->
   <div class="section bg1">
     <h2>Featured topics by category</h2>
+   
     <div id="featuredTopics">
-      <div>
+      <div> 
         <h2>Development</h2>
+        @for(category of developmentCategories;track $index){
         <div class="cat_items">
-          <a href="" class="aLink">Python</a>
-          <p>29,336,979 students</p>
+          <a href="" class="aLink">{{ category.name }}</a>
+          <p>{{ category.students }} students</p>
         </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Web Development</a>
-          <p>9,550,885 students</p>
-        </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Machine Learning</a>
-          <p>5,871,870 students</p>
-        </div>
+      }
+
       </div>
       <div>
         <h2>Business</h2>
-        <div class="cat_items">
-          <a href="" class="aLink">Financial Analysis</a>
-          <p>1,067,837 students</p>
+        @for(category of developmentCategories;track $index){
+
+        <div class="cat_items" >
+          <a href="" class="aLink">{{ category.name }}</a>
+          <p>{{ category.students }} students</p>
         </div>
-        <div class="cat_items">
-          <a href="" class="aLink">SQL</a>
-          <p>4,361,952 students</p>
-        </div>
-        <div class="cat_items">
-          <a href="" class="aLink">PMP</a>
-          <p>1,381,302 students</p>
-        </div>
+      }
       </div>
       <div>
         <h2>IT and Software</h2>
+        @for(category of itAndSoftwareCategories;track $index){
+
         <div class="cat_items">
-          <a href="" class="aLink">AWS Certification</a>
-          <p>4,433,065 students</p>
+          <a href="" class="aLink">{{ category.name }}</a>
+          <p>{{ category.students }} students</p>
         </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Ethical Hacking</a>
-          <p>8,934,821 students</p>
-        </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Cyber Security</a>
-          <p>3,244,270 students</p>
-        </div>
+      }
       </div>
       <div>
         <h2>Design</h2>
+        @for(category of designCategories;track $index){
+
         <div class="cat_items">
-          <a href="" class="aLink">Photoshop</a>
-          <p>9,664,566 students</p>
+          <a href="" class="aLink">{{ category.name }}</a>
+          <p>{{ category.students }} students</p>
         </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Graphic Design</a>
-          <p>2,804,350 students</p>
-        </div>
-        <div class="cat_items">
-          <a href="" class="aLink">Drawing</a>
-          <p>2,181,754 students</p>
-        </div>
+      }
       </div>
     </div>
+    
+
+
     <div>
       <button class="btn" onclick="exploreCourses()">Explore more topics</button>
     </div>

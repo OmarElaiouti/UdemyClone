@@ -9,6 +9,29 @@ export interface Icourses {
     Status:string;
 
 }
+
+export interface IcourseSmallCard {
+    id:number;
+    name:string;
+    instructor:string;
+    rating:number;
+    price:number;
+}
+
+export interface IuserCourse {
+    id: number;
+    name: string;
+    instructor: string;
+    img: string;
+    price: number;
+  }
+
+
+
+
+
+
+
 [
     { name: 'Course 1',disc:'Python is a general-purpose, versatile, and powerful programming language. It’s a great first language because Python code is concise and easy to read', instructor: 'Instructor 1', rating: 4.5, price: 50, Status: 'Highest rated', totalHour: 5 ,'totallectuer':16},
     { name: 'Course 2 ',disc:'Python is a general-purpose, versatile, and powerful programming language. It’s a great first language because Python code is concise and easy to read', instructor: 'Instructor 2 with a very long name', rating: 4.8, price: 60, Status: 'New', numReviewers: 8723,'totallectuer':16 },
