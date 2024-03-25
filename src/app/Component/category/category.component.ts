@@ -19,6 +19,8 @@ import { Icourses } from '../../Models/ICourse';
 })
 export class CategoryComponent{
 
+  
+
   //sidebar
   expandedItems: { [key: string]: boolean } = {};
 
