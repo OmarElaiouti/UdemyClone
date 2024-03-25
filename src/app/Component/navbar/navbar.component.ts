@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     { id: 6, name: "Category 2", parentId: null },
     { id: 7, name: "Category 3", parentId: null },
   ];
-  
+
   subcategories: any = [
     { id: 8, name: "Subcategory 1", parentId: 1 },
     { id: 9, name: "Subcategory 2", parentId: 1 },
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
     { id: 18, name: "Subcategory 2", parentId: 4 },
     { id: 19, name: "Subcategory 3", parentId: 5},
   ]
-  
+
   topics: any = [
     { id: 20, name: "Subsubcategory 1", parentId: 8 },
     { id: 21, name: "Subsubcategory 2", parentId: 8 },
@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
 
   Note:any = [
     {content: "accepted", date: "2/2/2022", status:"readed"},
-    
+
 
   ]
 
@@ -94,20 +94,20 @@ export class NavbarComponent implements OnInit {
         // Parse the value as JSON
     localStorage.setItem("flag",JSON.stringify(true))
     }else{
-            this.signedin = true;
+            this.signedin = false;
         }
 //         if(this.Cart.length!=0){
 //         let prices = this.Cart.map(item => item.price);
 // this.CartTotalPrice = prices.reduce((acc, curr) => acc + curr, 0);
 //         }
-    
+
 
   }
 
   setActiveSubCategory(sub: any) {
     this.activeSubCategory = sub;
     console.log("activeSub");
-    
+
   }
 
 
@@ -131,7 +131,7 @@ export class NavbarComponent implements OnInit {
 
 
 
-  
+
    logolink(): void {
     window.location.href = "index.html";
   }
