@@ -35,8 +35,7 @@ body {
   margin: 0.625rem;
   padding: 20px;
   margin-right: 60%;
-  width: 36%;
-  height: 65%;
+  width: fit-content;
 }
 
 .hero-content>h1 {
@@ -188,6 +187,7 @@ body {
 }
 .last{
   display: flex;
+  align-content: centers;
 }
 
 .last .twoLast{

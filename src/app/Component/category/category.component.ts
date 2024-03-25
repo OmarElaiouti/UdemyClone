@@ -4,7 +4,7 @@ import { SliderssComponent } from '../sliderss/sliderss.component';
 import { InstructorComponent } from '../instructor/instructor.component';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { CommonModule } from '@angular/common';
-import { Icourses } from '../../Models/icourses';
+import { Icourses } from '../../Models/ICourse';
 
 
 

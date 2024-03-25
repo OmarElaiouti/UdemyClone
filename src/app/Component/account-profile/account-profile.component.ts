@@ -8,5 +8,23 @@ import { Component } from '@angular/core';
   styleUrl: './account-profile.component.css'
 })
 export class AccountProfileComponent {
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+

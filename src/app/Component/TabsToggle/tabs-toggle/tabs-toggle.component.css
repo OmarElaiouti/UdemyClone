@@ -2,11 +2,13 @@
     position: relative;
     padding-bottom: 5px; /* Adjust as needed */
     color: black;
-    margin-right: 15px;
     border:none
 
 }
 
+.nav-item{
+  margin-right:1rem ;
+}
 .nav-tabs .nav-link::after {
     content: '';
     position: absolute;
@@ -28,6 +30,7 @@
 
 .nav{
   border-bottom: 1px solid gray;
+  margin: 0;
 }
 
 .nav-link.active{

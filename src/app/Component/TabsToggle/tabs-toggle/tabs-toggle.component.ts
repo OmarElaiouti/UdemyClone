@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CourseSliderComponent } from "../../CourseSlider/course-slider/course-slider.component";
+import { HomeCourseService } from '../../../Services/home-course-service/home-course.service';
 
 @Component({
     selector: 'app-tabs-toggle',
@@ -8,6 +9,32 @@ import { CourseSliderComponent } from "../../CourseSlider/course-slider/course-s
     styleUrl: './tabs-toggle.component.css',
     imports: [CourseSliderComponent]
 })
-export class TabsToggleComponent {
+export class TabsToggleComponent implements OnInit {
+    coursesByTab: any[] = [];
+  
+  constructor(private homecourseService: HomeCourseService) {
+    
+  }
+  ngOnInit(): void {
+// Fetch courses for each tab when the component initializes
+this.fetchCoursesForTabs();
+  }
+
+  fetchCoursesForTabs() {
+    // Fetch courses for Python tab
+    this.homecourseService.getCoursesByCategory('Python').subscribe(courses => {
+      this.coursesByTab.push(courses);
+    });
+
+    // Fetch courses for Development tab
+    this.homecourseService.getCoursesByCategory('Development').subscribe(courses => {
+      this.coursesByTab.push(courses);
+    });
+
+    // Fetch courses for Excel tab
+    this.homecourseService.getCoursesByCategory('Excel').subscribe(courses => {
+      this.coursesByTab.push(courses);
+    });
+  }
 
 }
