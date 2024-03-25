@@ -77,8 +77,8 @@
         <!--search bar of website-->
 
         <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5">
-          <form class="search-container" (ngSubmit)="search(searchQuery.value)">
-            <input type="text" id="search-bar" placeholder="Search for anything" #searchQuery />
+          <form class="search-container" (ngSubmit)="search(searchValue)">
+            <input id="search-bar" placeholder="Search for anything" [(ngModel)]="searchValue" name="searchValue" />
             <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
           </form>
         </div>

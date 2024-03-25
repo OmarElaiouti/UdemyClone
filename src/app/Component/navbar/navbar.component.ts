@@ -8,11 +8,12 @@ import { NotificationService } from '../../Services/Notification-service/notific
 import { IcourseSmallCard, IuserCourse } from '../../Models/ICourse';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,FormsModule],
 
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -20,7 +21,7 @@ import { SearchService } from '../../Services/search-service/search.service';
 export class NavbarComponent implements OnInit {
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
-
+  searchValue: string = '';  
   categories: IcategoryForNav[] = [
     {id:1,
       name:"cat"},
@@ -165,10 +166,12 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  search(query: string): void {
-    this.searchService.searchCoursesForSearchResult(query).subscribe(courses => {
-      this.router.navigate(['/searchresult']);
-    });
+  search(searchValue:string): void {
+
+    this.searchService.setSearchResult(searchValue);      
+    this.router.navigate(['/searchresult']);
+
+
   }
 
 

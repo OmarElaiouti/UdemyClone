@@ -8,20 +8,21 @@ import { Observable, tap } from 'rxjs';
 })
 export class SearchService {
 
+  searchResult:string="";
 
   constructor(private http: HttpClient) {}
 
- 
-  searchCoursesForSearchResult(query: string): Observable<Icourses[]> {
-    return this.http.get<Icourses[]>(`/api/search?query=${query}`).pipe(
-      tap((courses: Icourses[]) => {
-        if (courses.length > 0) {
-          // Save the search query to local storage if results are found
-          localStorage.setItem('lastSearchQuery', query);
-        }
-      })
-    );
+  setSearchResult(searchString: string): void {
+    this.searchResult = searchString;
+    console.log(this.searchResult);
+
   }
+
+  searchCoursesForSearchResult(): Observable<any[]> {
+    console.log(this.searchResult);
+    return this.http.get<any[]>(`http://localhost:3000/courses?searchString=${this.searchResult}`);
+  }
+
 
   searchCoursesByKeywordForHome(keyword: string): Observable<IcourseSmallCard[]> {
     return this.http.get<IcourseSmallCard[]>(`/api/search?keyword=${keyword}`);
