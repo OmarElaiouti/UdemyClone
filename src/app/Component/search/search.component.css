@@ -73,3 +73,22 @@
     display: flex;
     margin-bottom: 30px;
   }
+
+
+  .btnafter::after {
+    content: "\f105";
+    /* Unicode character for Font Awesome angle-right-solid icon */
+    font-family: "Font Awesome 5 Free";
+    /* Specify the Font Awesome font family */
+    font-weight: 900;
+    /* Specify the font weight if needed */
+    font-size: 10px;
+    /* Adjust the font size to control the size of the arrow */
+    position: absolute;
+    top: 50%;
+    /* Align vertically */
+    right: 0;
+    /* Position at the right edge */
+    transform: translateY(-50%);
+    /* Center vertically */
+  }
