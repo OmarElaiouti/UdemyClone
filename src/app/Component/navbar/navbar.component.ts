@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
   searchValue: string = '';  
@@ -79,6 +80,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
 
+
   ngOnInit() {
 
     this.loadCategories();
@@ -96,6 +98,7 @@ export class NavbarComponent implements OnInit {
 
     // Check if the value is not null before parsing it
     if (flagValue == null) {
+
       // Parse the value as JSON
       localStorage.setItem("flag", JSON.stringify(true))
     } else {
@@ -196,6 +199,7 @@ export class NavbarComponent implements OnInit {
     // Setting height of div1 to be equal to the height of div2
     this.div2.nativeElement.style.height = div2Height + 'px';
   }
+
 
 
 
