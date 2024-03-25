@@ -14,6 +14,11 @@
     transform: translateY(-50%);
     position: relative;
     z-index: 1;
+    color: #343639;
+}
+
+.p-disabled{
+    display: none;
 }
 
 .p-carousel-next{
