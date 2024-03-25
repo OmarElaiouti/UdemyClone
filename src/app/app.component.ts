@@ -11,6 +11,7 @@ import { AccountProfileComponent } from './Component/account-profile/account-pro
 import { CategoryComponent } from "./Component/category/category.component";
 import { CourseDetailsComponent } from "./Component/course-details/course-details.component";
 import { CourseLessonComponent } from "./Component/CourseLessons/course-lesson/course-lesson.component";
+import { SearchComponent } from './Component/search/search.component';
 
 
 
@@ -19,7 +20,8 @@ import { CourseLessonComponent } from "./Component/CourseLessons/course-lesson/c
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent, CourseLessonComponent]
+    imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
+      SearchComponent, CourseLessonComponent]
 })
 export class AppComponent {
   title = 'graduation_proj';
