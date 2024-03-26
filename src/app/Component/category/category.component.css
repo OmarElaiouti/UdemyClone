@@ -123,14 +123,21 @@ h5 {
 .ls {
   display: flex;
   margin-top: 20px;
+  width:4000px
 }
 
 .dropdown {
-  width: 500px;
+  width: 300px;
+  margin-right: 50px;
 
 }
 
 .fa-star,
 .fa-star-half-stroke {
   color: gold;
+}
+
+.card button {
+  width: 100%;
+  text-align: left;
 }

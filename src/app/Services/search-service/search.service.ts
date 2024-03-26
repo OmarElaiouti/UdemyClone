@@ -20,11 +20,14 @@ export class SearchService {
 
   searchCoursesForSearchResult(): Observable<any[]> {
     console.log(this.searchResult);
-    return this.http.get<any[]>(`http://localhost:3000/courses?searchString=${this.searchResult}`);
+    return this.http.get<any[]>(`http://localhost:3000/courses?searchStrin=${this.searchResult}`);
   }
 
 
   searchCoursesByKeywordForHome(keyword: string): Observable<IcourseSmallCard[]> {
     return this.http.get<IcourseSmallCard[]>(`/api/search?keyword=${keyword}`);
   }
+
+ 
+
 }

@@ -3,7 +3,7 @@
  @if(results.length!=0){
 
 <!-- found -->
-<section class="found" style="margin-left: 100px;">
+<section class="found" style="margin-left: 100px;margin-top: 50px;">
 
   <h1> results</h1>
 
@@ -11,7 +11,7 @@
     <div class="filter"><i class="fa-solid fa-bars"></i> Filter </div>
     <div class="sdd">
       <div>
-        <p style="font-size: 5px;margin-bottom: 0px;">Sort by</p>
+        <p style="font-size: 15px;margin-bottom: 0px; text-align: left;margin-left: 10px;">Sort by</p>
         <select id="ssdropdown">
           <option value="option1"> Relevant</option>
           <option value="option2" selected> Most Reviewed</option>
@@ -25,7 +25,7 @@
 
   <div class="ls">
   <div class="dropdown">
-    <div id="accordion" style="width: 60%; margin-top: 30px;">
+    <div id="accordion" style="width: 100%; margin-top: 30px;">
       <hr>
 
       <div class=" card">
@@ -34,7 +34,6 @@
             <button (click)="toggleCollapse('collapseOne')" [attr.aria-expanded]="isExpanded('collapseOne')"
               aria-controls="collapseOne">
               Ratings </button>
-            <!-- <h6>4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="collapseOne" [ngClass]="{ 'collapse': !isExpanded('collapseOne'), 'show': isExpanded('collapseOne') }"
@@ -70,7 +69,6 @@
           </div>
         </div>
       </div>
-      <!-- Repeat for other accordion items -->
       <hr>
       <div class="card">
         <div>
@@ -78,7 +76,6 @@
             <button (click)="toggleCollapse('collapsetwo')" [attr.aria-expanded]="isExpanded('collapseTwo')"
               aria-controls="collapseTwo">
               language </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="collapseTwo" [ngClass]="{ 'collapse': !isExpanded('collapsetwo'), 'show': isExpanded('collapseTwo') }"
@@ -96,7 +93,6 @@
             <button (click)="toggleCollapse('collapsethree')" [attr.aria-expanded]="isExpanded('headingThree')"
               aria-controls="collapseThree">
               Video Duration </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="headingThree"
@@ -124,7 +120,6 @@
               aria-controls="collapseFour">
               Features
             </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="headingFour" [ngClass]="{ 'collapse': !isExpanded('collapsefour'), 'show': isExpanded('headingFour') }"
@@ -148,7 +143,6 @@
             <button (click)="toggleCollapse('collapsef')" [attr.aria-expanded]="isExpanded('headingFive')"
               aria-controls="collapseFive">
               Topic </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="headingFive" [ngClass]="{ 'collapse': !isExpanded('collapsef'), 'show': isExpanded('headingFive') }"
@@ -167,7 +161,6 @@
             <button (click)="toggleCollapse('collapsesix')" [attr.aria-expanded]="isExpanded('headingSix')"
               aria-controls="collapseFive">
               level </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="headingSix" [ngClass]="{ 'collapse': !isExpanded('collapsesix'), 'show': isExpanded('headingSix') }"
@@ -191,7 +184,6 @@
             <button (click)="toggleCollapse('collapseseven')" [attr.aria-expanded]="isExpanded('collapseSeven')"
               aria-controls="collapseSeven">
               Subtitles </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="headingSeven"
@@ -211,7 +203,6 @@
             <button (click)="toggleCollapse('collapse9')" [attr.aria-expanded]="isExpanded('collapse9')"
               aria-controls="collapse9">
               Price </button>
-            <!-- <h6 class="h6">4lectures .21min</h6> -->
           </h5>
         </div>
         <div id="collapse9" [ngClass]="{ 'collapse': !isExpanded('collapse9'), 'show': isExpanded('collapse9') }"
@@ -231,38 +222,40 @@
   <div class="lastslider">
     @for(course of results;track course.id){
     <div class="total" *ngFor="let course of results">
-      <div>
-          <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">
-      </div>
-      <div class="two">
-      <h4>{{ course.name }}</h4>
-      <p> {{ course.instructor }}</p>
-      <div class="star-ratings-css">
-          <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
-              <span><b>{{ course.rating }} </b> </span>
-      @for(star of getStarArray(course.rating);track $index){
-      <span>
-          <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
-      </span> 
-  }</div>
-      </div>
-      
-      <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
-      <div [ngStyle]="{'width.px': '70', 'height.px': '40', 'border': '1px solid','font-weight': 'bold'
-      , 'text-align': 'center','line-height.px': '20',
-       'background-color': course.Status === 'New' ? 'orange' : course.Status === 'Highest rated' ? 'red' : ''}">
-          {{ course.Status }}
+        <div >
+            <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">
         </div>
+        <div class="two">
+            <div style="display: flex; justify-content: space-between;">
+        <h4 style="margin-bottom: 0px;margin-top: 0px;">{{ course.name }}</h4>
+          <h4    >E{{course.price |currency:"EUR"}}</h4>
+        </div>
+        <p style="margin-bottom: 0px;">{{ course.disc }}</p>
+        <p style="margin-bottom: 0px;"> {{ course.instructor }}</p>
+        <div class="star-ratings-css">
+            <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+                <span><b>{{ course.rating }} </b> </span>
+        @for(star of getStarArray(course.rating);track $index){
+        <span>
+            <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+        </span> 
+    }</div>
+        </div>
+        
+        <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
      
+       
+      </div>
+      <hr>
     </div>
-    <hr>
-  </div>
+    <!-- <hr> -->
+       
+    
 }
-  <hr>
-  
+<!-- <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows"
+ [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator> -->
+</div> 
 
-
-</div>
 
   </div>
 </section>
@@ -271,10 +264,10 @@
 
 
   <!-- not found -->
-  <section  class="notfound" style="margin-left: 100px;">
+  <section  class="notfound" style="margin-left: 100px;margin-top: 50px; ">
 
-  <h3>Sorry, we couldn't find any results</h3>
-  <h5>Try adjusting your search. Here are some ideas:</h5>
+  <h3 style="margin-bottom: 40px; font-weight: bold;">Sorry, we couldn't find any results</h3>
+  <h5  style="margin-bottom: 30px; font-weight: bold;">Try adjusting your search. Here are some ideas:</h5>
   <ul>
     <li>Make sure all words are spelled correctly</li>
     <li>Try different search terms</li>

@@ -1,75 +1,104 @@
-
 .fsort {
-    display: flex;
-    margin-top: 30px;
-    text-align: center;
-    font-weight: bold;
-  
-  }
-  
-  .filter {
-    width: 100px;
-    height: 50px;
-    padding: 10px;
-    margin-right: 5px;
-    border: 1px solid;
-  
-  }
-  
-  .sdd {
-    width: 190px;
-    border: 1px solid;
-    height: 50px;
-  
-  }
-  
-  #ssdropdown {
-    width: 150px;
-    border: none;
-    outline-style: none;
-    text-decoration: none;
-  }
+  display: flex;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.filter {
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid;
+
+}
+
+.sdd {
+  width: 190px;
+  border: 1px solid;
+  height: 50px;
+
+}
+
+#ssdropdown {
+  width: 150px;
+  border: none;
+  outline-style: none;
+  text-decoration: none;
+}
+
 /* lllllllllllllll */
 .card button {
-    border: none;
-    background-color: white;
-    font-weight: bold;
-  }
-  
-  .card {
-    border: none;
-  }
-  
-  .btn-link {
-    text-decoration-line: none;
-    color: black;
-    font-weight: bold;
-  }
-  
-  h5 {
-    display: flex;
-  }
-  
-  /* h6{margin-top: 10px; opacity: 70%;margin-left: 450px;} */
-  
-  
-  
-  .ls {
-    display: flex;
-    margin-top: 20px;
-  }
-  
-  .dropdown {
-    width: 500px;
-  
-  }
-  
-  .fa-star,
-  .fa-star-half-stroke {
-    color: gold;
-  }  
+  border: none;
+  background-color: white;
+  font-weight: bold;
+}
 
-  .total{
-    display: flex;
-    margin-bottom: 30px;
-  }
+.card {
+  border: none;
+}
+
+.btn-link {
+  text-decoration-line: none;
+  color: black;
+  font-weight: bold;
+}
+
+h5 {
+  display: flex;
+}
+
+/* h6{margin-top: 10px; opacity: 70%;margin-left: 450px;} */
+
+
+
+.ls {
+  display: flex;
+  margin-top: 20px;
+}
+
+.dropdown {
+  width: 22%;
+  margin-right: 40px;
+
+}
+
+.fa-star,
+.fa-star-half-stroke {
+  color: gold;
+}
+
+.total {
+  display: flex;
+}
+
+.total img {
+  margin-right: 15px;
+  width: 80%;
+  height: 85%;
+  box-sizing: content-box;
+  padding-right: 0px;
+
+
+}
+
+.card button {
+  width: 100%;
+  text-align: left;
+}
+
+.two {
+  width: 100%;
+}
+
+.lastslider {
+  margin-top: 30px;
+  margin-left: 50px;
+}
+/* *, ::after, ::before {
+  box-sizing:border-box;} */
+
+
+

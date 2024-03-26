@@ -5,6 +5,7 @@ import { InstructorComponent } from '../instructor/instructor.component';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { CommonModule } from '@angular/common';
 import { Icourses } from '../../Models/ICourse';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,11 +14,33 @@ import { Icourses } from '../../Models/ICourse';
   selector: 'app-category',
   standalone: true,
   imports: [CourseSliderComponent,SliderssComponent,InstructorComponent,
-    LastsliderComponent,CommonModule,],
+    LastsliderComponent,CommonModule, FormsModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
+
 export class CategoryComponent{
+
+  sectionVisible: boolean = true;
+
+  toggleSection() {
+    this.sectionVisible = !this.sectionVisible;
+  }
+//   courses: any[] = [];
+
+//   constructor(private getcat:MyServiceService) { }
+
+//   ngOnInit(): void {
+//     this.getallcat();
+    
+//   }
+
+//  getallcat(){
+//   this.getcat.getCourses().subscribe((res :any)=>{
+//     console.log(res)
+//     this.courses=res})
+//  }
+
 
   //sidebar
   expandedItems: { [key: string]: boolean } = {};

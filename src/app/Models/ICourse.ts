@@ -6,6 +6,9 @@ export interface Icourses {
     price:number;
     totallectuer:number;
     totalHour:number;
+
+   
+
 }
 
 export interface IcourseSmallCard {
