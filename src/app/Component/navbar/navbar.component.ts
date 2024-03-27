@@ -178,7 +178,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/searchresult'], { queryParams: { search: searchValue } });
 }
 
-
+GotoCategory(name: string): void {
+  if(name.length>0)
+  this.router.navigate(['/category'], { queryParams: { name: name } });
+}
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;

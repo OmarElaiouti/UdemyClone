@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnChanges, OnDestroy, OnInit } from '@angular
 import { Icourses } from '../../Models/ICourse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../../Service1/data.service';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { SearchService } from '../../Services/search-service/search.service';
 import { Subscription } from 'rxjs';
@@ -23,7 +22,7 @@ export class SearchComponent implements OnInit {
 
   results!:any[];
 
-  constructor(private dataserice: DataService,
+  constructor(
     private searchService:SearchService, 
     private router: Router,
     private route: ActivatedRoute) { }

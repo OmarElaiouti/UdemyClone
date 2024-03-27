@@ -3,7 +3,6 @@ import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { CommonModule } from '@angular/common';
-import { MyServiceService } from '../../Service1/my-service.service';
 import { Icourses } from '../../Models/ICourse';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
@@ -14,7 +13,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
   templateUrl: './lastslider.component.html',
   styleUrl: './lastslider.component.css'
 })
-export class LastsliderComponent implements OnInit {
+export class LastsliderComponent {
   // @Input()
   //  courses = [
   //   { name: 'Course 1',disc:'Python is a general-purpose, versatile, and powerful programming language. It’s a great first language because Python code is concise and easy to read', instructor: 'Instructor 1', rating: 4.5, price: 50, Status: 'Highest rated', totalHour: 5 ,'totallectuer':16},
@@ -28,41 +27,41 @@ export class LastsliderComponent implements OnInit {
 
   courses: Icourses[] = [];
 
-  constructor(private getcat: MyServiceService) {}
+  // constructor(private getcat: MyServiceService) {}
 
-  getallcat() {
-    this.getcat.getCourses().subscribe({
-      next: (data) => {
-        this.courses = data;
-      },
-      error: (error) => {
-        console.error('Error fetching courses:', error);
-      }
-    });
-  }
+  // getallcat() {
+  //   this.getcat.getCourses().subscribe({
+  //     next: (data) => {
+  //       this.courses = data;
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching courses:', error);
+  //     }
+  //   });
+  // }
   
   currentPage = 1;
   itemsPerPage = 10;
   totalItems = 0;
 
 
-  ngOnInit(): void {
-    this.fetchData();
-     this.getallcat();
-  }
+  // ngOnInit(): void {
+  //   this.fetchData();
+  //    this.getallcat();
+  // }
 
-  fetchData(): void {
-    const params = { page: this.currentPage.toString(), per_page: this.itemsPerPage.toString() };
-    this.getcat.getCourses().subscribe(response => {
-      this.courses = response.items;
-      this.totalItems = response.total_count; // Assuming the API returns total count
-    });
-  }
+  // fetchData(): void {
+  //   const params = { page: this.currentPage.toString(), per_page: this.itemsPerPage.toString() };
+  //   this.getcat.getCourses().subscribe(response => {
+  //     this.courses = response.items;
+  //     this.totalItems = response.total_count; // Assuming the API returns total count
+  //   });
+  // }
 
-  onPageChange(event: PageEvent): void {
-    this.currentPage = event.pageIndex + 2; // pageIndex starts from 0
-    this.fetchData();
-  }
+  // onPageChange(event: PageEvent): void {
+  //   this.currentPage = event.pageIndex + 2; // pageIndex starts from 0
+  //   this.fetchData();
+  // }
 
 
 //////////////////////////////////
