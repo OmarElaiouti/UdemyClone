@@ -9,7 +9,7 @@
 
     <div class="items-header-name">
         <span>Course name</span>
-        
+
     </div>
 
     <div class="items-header-prog">
@@ -18,8 +18,8 @@
                 <span>85/100</span>
             </ng-template>
         </p-progressBar>
-      
-        
+
+
     </div>
 
     <div class="items-header-btn">
@@ -28,13 +28,13 @@
 
 
 
-    
+
     <div class="items-header-btn">
         <div class="btn-icon">
             <i class="fa-solid fa-star"></i>
     </div>
     </div>
-   
+
 </div>
 
 <div class="main">
@@ -66,10 +66,10 @@
                 </video>
             </vg-player>
           </div>
-          
 
 
-        
+
+
         <div class="tab-view" id="comments-tab">
             <div class="comments">
                 <!-- Comments content here -->
@@ -81,11 +81,11 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0"
-                        role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Python</a>
+                        role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">Overview</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab"
-                        aria-controls="simple-tabpanel-1" aria-selected="false">Development</a>
+                        aria-controls="simple-tabpanel-1" aria-selected="false">Q&A</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="simple-tab-2" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab"
@@ -94,10 +94,10 @@
             </ul>
             <div class="tab-content pt-5" id="tab-content">
                 <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
-
+                        <app-overview></app-overview>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
-                    hi</div>
+                    <app-q></app-q></div>
                 <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
                     hello
                     <pre>

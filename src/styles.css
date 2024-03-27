@@ -12,6 +12,21 @@
     border:none;
     height: 50px;
     transform: translateY(-50%);
+    position: relative;
+    z-index: 1;
+    color: #343639;
+}
+
+.p-disabled{
+    display: none;
+}
+
+.p-carousel-next{
+    right: 27px;
+}
+
+.p-carousel-prev{
+    left: 27px;
 }
 
 /* .p-disabled{
@@ -23,4 +38,14 @@
 {
     font-size: 2rem;
 }
+
+
+
+.p-tooltip {
+    max-width: 20rem;
+}
+
+
+  
+
 

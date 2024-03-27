@@ -2,16 +2,24 @@ import { Component,ElementRef, ViewChild, AfterViewInit, OnInit, HostListener, S
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule, Routes } from '@angular/router';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-course-slider',
   standalone: true,
-  imports: [CarouselModule,ButtonModule,RouterModule],  
+  imports: [CarouselModule,ButtonModule,RouterModule,TooltipModule  ],  
   templateUrl: './course-slider.component.html',
   styleUrl: './course-slider.component.css'
 })
 export class CourseSliderComponent {
+displayCourse(_t36: any) {
+throw new Error('Method not implemented.');
+}
+addToCart(_t36: any) {
+throw new Error('Method not implemented.');
+}
   @Input() courses: any[] = [];
+
 
   // Responsive options for the carousel
   responsiveOptions= [
@@ -43,4 +51,6 @@ export class CourseSliderComponent {
     }
     return starArray;
 }
+
+
 }

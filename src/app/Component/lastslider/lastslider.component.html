@@ -1,11 +1,12 @@
-<div class="total" *ngFor="let course of currentCourses">
+<div class="total" *ngFor="let course of courses">
     <div>
         <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">
     </div>
     <div class="two">
-    <h4>{{ course.name }}</h4>
-    <p>{{ course.disc }}</p>
-    <p> {{ course.instructor }}</p>
+        <div style="display: flex;  justify-content:space-between;">
+    <h4 style="margin-bottom: 0px;margin-top: 0px;margin-right: 100px;">{{ course.name }}</h4>  <h4 >E{{course.price |currency:"EUR"}}</h4>
+    </div><p style="margin-bottom: 0px;">{{ course.disc }}</p>
+    <p style="margin-bottom: 0px;"> {{ course.instructor }}</p>
     <div class="star-ratings-css">
         <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
             <span><b>{{ course.rating }} </b> </span>
@@ -17,19 +18,14 @@
     </div>
     
     <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
-    <div [ngStyle]="{'width.px': '70', 'height.px': '40', 'border': '1px solid','font-weight': 'bold'
-    , 'text-align': 'center','line-height.px': '20',
-     'background-color': course.Status === 'New' ? 'orange' : course.Status === 'Highest rated' ? 'red' : ''}">
-        {{ course.Status }}
-      </div>
+ 
    
   </div>
   <hr>
 </div>
 <hr>
 
-  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="courses.length" >
-  </p-paginator>
-  
 
-  <!-- [rowsPerPageOptions]="[2, 4, 6]" -->
+
+<mat-paginator [length]="totalItems" [pageSize]="itemsPerPage" (page)="onPageChange($event)">
+</mat-paginator>
