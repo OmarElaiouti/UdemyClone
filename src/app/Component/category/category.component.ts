@@ -111,6 +111,8 @@ export class CategoryComponent implements OnInit {
   }
 
 
+  
+
   //sidebar
   expandedItems: { [key: string]: boolean } = {};
 

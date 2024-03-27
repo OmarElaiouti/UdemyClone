@@ -13,20 +13,41 @@
                             <div class="star-ratings-css">
                                 <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
                                     <span><b>{{ course.rating }} </b> </span>
+
                             @for(star of getStarArray(course.rating);track $index){
                             <span>
                                 <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
                             </span>
-                        }
-                        <span class="num-reviewers">({{ course.numReviewers }})</span>
-                        </div>
-                            </div>
-                            <p class="mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
-
+                            }
+                            <span class="num-reviewers">({{ course.numReviewers }})</span>
                         </div>
                     </div>
+                    <p class="mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
                 </div>
-            </ng-template>
+            </div>
+        </div>
+        
+        <ng-template #tooltipContent>
+            <div>
+                <p class="toolip-crs-name">{{ course.name}}</p>
+                <ul class="objective-grid">
+                    @for(objv of course.objectives;track $index){
+                    <li>
+                      <i class="fa-solid fa-check"></i> {{ objv }}
+                    </li>
+                }
+                  </ul>
+                  <div class="btns-wrapper">
+                <button class="cart-btn">Add to Cart</button>
+                <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            </div>
+        </ng-template>
+    </ng-template>
+    
+    
+    
+            
             <ng-template pTemplate="footer">
             </ng-template>
             <ng-template pTemplate="previousicon">

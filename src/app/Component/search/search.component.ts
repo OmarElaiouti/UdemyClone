@@ -6,9 +6,10 @@ import { DataService } from '../../Service1/data.service';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { SearchService } from '../../Services/search-service/search.service';
 import { Subscription } from 'rxjs';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router ,ActivatedRoute} from '@angular/router';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+
 
 @Component({
   selector: 'app-search',
@@ -19,45 +20,37 @@ import { ButtonModule } from 'primeng/button';
 })
 export class SearchComponent implements OnInit {
 
-  results: any[] = []
-  private searchSubscription: Subscription | undefined;
-  private navigationSubscription: Subscription | undefined;
 
-  constructor(private dataserice: DataService, private searchService: SearchService, private router: Router) { }
+  results!:any[];
 
-
-
+  constructor(private dataserice: DataService,
+    private searchService:SearchService, 
+    private router: Router,
+    private route: ActivatedRoute) { }
+  
+  
+  
   ngOnInit(): void {
 
-    this.fetchCourses();
-    this.searchSubscription = this.searchService.searchCoursesForSearchResult().subscribe({
-      next: (courses: any[]) => {
-        this.results = courses;
-        console.log(this.results.length);
-
-      },
-      error: (error) => {
-        console.error('Error fetching courses:', error);
-      }
-    });
-
-
-    // Subscribe to NavigationEnd event to clean up subscriptions when navigating away from the component
-    this.navigationSubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.onNavigationEnd();
+    this.route.queryParams.subscribe(params => {
+      const searchValue = params['search'];
+      if (searchValue) {
+        // Use the searchValue here, you can call your search service function or perform any other actions
+        this.searchService.searchCoursesForSearchResult(searchValue).subscribe({
+          next: (courses: any[]) => {
+            this.results = courses;
+            console.log(this.results.length);
+          },
+          error: (error) => {
+            console.error('Error fetching courses:', error);
+          }
+        });
       }
     });
   }
 
-
-  getCourses(): void {
-
-  }
-
-
-  //sidebar
-  expandedItems: { [key: string]: boolean } = {};
+   //sidebar
+   expandedItems: { [key: string]: boolean } = {};
 
   toggleCollapse(collapseId: string): void {
     this.expandedItems[collapseId] = !this.expandedItems[collapseId];
@@ -162,6 +155,7 @@ checkDuration(duration: number, filter: number): boolean {
       return duration > 17; // 17+ hours
     default:
       return false;
+
   }
 }
 

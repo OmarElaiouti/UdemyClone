@@ -9,6 +9,7 @@ import { IcourseSmallCard, IuserCourse } from '../../Models/ICourse';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
   searchValue: string = '';  
@@ -75,10 +77,13 @@ export class NavbarComponent implements OnInit {
     private notifService: NotificationService,
     private userCoursesService: UserCoursesService,
     private searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
 
+  
+  
   ngOnInit() {
 
     this.loadCategories();
@@ -96,6 +101,7 @@ export class NavbarComponent implements OnInit {
 
     // Check if the value is not null before parsing it
     if (flagValue == null) {
+
       // Parse the value as JSON
       localStorage.setItem("flag", JSON.stringify(true))
     } else {
@@ -166,13 +172,10 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  search(searchValue:string): void {
-
-    this.searchService.setSearchResult(searchValue);      
-    this.router.navigate(['/searchresult']);
-
-
-  }
+  search(searchValue: string): void {
+    if(searchValue.length>0)
+    this.router.navigate(['/searchresult'], { queryParams: { search: searchValue } });
+}
 
 
 
@@ -196,6 +199,7 @@ export class NavbarComponent implements OnInit {
     // Setting height of div1 to be equal to the height of div2
     this.div2.nativeElement.style.height = div2Height + 'px';
   }
+
 
 
 
