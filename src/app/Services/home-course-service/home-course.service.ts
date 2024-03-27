@@ -15,8 +15,8 @@ export class HomeCourseService {
     return this.http.get<IcourseSmallCard[]>(`/api/courses?category=${category}`);
   }
 
-  getRandomCourses(): Observable<IcourseSmallCard[]> {
-    return this.http.get<IcourseSmallCard[]>(`/api/courses?random-courses`);
+  getRandomCourses(): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:3000/api/slidercourses`);
   }
 
   // Method to fetch courses with highest scores

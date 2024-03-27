@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CourseSliderComponent } from '../CourseSlider/course-slider/course-slider.component';
 import { DataViewModule } from 'primeng/dataview';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +13,7 @@ import { DataViewModule } from 'primeng/dataview';
     CommonModule,
     CourseSliderComponent,
     DataViewModule,
+    RouterModule
   ],
 })
 export class CartComponent {
@@ -19,11 +21,13 @@ export class CartComponent {
     {
       img: '../../../assets/course_img/4898526_657d_2.jpg',
       title: 'Python Programming Language',
-      price: 105,
+      price: 'E£299.99',
       instructor: 'John Doe',
       duration: '19.5 total hours',
-      lectures: '188 lectures',
-      difficulity: 'Intermediate',
+      lectures: '. 188 lectures',
+      difficulity: ' .Intermediate',
+      rating:4.5,
+      numReviewers: 2345
     },
   ];
 
@@ -71,6 +75,16 @@ export class CartComponent {
     }
   }
   checkout(): void {
-    
+
   }
+
+  getStarArray(rating: number): number[] {
+    const fullStars = Math.floor(rating);
+    const halfStars = Math.ceil(rating - fullStars);
+    const starArray = Array(fullStars).fill(0);
+    if (halfStars > 0) {
+        starArray.push(halfStars); // Add half star if applicable
+    }
+    return starArray;
+}
 }

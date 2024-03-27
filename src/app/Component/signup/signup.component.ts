@@ -40,11 +40,10 @@ export class SignupComponent implements OnDestroy {
       password: this.password
     };
 
-    this.signupService.signup(userData).subscribe((res: any) => {
+    this.signupService.signUp(this.username,this.mail,this.password).subscribe(result => {
       // Handle successful signup
-      if (res.result) {
-        localStorage.setItem('token', res.data.token);
-        this.signupService.setUserSignedUp(true); // Update signup status
+      if (result ) {
+        alert("uitdegc"); // Update signup status
       }else{
         alert("Form is invaild");
       }

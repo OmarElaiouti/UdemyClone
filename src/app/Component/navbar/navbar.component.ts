@@ -9,6 +9,7 @@ import { IcourseSmallCard, IuserCourse } from '../../Models/ICourse';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
-  searchValue: string = '';  
+  searchValue: string = '';
   categories: IcategoryForNav[] = [
     {id:1,
       name:"cat"},
@@ -36,7 +37,7 @@ export class NavbarComponent implements OnInit {
               name:"cat"},
               {id:1,
                 name:"cat"}
-                
+
   ];
   subcategories: IcategoryForNav[] = [{id:1,
     name:"cat"},
@@ -76,11 +77,13 @@ export class NavbarComponent implements OnInit {
     private notifService: NotificationService,
     private userCoursesService: UserCoursesService,
     private searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) { }
 
 
-
+  
+  
   ngOnInit() {
 
     this.loadCategories();
@@ -102,7 +105,7 @@ export class NavbarComponent implements OnInit {
       // Parse the value as JSON
       localStorage.setItem("flag", JSON.stringify(true))
     } else {
-      this.signedin = true;
+      this.signedin = false;
     }
 
     if (this.Cart.length != 0) {
@@ -169,13 +172,11 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  search(searchValue:string): void {
 
-    this.searchService.setSearchResult(searchValue);      
-    this.router.navigate(['/searchresult']);
-
-
-  }
+  search(searchValue: string): void {
+    if(searchValue.length>0)
+    this.router.navigate(['/searchresult'], { queryParams: { search: searchValue } });
+}
 
 
 

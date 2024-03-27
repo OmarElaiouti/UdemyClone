@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,23 @@ export class SignupService {
   private userSignedUpSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {}
 
-  signup(userData: any) {
-    // Make API call to signup endpoint
-    return this.http.post('http://udemyclone.runasp.net/api/Register/register', userData);
 
+
+  signUp(username: string, email: string, password: string ): Observable<boolean> {
+
+    return this.http.post<any>(`http://udemyclone.runasp.net/api/Register/register`, { username,email,password}).pipe(
+      map(response => {
+        // Store user authentication state (e.g., in local storage or session storage)
+        console.log(response);
+        localStorage.setItem('accessToken', response.token);
+        alert("iyfi");
+        return true; // Sign-up and sign-in successful
+      }),
+      catchError(error => {
+        console.error('Sign-up and sign-in error:', error);
+        return of(false); // Sign-up or sign-in failed
+      })
+    );
   }
 
   isUserSignedUp() {

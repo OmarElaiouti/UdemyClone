@@ -1,0 +1,45 @@
+<div class="one">
+  <input type="text" placeholder="Search all course question"/>
+  <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
+</div>
+<div class="two">
+  <p class="p" style="margin-left: 180px;">Filters:</p>
+  <p class="p" style="margin-left: 130px;">Sort by:</p>
+</div>
+<div>
+  <select style="margin-left: 180px;">
+    <option>All Lectures</option>
+    <option>Current Lecture</option>
+  </select>
+  <select style="margin-left: 10px;width: 180px;">
+    <option>Sort by most recent</option>
+    <option>Sort by most upvoted</option>
+    <option>Sort by recommended</option>
+  </select>
+  <select style="margin-left: 10px;width: 180px;">
+    <option> Quesion I'm following</option>
+    <option>Sort by most upvoted</option>
+    <option>Sort by recommended</option>
+  </select>
+</div>
+<div style="margin-top: 20px;">
+  <h4 style="margin-left: 180px;">All questions in this course(21)</h4>
+  @for(com of comment ;track com.id){
+  <div style="display: flex;margin-left: 180px;margin-bottom: 20px;">
+    <img src="\assets\support\7799204_2091_5.jpg"/>
+    <div style="display: flex;">
+    <div>
+    <p><span> {{com.ProblemName}}</span>
+    <br>{{com.problem}}</p>
+    </div>
+    <div class="arrow">
+      <i class="fa-solid fa-arrow-up"></i>
+    </div>
+    <div class="arro">
+      <i class="fa-solid fa-comment-dots i"></i>
+    </div>
+    </div>
+  </div>
+}
+</div>
+

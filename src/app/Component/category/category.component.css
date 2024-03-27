@@ -116,21 +116,41 @@ h5 {
   display: flex;
 }
 
-/* h6{margin-top: 10px; opacity: 70%;margin-left: 450px;} */
 
 
 
 .ls {
   display: flex;
   margin-top: 20px;
+  width:100%
 }
 
 .dropdown {
-  width: 500px;
+  width: 300px;
+  margin-right: 50px;
 
 }
 
 .fa-star,
 .fa-star-half-stroke {
   color: gold;
+}
+
+.card button {
+  width: 100%;
+  text-align: left;
+}
+
+/* list slider */
+
+
+
+img{
+  margin-right: 15px;
+  width: 200px;
+  height: 130px;
+}
+.two{
+font-size: small;
+width: 100%;
 }
