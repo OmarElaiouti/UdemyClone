@@ -1,0 +1,53 @@
+.one
+{
+  margin-left: 20px;
+}
+hr
+{
+  margin-top: 30px;
+}
+.two{
+  display: flex;
+
+}
+.b{
+  font: weight 30px;;
+}
+.three{
+  margin-left: 0px;
+  width: 400px;
+  height: 40px;
+  border: 1px solid black;
+  text-align: center;
+
+}
+.span{
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.dic
+{
+  margin-left: 300px;
+}
+img{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.s
+{
+  font-weight: bold;
+}
+.icon
+{
+  margin-left: 300px;
+  margin-top: 20px;
+  font-size: 30px;
+
+}
+.i
+{
+  margin-left: 15px;
+  
+}

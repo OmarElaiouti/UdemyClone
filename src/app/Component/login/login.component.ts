@@ -2,39 +2,37 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../service/login.service';
 import { SignupService } from '../../service/signup.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  name: string = '';
-  mail: string = '';
-  password: string = '';
+
+  email: string='' ;
+  password: string='' ;
 
   constructor(private loginService: LoginService,private signupservice: SignupService,private router:Router) {}
 
   login() {
-    const userData = {
-      name: this.name,
-      email: this.mail,
-      password: this.password
-    };
+
 
     // Check if user has signed up before allowing login
-    if (this.signupservice.isUserSignedUp()) {
-      this.router.navigate(['']);
+
     // If signed up, proceed with login
-    this.loginService.login(userData).subscribe(response => {
-      this.router.navigate(['']);
+    this.loginService.login(this.email,this.password).subscribe(response => {
+if(response){
+  this.router.navigate(['']);
+}
+else{
+      alert("hggj");
+}
     })
-    // Otherwise, display a message or handle accordingly
-  } else {
-    alert("Login is faild");
-  }
+
   }
 
 

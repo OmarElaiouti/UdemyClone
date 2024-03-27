@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
-  searchValue: string = '';  
+  searchValue: string = '';
   categories: IcategoryForNav[] = [
     {id:1,
       name:"cat"},
@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
               name:"cat"},
               {id:1,
                 name:"cat"}
-                
+
   ];
   subcategories: IcategoryForNav[] = [{id:1,
     name:"cat"},
@@ -102,7 +102,7 @@ export class NavbarComponent implements OnInit {
       // Parse the value as JSON
       localStorage.setItem("flag", JSON.stringify(true))
     } else {
-      this.signedin = true;
+      this.signedin = false;
     }
 
     if (this.Cart.length != 0) {
@@ -171,7 +171,7 @@ export class NavbarComponent implements OnInit {
 
   search(searchValue:string): void {
 
-    this.searchService.setSearchResult(searchValue);      
+    this.searchService.setSearchResult(searchValue);
     this.router.navigate(['/searchresult']);
 
 

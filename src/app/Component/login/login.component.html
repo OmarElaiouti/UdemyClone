@@ -11,12 +11,12 @@
 
   </div>
 
-<form id="form" (submit)="login()">
+<form id="form" (ngSubmit)="login()" >
   <label for="email1">Email</label>
-  <input type="text" name="email" #email class="usermail" placeholder="Email">
+  <input type="text" name="email"  class="usermail" placeholder="Email" [(ngModel)]="email">
 
   <label for="password1">Password</label>
-  <input type="password" name="password" #password class="pwdd" placeholder="Password">
+  <input type="password" name="password"  class="pwdd" placeholder="Password" [(ngModel)]="password">
 
   <button type="submit" class="newlogclass blueBtn">Log in</button>
 

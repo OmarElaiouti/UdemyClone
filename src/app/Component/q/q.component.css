@@ -1,0 +1,66 @@
+.one
+{
+  display: flex;
+  margin-left: 180px;
+}
+.search{
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  text-align: center;
+
+}
+i
+{
+  color: white;
+  margin-top: 15px;
+}
+input
+{
+  width: 700px;
+}
+.two{
+  display: flex;
+  margin-top: 10px;
+}
+.p{
+  font-weight: bold;
+}
+select{
+  width: 170px;
+  height: 40px;
+}
+img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.arrow{
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  margin-left: 700px;
+  text-align: center;
+  border-radius: 50%;
+ position: absolute;
+ top: 800px;
+}
+.arro
+{
+  width: 40px;
+  height: 40px;
+  margin-left: 700px;
+  text-align: center;
+  border-radius: 50%;
+ position: absolute;
+ top: 840px;
+}
+.i
+{
+color: gray;
+font-size: 30px;
+}
+span
+{
+  font-weight: bold;
+}
