@@ -3,15 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './Component/footer/footer.component';
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { HomeComponent } from './Component/home/home.component';
-
 import { CartComponent } from './Component/cart/cart.component';
-
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
 import { CategoryComponent } from "./Component/category/category.component";
 import { CourseDetailsComponent } from "./Component/course-details/course-details.component";
 import { CourseLessonComponent } from "./Component/CourseLessons/course-lesson/course-lesson.component";
 import { SearchComponent } from './Component/search/search.component';
+import { NotificationComponent } from "./Component/notification/notification.component";
 import { CheckOutComponent } from "./Component/check-out/check-out.component";
 import { LastsliderComponent } from "./Component/lastslider/lastslider.component";
 
@@ -23,7 +22,7 @@ import { LastsliderComponent } from "./Component/lastslider/lastslider.component
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
-        SearchComponent, CourseLessonComponent, CheckOutComponent,LastsliderComponent]
+        SearchComponent, CourseLessonComponent, CheckOutComponent,LastsliderComponent,NotificationComponent]
 
 export class AppComponent {
   title = 'graduation_proj';
