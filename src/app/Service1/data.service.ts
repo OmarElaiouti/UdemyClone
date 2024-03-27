@@ -19,5 +19,7 @@ searchProducts(searchText: string): Observable<Icourses[]> {
     );
 }
 
-
+getResults(): Observable<any[]> {
+  return this.http.get<any[]>('https://jsonplaceholder.typicode.com/comments');
+}
 }

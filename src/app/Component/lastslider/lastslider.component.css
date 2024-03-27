@@ -4,8 +4,15 @@
 
   .total{
     display: flex;
-    margin-bottom: 30px;
+    margin-top: 30px;
+    width:100%
   }
   img{
     margin-right: 15px;
+    width: 85%;
+    height: 84%;
   }
+ .two{
+  font-size: small;
+  width:100%
+ }
