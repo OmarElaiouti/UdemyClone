@@ -8,9 +8,10 @@
     padding-left: 200px;
     display: flex;
     flex-direction: column;
+
 }
 h1{
-    padding: 50px ;
+    padding: 20px; 
     margin: 50px;
 }
 .notification {
@@ -21,6 +22,7 @@ h1{
     width: 300px;
     margin-bottom: 5px; 
     margin-top: 20px;
+  
 }
 .notification img {
     width: 70px;
@@ -33,26 +35,31 @@ h1{
 }
 .Main{
     border: 2px solid #ccc;
-    
+    height: 400px;
         padding: 10px;
         width: 450px;
    margin-left: 70px;
    margin-top: 10px;
-   margin-bottom: 300px;
-  
+   margin-bottom: 50px;
+   overflow-y: scroll;
+
 }
 
 .btn{
 margin-left: 30%;
 cursor: pointer;
 justify-content: center;
-height:3rem;
-background-color: white;
+height:4rem;
+background-color: black;
 color: beige;
-margin-bottom: 50px;
-color: black;
-padding: 15px;
+margin-bottom: 20px;
+margin-left: 15%;
+color: white;
+padding: 20px;
 font-size: 20px;
+border:1px solid black;
+text-align: center;
 }
+
 
     
