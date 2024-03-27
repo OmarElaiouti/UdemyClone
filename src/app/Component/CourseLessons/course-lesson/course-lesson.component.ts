@@ -8,6 +8,8 @@ import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { FormsModule } from '@angular/forms';
+import { OverviewComponent } from '../../overview/overview.component';
+import { QComponent } from "../../q/q.component";
 
 @Component({
     selector: 'app-course-lesson',
@@ -15,13 +17,13 @@ import { FormsModule } from '@angular/forms';
     templateUrl: './course-lesson.component.html',
     styleUrl: './course-lesson.component.css',
     imports: [FooterComponent,
-      AccordionModule,
-      OverlayPanelModule,
-      ProgressBarModule,
-      VgCoreModule,
-      VgControlsModule,
-      VgOverlayPlayModule,
-      VgBufferingModule,FormsModule]
+        AccordionModule,
+        OverlayPanelModule,
+        ProgressBarModule,
+        VgCoreModule,
+        VgControlsModule,
+        VgOverlayPlayModule,
+        VgBufferingModule, FormsModule, OverviewComponent, QComponent]
 })
 export class CourseLessonComponent {
 
@@ -63,13 +65,13 @@ value="30";
     const videoToUpdate = this.sections
       .flatMap(section => section.lessons) // Flatten the array of videos
       .find(lesson => lesson.title === videoTitle); // Find the video with the provided title
-    
+
     if (videoToUpdate) {
       videoToUpdate.watched = !videoToUpdate.watched; // Toggle watched status
     }
   }
 
-  
+
 
   showTab(tabId: string) {
     const tabs = document.querySelectorAll('.tab-view');

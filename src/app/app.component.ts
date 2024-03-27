@@ -12,6 +12,7 @@ import { CategoryComponent } from "./Component/category/category.component";
 import { CourseDetailsComponent } from "./Component/course-details/course-details.component";
 import { CourseLessonComponent } from "./Component/CourseLessons/course-lesson/course-lesson.component";
 import { SearchComponent } from './Component/search/search.component';
+import { CheckOutComponent } from "./Component/check-out/check-out.component";
 import { LastsliderComponent } from "./Component/lastslider/lastslider.component";
 
 
@@ -22,8 +23,8 @@ import { LastsliderComponent } from "./Component/lastslider/lastslider.component
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
-        SearchComponent, CourseLessonComponent, LastsliderComponent]
-})
+        SearchComponent, CourseLessonComponent, CheckOutComponent,LastsliderComponent]
+
 export class AppComponent {
   title = 'graduation_proj';
 

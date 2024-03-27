@@ -1,0 +1,134 @@
+<div class="main">
+  <div class="left">
+    <div>
+    <h1>Checkout</h1>
+    <h3>Billing address</h3>
+    </div>
+    <div class="one">
+      <p>Country</p>
+      <p class="a">Required</p>
+      </div>
+      <div class="sel">
+        <div>
+          <p class="icon"><i class="fa-solid fa-globe"></i></p>
+        </div>
+        <div>
+          <select>
+            <option>Albania</option>
+            <option>Egypt</option>
+            <option>Congo</option>
+          </select>
+        </div>
+      </div>
+      <p id="p">Udemy is required by law to collect applicable transaction taxes for purchases made in certain tax jurisdictions.</p>
+      <div class="one">
+        <h3>Payment method</h3>
+        <p style="margin-left: 100px;margin-top: 20px;">Secured connection</p>
+        <p><i class="fa-solid fa-lock i"></i></p>
+      </div>
+      <div id="accordion" >
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0" style="display: flex;">
+              <input type="radio" style="font-weight: bold;transform: scale(1.5); " class="btn btn-link" (click)="toggleCollapse('collapseOne')" [attr.aria-expanded]="isExpanded('collapseOne')" aria-controls="collapseOne">
+              <i class="fa-solid fa-credit-card"></i><p style="margin-top: 10px;font-size: 15px;">Cridet/DeptCard</p>
+
+              <h4 id="ico"><i class="fa-brands fa-cc-amex"></i></h4>
+              <h4 style="margin-left: 5px;color: red;"><i class="fa-brands fa-cc-discover"></i></h4>
+              <h4 style="margin-left: 5px;color: gold;"><i class="fa-brands fa-cc-visa"></i></h4>
+              <h4 style="margin-left: 5px;"><i class="fa-brands fa-cc-jcb"></i></h4>
+
+            </h5>
+          </div>
+          <div id="collapseOne" [ngClass]="{ 'collapse': !isExpanded('collapseOne'), 'show': isExpanded('collapseOne') }" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                    <div class="one">
+                      <p>Name on card</p>
+                      <p id="l">Required</p>
+                    </div>
+                    <div>
+                      <input id="in" type="text" placeholder="Name on card"/>
+                    </div>
+                    <div class="two">
+                      <p>Card number</p>
+                      <p id="l">Required</p>
+                    </div>
+                        <div>
+                      <input id="in" type="text" placeholder="1234 5678 90123 456"/>
+                      </div>
+                      <div style="display: flex;margin-top: 10px;">
+                      <div>
+                      <div style="display: flex;">
+                        <p>Expiry date</p>
+                        <p style="margin-left: 80px;opacity: 0.7;">Required</p>
+                      </div>
+                      <div>
+                        <input id="inp" type="text" placeholder="MM/YY"/>
+                      </div>
+                      </div>
+                      <div style="margin-left: 20px;">
+                      <div style="display: flex;">
+                        <p>CVC/CVV</p>
+                        <p style="margin-left: 90px;opacity: 0.7;">Required</p>
+                      </div>
+                      <div>
+                        <input id="inp" type="text" placeholder="CVC"/>
+                      </div>
+                      </div>
+                      </div>
+                      <div style="margin-top: 20px;">
+                        <input type="checkbox"/>
+                        <label>Securely save this card for my later purshase </label>
+                      </div>
+            </div>
+            </div>
+            <!-- ighiohpo -->
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0" style="display: flex;">
+                  <input type="radio" style="font-weight: bold;transform: scale(1.5);" class="btn btn-link" (click)="toggleCollapse('collapseTwo')" [attr.aria-expanded]="isExpanded('collapseTwo')" aria-controls="collapseTwo">
+                    <div style="width: 30px;height: 25px;background-color:rgb(214, 214, 186);margin-left: 5px;text-align: center;"><i class="fa-brands fa-paypal"></i></div>Paypale
+
+
+                </h5>
+              </div>
+              <div id="collapseTwo" [ngClass]="{ 'collapse': !isExpanded('collapseTwo'), 'show': isExpanded('collapseTwo') }" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+
+                  <p>In order to complete your transaction, we will transfer you over to PayPal's secure servers.</p>
+                  <div style="display: flex;">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i></p>
+                    <p>Unfortunately, PayPal does not support payments in EGP therefore your payment will be in USD.</p>
+                  </div>
+                  <p style="font-weight: bold;">The amount you will be charged by Paypal is $4.19.</p>
+
+                </div>
+          </div>
+        </div>
+
+  </div>
+  </div>
+  </div>
+  <div class="right">
+    <div style="margin-left: 40px;">
+    <h3 style="margin-top: 70px;">Summary</h3>
+    <div style="display: flex;">
+      <p>Original Price:</p>
+      <p style="margin-left: 210px;">E£349.99</p>
+    </div>
+    <div style="display: flex;">
+      <p>Discounts:</p>
+      <p style="margin-left: 225px;">-E£150.00</p>
+    </div>
+    <hr>
+    <div style="display: flex;">
+      <p>Total:</p>
+      <p style="margin-left: 270px;">E£199.99</p>
+    </div>
+    <p style="margin-top: 20px;">By completing your purchase you agree to these Terms of Service.</p>
+    <button class="righ">Compelete Checkout</button>
+    <p style="text-align: center;">30-Day Money-Back Guarantee</p>
+    </div >
+  </div>
+</div>
+
