@@ -73,19 +73,9 @@ export class SearchComponent implements OnInit {
 
   searchTerm: string = '';
 
-  ngOnDestroy(): void {
-    // Unsubscribe from NavigationEnd event
-    this.navigationSubscription?.unsubscribe();
-    // Perform other cleanup operations if needed
-  }
-
-  private onNavigationEnd(): void {
-    // Perform cleanup operations when navigation occurs
-    console.log('Navigation ended');
-  }
 
 
-  /////////////
+  
 //silder
 sectionVisible: boolean = true;
 
@@ -107,12 +97,11 @@ first: number = 0;
 
 
 fetchCourses() {
-  this.searchService.searchCoursesForSearchResult().subscribe((data: any[]) => {
-    this.courses = data;
+    this.courses = this.results
    this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
     this.applyFilters();
 
-  });
+ 
 }
 
 filterCourses(rating: number) {

@@ -15,7 +15,7 @@ export class SearchService {
 
 
   searchCoursesForSearchResult(query:string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:3000/courses?searchString=${query}`);
+    return this.http.get<any[]>(`http://localhost:5165/api/Courses?searchString=${query}`);
 
   }
 
