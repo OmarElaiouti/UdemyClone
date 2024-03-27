@@ -20,6 +20,7 @@ export class SearchService {
   }
 
 
+
   searchCoursesByKeywordForHome(keyword: string): Observable<IcourseSmallCard[]> {
     return this.http.get<IcourseSmallCard[]>(`/api/search?keyword=${keyword}`);
   }

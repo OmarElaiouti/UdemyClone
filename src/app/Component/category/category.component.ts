@@ -4,10 +4,10 @@ import { SliderssComponent } from '../sliderss/sliderss.component';
 import { InstructorComponent } from '../instructor/instructor.component';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { CommonModule } from '@angular/common';
-import { Icourses } from '../../Models/ICourse';
 import { FormsModule } from '@angular/forms';
-import { MyServiceService } from '../../Service1/my-service.service';
 import { PaginatorModule } from 'primeng/paginator';
+import { CategoryService } from '../../Services/category-service/category.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -16,13 +16,13 @@ import { PaginatorModule } from 'primeng/paginator';
   selector: 'app-category',
   standalone: true,
   imports: [CourseSliderComponent, SliderssComponent, InstructorComponent,
-    LastsliderComponent, CommonModule, FormsModule, PaginatorModule],
+     CommonModule, FormsModule, PaginatorModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
 
 export class CategoryComponent implements OnInit {
-
+  catName:string=''
   courses: any[] = []; // Assuming your course data structure
   filteredCourses: any[] = [];
   durationFilters: number[] = [];
@@ -31,25 +31,37 @@ export class CategoryComponent implements OnInit {
   rows: number = 5;
   first: number = 0;
 
-  constructor(private apiService: MyServiceService) { }
+  constructor(private route: ActivatedRoute,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.fetchCourses();
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['filteredCourses']) {
-      this.updatePagedCourses();
-    }
-  }
+  
+  
+ 
 
   fetchCourses() {
-    this.apiService.getCourses().subscribe((data: any[]) => {
-      this.courses = data;
-      this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
-      this.applyFilters();
-
+    this.route.queryParams.subscribe(params => {
+      const name = params['name'];
+      if (name) {
+        this.catName=name;
+        // Use the searchValue here, you can call your search service function or perform any other actions
+        this.categoryService.getCoursesInCategory(name).subscribe({
+          next: (courses: any[]) => {
+            this.courses = courses;            
+            this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
+            this.applyFilters();          
+          },
+          error: (error) => {
+            console.error('Error fetching courses:', error);
+          }
+        });
+      }
     });
+    
+
   }
+
 
   filterCourses(rating: number) {
     this.filteredCourses = this.courses.filter(course => course.rating >= rating);

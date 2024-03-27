@@ -1,6 +1,6 @@
 <div class="total">
     <div class="head">
-        <h1>Development Courses</h1>
+        <h1>{{catName}} Courses</h1>
         <h4 style="margin:3% auto;">Courses to get you started</h4>
     </div>
 
@@ -237,7 +237,7 @@
 
         <div class="lastslider">
             <div *ngIf="filteredCourses.length > 0">
-                <div *ngFor="let course of filteredCourses">
+                <div *ngFor="let course of pagedCourses">
                     <div class="mt" style="display: flex; margin:30px; width: 750px;">
                         <div>
                             <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">

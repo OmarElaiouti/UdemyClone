@@ -23,5 +23,10 @@ export class CategoryService {
     return this.http.get<any[]>(`/api/subcategories?parentId=${parentName}`);
   }
 
+  getCoursesInCategory(query:string): Observable<any> {
+    // return this.http.get<any>(`https://mocki.io/v1/814911a6-bc8c-41ef-b797-3878165d8ea3`);
+    return this.http.get<any>(`http://localhost:5165/api/category?name=${query}`);
+
+  }
  
 }
