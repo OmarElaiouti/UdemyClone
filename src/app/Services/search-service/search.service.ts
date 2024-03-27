@@ -13,12 +13,17 @@ export class SearchService {
 
   constructor(private http: HttpClient,private router:Router) {}
 
+
   searchCoursesForSearchResult(query:string): Observable<any[]> {
     return this.http.get<any[]>(`http://localhost:3000/courses?searchString=${query}`);
+
   }
 
 
   searchCoursesByKeywordForHome(keyword: string): Observable<IcourseSmallCard[]> {
     return this.http.get<IcourseSmallCard[]>(`/api/search?keyword=${keyword}`);
   }
+
+ 
+
 }
