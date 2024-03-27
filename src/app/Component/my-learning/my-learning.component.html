@@ -34,79 +34,29 @@
 
 
           <div class="enrollment">
+
+            @for(course of myCourses;track $index){
             <div class="raw">
     <img src="assets/course_img/img1.jpg">
     <div class="descraption">
-      <p>COURSE NAME</p>
+      <p>{{course.name}}</p>
     </div>
-    <div><h5>INSTRACTOR NAME</h5>
+    <div><h5>{{course.name}}</h5>
       <hr></div>
     <div>
       <a href="#">START COURSE</a>
     </div>
     <div>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-      <i class="fa-regular fa-star"></i>
+      Your Rating : 
+      @for(star of getStarArray(course.rating);track $index){
+        <span>
+            <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+        </span>
+        }
      </div>
     </div>
-    <div class="raw">
-      <img src="assets/course_img/img4.jpg">
-      <div class="descraption">
-        <p>COURSE NAME</p>
-      </div>
-      <div><h5>INSTRACTOR NAME</h5>
-      <hr></div>
-    
-      <div>
-        <a href="#">START COURSE</a>
-      </div>
-   <div>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-    <i class="fa-regular fa-star"></i>
-   </div>
-      </div>
-      <div class="raw">
-        <img src="assets/course_img/img3.jpg">
-        <div class="descraption">
-          <p>COURSE Name</p>
-        </div>
-        <div><h5>INSTRACTOR NAME</h5>
-          <hr></div>
-        <div>
-          <a href="#">START COURSE</a>
-        </div>
-        <div>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-         </div>
-        </div>
-        <div class="raw">
-          <img src="assets/course_img/img2.jpg">
-          <div class="descraption">
-            <p>Course Name</p>
-          </div>
-          <div><h5>INSTRACTOUR NAME</h5>
-            <hr></div>
-          <div>
-            <a href="#">START COURSE</a>
-          </div>
-          <div>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-           </div>
-          </div>
+
+  }
     </div>
     
         </div>
@@ -126,35 +76,30 @@
                   </form>
                 </div>
                 <div class="enrollment">
+@for(course of wishlistCourses;track $index){
                   <div class="raw">
           <img src="assets/course_img/img9.jpg">
           <div class="descraption">
-            <h4>COURSE NAME</h4>
+            <h4>{{course.name}}</h4>
           </div>
-          <div><h5>INSTARACTOR NAME</h5>
+          <div><h5>{{course.instructor}}</h5>
             </div>
           <div>
-            4.6
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            (15,000)
+            <span>{{course.rating}}</span> 
+            @for(star of getStarArray(course.rating);track $index){
+              <span>
+                  <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+              </span>
+              }
            </div>
            <div>
             <p>17 total hours.216 lecture</p>
            </div>
            <div class="price">
 <p>E£1,099.99</p>
-           </div>
-           <div>
-            <button class="btn1">
-              <b>Best Seller</b>
-            </button>
-           </div>
+           </div>          
           </div>
-          
+        }
           
               </div>
              

@@ -2,11 +2,11 @@
     <div> <h1>Notifications</h1></div>
 <div class="Main">
  
-    @for ( item of notification; track item.id){
+    @for ( item of notifications; track item.id){
         <div class="notification">
-            <img src={{item.src}} alt="Image">
+            <img src="" alt="Image">
             <div class="notification-text">
-                <p >{{item.descraption}}</p>
+                <p >{{item.content}}</p>
             </div>
         </div><hr>
     }

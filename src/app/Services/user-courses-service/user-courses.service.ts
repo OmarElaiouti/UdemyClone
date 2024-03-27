@@ -12,6 +12,10 @@ export class UserCoursesService {
 
   constructor(private http: HttpClient) {}
 
+  getMyLearningCourses(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
   getCart(): Observable<IuserCourse[]> {
     return this.http.get<IuserCourse[]>(`${this.apiUrl}/cart`);
   }
