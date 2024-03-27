@@ -11,6 +11,15 @@ export interface Icourses {
 
 }
 
+export interface IcoursesMylearning {
+  name:string;
+  Image:string;
+  instructor:string;
+  rating:number;
+  progress:number;
+
+}
+
 export interface IcourseSmallCard {
     id:number;
     name:string;
