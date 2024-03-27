@@ -75,12 +75,13 @@
             <div id="accordion" style="width: 100%; margin-top: 30px;">
                 <hr>
 
-                <div class=" card">
+
+                <div class="card">
                     <div>
                         <h5 style="display: flex;">
                             <button (click)="toggleCollapse('collapseOne')"
-                                [attr.aria-expanded]="isExpanded('collapseOne')" aria-controls="collapseOne">
-                                Ratings </button>
+                                [attr.aria-expanded]="isExpanded('collapseOne')" aria-controls="collapseOne"> Ratings
+                            </button>
                         </h5>
                     </div>
                     <div id="collapseOne"
@@ -88,36 +89,36 @@
                         aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <div class="radio-container">
-                                <input type="radio" id="radio1" name="radio-group" checked>
+                                <input type="radio" id="radio1" name="radio-group" (change)="filterCourses(6.3)">
                                 <label for="radio1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star-half-stroke"></i> 4.5 & up</label>
+                                        class="fa-solid fa-star-half-stroke"></i> 6.3 & up</label>
                             </div>
 
-
                             <div class="radio-container">
-                                <input type="radio" id="radio2" name="radio-group">
+                                <input type="radio" id="radio2" name="radio-group" (change)="filterCourses(5.5)">
                                 <label for="radio2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                         class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <i
-                                        class="fa-regular fa-star"></i> 4.0 & up</label>
+                                        class="fa-regular fa-star"></i> 5.5 & up</label>
                             </div>
-
-
                             <div class="radio-container">
-                                <input type="radio" id="radio3" name="radio-group">
+                                <input type="radio" id="radio3" name="radio-group" (change)="filterCourses(5)">
                                 <label for="radio3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                         class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i
-                                        class="fa-regular fa-star"></i> 3.5 & up</label>
+                                        class="fa-regular fa-star"></i> 5 & up</label>
                             </div>
                             <div class="radio-container">
-                                <input type="radio" id="radio3" name="radio-group">
+                                <input type="radio" id="radio4" name="radio-group" (change)="filterCourses(4.5)">
                                 <label for="radio4"><i class=" fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                                         class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i
-                                        class="fa-regular fa-star"></i>3.0 & up</label>
+                                        class="fa-regular fa-star"></i>4.5 & up</label>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
                 <hr>
                 <div class="card">
                     <div>
@@ -125,7 +126,6 @@
                             <button (click)="toggleCollapse('collapsetwo')"
                                 [attr.aria-expanded]="isExpanded('collapseTwo')" aria-controls="collapseTwo">
                                 language </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
                         </h5>
                     </div>
                     <div id="collapseTwo"
@@ -138,78 +138,35 @@
                     </div>
                 </div>
                 <hr>
+
+
                 <div class="card">
                     <div>
                         <h5>
                             <button (click)="toggleCollapse('collapsethree')"
-                                [attr.aria-expanded]="isExpanded('headingThree')" aria-controls="collapseThree">
-                                Video Duration </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
+                                [attr.aria-expanded]="isExpanded('headingThree')" aria-controls="collapseThree"> Video
+                                Duration </button>
                         </h5>
                     </div>
                     <div id="headingThree"
                         [ngClass]="{ 'collapse': !isExpanded('collapsethree'), 'show': isExpanded('headingThree') }"
                         aria-labelledby="headingThree" data-parent="#accordion">
                         <div class="card-body">
-                            <input type="checkbox">
+                            <input type="checkbox" (change)="toggleDurationFilter(0)">
                             <label for="checkbox" class="checkbox-label">0-1 Hour</label><br>
-                            <input type="checkbox">
+                            <input type="checkbox" (change)="toggleDurationFilter(1)">
                             <label for="checkbox" class="checkbox-label">1-3 Hours</label><br>
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">3-6 Hours </label><br>
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">6-17 Hours </label><br>
-                            <input type="checkbox">
+                            <input type="checkbox" (change)="toggleDurationFilter(2)">
+                            <label for="checkbox" class="checkbox-label">3-6 Hours</label><br>
+                            <input type="checkbox" (change)="toggleDurationFilter(3)">
+                            <label for="checkbox" class="checkbox-label">6-17 Hours</label><br>
+                            <input type="checkbox" (change)="toggleDurationFilter(4)">
                             <label for="checkbox" class="checkbox-label">17+ Hours</label><br>
                         </div>
                     </div>
                 </div>
-                <hr>
-                <div class="card">
-                    <div>
-                        <h5>
-                            <button (click)="toggleCollapse('collapsefour')"
-                                [attr.aria-expanded]="isExpanded('headingFour')" aria-controls="collapseFour">
-                                Features
-                            </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
-                        </h5>
-                    </div>
-                    <div id="headingFour"
-                        [ngClass]="{ 'collapse': !isExpanded('collapsefour'), 'show': isExpanded('headingFour') }"
-                        aria-labelledby="headingFour" data-parent="#accordion">
-                        <div class="card-body">
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">Subtitles</label><br>
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">Quizzes</label><br>
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">Coding Exercises</label><br>
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">Practice Tests</label><br>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="card">
-                    <div>
-                        <h5>
-                            <button (click)="toggleCollapse('collapsef')"
-                                [attr.aria-expanded]="isExpanded('headingFive')" aria-controls="collapseFive">
-                                Topic </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
-                        </h5>
-                    </div>
-                    <div id="headingFive"
-                        [ngClass]="{ 'collapse': !isExpanded('collapsef'), 'show': isExpanded('headingFive') }"
-                        aria-labelledby="headingFive" data-parent="#accordion">
-                        <div class="card-body">
-                            <input type="checkbox">
-                            <label for="checkbox" class="checkbox-label">Assembly language</label><br>
 
-                        </div>
-                    </div>
-                </div>
+
                 <hr>
                 <div class="card">
                     <div>
@@ -217,7 +174,6 @@
                             <button (click)="toggleCollapse('collapsesix')"
                                 [attr.aria-expanded]="isExpanded('headingSix')" aria-controls="collapseFive">
                                 level </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
                         </h5>
                     </div>
                     <div id="headingSix"
@@ -242,7 +198,6 @@
                             <button (click)="toggleCollapse('collapseseven')"
                                 [attr.aria-expanded]="isExpanded('collapseSeven')" aria-controls="collapseSeven">
                                 Subtitles </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
                         </h5>
                     </div>
                     <div id="headingSeven"
@@ -262,7 +217,6 @@
                             <button (click)="toggleCollapse('collapse9')" [attr.aria-expanded]="isExpanded('collapse9')"
                                 aria-controls="collapse9">
                                 Price </button>
-                            <!-- <h6 class="h6">4lectures .21min</h6> -->
                         </h5>
                     </div>
                     <div id="collapse9"
@@ -282,11 +236,52 @@
 
 
         <div class="lastslider">
-            <app-lastslider></app-lastslider>
+            <div *ngIf="filteredCourses.length > 0">
+                <div *ngFor="let course of filteredCourses">
+                    <div class="mt" style="display: flex; margin:30px; width: 750px;">
+                        <div>
+                            <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">
+                        </div>
+                        <div class="two">
+                            <div style="display: flex;  justify-content:space-between;">
+                                <h4 style="margin-bottom: 0px;margin-top: 0px;margin-right: 100px;">{{ course.name }}
+                                </h4>
+                                <h4 style="text-align: right;">E{{course.price |currency:"EUR"}}</h4>
+                            </div>
+                            <p style="margin-bottom: 0px;">{{ course.disc }}</p>
+                            <p style="margin-bottom: 0px;"> {{ course.instructor }}</p>
+                            <div class="star-ratings-css">
+                                <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+                                    <span><b>{{ course.rating }} </b> </span>
+                                    @for(star of getStarArray(course.rating);track $index){
+                                    <span>
+                                        <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+
+                            <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div *ngIf="filteredCourses.length === 0">
+                <p>No courses match the selected filters.</p>
+            </div>
+
+
+            <p-paginator [rows]="rows" [totalRecords]="filteredCourses.length" [first]="first"
+                (onPageChange)="onPageChange($event)" [rowsPerPageOptions]="[5, 10, 20]"></p-paginator>
+
+
+
 
 
         </div>
-
     </div>
-
 </div>
