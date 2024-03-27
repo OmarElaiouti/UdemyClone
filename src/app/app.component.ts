@@ -23,7 +23,7 @@ import { LastsliderComponent } from "./Component/lastslider/lastslider.component
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
         SearchComponent, CourseLessonComponent, CheckOutComponent,LastsliderComponent,NotificationComponent]
-
+    })
 export class AppComponent {
   title = 'graduation_proj';
 
