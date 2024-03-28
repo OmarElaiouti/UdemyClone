@@ -10,6 +10,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { FormsModule } from '@angular/forms';
 import { OverviewComponent } from '../../overview/overview.component';
 import { QComponent } from "../../q/q.component";
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
     selector: 'app-course-lesson',
@@ -23,11 +24,26 @@ import { QComponent } from "../../q/q.component";
         VgCoreModule,
         VgControlsModule,
         VgOverlayPlayModule,
-        VgBufferingModule, FormsModule, OverviewComponent, QComponent]
+        VgBufferingModule, FormsModule, OverviewComponent, QComponent,MatCardModule]
 })
 export class CourseLessonComponent {
-
+circleSize=40;
 value="30";
+videoCount: number = 0;
+showCertificate: boolean = true;
+
+watchVideo() {
+  this.videoCount++;
+}
+getCertificate() {
+  if (this.videoCount >= 2) {
+    alert("Congratulations! You've earned a certificate in Angular.");
+    this.showCertificate = true;
+
+  } else {
+    alert('You need to watch more videos to earn the certificate.');
+  }
+}
 
   toggleAccordion(accordionId: string) {
     const accordionContent = document.getElementById(accordionId);
@@ -38,19 +54,20 @@ value="30";
 
   sections: any[] = [
     {
-      title: 'Accordion 1',
+      title: 'Introduction',
+      numsection:[{num:1},{num:2}],
       lessons: [
-        { title: 'Video 1', url: 'video1.mp4', watched: false },
-        { title: 'Video 2', url: 'video2.mp4', watched: false },
-        { title: 'Video 3', url: 'video3.mp4', watched: false }
+        { title: '1. Video ', url: 'video1.mp4', watched: false,time:22 },
+        { title: '2. Video', url: 'video2.mp4', watched: false,time:55 },
+        { title: '3. Video ', url: 'video3.mp4', watched: false,time:32 }
       ]
     },
     {
       title: 'Accordion 2',
       lessons: [
-        { title: 'Video 4', url: 'video4.mp4', watched: false },
-        { title: 'Video 5', url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", watched: false },
-        { title: 'Video 6', url: 'video6.mp4', watched: false }
+        { title: '4. Video ', url: 'video4.mp4', watched: false,time:30 },
+        { title: '5. Video ', url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", watched: false,time:35 },
+        { title: '6. Video ', url: 'video6.mp4', watched: false,time:60 }
       ]
     }
     // Add more sections as needed
