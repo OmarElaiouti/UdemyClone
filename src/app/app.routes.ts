@@ -12,6 +12,7 @@ import { CourseDetailsComponent } from './Component/course-details/course-detail
 import { SearchComponent } from './Component/search/search.component';
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
+import { CheckOutComponent } from './Component/check-out/check-out.component';
 
 SignupComponent
 export const routes: Routes = [
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'lessons', component: CourseDetailsComponent },
+  { path: 'checkout', component: CheckOutComponent },
 
 
 
