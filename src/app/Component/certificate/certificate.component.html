@@ -1,0 +1,52 @@
+<section style="display: flex;" >
+    
+<div class="certificate" #contentToDownload>
+    <section style="display: flex ; justify-content: space-between;">
+  <div class="logo" > <img src="\assets\certificate\Udemy_logo.svg.png" alt="udemy" title="udemy logo" width="200px "/>
+</div>
+
+<div style="font-size:1px; text-align:right; ">
+    <p style="margin-bottom: 0;">Certificate no: UC-103dabea-0614-4661-84c3-efc90360db7a</p>
+    <p style="margin-bottom: 0">Certificate url: ude.my/UC-f03dabea-0614-4661-84c3-efc90360db7a</p>
+    <p style="margin-bottom: 0;">Reference Number: 0004</p>
+</div></section>
+
+<p style="margin-top: 65px; font-weight: bold;">CERTIFICATE OF COMPLERION</p>
+<H1>{{ course.name }}</H1>
+<P>Insructor <b>{{ course.instructor }}</b></P>
+
+<h1 style="margin-top: 130px;">{{ course.student_name }}</h1>
+<p style="margin-bottom: 0px;">Date {{ todayDate|date:'longDate' }}</p>
+<p>Length <b>{{course.totalHour}} total Hour</b></p>
+</div>
+
+<div class="coursedetails">
+    <h4>Certificate Recipient: </h4>
+    <section style="display: flex;margin-top: 15px; ">
+   
+   <div class="img" > <img src="\assets\certificate\udemy.png" width="40px"  ></div>
+   <h5> {{ course.student_name }}</h5>
+</section>
+    <h4>About the Course:</h4>
+    <img [src]="course.Img" width="270px" >
+    <h5 style="margin-bottom: 0px;">{{ course.name }}</h5>
+    <p style="margin-bottom: 0px;">{{ course.instructor }} </p>
+    <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+        <span><b>{{ course.rating }} </b> </span>
+        @for(star of getStarArray(course.rating);track $index){
+        <span>
+            <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+        </span>
+        }
+    </div> 
+    <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
+
+
+<div class="button-container">
+    <button class="download-button"  (click)="downloadAsImage()"><i class="fa-solid fa-download"></i>  Download</button>
+    <button class="share-button" (click)="shareContent()" ><i class="fa-solid fa-share"></i>  Share</button>
+  </div>
+  
+</div>
+
+</section>
