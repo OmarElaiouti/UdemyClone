@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div style="display: flex;">
-                  <p style="opacity: 0.7;">{{item.duration}}</p>
-                  <p class="left">{{item.lectures}}</p>
+                  <p style="opacity: 0.7;">total hours{{item.duration}}</p>
+                  <p class="left">lectures{{item.lectures}}</p>
                   <p class="left">{{item.difficulity}}</p>
                 </div>
 
@@ -52,7 +52,7 @@
                   <button class="rBtn3 rBtn" (click)="moveToWishlist(item)">Move to Wishlist</button>
                 </div>
                 <div class="price">
-                  <p>{{item.price}}</p>
+                  <p>E£{{item.price}}</p>
                 </div>
 
               </div>
@@ -63,7 +63,7 @@
                 <p>Total:</p>
                 <h1><span>E£</span><span id="totalBill">0</span></h1>
                 <div id="priceOff"></div>
-                <button id="checkout" type="submit" class="btn blueBtn maxWidth">
+                <button id="checkout" type="submit" class="btn blueBtn maxWidth"routerLink="/checkout" (click)="checkout()">
                   Checkout
                 </button>
                 <h3>Promotions</h3>
