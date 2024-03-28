@@ -12,6 +12,7 @@ import { CourseDetailsComponent } from './Component/course-details/course-detail
 import { SearchComponent } from './Component/search/search.component';
 import { AccountProfileComponent } from './Component/account-profile/account-profile.component';
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
+import { NotificationComponent } from './Component/notification/notification.component';
 
 SignupComponent
 export const routes: Routes = [
@@ -28,11 +29,12 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'searchresult', component: SearchComponent },
   { path: 'profile', component: AccountProfileComponent },
-  { path: 'mylearning', component: MyLearningComponent },
+  { path: 'myCourses', component: MyLearningComponent },
   { path: 'teachUdemy', component: TechOnUdemyComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'lessons', component: CourseDetailsComponent },
+  { path: 'notifications', component: NotificationComponent },
 
 
 

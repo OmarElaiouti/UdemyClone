@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-my-learning',
@@ -14,9 +15,24 @@ export class MyLearningComponent implements OnInit {
   myCourses: any[] = [];
   wishlistCourses: any[] = [];
 
-  constructor(private userCoursesService: UserCoursesService) { }
+  constructor(private userCoursesService: UserCoursesService,private route:ActivatedRoute) { }
+  activeTab: string = '';
+  headTitle: string = ''
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      this.activeTab = params['activeTab'];console.log(this.activeTab);
+      
+      if(this.activeTab == 'myLearning'){
+        this.headTitle = 'My Learning';
+      }
+      else if(this.activeTab == 'wishlist'){
+        this.headTitle = 'My Wishlist';
+        
+      }
+      console.log(this.headTitle);
+    });
     this.fetchCourses();
   }
 

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IuserCourse } from '../../Models/ICourse';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -16,18 +15,24 @@ export class UserCoursesService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getCart(): Observable<IuserCourse[]> {
-    return this.http.get<IuserCourse[]>(`${this.apiUrl}/cart`);
+  getCart(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/cart`);
   }
 
-  getWishlist(): Observable<IuserCourse[]> {
-    return this.http.get<IuserCourse[]>(`${this.apiUrl}/wishlist`);
+  getWishlist(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
   }
 
-  addToCart(course: IuserCourse): Observable<any> {
+  getWishlistForNav(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
+  }
+
+  addToCart(course: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/cart`, course);
   }
 
-  addToWishlist(course: IuserCourse): Observable<any> {
+  addToWishlist(course: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/wishlist`, course);
-  }}
+  }
+
+}

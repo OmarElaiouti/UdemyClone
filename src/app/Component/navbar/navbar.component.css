@@ -581,10 +581,71 @@ a {
 
 .dropdown-card-nots {
   padding: 0;
-  width: 25rem;
+  min-width: 25rem;
 
 }
 
 .see-all-btn {
   padding: 10px;
 }
+
+.dropdown-card-profile{
+  padding: 0;
+  min-width: 15rem;}
+
+  .list-head{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem;
+    width: fit-content;
+  }
+
+  .circle2{
+    min-width: 4rem;
+    min-height: 4rem;
+    font-size: 1.5rem;
+  }
+  .list-head div{
+    margin:0 0.2rem;
+    text-align: start;
+  }
+
+  .list-item{
+    width: 100%;
+  }
+
+  .profile-email{
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: gray;
+    
+  }
+
+  .profile-name:hover{
+    cursor: pointer;
+    color: #A435F0;
+  }
+
+  .profile-list-link{
+    font-weight: normal;
+    font-size: 14.4px;
+    margin: 0.5rem 0;
+  }
+
+  .list-last{
+    border:none
+  }
+
+  .alert-list{
+    justify-self: flex-end;
+    position: inherit;
+    width: 1.5rem;
+  }
+
+
+  .link-with-alert{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }

@@ -15,7 +15,15 @@ export class SearchService {
 
 
   searchCoursesForSearchResult(query:string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:5165/api/Courses?searchString=${query}`);
+    return this.http.get<any[]>(`http://localhost:5165/api/Courses?searchString=${query}`).pipe(
+      tap(results => {
+        // Check if there are any results returned
+        if (results && results.length > 0) {
+          // Save the query to local storage
+          localStorage.setItem('lastSearchQuery', query);
+        }
+      })
+    );
 
   }
 
