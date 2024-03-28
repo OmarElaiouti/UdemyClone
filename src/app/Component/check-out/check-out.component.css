@@ -6,14 +6,14 @@
 .left
 {
   width: 500px;
-  height: 1000px;
-  background-color:white;
+  height: 100%
+
 }
 .right
 {
   width: 500px;
-  height: 1000px;
-  
+  height: 100%
+
 }
 .one
 {
@@ -106,4 +106,19 @@ hr{
   height: 70px;
   background-color: blueviolet;
   color: white;
+}
+#im{
+  width: 40px;
+  height: 40px;
+}
+#pa,
+#par
+{
+  margin-top: 8px;
+  margin-left: 10px;
+}
+#par
+{
+  margin-left: 160px;
+  margin-bottom: 100px;
 }

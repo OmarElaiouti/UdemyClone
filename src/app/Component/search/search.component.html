@@ -257,7 +257,7 @@
 
 <div class="lastslider">
   <div *ngIf="filteredCourses.length > 0">
-      <div *ngFor="let course of filteredCourses">
+      <div *ngFor="let course of pagedCourses">
           <div class="mt" style="display: flex; margin:30px;margin-top: 0px; width: 750px;">
           <div>
               <img src="https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg">
@@ -283,7 +283,6 @@
         </div>
       </div>
       </div>
-          <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="filteredCourses.length" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
 
   </div>
   
@@ -291,6 +290,7 @@
       <p>No courses match the selected filters.</p>
   </div>
   
+  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="filteredCourses.length" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
 
 </div>
 

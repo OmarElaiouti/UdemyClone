@@ -2,7 +2,6 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { CourseSliderComponent } from '../CourseSlider/course-slider/course-slider.component';
 import { SliderssComponent } from '../sliderss/sliderss.component';
 import { InstructorComponent } from '../instructor/instructor.component';
-import { LastsliderComponent } from '../lastslider/lastslider.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
