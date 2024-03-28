@@ -13,6 +13,7 @@ import { SearchComponent } from './Component/search/search.component';
 import { NotificationComponent } from "./Component/notification/notification.component";
 import { CheckOutComponent } from "./Component/check-out/check-out.component";
 import { LastsliderComponent } from "./Component/lastslider/lastslider.component";
+import { CertificateComponent } from "./Component/certificate/certificate.component";
 
 
 
@@ -22,8 +23,8 @@ import { LastsliderComponent } from "./Component/lastslider/lastslider.component
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
-        SearchComponent, CourseLessonComponent, CheckOutComponent,LastsliderComponent,NotificationComponent]
-    })
+        SearchComponent, CourseLessonComponent, CheckOutComponent, LastsliderComponent, NotificationComponent, CertificateComponent]
+})
 export class AppComponent {
   title = 'graduation_proj';
 

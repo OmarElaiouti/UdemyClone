@@ -1,0 +1,45 @@
+.certificate {
+    justify-content: space-between;
+    padding: 40px 40px;
+    background-color: rgb(245, 245, 245);
+    margin: 10px;
+    border: 1px rgb(213, 211, 211) solid;
+    width: 70%;
+}
+
+.coursedetails {
+    width: 30%;
+    padding: 20px;
+    display: inline;
+
+}
+
+.fa-star {
+    color: gold;
+}
+
+.button-container {
+    display: flex;
+}
+
+.download-button,
+.share-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    background-color: white;
+}
+.img Img{
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 1px rgb(160, 158, 158) solid;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+/* .logo Img{
+
+} */
