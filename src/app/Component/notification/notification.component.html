@@ -1,18 +1,58 @@
-<div class="all">
+<!-- <div class="all">
     <div> <h1>Notifications</h1></div>
 <div class="Main">
  
-    @for ( item of notification; track item.id){
+    @for ( item of notifications; track item.id){
         <div class="notification">
-            <img src={{item.src}} alt="Image">
+            <img src="" alt="Image">
             <div class="notification-text">
-                <p >{{item.descraption}}</p>
+                <p >{{item.content}}</p>
             </div>
         </div><hr>
     }
 </div>
 <div class="Button"><button class="btn"> Mark all as read</button></div> 
-</div>
+</div> -->
+
+
+<div class="all">
+    <div>
+      <h1>Notifications</h1>
+    </div>
+    <div class="Main">
+      <div *ngFor="let item of notifications; let i = index; trackBy: trackById">
+        <div class="notification" [class.black-background]="isContentHidden[i]" (click)="toggleContent(i)">
+            <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Image">
+          <div class="notification-text">
+            <p>{{ item.content }}</p>
+          </div>
+          <div class="notification-badge" [hidden]="isContentHidden[i]"></div>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="Button">
+      <button class="btn" (click)="markAllAsRead()"> Mark all as read</button>
+    </div>
+  </div>
+  
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <!-- <div class="notification">
