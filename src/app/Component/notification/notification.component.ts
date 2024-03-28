@@ -59,7 +59,7 @@ export class NotificationComponent implements OnInit {
 //   }
   
 
-notifications: INotification[] = [];
+notifications: INotification[] = []
 isContentHidden: boolean[] = [];
 contentToggled: boolean[] = [];
 
@@ -70,16 +70,16 @@ ngOnInit(): void {
 }
 
 fetchNotifications() {
-  this.notificationService.getNotifications().subscribe(
-    (notifications: INotification[]) => {
+  this.notificationService.getNotifications().subscribe({
+    next: (notifications: INotification[]) => {
       this.notifications = notifications;
       this.isContentHidden = new Array(this.notifications.length).fill(false);
       this.contentToggled = new Array(this.notifications.length).fill(false);
     },
-    (error) => {
+    error: (error) => {
       console.error('Error fetching notifications:', error);
     }
-  );
+  });
 }
 
 toggleContent(index: number) {

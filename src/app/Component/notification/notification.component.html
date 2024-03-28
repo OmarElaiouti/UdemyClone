@@ -22,7 +22,7 @@
     <div class="Main">
       <div *ngFor="let item of notifications; let i = index; trackBy: trackById">
         <div class="notification" [class.black-background]="isContentHidden[i]" (click)="toggleContent(i)">
-            <img src="" alt="Image">
+            <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Image">
           <div class="notification-text">
             <p>{{ item.content }}</p>
           </div>
