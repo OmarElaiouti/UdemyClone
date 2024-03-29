@@ -19,7 +19,7 @@ import { Icart } from '../../Models/icart';
     RouterModule
   ],
 })
-export class CartComponent implements OnInit{
+export class CartComponent{
   coursesInCart: Icart[] = [
     {
       img: '../../../assets/course_img/4898526_657d_2.jpg',
@@ -33,54 +33,6 @@ export class CartComponent implements OnInit{
       numReviewers: 2345
     },
   ];
-  // coursesInCart: any[] = [];
-  // totalBill: number = 0;
-  // couponApplied: boolean = false;
-  // couponName: string = 'No Coupon';
-  // wishedItems: any[] = [];
-
-  // constructor(private cartService: CartService) { }
-
-  // ngOnInit(): void {
-  //   this.cartService.courses$.subscribe(courses => {
-  //     this.coursesInCart = courses;
-  //     this.calculateTotalBill();
-  //     this.showWishlist();
-  //   });
-  // }
-
-  // removeFromCart(course: any): void {
-  //   this.cartService.removeFromCart(course);
-  // }
-
-  // moveToWishlist(course: any): void {
-  //   this.cartService.moveToWishlist(course);
-  // }
-
-  // calculateTotalBill(): void {
-  //   this.totalBill = this.coursesInCart.reduce((acc, course) => acc + parseFloat(course.price.replace('E£', '')), 0);
-  // }
-
-  // showWishlist(): void {
-  //   const wishedItemsString = localStorage.getItem('wishlist');
-  //   this.wishedItems = wishedItemsString ? JSON.parse(wishedItemsString) : [];
-  // }
-
-  // applyCoupon(): void {
-  //   if (!this.couponApplied) {
-  //     this.totalBill *= 0.9;
-  //     this.couponApplied = true;
-  //     this.couponName = '10% Off Coupon Applied';
-  //   } else {
-  //     this.calculateTotalBill();
-  //   }
-  // }
-
-  // checkout(): void {
-  //   this.cartService.checkout();
-  //   // Additional logic after checkout if needed
-  // }
-
   totalBill: number = 0;
   couponApplied: boolean = false;
   couponName: string = 'No Coupon';
@@ -139,3 +91,63 @@ export class CartComponent implements OnInit{
     return starArray;
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// coursesInCart: any[] = [];
+  // totalBill: number = 0;
+  // couponApplied: boolean = false;
+  // couponName: string = 'No Coupon';
+  // wishedItems: any[] = [];
+
+  // constructor(private cartService: CartService) { }
+
+  // ngOnInit(): void {
+  //   this.cartService.courses$.subscribe(courses => {
+  //     this.coursesInCart = courses;
+  //     this.calculateTotalBill();
+  //     this.showWishlist();
+  //   });
+  // }
+
+  // removeFromCart(course: any): void {
+  //   this.cartService.removeFromCart(course);
+  // }
+
+  // moveToWishlist(course: any): void {
+  //   this.cartService.moveToWishlist(course);
+  // }
+
+  // calculateTotalBill(): void {
+  //   this.totalBill = this.coursesInCart.reduce((acc, course) => acc + parseFloat(course.price.replace('E£', '')), 0);
+  // }
+
+  // showWishlist(): void {
+  //   const wishedItemsString = localStorage.getItem('wishlist');
+  //   this.wishedItems = wishedItemsString ? JSON.parse(wishedItemsString) : [];
+  // }
+
+  // applyCoupon(): void {
+  //   if (!this.couponApplied) {
+  //     this.totalBill *= 0.9;
+  //     this.couponApplied = true;
+  //     this.couponName = '10% Off Coupon Applied';
+  //   } else {
+  //     this.calculateTotalBill();
+  //   }
+  // }
+
+  // checkout(): void {
+  //   this.cartService.checkout();
+  //   // Additional logic after checkout if needed
+  // }

@@ -89,7 +89,7 @@
   display: flex;
   margin-top: 3%;
   gap: 1%;
-  
+
 }
 
 #course_rating > button {
@@ -203,8 +203,33 @@
 
 .learn_2 {
   display: flex;
+  justify-content: space-between;
 }
 
+.left-column,
+.right-column {
+  width: calc(50% - 20px); /* Adjust width as needed */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+.li{
+  display: flex;
+}
+/* Additional styling as needed */
+
+
+
+
+/* .learn_2 {
+  display: flex;
+} */
 .learn_2 > ul > li > p {
   color: #1c1d1f;
   font-family: sf pro text, -apple-system, BlinkMacSystemFont, Roboto, segoe ui,
@@ -214,7 +239,7 @@
   font-size: 1rem;
 }
 
-.learn_2 > ul > li {
+/* .learn_2 > ul > li {
   list-style-type: none;
   display: flex;
   gap: 2%;
@@ -223,7 +248,7 @@
 
 .learn_2 > ul {
   width: 44%;
-}
+} */
 
 #udemy_1 {
   border: 1px solid black;

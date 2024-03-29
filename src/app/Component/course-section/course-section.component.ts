@@ -18,4 +18,26 @@ export class CourseSectionComponent {
   isExpanded(collapseId: string): boolean {
     return this.expandedItems[collapseId] || false;
   }
+
+
+  sections=[
+    {id:1,sectionName:'course content',lectureNum:4,time:21,
+    Lessons:[
+      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+
+    ]
+  },
+  {id:2,sectionName:'course conten',lectureNum:4,time:21,
+    Lessons:[
+      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+
+    ]
+  },
+  ]
 }
