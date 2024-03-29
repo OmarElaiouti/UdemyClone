@@ -11,8 +11,13 @@ export class HomeCourseService {
   constructor(private http: HttpClient) { }
   
   // Method to fetch courses based on selected category
-  getCoursesByCategory(category: string): Observable<IcourseSmallCard[]> {
+  getCoursesByCategory(category: string,num?:number): Observable<IcourseSmallCard[]> {
+    if (num){
+      return this.http.get<IcourseSmallCard[]>(`/api/courses?category=${category}&num=${num}`);
+
+    }
     return this.http.get<IcourseSmallCard[]>(`/api/courses?category=${category}`);
+
   }
 
   getRandomCourses(): Observable<any[]> {
@@ -24,5 +29,5 @@ export class HomeCourseService {
     return this.http.get<IcourseSmallCard[]>('/api/top-rated-courses');
   }
 
-  
+ 
 }

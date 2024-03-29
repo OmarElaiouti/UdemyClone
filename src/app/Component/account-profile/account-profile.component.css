@@ -40,6 +40,7 @@
     padding: 0 5rem;
 margin-right:100px ;
 margin-left: 90px;
+margin-bottom: 10rem;
 }
  .udf h1{
     padding-bottom: 2rem;
@@ -50,7 +51,7 @@ margin-left: 90px;
 #tabs--1-content-0{
     font-weight: 400;
     line-height: 1;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     position: relative;
     cursor: auto;
     overflow: visible;
@@ -62,7 +63,7 @@ margin-left: 90px;
 #tabs--1-content-0 > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 0;
@@ -80,7 +81,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(4){
     font-weight: 400;
     line-height: 1;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2rem;
@@ -90,7 +91,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -99,7 +100,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(4) > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     border: 1px solid black;
@@ -110,7 +111,7 @@ padding-top: 0px;
    
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -136,7 +137,7 @@ padding-top: 0px;
     visibility: visible;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px soild black;
     border-radius: 0;
     display: block;
@@ -149,7 +150,7 @@ padding-top: 0px;
 
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2.4rem;
@@ -162,7 +163,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -171,7 +172,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(2) > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     border: 1px solid black; 
@@ -181,7 +182,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(2) > div > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -206,7 +207,7 @@ padding-top: 0px;
     visibility: visible;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px soild black;
     border-radius: 0;
     display: block;
@@ -218,7 +219,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(3){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
 
     visibility: visible;
@@ -233,7 +234,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -242,7 +243,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(3) > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     border: 1px solid black;
@@ -252,7 +253,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(3) > div > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -276,7 +277,7 @@ padding-top: 0px;
     visibility: visible;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px soild black;
     border-radius: 0;
     display: block;
@@ -289,7 +290,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(5){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2.4rem;
@@ -298,7 +299,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -307,7 +308,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(5) > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     border: 1px solid black;
@@ -317,7 +318,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(5) > div > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -345,7 +346,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px soild black;
     border-radius: 0;
     display: block;
@@ -358,7 +359,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2) > div:nth-child(1){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2.4rem;
@@ -370,7 +371,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
   padding-bottom: .8rem;
@@ -381,7 +382,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     padding: 0 1.6rem;
     width: 100%;
@@ -390,7 +391,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(4){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2.4rem;
@@ -400,7 +401,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
   
@@ -410,7 +411,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(4) > div.udlite-in-udheavy.rt-editor-container{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     position: relative;
@@ -431,7 +432,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -441,7 +442,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 35px;
@@ -450,7 +451,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(2){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     flex: 1;
@@ -459,7 +460,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(1){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
 }
@@ -468,7 +469,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -479,7 +480,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     padding: 0 1.6rem;
     width: 100%;
@@ -488,7 +489,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(2){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     color: var(--tabs-text-color-default);
     visibility: visible;
@@ -504,7 +505,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -515,7 +516,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     border-radius: 0;
     display: block;
@@ -526,7 +527,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(3){
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 2.4rem;
@@ -536,7 +537,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-bottom: .8rem;
@@ -546,7 +547,7 @@ padding-top: 0px;
     font-family: var(--font-stack-text);
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     color: var(--tabs-text-color-default);
     visibility: visible;
@@ -560,7 +561,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     border-radius: 0;
     display: block;
@@ -574,14 +575,14 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(3) > div > span{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
 }
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(3) > div > span > span.text-input-with-counter-module--counter--F7OMr{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     color: #6a6f73;
@@ -590,7 +591,7 @@ padding-top: 0px;
 #text-area-with-counter--20{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     position: absolute!important;
@@ -602,7 +603,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(3) > div > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     border: 1px solid #2d2f31;
@@ -617,7 +618,7 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.two-columns--two-columns-group--jGqZc > div:nth-child(1) > div:nth-child(5) > div{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     visibility: visible;
     position: relative;
 }
@@ -627,7 +628,7 @@ padding-top: 0px;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     border-radius: 0;
     cursor: pointer;
@@ -639,10 +640,9 @@ padding-top: 0px;
 #tabs--1-content-0 > div > form > div.ud-footer-btns{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
-    margin-top: 3.2rem;
     text-align: left;
 }
 #tabs--1-content-0 > div > form > div.ud-footer-btns > button{
@@ -650,7 +650,7 @@ padding-top: 0px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.6rem;
+    font-size: 1rem;
     position: relative;
     align-items: center;
     border: 1px soild black;
@@ -668,7 +668,7 @@ padding-top: 0px;
 #tabs--1-content-2 > div{
     font-weight: 400;
     line-height: 1;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     max-width: 60rem;
@@ -676,7 +676,7 @@ padding-top: 0px;
 #tabs--1-content-2 > div > form{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
 }
@@ -686,7 +686,7 @@ padding-top: 0px;
     visibility: visible;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     padding: .8rem 0;
@@ -697,7 +697,7 @@ padding-top: 0px;
 visibility: hidden;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     fill: currentColor;
     display: inline-block;
@@ -713,7 +713,7 @@ visibility: hidden;
 #tabs--1-content-2 > div > form > fieldset > label:nth-child(2) > svg > use{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     fill: currentColor;
     color: transparent;
@@ -725,7 +725,7 @@ visibility: hidden;
     margin: 0;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     padding: .8rem 0;
@@ -737,7 +737,7 @@ visibility: hidden;
     visibility: hidden;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     fill: currentColor;
     display: inline-block;
@@ -755,7 +755,7 @@ visibility: hidden;
     visibility: visible;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.4rem;
+    font-size: 1rem;
     cursor: pointer;
     fill: currentColor;
     color: transparent;
@@ -763,7 +763,7 @@ visibility: hidden;
 #tabs--1-content-2 > div > form > div.ud-footer-btns{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-top: 3.2rem;
@@ -774,7 +774,7 @@ visibility: hidden;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.6rem;
+    font-size: 1rem;
   
     align-items: center;
     border: 1px soild black;
@@ -792,7 +792,7 @@ visibility: hidden;
 .d1{
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 box-sizing: border-box;
@@ -803,7 +803,7 @@ max-width: 60rem;
 form{
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 box-sizing: border-box;
@@ -813,7 +813,7 @@ padding: 0;
 .d2{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 min-width: 18rem;
@@ -824,7 +824,7 @@ max-width: 60rem;
 font-weight: 700;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.4rem;
+font-size: 1rem;
 display: flex;
 align-items: center;
 margin: 0;
@@ -843,14 +843,14 @@ padding-bottom: .8rem;
 .d4{
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 }
 .d5{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     box-sizing: border-box;
@@ -862,7 +862,7 @@ visibility: visible;
 .d6{
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 box-sizing: border-box;
@@ -878,7 +878,7 @@ position: relative;
 .d6 img{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 aspect-ratio: auto 200 / 200;
@@ -894,14 +894,14 @@ max-height: 20rem;
 .d7{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
 }
 .d8{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     min-width: 18rem;
@@ -913,7 +913,7 @@ max-height: 20rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.4rem;
+    font-size: 1rem;
     position: absolute!important;
     height: 1px;
     width: 1px;
@@ -928,7 +928,7 @@ max-height: 20rem;
 .d9{
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 height: 4.8rem;
@@ -946,7 +946,7 @@ clip: rect(1px,1px,1px,1px);
 .l3{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     visibility: visible;
     box-sizing: border-box;
     padding: 0;
@@ -958,7 +958,7 @@ clip: rect(1px,1px,1px,1px);
 #s1{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 visibility: visible;
 cursor: pointer;
 background-color: #f7f9fa;
@@ -975,7 +975,7 @@ height: 100%;
 #s2{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 visibility: visible;
 cursor: pointer;
 color: #2d2f31;
@@ -992,7 +992,7 @@ white-space: nowrap;
 font-weight: 700;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 position: relative;
 align-items: center;
 cursor: pointer;
@@ -1011,7 +1011,7 @@ height: 100%;
 font-weight: 700;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: pointer;
 white-space: nowrap;
 }
@@ -1024,7 +1024,7 @@ color: #2d2f31;
     font-weight: 700;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 position: relative;
 align-items: center;
 border: 1px soild #2d2f31;
@@ -1063,21 +1063,21 @@ height: 3.5rem;
 .D1{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 }
 .FormNotification{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 }
 .F1{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 border: 0;
@@ -1098,7 +1098,7 @@ padding-bottom: .8rem;
 .LABEL{
 font-weight: 300;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: pointer;
 display: flex;
 min-width: 18rem;
@@ -1123,7 +1123,7 @@ cursor: pointer;
 font-weight: 500;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 }
 .LABEL2{
     visibility: visible;
@@ -1140,7 +1140,7 @@ font-size: 1.6rem;
 .cont1{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 visibility: visible;
 cursor: pointer;
 position: absolute;
@@ -1156,14 +1156,14 @@ cursor: pointer;
 letter-spacing: 0;
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.4rem;
+font-size: 1rem;
 margin-top: .8rem;
 
 }
 .hr1{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 margin: 2.4rem 0;
 visibility: hidden;
@@ -1172,7 +1172,7 @@ visibility: hidden;
 .LABEL3{
     font-weight: 300;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 visibility: visible;
 box-sizing: border-box;
 cursor: pointer;
@@ -1203,7 +1203,7 @@ margin: 0;
 padding: 0;
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.4rem;
+font-size: 1rem;
 margin-top: .8rem;
 opacity: .7;
 }
@@ -1239,7 +1239,7 @@ opacity: .7;
 .c1 {
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     position: relative;
     cursor: auto;
     padding-top: 1.6rem;
@@ -1254,7 +1254,7 @@ opacity: .7;
 .c2 {
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     position: relative;
     cursor: auto;
     max-width: none;
@@ -1266,7 +1266,7 @@ opacity: .7;
 .c3{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     min-width: 18rem;
@@ -1278,7 +1278,7 @@ opacity: .7;
 font-weight: 500;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.4rem;
+font-size: 1rem;
 display: flex;
 align-items: center;
 padding-bottom: .8rem;
@@ -1287,7 +1287,7 @@ min-height: 2.8rem;
 .inp{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     display: flex;
@@ -1298,7 +1298,7 @@ min-height: 2.8rem;
     color: #2d2f31;
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     border: 1px solid #2d2f31;
     border-radius: 0;
     display: block;
@@ -1311,7 +1311,7 @@ min-height: 2.8rem;
 .c4{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 min-width: 18rem;
@@ -1323,7 +1323,7 @@ margin-top: 1rem;
 font-weight: 500;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.4rem;
+font-size: 1rem;
 display: flex;
 align-items: center;
 padding-bottom: .8rem;
@@ -1332,7 +1332,7 @@ min-height: 2.8rem;
 .c5{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 display: flex;
 padding-right: 300px;
@@ -1342,7 +1342,7 @@ padding-right: 300px;
 color: #2d2f31;
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 border: 1px solid #2d2f31;
 border-radius: 0;
 display: block;
@@ -1353,9 +1353,10 @@ cursor: not-allowed;
 flex: 1;
 }
 .m1{
+    width: 32rem;
 font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 border: 1px solid #d1d7dc;
@@ -1367,7 +1368,7 @@ margin-top: 3rem;
 .m2{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     visibility: visible;
     margin-bottom: 1.6rem;
@@ -1375,7 +1376,7 @@ margin-top: 3rem;
 .m3{
     font-weight: 400;
     line-height: 1.4;
-    font-size: 1.6rem;
+    font-size: 1rem;
     cursor: auto;
     margin-bottom: 1.6rem;
     border:1px soild black;
@@ -1387,20 +1388,20 @@ margin-top: 3rem;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin-bottom: .8rem;
 }
 .ms{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 }
 .lbtn{
     font-weight: 400;
 line-height: 1.4;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: auto;
 visibility: visible;
 display: flex;
@@ -1411,7 +1412,7 @@ justify-content: left;
     font-weight: 500;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 position: relative;
 align-items: center;
 cursor: pointer;
@@ -1429,7 +1430,15 @@ color: beige;
     font-weight: 500;
 line-height: 1.2;
 letter-spacing: 0;
-font-size: 1.6rem;
+font-size: 1rem;
 cursor: pointer;
 white-space: nowrap;
 }
+
+input[type="checkbox"] {
+    margin-right: 1rem;
+  }
+
+  .bio-input{
+    padding:0.2rem 1.5rem;
+  }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IuserCourse } from '../../Models/ICourse';
 import { Observable } from 'rxjs';
+import { IcoursesMylearning } from '../../Models/ICourse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +13,31 @@ export class UserCoursesService {
   constructor(private http: HttpClient) {}
 
   getMyLearningCourses(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<IcoursesMylearning[]>(this.apiUrl);
   }
 
-  getCart(): Observable<IuserCourse[]> {
-    return this.http.get<IuserCourse[]>(`${this.apiUrl}/cart`);
+  getCart(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/cart`);
   }
 
-  getWishlist(): Observable<IuserCourse[]> {
-    return this.http.get<IuserCourse[]>(`${this.apiUrl}/wishlist`);
+  getWishlist(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
   }
 
-  addToCart(course: IuserCourse): Observable<any> {
-    return this.http.post(`${this.apiUrl}/cart`, course);
+
+  addToCart(id: number): Observable<any> {
+    // Create a request body object containing the course ID
+    const requestBody = { courseId: id };
+  
+    // Make a POST request to the API endpoint with the request body
+    return this.http.post(`${this.apiUrl}/cart`, requestBody);
   }
 
-  addToWishlist(course: IuserCourse): Observable<any> {
-    return this.http.post(`${this.apiUrl}/wishlist`, course);
-  }}
+  addToWishlist(id: number): Observable<any> {
+
+    const requestBody = { courseId: id };
+
+    return this.http.post(`${this.apiUrl}/wishlist`, requestBody);
+  }
+
+}

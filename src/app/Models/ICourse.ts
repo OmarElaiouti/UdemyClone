@@ -8,6 +8,7 @@ export interface Icourses {
     price:number;
     totallectuer:number;
     totalHour:number;
+
 }
 
 
@@ -24,29 +25,27 @@ export interface Instructor{
    
 
 export interface IcoursesMylearning {
+  id:number
   name:string;
   Image:string;
   instructor:string;
   rating:number;
   progress:number;
-
+//for my learning
 }
+
+
 
 export interface IcourseSmallCard {
     id:number;
     name:string;
+    img:string;
     instructor:string;
     rating:number;
     price:number;
 }
 
-export interface IuserCourse {
-    id: number;
-    name: string;
-    instructor: string;
-    img: string;
-    price: number;
-  }
+  //for slider and wishlist in navbar
 
 
 

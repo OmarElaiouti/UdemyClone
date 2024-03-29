@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { SignupService } from '../../service/signup.service';
 import { Subscription } from 'rxjs';
+import { SignupService } from '../../Services/signup-service/signup.service';
 
 @Component({
   selector: 'app-signup',
