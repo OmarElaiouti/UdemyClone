@@ -7,10 +7,8 @@ export interface Icourses {
     price:number;
     totallectuer:number;
     totalHour:number;
-//for category and search and wislist
+//for category and search and wislist items
 }
-
-
 export interface IcoursesMylearning {
   id:number
   name:string;
