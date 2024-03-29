@@ -1,31 +1,40 @@
+@for(item of sections;track $index){
 <div id="accordion" style="width: 50%; margin-left: 150px;" >
+
   <div class="card">
-    <div class="card-header" id="headingOne">
+    <div class="card-header" id="{{item.sectionName}}">
       <h5 class="mb-0" style="display: flex;">
-        <button style="font-weight: bold;" class="btn btn-link" (click)="toggleCollapse('collapseOne')" [attr.aria-expanded]="isExpanded('collapseOne')" aria-controls="collapseOne">
-          Course content
+        <button style="font-weight: bold;" class="btn btn-link" (click)="toggleCollapse(item.sectionName)" [attr.aria-expanded]="isExpanded(item.sectionName)" aria-controls="collapseOne">
+          {{item.sectionName}}
         </button>
-        <h6>4lectures .21min</h6>
+        <h6>{{item.lectureNum}}lectures .{{item.time}}min</h6>
       </h5>
     </div>
-    <div id="collapseOne" [ngClass]="{ 'collapse': !isExpanded('collapseOne'), 'show': isExpanded('collapseOne') }" aria-labelledby="headingOne" data-parent="#accordion">
+    <div id="{{item.sectionName}}" [ngClass]="{ 'collapse': !isExpanded(item.sectionName), 'show': isExpanded(item.sectionName) }" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
+        @for(lesson of item.Lessons;track  $index){
         <div class="dis">
+          <div style="display: flex;">
         <div>
         <p><i class="fa-regular fa-circle-play"></i></p>
-        <p><i class="fa-regular fa-file"></i></p>
-        <p><i class="fa-regular fa-circle-play"></i></p>
-        <p><i class="fa-regular fa-circle-play"></i></p>
+        </div>
+        <div>
+          <p>{{lesson.LessonName}}</p>
+        </div>
         </div>
         <div class="right">
-          <p>00:40</p>
+          <p>{{lesson.LessonTime}}</p>
         </div>
         </div>
+      }
       </div>
     </div>
   </div>
+
+</div>
+}
   <!-- Repeat for other accordion items -->
-  <div class="card">
+  <!-- <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link" (click)="toggleCollapse('collapsetwo')" [attr.aria-expanded]="isExpanded('collapseTwo')" aria-controls="collapseTwo">
@@ -268,5 +277,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 

@@ -7,11 +7,15 @@ export interface IcourseDetails {
   rating:number;
   numStudent:number;
   instractor:string;
-  date:Date;
+  LastUpdate:Date;
   videoUrl:string;
   price:number;
-  YouWillLearn:string;
-  Requerments:string;
+  YouWillLearn:[{id:number,content:string}];//8
+  totalsection:number;
+  totallecture:number;
+  totalhours:number;
+  totalmin:number;
+  Requerments:[{id:number,content:string}];
   Description:string;
   imgReviewer:string;
   ReviewerName:string;
@@ -19,15 +23,12 @@ export interface IcourseDetails {
   NumberOfReview:number;
   reviewDate:Date;
   review:string;
-  couresName:string;
-  instructorName:string;
-  CourseDescription:string;
-  courseRating:number;
-  coursePrice:number;
+  numstudent:number;
   totalReview:number;
   instractorRating:number;
   instCourseNum:number;
   instDecription:string;
   instImg:string;
   instWork:string;
+  instlink:string
 }
