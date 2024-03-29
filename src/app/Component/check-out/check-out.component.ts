@@ -18,4 +18,15 @@ export class CheckOutComponent {
   isExpanded(collapseId: string): boolean {
     return this.expandedItems[collapseId] || false;
   }
+
+  checkoutCart: any[] = [];
+
+  constructor() { }
+
+  ngOnInit(): void {
+    // Retrieve the checkout cart from localStorage
+    const checkoutCartString = localStorage.getItem('checkoutCart');
+    this.checkoutCart = checkoutCartString ? JSON.parse(checkoutCartString) : [];
+    console.log(this.checkoutCart);
+  }
 }

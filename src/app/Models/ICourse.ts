@@ -1,14 +1,29 @@
 export interface Icourses {
-    id:number
+  id:number;
     name:string;
+    img:string;
     disc:string;
     instructor:string;
     rating:number;
     price:number;
     totallectuer:number;
     totalHour:number;
-//for category and search and wislist items
+
 }
+
+
+export interface Instructor{
+  id:number;
+  c_name:string;  //course name
+  instructor:string;
+  img:string;
+  rating:number;
+  nOfCourse:number;
+  students:number     //number of student
+
+}
+   
+
 export interface IcoursesMylearning {
   id:number
   name:string;
