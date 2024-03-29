@@ -1,333 +1,404 @@
 
-    <div #div1 id="header" class="d-flex align-items-center justify-content-between p-3 py-md-0 px-md-4" >
+<div #div1 id="header" class="d-flex align-items-center justify-content-between p-3 py-md-0 px-md-4">
 
-      <div class="col-1 col-md-auto d-block d-md-none">
-        <!-- Hamburger menu icon (visible on small screens) -->
-        <i class="fas fa-bars "(click)="toggleSidebar()"></i>
-      </div>
-      
-        <!--Main logo of website-->
-        <div class="row logo topBtn col-9 col-md-auto justify-content-center ">
-          <a [routerLink]="['']" routerLinkActive="router-link-active" ><div class="col-auto">
-            <img
-            src="https://i.ibb.co/QnJ7Bws/default-meta-image-v2-2-1-removebg-preview.png"
-            alt="udemy"
-            title="udemy logo"
-            width="100px"
-          />
-        </div></a>
-        </div>
-
-        
-
-      
-        <div class="col-1 col-sm-auto text-right d-md-none text-end">
-          <!-- Icons for search  -->
-          <i class="fas fa-search"></i>
-        </div>
-
-        
-        <div class="col-1 col-sm-auto text-right d-md-none text-end">
-            <!-- Icons for  cart  -->
-            <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><i class="fas fa-shopping-cart"></i></a>
-          </div>
-
-        <!--Main maineu of website-->
-        <div class="dropdown d-none d-md-block px-1">
-            <button class="Catbtn category-btn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown" aria-expanded="false" routerLink="/category"><span>Categories</span></button>
-            <div class="dropdown-menu double" aria-labelledby="dropdownSec">
-              <div class="dropdown-section fsection">
-                <ul>
-                    @for(category of categories;track category.id){
-                  <li class=""  (mouseover)="setActiveCategory(category)" ><a class="CatAnch" (click)="GotoCategory(category.name)" [ngClass]="{ 'active': activeCategory==category }">{{category.name}}</a></li>
-                
-                }
-          
-                </ul>
-              </div>
-              <div class="dropdown-section with-hover secsection">
-                <ul>
-                    @for(sub of subcategories;track sub.id){
-
-                  <li class="" (mouseover)="setActiveSubCategory(sub)" ><a (click)="GotoCategory(sub.name)">{{sub.name}}</a></li>
-                          }
-                        
-                </ul>
-                <div class="dropdown-section third-dropdown thdsection">
-                    
-                  <ul>
-                    @for(topic of topics;track topic.id){
-
-                  <li class=""  ><a (click)="GotoCategory(topic.name)" routerLinkActive="router-link-active" >{{topic.name}}</a></li>
-                          
-                        }
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-      
-      
-
-
-
-        <!--search bar of website-->
-
-        <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5">
-          <form class="search-container" (ngSubmit)="search(searchValue)">
-            <input id="search-bar" placeholder="Search for anything" [(ngModel)]="searchValue" name="searchValue" />
-            <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-          </form>
-        </div>
-
-         <!-- udemy Business -->
-         <!-- <div class="Bcm-instructor-btn topBtn d-none d-lg-block" element-to-hide-in-sm>Udemy Business</div> -->
-         <div class="dropdownC d-none d-lg-block">
-            <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-                Udemy Business
-            </button>
-            <div class="dropdown-content" aria-labelledby="dropdownCard">
-                <div class="dropdown-card">
-                    <div class="text-btn">
-                    Get your team access to over 25,000 top Udemy courses, anytime, anywhere.
-                </div>
-                    <button class="header-black-btn bisns-btn">Try Udemy Business</button>
-                </div>
-            </div>
-        </div>
-                
-    
-                     
-
-        <!--Become An instructor button-->
-        <div class="dropdownC d-none d-lg-block ">
-            <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-                Teach on Udemy
-            </button>
-            <div class="dropdown-content" aria-labelledby="dropdownCard">
-                <div class="dropdown-card">
-                    <div class="text-btn">
-                    Turn what you know into an opportunity and reach millions around the world.
-                </div>
-                <a [routerLink]="['/teachUdemy']" routerLinkActive="router-link-active"><button class="header-black-btn bisns-btn">Learn More</button></a>
-                </div>
-            </div>
-        </div>
-
-      
-       
-
-
-      @if(signedin == true){
-
-         <!--My learning button-->
-         <div class="dropdownC d-none d-lg-block ">
-          <a [routerLink]="['/mylearning']" routerLinkActive="router-link-active"><button class="Catbtn dropdown-toggle">
-               My learning
-           </button></a> 
-       </div>
-
-        <!--Wishlist Button-->
-        <div class="dropdownC dropdownB d-none d-md-block">
-          <a [routerLink]="['/mylearning']" routerLinkActive="router-link-active" ><button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-regular fa-heart"></i>
-          </button></a>
-          <div class="dropdown-content" aria-labelledby="dropdownCard">
-              <div class="dropdown-card dropdown-card-courses">
-                @if(Wishlist.length == 0){
-                <div class="empty-list">
-                  <div class="text-btn text-empty">
-                    Your wishlist is empty.                
-                  </div>
-                  
-                  <a [routerLink]="['']" routerLinkActive="router-link-active" ><button class="bisns-btn header-cart-keep-shopping-btn">Explore courses</button></a>
-                </div>
-                }
-                @else {
-
-                  @for(course of Wishlist.slice(0,3);track course.id){
-                    <div class="item-in-wishlist">
-                    <div class="course-card wishlist-card">
-                      <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><div class="course-img">
-                      <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg" alt="Course Image">
-                    </div></a>
-                    
-                      <div class="course-details">
-                        <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><p>{{course.name}}</p></a>
-                        <p class="ins-font">{{course.instructor}}</p>
-                        <p class="price-font">${{course.price}}</p>
-                      </div>
-                    </div>
-
-                      <div class="wishlist-btn">
-                      <button class="header-white-btn bisns-btn">Add to cart</button>
-                    </div>
-                    </div>
-
-                  }
-
-                }
-                
-
-              </div>
-          </div>
-      </div>
-
-      <!--Shopping cart button-->
-
-      <div class="dropdownC dropdownB d-none d-md-block">
-        <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-            <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><i class="fa-solid fa-cart-shopping"></i></a>
-            @if(Cart.length != 0 && Cart.length < 6){
-            <div class="alert alert-cart">{{Cart.length}}</div>
-            }
-            @else if (Cart.length>5) {
-              <div class="alert alert-cart">{{+5}}</div>
-            }
-        </button>
-        <div class="dropdown-content" aria-labelledby="dropdownCard">
-            <div class="dropdown-card dropdown-card-courses">
-              @if(Cart.length == 0){
-                <div class="empty-list">
-                <div class="text-btn text-empty">
-                Your Cart is Empty.                
-                </div>
-                <a  [routerLink]="['']"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
-                </div>
-              }
-              @else{
-                @for(course of Cart.slice(0,3);track course.id){
-                <div class="course-card">
-                  <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><div class="course-img">
-                  <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg" alt="Course Image">
-                </div></a>
-                  <div class="course-details">
-                    <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active" ><p>{{course.name}}</p></a>
-                    <p class="ins-font">{{course.instructor}}</p>
-                    <p class="price-font">${{course.price}}</p>
-                  </div>
-                </div>
-               
-              }
-              <div class="GoToCart-btn">
-              <div class="total-price-cart">Total : $ {{CartTotalPrice}} </div>
-              <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><button class="header-black-btn bisns-btn">Go to cart</button></a>
-            </div>
-            }
-            </div>
-        </div>
-    </div>
-
-    <!--Notification button-->
-
-    <div class="dropdownC  dropdownB d-none d-md-block">
-      <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-        <i class="fa-regular fa-bell"></i>
-        @if(notifications.length != 0){
-
-        <div class="alert alert-solid alert-notification"></div>
-        }
-      </button>
-      <div class="dropdown-content" aria-labelledby="dropdownCard">
-          <div class="dropdown-card dropdown-card-nots">
-            
-            <div class="notif-header">
-              <h5>Notifications</h5>
-              <a>setting</a>
-            </div>
-            @if(notifications.length == 0){
-
-              <div class="text-btn text-empty">
-              No notifications.                
-              </div>
-            }
-            @else {
-              @for(n of notifications.slice(0,5);track n.id){
-                <div class="note-list">
-                  <div class="note-content">
-                      <p>{{n.content}}</p>
-                  </div>
-                  <div class="note-date">
-                      <p>{{n.date}}</p>
-                  </div>
-              </div>
-
-              }
-<div class="see-all-btn">
-              <button class="header-white-btn bisns-btn">See All</button>
-            </div>
-            }
-          
-            </div>
-      </div>
+  <div class="col-1 col-md-auto d-block d-md-none">
+    <!-- Hamburger menu icon (visible on small screens) -->
+    <i class="fas fa-bars " (click)="toggleSidebar()"></i>
   </div>
 
-   <!--Profile button-->
+  <!--Main logo of website-->
+  <div class="row logo topBtn col-9 col-md-auto justify-content-center ">
+    <a [routerLink]="['']" routerLinkActive="router-link-active">
+      <div class="col-auto">
+        <img src="https://i.ibb.co/QnJ7Bws/default-meta-image-v2-2-1-removebg-preview.png" alt="udemy"
+          title="udemy logo" width="100px" />
+      </div>
+    </a>
+  </div>
 
-   <div class="dropdownC  dropdownB d-none d-md-block">
+
+
+
+  <div class="col-1 col-sm-auto text-right d-md-none text-end">
+    <!-- Icons for search  -->
+    <i class="fas fa-search"></i>
+  </div>
+
+
+  <div class="col-1 col-sm-auto text-right d-md-none text-end">
+    <!-- Icons for  cart  -->
+    <a [routerLink]="['/cart']" routerLinkActive="router-link-active"><i class="fas fa-shopping-cart"></i></a>
+  </div>
+
+  <!--Main maineu of website-->
+  <div class="dropdown d-none d-md-block px-1">
+    <button class="Catbtn category-btn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown"
+      aria-expanded="false" ><span>Categories</span></button>
+    <div class="dropdown-menu double" aria-labelledby="dropdownSec">
+      <div class="dropdown-section fsection">
+        <ul>
+          @for(category of categories;track category.id){
+          <li class="" (mouseover)="setActiveCategory(category)"><a class="CatAnch"
+              (click)="GotoCategory(category.name)"
+              [ngClass]="{ 'active': activeCategory==category }">{{category.name}}</a></li>
+
+          }
+
+        </ul>
+      </div>
+      <div class="dropdown-section with-hover secsection">
+        <ul>
+          @for(sub of subcategories;track sub.id){
+
+          <li class="" (mouseover)="setActiveSubCategory(sub)"><a (click)="GotoCategory(sub.name)">{{sub.name}}</a></li>
+          }
+
+        </ul>
+        <div class="dropdown-section third-dropdown thdsection">
+
+          <ul>
+            @for(topic of topics;track topic.id){
+
+            <li class=""><a (click)="GotoCategory(topic.name)" routerLinkActive="router-link-active">{{topic.name}}</a>
+            </li>
+
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <!--search bar of website-->
+
+  <div class="search-box d-none d-md-block col-md-3 col-lg-4 col-xl-5">
+    <form class="search-container" (ngSubmit)="search(searchValue)">
+      <input id="search-bar" placeholder="Search for anything" [(ngModel)]="searchValue" name="searchValue" />
+      <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+
+  <!-- udemy Business -->
+  <!-- <div class="Bcm-instructor-btn topBtn d-none d-lg-block" element-to-hide-in-sm>Udemy Business</div> -->
+  <div class="dropdownC d-none d-lg-block">
     <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-      <a [routerLink]="['/profile']" routerLinkActive="router-link-active"> <div class="circle">
-        <span class="initials">AB</span>
-      </div>    </a>
-
-      @if(notifications.length != 0 || Cart.length != 0){
-
-      <div class="alert alert-solid"></div>
-
-      }
+      Udemy Business
     </button>
     <div class="dropdown-content" aria-labelledby="dropdownCard">
-        <div class="dropdown-card">
-            <div class="text-btn text-empty">
-            Your Cart is Empty.                
-            </div>
-            <button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button>
+      <div class="dropdown-card">
+        <div class="text-btn">
+          Get your team access to over 25,000 top Udemy courses, anytime, anywhere.
         </div>
+        <button class="header-black-btn bisns-btn">Try Udemy Business</button>
+      </div>
     </div>
-</div>
+  </div>
+
+
+
+
+  <!--Become An instructor button-->
+  <div class="dropdownC d-none d-lg-block ">
+    <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+      Teach on Udemy
+    </button>
+    <div class="dropdown-content" aria-labelledby="dropdownCard">
+      <div class="dropdown-card">
+        <div class="text-btn">
+          Turn what you know into an opportunity and reach millions around the world.
+        </div>
+        <a [routerLink]="['/teachUdemy']" routerLinkActive="router-link-active"><button
+            class="header-black-btn bisns-btn">Learn More</button></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  @if(signedin == true){
+
+  <!--My learning button-->
+  <div class="dropdownC d-none d-lg-block ">
+    <a (click)="goToMyLearning()" routerLinkActive="router-link-active"><button class="Catbtn dropdown-toggle">
+        My learning
+      </button></a>
+  </div>
+
+  <!--Wishlist Button-->
+  <div class="dropdownC dropdownB d-none d-md-block">
+    <a (click)="goToWishlist()" routerLinkActive="router-link-active"><button class="Catbtn dropdown-toggle"
+        id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+        <i class="fa-regular fa-heart"></i>
+      </button></a>
+    <div class="dropdown-content" aria-labelledby="dropdownCard">
+      <div class="dropdown-card dropdown-card-courses">
+        @if(Wishlist.length == 0){
+        <div class="empty-list">
+          <div class="text-btn text-empty">
+            Your wishlist is empty.
+          </div>
+
+          <a [routerLink]="['']" routerLinkActive="router-link-active"><button
+              class="bisns-btn header-cart-keep-shopping-btn">Explore courses</button></a>
+        </div>
+        }
+        @else {
+
+        @for(course of Wishlist.slice(0,3);track course.id){
+        <div class="item-in-wishlist">
+          <div class="course-card wishlist-card">
+            <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+              <div class="course-img">
+                <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg"
+                  alt="Course Image">
+              </div>
+            </a>
+
+            <div class="course-details">
+              <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+                <p>{{course.name}}</p>
+              </a>
+              <p class="ins-font">{{course.instructor}}</p>
+              <p class="price-font">${{course.price}}</p>
+            </div>
+          </div>
+
+          <div class="wishlist-btn">
+            <button class="header-white-btn bisns-btn">Add to cart</button>
+          </div>
+        </div>
+
+        }
+
+        }
+
+
+      </div>
+    </div>
+  </div>
+
+  <!--Shopping cart button-->
+
+  <div class="dropdownC dropdownB d-none d-md-block">
+    <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+
+      <a [routerLink]="['/cart']" routerLinkActive="router-link-active"><i class="fa-solid fa-cart-shopping"></i></a>
+
+      @if(Cart.length != 0 && Cart.length < 6){ 
+        <div class="alert alert-cart" style="width: 1.5rem;">{{Cart.length}}</div>
+      }
+      @else if (Cart.length>5) {
+      <div class="alert alert-cart">+5</div>
+      }
+    </button>
+      
+   <div class="dropdown-content" aria-labelledby="dropdownCard">
+    <div class="dropdown-card dropdown-card-courses">
+      @if(Cart.length == 0){
+      <div class="empty-list">
+        <div class="text-btn text-empty">
+          Your Cart is Empty.
+        </div>
+        <a [routerLink]="['']"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
+      </div>
       }
       @else{
-
-        <!--Shopping cart button-->
-
-        <div class="dropdownC d-none d-md-block">
-          <a [routerLink]="['/cart']" routerLinkActive="router-link-active" ><button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-              <i class="fa-solid fa-cart-shopping"></i>
-          </button></a>
-          <div class="dropdown-content" aria-labelledby="dropdownCard">
-              <div class="dropdown-card">
-                  <div class="text-btn text-empty">
-                  Your Cart is Empty.                
-                  </div>
-                  <a [routerLink]="['']" routerLinkActive="router-link-active" ><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
-              </div>
+      @for(course of Cart.slice(0,3);track course.id){
+      <div class="course-card">
+        <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+          <div class="course-img">
+            <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg"
+              alt="Course Image">
           </div>
+        </a>
+        <div class="course-details">
+          <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+            <p>{{course.name}}</p>
+          </a>
+          <p class="ins-font">{{course.instructor}}</p>
+          <p class="price-font">${{course.price}}</p>
+        </div>
       </div>
-        <!-- log in  -->
-        <a [routerLink]="['/login']" routerLinkActive="router-link-active"> <div class="header-white-btn d-none d-md-block" routerLink="/login" >Log in</div></a>
-
-        
-      
-        <!-- sign Up  -->
-        <a [routerLink]="['/signup']" routerLinkActive="router-link-active" ><div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div></a>
 
       }
-
-      <div class="categories-nav">
-
+      <div class="GoToCart-btn">
+        <div class="total-price-cart">Total : $ {{CartTotalPrice}} </div>
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active"><button class="header-black-btn bisns-btn">Go
+            to cart</button></a>
       </div>
+      }
+    </div>
+  </div>
+
+</div>
+<!--Notification button-->
+
+<div class="dropdownC  dropdownB d-none d-md-block">
+  <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+    <i class="fa-regular fa-bell"></i>
+    @if(notifications.length != 0){
+
+    <div class="alert alert-solid alert-notification"></div>
+    }
+  </button>
+  <div class="dropdown-content" aria-labelledby="dropdownCard">
+    <div class="dropdown-card dropdown-card-nots">
+
+      <div class="notif-header">
+        <h5>Notifications</h5>
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active">setting</a>
       </div>
-      <div #div2 ></div>
-      <div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
-        <div class="close-btn" (click)="toggleSidebar()" [ngClass]="{ 'active': isSidebarOpen }">
-            <i class="fas fa-times"></i>
-          </div>
-        <div class="py-1"><a>Log in</a></div>
-        <div class="py-1"><a>Sign in</a></div>
-        
+      @if(notifications.length == 0){
+
+      <div class="text-btn text-empty">
+        No notifications.
+      </div>
+      }
+      @else {
+      @for(n of notifications.slice(0,5);track n.id){
+      <div class="note-list">
+        <div class="note-content">
+          <p>{{n.content}}</p>
         </div>
+        <div class="note-date">
+          <p>{{n.date}}</p>
+        </div>
+      </div>
 
+      }
+      <div class="see-all-btn">
+        <a [routerLink]="['/notifications']" routerLinkActive="router-link-active"><button
+            class="header-white-btn bisns-btn">See All</button></a>
+      </div>
+      }
+
+    </div>
+  </div>
+</div>
+
+<!--Profile button-->
+
+<div class="dropdownC  dropdownB d-none d-md-block">
+  <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+    <a [routerLink]="['/profile']" routerLinkActive="router-link-active">
+      <div class="circle">
+        <span class="initials">{{GetLetters()}}</span>
+      </div>
+    </a>
+
+    @if(notifications.length != 0 || Cart.length != 0){
+
+    <div class="alert alert-solid"></div>
+
+    }
+  </button>
+  <div class="dropdown-content" aria-labelledby="dropdownCard">
+    <div class="dropdown-card  dropdown-card-profile">
+    
+      <a [routerLink]="['/profile']" routerLinkActive="router-link-active" ><div class="note-list list-head list-item">
+        <div class="circle circle2">
+          <span class="initials">{{GetLetters()}}</span>
+        </div>
+        <div class="list-refer">
+          <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
+          <div class="profile-email"><span>{{user.email}}</span></div>
+        </div>
+      </div></a>
+      <div class="note-list list-item">
+        <a [routerLink]="['/myCourses']" routerLinkActive="router-link-active"  class="Catbtn profile-list-link">My learning</a>
+        <div class="link-with-alert">
+
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active"  class="Catbtn profile-list-link">My cart</a>
+        @if(Cart.length != 0 && Cart.length < 6){ 
+          <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{Cart.length}}
+        </div>
+        }
+        @else if (Cart.length>5) {
+        <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
+        }
+</div>
+        <a (click)="goToWishlist()"  class="Catbtn profile-list-link">Wishlist</a>
+
+      </div>
+      <div class="note-list list-item">
+        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Account setting</a>
+        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Edit profile</a>
+
+      </div>
+      <div class="note-list list-item">
+        <div class="link-with-alert">
+        <a [routerLink]="['/notifications']" class="Catbtn profile-list-link ">Notifications</a>
+        @if(notifications.length != 0 && notifications.length < 6){ 
+          <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{notifications.length}}
+        </div>
+        }
+        @else if (notifications.length>5) {
+        <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
+        }     
+       </div>
+        <a [routerLink]="['']" class="Catbtn profile-list-link">Purchase history</a>
+
+      </div>
+      <div class="note-list list-last list-item">
+        <a [routerLink]="['/support']" class="Catbtn profile-list-link">Help & Support</a>
+        <a [routerLink]="['']" class="Catbtn profile-list-link">Log out</a>
+
+      </div>
       
+    </div>
+  </div>
+</div>
+}
+@else{
+
+<!--Shopping cart button-->
+
+<div class="dropdownC d-none d-md-block">
+  <a [routerLink]="['/cart']" routerLinkActive="router-link-active"><button class="Catbtn dropdown-toggle"
+      id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </button></a>
+  <div class="dropdown-content" aria-labelledby="dropdownCard">
+    <div class="dropdown-card">
+      <div class="text-btn text-empty">
+        Your Cart is Empty.
+      </div>
+      <a [routerLink]="['']" routerLinkActive="router-link-active"><button
+          class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
+    </div>
+  </div>
+</div>
+<!-- log in  -->
+<a [routerLink]="['/login']" routerLinkActive="router-link-active">
+  <div class="header-white-btn d-none d-md-block" routerLink="/login">Log in</div>
+</a>
+
+
+
+<!-- sign Up  -->
+<a [routerLink]="['/signup']" routerLinkActive="router-link-active">
+  <div class="header-black-btn d-none d-md-block" routerLink="/signup">Sign up</div>
+</a>
+
+}
+
+
+</div>
+<div #div2></div>
+<div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
+  <div class="close-btn" (click)="toggleSidebar()" [ngClass]="{ 'active': isSidebarOpen }">
+    <i class="fas fa-times"></i>
+  </div>
+  <div class="py-1"><a>Log in</a></div>
+  <div class="py-1"><a>Sign in</a></div>
+
+</div>

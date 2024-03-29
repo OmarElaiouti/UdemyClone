@@ -18,15 +18,20 @@ import { SearchService } from '../../Services/search-service/search.service';
     imports: [CourseSliderComponent, CarouselModule, ButtonModule, RouterModule, TabsToggleComponent]
 })
 export class HomeComponent {
+
     randomCourses: IcourseSmallCard[] = [];
+    randomCourses2: IcourseSmallCard[] = [];
+
     topRatedCourses: IcourseSmallCard[] = [];
     searchedCourses: IcourseSmallCard[] = [];
+
     developmentCategories: any[] = [];
     businessCategories: any[] = [];
-    itAndSoftwareCategories: any[] = [];
+    itAndSoftwareCategories: any[] = []; 
     designCategories: any[] = [];
 
     lastSearchedKeyword: string | null = null;
+
     constructor(
       private homecourseService: HomeCourseService,
        private categoryService: CategoryService,
@@ -42,6 +47,10 @@ export class HomeComponent {
         this.homecourseService.getRandomCourses().subscribe(courses => {
             this.randomCourses = courses;
         });
+
+        this.homecourseService.getRandomCourses().subscribe(courses => {
+          this.randomCourses2 = courses;
+      });
 
         this.homecourseService.getTopRatedCourses().subscribe(courses => {
           this.topRatedCourses = courses;

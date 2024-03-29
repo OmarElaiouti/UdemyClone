@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { IcategoryForNav } from '../../Models/ICategory';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
-import { NotificationService } from '../../Services/Notification-service/notification.service';
-import { IcourseSmallCard, IuserCourse } from '../../Models/ICourse';
+import { NotificationService } from '../../Services/notification-service/notification.service';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { IUser } from '../../Models/IUser';
+import { UserInfoService } from '../../Services/user-info-service/user-info.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,54 +23,20 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
-  searchValue: string = '';
-  categories: IcategoryForNav[] = [
-    {id:1,
-      name:"cat"},
-      {id:1,
-        name:"cat"},
-        {id:1,
-          name:"cat"},
-          {id:1,
-            name:"cat"},
-            {id:1,
-              name:"cat"},
-              {id:1,
-                name:"cat"}
 
-  ];
-  subcategories: IcategoryForNav[] = [{id:1,
-    name:"cat"},
-    {id:1,
-      name:"cat"},
-      {id:1,
-        name:"cat"},
-        {id:1,
-          name:"cat"},
-          {id:1,
-            name:"cat"},
-            {id:1,
-              name:"cat"}];
-  topics: IcategoryForNav[] = [{id:1,
-    name:"cat"},
-    {id:1,
-      name:"cat"},
-      {id:1,
-        name:"cat"},
-        {id:1,
-          name:"cat"},
-          {id:1,
-            name:"cat"},
-            {id:1,
-              name:"cat"}];
-  Cart: IuserCourse[] = [];
+  searchValue: string = '';
+  categories!:any[];
+  subcategories!:any[];
+  topics!:any[];
+  Cart: any[] = [];
   notifications: INotification[] = [];
-  Wishlist: IuserCourse[] = [];
+  Wishlist: any[] = [];
   activeCategory: any;
   activeSubCategory: any;
   CartTotalPrice = 0;
-  signedin: any;
+  signedin:boolean=false;
   isSidebarOpen: boolean = false;
+  user!:IUser;
 
   constructor(
     private catService: CategoryService,
@@ -78,7 +44,9 @@ export class NavbarComponent implements OnInit {
     private userCoursesService: UserCoursesService,
     private searchService: SearchService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private userService: UserInfoService
+
   ) { }
 
 
@@ -90,22 +58,19 @@ export class NavbarComponent implements OnInit {
     this.loadNotifications();
     this.loadCart();
     this.loadWishlist();
-
+    this.loadWishlist();
+    this.loadUserdata();
 
     // Set the first category as active by default
 
     // this.setActiveCategory(this.categories[0]);
     // this.setActiveSubCategory(this.subcategories[0]);
 
-    let flagValue = localStorage.getItem("flag") ?? null;
+    let flagValue = localStorage.getItem("token") ?? null;
 
     // Check if the value is not null before parsing it
-    if (flagValue == null) {
-
-      // Parse the value as JSON
-      localStorage.setItem("flag", JSON.stringify(true))
-    } else {
-      this.signedin = false;
+    if (flagValue) {
+      this.signedin = true;
     }
 
     if (this.Cart.length != 0) {
@@ -116,6 +81,12 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  loadUserdata(): void {
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+     
+    });
+  }
 
   loadCategories(): void {
     this.catService.getAllCategories().subscribe(categories => {
@@ -142,6 +113,8 @@ export class NavbarComponent implements OnInit {
       this.topics = topics;
     });
   }
+
+ 
 
   setActiveCategory(category: any): void {
     this.activeCategory = category;
@@ -171,6 +144,22 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+GetLetters(){
+  if( this.user.firstName && this.user.lastName ){
+  const firstNameInitial = this.user.firstName.charAt(0).toUpperCase();
+          const lastNameInitial = this.user.lastName.charAt(0).toUpperCase();
+          return firstNameInitial + lastNameInitial;
+  }else if(this.user.firstName){
+    const firstNameInitial = this.user.firstName.charAt(0).toUpperCase();
+return firstNameInitial;
+  }
+  else{
+    const usernameameInitial = this.user.username.charAt(0).toUpperCase();
+    return usernameameInitial;
+
+  }
+
+}
 
 
   search(searchValue: string): void {
@@ -199,41 +188,23 @@ GotoCategory(name: string): void {
 
   setDiv1Height() {
     // Accessing nativeElement to get the height
-    const div2Height = this.div1.nativeElement.offsetHeight;
+    const div1Height = this.div1.nativeElement.offsetHeight;
     // Setting height of div1 to be equal to the height of div2
-    this.div2.nativeElement.style.height = div2Height + 'px';
+    this.div2.nativeElement.style.height = div1Height + 'px';
   }
 
 
 
 
 
-
-
-
-
-  logolink(): void {
-    window.location.href = "index.html";
+  goToWishlist() {
+    this.router.navigate(['/myCourses'], { queryParams: { activeTab: 'wishlist' } });
+  }
+  goToMyLearning() {
+    this.router.navigate(['/myCourses'], { queryParams: { activeTab: 'myLearning' } });
   }
 
-  cartPage(): void {
-    window.location.href = "pages/cart.html";
-  }
 
-  loginPage(): void {
-    window.location.href = "pages/login.html";
-  }
 
-  signupPage(): void {
-    window.location.href = "pages/signup.html";
-  }
-
-  exploreCourses(): void {
-    window.location.href = "Component\category\category.component.html";
-  }
-
-  singleProduct(): void {
-    window.location.href = "pages/product.html";
-  }
 
 }

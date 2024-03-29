@@ -17,7 +17,7 @@ export class SignupService {
       map(response => {
         // Store user authentication state (e.g., in local storage or session storage)
         console.log(response);
-        localStorage.setItem('accessToken', response.token);
+        localStorage.setItem('token', response.token);
         alert("iyfi");
         return true; // Sign-up and sign-in successful
       }),
