@@ -8,6 +8,8 @@ import { UserCoursesService } from '../../Services/user-courses-service/user-cou
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
+import { IUser } from '../../Models/IUser';
+import { UserInfoService } from '../../Services/user-info-service/user-info.service';
 
 @Component({
   selector: 'app-navbar',
@@ -32,14 +34,9 @@ export class NavbarComponent implements OnInit {
   activeCategory: any;
   activeSubCategory: any;
   CartTotalPrice = 0;
-  signedin: any;
+  signedin:boolean=false;
   isSidebarOpen: boolean = false;
-  user:any={
-    firstName:"firsst",
-    lastName:"lasdvsdvt",
-    email:"eadsvsdfvslg@example.com"
-
-  };
+  user!:IUser;
 
   constructor(
     private catService: CategoryService,
@@ -47,7 +44,9 @@ export class NavbarComponent implements OnInit {
     private userCoursesService: UserCoursesService,
     private searchService: SearchService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private userService: UserInfoService
+
   ) { }
 
 
@@ -59,20 +58,18 @@ export class NavbarComponent implements OnInit {
     this.loadNotifications();
     this.loadCart();
     this.loadWishlist();
+    this.loadWishlist();
+    this.loadUserdata();
 
     // Set the first category as active by default
 
     // this.setActiveCategory(this.categories[0]);
     // this.setActiveSubCategory(this.subcategories[0]);
 
-    let flagValue = localStorage.getItem("flag") ?? null;
+    let flagValue = localStorage.getItem("token") ?? null;
 
     // Check if the value is not null before parsing it
-    if (flagValue == null) {
-
-      // Parse the value as JSON
-      localStorage.setItem("flag", JSON.stringify(true))
-    } else {
+    if (flagValue) {
       this.signedin = true;
     }
 
@@ -84,6 +81,12 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  loadUserdata(): void {
+    this.userService.getUser().subscribe(user => {
+      this.user = user;
+     
+    });
+  }
 
   loadCategories(): void {
     this.catService.getAllCategories().subscribe(categories => {
@@ -136,16 +139,28 @@ export class NavbarComponent implements OnInit {
   }
 
   loadWishlist(): void {
-    this.userCoursesService.getWishlistForNav().subscribe(wishlist => {
+    this.userCoursesService.getWishlist().subscribe(wishlist => {
       this.Wishlist = wishlist;
     });
   }
 
 GetLetters(){
+  if( this.user.firstName && this.user.lastName ){
   const firstNameInitial = this.user.firstName.charAt(0).toUpperCase();
           const lastNameInitial = this.user.lastName.charAt(0).toUpperCase();
           return firstNameInitial + lastNameInitial;
+  }else if(this.user.firstName){
+    const firstNameInitial = this.user.firstName.charAt(0).toUpperCase();
+return firstNameInitial;
+  }
+  else{
+    const usernameameInitial = this.user.username.charAt(0).toUpperCase();
+    return usernameameInitial;
+
+  }
+
 }
+
 
   search(searchValue: string): void {
     if(searchValue.length>0)

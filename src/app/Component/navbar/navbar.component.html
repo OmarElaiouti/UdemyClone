@@ -33,7 +33,7 @@
   <!--Main maineu of website-->
   <div class="dropdown d-none d-md-block px-1">
     <button class="Catbtn category-btn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown"
-      aria-expanded="false" routerLink="/category"><span>Categories</span></button>
+      aria-expanded="false" ><span>Categories</span></button>
     <div class="dropdown-menu double" aria-labelledby="dropdownSec">
       <div class="dropdown-section fsection">
         <ul>
@@ -304,7 +304,7 @@
   <div class="dropdown-content" aria-labelledby="dropdownCard">
     <div class="dropdown-card  dropdown-card-profile">
     
-      <div class="note-list list-head list-item">
+      <a [routerLink]="['/profile']" routerLinkActive="router-link-active" ><div class="note-list list-head list-item">
         <div class="circle circle2">
           <span class="initials">{{GetLetters()}}</span>
         </div>
@@ -312,12 +312,12 @@
           <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
           <div class="profile-email"><span>{{user.email}}</span></div>
         </div>
-      </div>
+      </div></a>
       <div class="note-list list-item">
-        <a class="Catbtn profile-list-link">My learning</a>
+        <a [routerLink]="['/myCourses']" routerLinkActive="router-link-active"  class="Catbtn profile-list-link">My learning</a>
         <div class="link-with-alert">
 
-        <a class="Catbtn profile-list-link">My cart</a>
+        <a [routerLink]="['/cart']" routerLinkActive="router-link-active"  class="Catbtn profile-list-link">My cart</a>
         @if(Cart.length != 0 && Cart.length < 6){ 
           <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{Cart.length}}
         </div>
@@ -326,17 +326,17 @@
         <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
         }
 </div>
-        <a class="Catbtn profile-list-link">Wishlist</a>
+        <a (click)="goToWishlist()"  class="Catbtn profile-list-link">Wishlist</a>
 
       </div>
       <div class="note-list list-item">
-        <a class="Catbtn profile-list-link">Account setting</a>
-        <a class="Catbtn profile-list-link">Edit profile</a>
+        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Account setting</a>
+        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Edit profile</a>
 
       </div>
       <div class="note-list list-item">
         <div class="link-with-alert">
-        <a class="Catbtn profile-list-link ">Notifications</a>
+        <a [routerLink]="['/notifications']" class="Catbtn profile-list-link ">Notifications</a>
         @if(notifications.length != 0 && notifications.length < 6){ 
           <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{notifications.length}}
         </div>
@@ -345,12 +345,12 @@
         <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
         }     
        </div>
-        <a class="Catbtn profile-list-link">Purchase history</a>
+        <a [routerLink]="['']" class="Catbtn profile-list-link">Purchase history</a>
 
       </div>
       <div class="note-list list-last list-item">
-        <a class="Catbtn profile-list-link">Help & Support</a>
-        <a class="Catbtn profile-list-link">Log out</a>
+        <a [routerLink]="['/support']" class="Catbtn profile-list-link">Help & Support</a>
+        <a [routerLink]="['']" class="Catbtn profile-list-link">Log out</a>
 
       </div>
       

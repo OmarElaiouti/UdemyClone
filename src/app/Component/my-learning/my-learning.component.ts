@@ -16,8 +16,8 @@ export class MyLearningComponent implements OnInit {
   wishlistCourses: any[] = [];
 
   constructor(private userCoursesService: UserCoursesService,private route:ActivatedRoute) { }
-  activeTab: string = '';
-  headTitle: string = ''
+  activeTab: string = 'myLearning';
+  headTitle: string = 'My Learning'
 
   ngOnInit(): void {
 

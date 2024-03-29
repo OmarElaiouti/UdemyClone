@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IcoursesMylearning } from '../../Models/ICourse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserCoursesService {
   constructor(private http: HttpClient) {}
 
   getMyLearningCourses(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<IcoursesMylearning[]>(this.apiUrl);
   }
 
   getCart(): Observable<any[]> {
@@ -23,16 +24,20 @@ export class UserCoursesService {
     return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
   }
 
-  getWishlistForNav(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
+
+  addToCart(id: number): Observable<any> {
+    // Create a request body object containing the course ID
+    const requestBody = { courseId: id };
+  
+    // Make a POST request to the API endpoint with the request body
+    return this.http.post(`${this.apiUrl}/cart`, requestBody);
   }
 
-  addToCart(course: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/cart`, course);
-  }
+  addToWishlist(id: number): Observable<any> {
 
-  addToWishlist(course: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/wishlist`, course);
+    const requestBody = { courseId: id };
+
+    return this.http.post(`${this.apiUrl}/wishlist`, requestBody);
   }
 
 }

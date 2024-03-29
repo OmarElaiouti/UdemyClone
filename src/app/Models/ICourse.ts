@@ -1,4 +1,5 @@
 export interface Icourses {
+    id:number
     name:string;
     disc:string;
     instructor:string;
@@ -11,6 +12,7 @@ export interface Icourses {
 
 
 export interface IcoursesMylearning {
+  id:number
   name:string;
   Image:string;
   instructor:string;
@@ -18,6 +20,8 @@ export interface IcoursesMylearning {
   progress:number;
 //for my learning
 }
+
+
 
 export interface IcourseSmallCard {
     id:number;
@@ -28,7 +32,7 @@ export interface IcourseSmallCard {
     price:number;
 }
 
-  //for nav bar and slider and wishlist in navbar
+  //for slider and wishlist in navbar
 
 
 
