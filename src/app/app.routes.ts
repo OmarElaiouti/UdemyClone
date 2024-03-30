@@ -36,7 +36,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'lessons', component: CourseDetailsComponent },
   { path: 'notifications', component: NotificationComponent },
-\  { path: 'checkout', component: CheckOutComponent },
+  { path: 'checkout', component: CheckOutComponent },
 
 
 
