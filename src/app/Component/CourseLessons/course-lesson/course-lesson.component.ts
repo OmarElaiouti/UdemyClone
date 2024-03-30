@@ -11,39 +11,38 @@ import { FormsModule } from '@angular/forms';
 import { OverviewComponent } from '../../overview/overview.component';
 import { QComponent } from "../../q/q.component";
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
+
+
+interface Lesson {
+  title: string;
+  url: string;
+  watched: boolean;
+  time: number;
+}
 
 @Component({
-    selector: 'app-course-lesson',
-    standalone: true,
-    templateUrl: './course-lesson.component.html',
-    styleUrl: './course-lesson.component.css',
-    imports: [FooterComponent,
-        AccordionModule,
-        OverlayPanelModule,
-        ProgressBarModule,
-        VgCoreModule,
-        VgControlsModule,
-        VgOverlayPlayModule,
-        VgBufferingModule, FormsModule, OverviewComponent, QComponent,MatCardModule]
+  selector: 'app-course-lesson',
+  standalone: true,
+  templateUrl: './course-lesson.component.html',
+  styleUrl: './course-lesson.component.css',
+  imports: [FooterComponent,
+    AccordionModule,
+    OverlayPanelModule,
+    ProgressBarModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule, FormsModule, OverviewComponent, QComponent, MatCardModule,]
 })
+
 export class CourseLessonComponent {
-circleSize=40;
-value="30";
-videoCount: number = 0;
-showCertificate: boolean = true;
-
-watchVideo() {
-  this.videoCount++;
-}
-getCertificate() {
-  if (this.videoCount >= 2) {
-    alert("Congratulations! You've earned a certificate in Angular.");
-    this.showCertificate = true;
-
-  } else {
-    alert('You need to watch more videos to earn the certificate.');
-  }
-}
+  circleSize = 40;
+  value = '30';
+  videoCount = 0;
+  showCertificate = true;
+  watchedLessons: number = 0; // Declare watchedLessons property
+  totalLessons: number = 0; // Declare totalLessons property
 
   toggleAccordion(accordionId: string) {
     const accordionContent = document.getElementById(accordionId);
@@ -55,87 +54,82 @@ getCertificate() {
   sections: any[] = [
     {
       title: 'Introduction',
-      numsection:[{num:1},{num:2}],
+      numsection: [{ num: 1 }, { num: 2 }],
       lessons: [
-        { title: '1. Video ', url: 'video1.mp4', watched: false,time:22 },
-        { title: '2. Video', url: 'video2.mp4', watched: false,time:55 },
-        { title: '3. Video ', url: 'video3.mp4', watched: false,time:32 }
-      ]
+        { title: '1. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 22 },
+        { title: '2. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 55 },
+        { title: '3. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 32 },
+      ],
     },
     {
       title: 'Accordion 2',
       lessons: [
-        { title: '4. Video ', url: 'video4.mp4', watched: false,time:30 },
-        { title: '5. Video ', url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", watched: false,time:35 },
-        { title: '6. Video ', url: 'video6.mp4', watched: false,time:60 }
-      ]
-    }
-    // Add more sections as needed
+        { title: '4. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 30 },
+        {
+          title: '5. Video',
+          url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          watched: false,
+          time: 35,
+        },
+        { title: '6. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 60 },
+      ],
+    },
   ];
+
+  // constructor() {}
 
   loadVideo(videoUrl: string) {
     const videoPlayer = document.getElementById('singleVideo') as HTMLVideoElement;
     videoPlayer.src = videoUrl;
     videoPlayer.load();
   }
-  updateWatchedStatus(videoTitle: string) {
-    const videoToUpdate = this.sections
-      .flatMap(section => section.lessons) // Flatten the array of videos
-      .find(lesson => lesson.title === videoTitle); // Find the video with the provided title
 
-    if (videoToUpdate) {
-      videoToUpdate.watched = !videoToUpdate.watched; // Toggle watched status
-    }
+  updateWatchedStatus() {
+    this.watchedLessons = this.sections.reduce((total, section) => {
+      return total + section.lessons.filter((lesson: Lesson) => lesson.watched).length;
+    }, 0);
   }
 
-
-
-  showTab(tabId: string) {
-    const tabs = document.querySelectorAll('.tab-view');
-    const buttons = document.querySelectorAll('.tab-button');
-    tabs.forEach(tab => {
-      tab.classList.remove('active');
-    });
-    buttons.forEach(button => {
-      button.classList.remove('active');
-    });
-    const selectedTab = document.getElementById(tabId);
-    if (selectedTab) {
-      selectedTab.classList.add('active');
-      const button = document.querySelector(`[onclick="showTab('${tabId}')"]`);
-      if (button) {
-        button.classList.add('active');
-      }
+  calculateProgress(): number {
+    const totalLessons = this.sections.reduce((total, section) => {
+      return total + section.lessons.length;
+    }, 0);
+    if (totalLessons === 0) {
+      return 0;
     }
+    return (this.watchedLessons / totalLessons) * 100;
   }
 
   videoItems = [
     {
       name: 'Video one',
-      src:  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      type: 'video/mp4'
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      type: 'video/mp4',
     },
     {
       name: 'Video two',
-      src:  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      type: 'video/mp4'
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      type: 'video/mp4',
     },
     {
       name: 'Video three',
-      src:  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      type: 'video/mp4'
-    }
+      src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+      type: 'video/mp4',
+    },
   ];
+
   activeIndex = 0;
   currentVideo = this.videoItems[this.activeIndex];
   data: any;
-  constructor() { }
+
   ngOnInit(): void { }
+
   videoPlayerInit(data: any) {
     this.data = data;
     this.data.getDefaultMedia().subscriptions.loadedMetadata.subscribe(this.initVdo.bind(this));
     this.data.getDefaultMedia().subscriptions.ended.subscribe(this.nextVideo.bind(this));
   }
+
   nextVideo() {
     this.activeIndex++;
     if (this.activeIndex === this.videoItems.length) {
@@ -143,11 +137,39 @@ getCertificate() {
     }
     this.currentVideo = this.videoItems[this.activeIndex];
   }
+
   initVdo() {
     this.data.play();
   }
+
   startPlaylistVdo(item: any, index: number) {
     this.activeIndex = index;
     this.currentVideo = item;
   }
+
+  ///////////////
+  progressBarHidden: boolean = true;
+
+  toggleProgressBar() {
+    this.progressBarHidden = !this.progressBarHidden;
+  }
+
+  ///////////////
+  constructor(private router: Router) { } // Inject the Router service
+
+  // calculateProgress(): number {
+  //   if (this.totalLessons === 0) {
+  //     return 0;
+  //   }
+  //   const progress = (this.watchedLessons / this.totalLessons) * 100;
+  //   if (progress === 100) {
+  //     this.navigateToCertificate(); // Navigate to certificate page when progress reaches 100%
+  //   }
+  //   return progress;
+  // }
+
+  navigateToCertificate() {
+    this.router.navigate(['/certificate']); // Navigate to certificate page
+  }
+
 }
