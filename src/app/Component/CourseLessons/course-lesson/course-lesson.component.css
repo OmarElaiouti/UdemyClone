@@ -327,32 +327,33 @@ vg-mute {
 
 /* /// */
 
+
+/* Progress bar container */
 .custom-progress-bar {
-  
-  width: 100%;
-  height: 20px;
-  background-color: #f0f0f0;
-  /* Background color of the progress bar container */
-  border-radius: 10px;
-  /* Adjust border radius to change the shape of the progress bar */
-  margin-top: 10px;
+  width: 100%; /* Adjust width as needed */
+  height: 20px; /* Adjust height as needed */
+  background-color: #f0f0f0; /* Background color of the progress bar container */
+  border-radius: 4px; /* Border radius for rounded corners */
+
+  /* Add any additional styles as needed */
 }
 
+/* Progress bar */
 .progress-bar {
   height: 100%;
-  background-color: #007bff;
-  /* Color of the progress bar */
-  border-radius: 10px;
-  /* Ensure same border radius as container */
-  transition: width 0.3s ease;
-  /* Smooth transition for width changes */
+  background-color: #4caf50; /* Color of the progress bar */
+  border-radius: 4px; /* Border radius for rounded corners */
+  transition: width 0.3s ease; /* Smooth transition effect for width changes */
+
+  /* Set initial width to 0 */
+  width: 0;
 }
 
-/* .border {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-} */
+/* Hide element */
+.hide {
+  display: none;
+}
+
 
 .fa-trophy {
   text-align: center;
@@ -364,13 +365,4 @@ vg-mute {
   height: 30px;
   margin-right: 20px;
 
-}
-/* .cup{
-  text-align: center;
-  padding-top: 5px;
-
-} */
-
-.hide {
-  display: none;
 }

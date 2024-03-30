@@ -90,15 +90,15 @@ export class CourseLessonComponent {
     }, 0);
   }
 
-  calculateProgress(): number {
-    const totalLessons = this.sections.reduce((total, section) => {
-      return total + section.lessons.length;
-    }, 0);
-    if (totalLessons === 0) {
-      return 0;
-    }
-    return (this.watchedLessons / totalLessons) * 100;
-  }
+  // calculateProgress(): number {
+  //   const totalLessons = this.sections.reduce((total, section) => {
+  //     return total + section.lessons.length;
+  //   }, 0);
+  //   if (totalLessons === 0) {
+  //     return 0;
+  //   }
+  //   return (this.watchedLessons / totalLessons) * 100;
+  // }
 
   videoItems = [
     {
@@ -122,7 +122,7 @@ export class CourseLessonComponent {
   currentVideo = this.videoItems[this.activeIndex];
   data: any;
 
-  ngOnInit(): void { }
+  // ngOnInit(): void { }
 
   videoPlayerInit(data: any) {
     this.data = data;
@@ -155,7 +155,7 @@ export class CourseLessonComponent {
   }
 
   ///////////////
-  constructor(private router: Router) { } // Inject the Router service
+  // constructor(private router: Router) { } // Inject the Router service
 
   // calculateProgress(): number {
   //   if (this.totalLessons === 0) {
@@ -167,6 +167,78 @@ export class CourseLessonComponent {
   //   }
   //   return progress;
   // }
+  // constructor(private router: Router) {
+  //   console.log('watchedLessons:', this.watchedLessons);
+  //   console.log('totalLessons:', this.totalLessons);
+  // }
+  // calculateProgress(): { percentage: number, completed: boolean } {
+  //   const totalLessons = this.sections.reduce((total, section) => {
+  //     return total + section.lessons.length;
+  //   }, 0);
+  //   if (totalLessons === 0) {
+  //     return { percentage: 0, completed: false };
+  //   }
+  //   const progress = (this.watchedLessons / totalLessons) * 100;
+  //   return { percentage: progress, completed: progress >= 100 };
+  // }
+  
+
+//   progress: number = 0;
+
+// calculateProgress(): number {
+//     if (this.totalLessons === 0) {
+//       return 0;
+//     }
+//     const progress = (this.watchedLessons / this.totalLessons) * 100;
+//     if (progress === 100) {
+//       this.navigateToCertificate(); // Navigate to certificate page when progress reaches 100%
+//     }
+//     return progress;
+// }
+
+// ngOnInit() {
+//     this.progress = this.calculateProgress();
+// }
+
+constructor( private router:Router) {
+}
+
+// ngOnInit(): void {
+//   // Calculate progress when the component is initialized
+//   this.calculateProgress();
+// }
+progress: number = 0; // Declare the progress property
+completed: boolean = false;
+
+// calculateProgress(): void {
+//   const totalLessons = this.sections.reduce((total, section) => {
+//     return total + section.lessons.length;
+//   }, 0);
+//   if (totalLessons === 0) {
+//     this.progress = 0;
+//   } else {
+//     this.progress = (this.watchedLessons / totalLessons) * 100;
+//   }
+//    this.completed = this.progress >= 100;
+// }
+
+calculateProgress(): number {
+  const totalLessons = this.sections.reduce((total, section) => {
+    return total + section.lessons.length;
+  }, 0);
+  if (totalLessons === 0) {
+    return 0;
+    
+  }
+  this.progress = (this.watchedLessons / totalLessons) * 100;
+  this.completed = this.progress >= 100;
+  return (this.watchedLessons / totalLessons) * 100;
+
+}
+
+  
+
+
 
   navigateToCertificate() {
     this.router.navigate(['/certificate']); // Navigate to certificate page

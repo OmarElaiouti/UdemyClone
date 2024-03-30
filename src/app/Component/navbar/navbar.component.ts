@@ -3,7 +3,6 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
-
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
