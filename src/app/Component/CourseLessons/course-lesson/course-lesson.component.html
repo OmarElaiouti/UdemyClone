@@ -27,20 +27,22 @@
 
 
         <!-- <div class="items-header-prog" [class.hide]="progressBarHidden">
-        <div class="custom-progress-bar">
-          <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
-        </div>
+            <div class="custom-progress-bar">
+                <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
+            </div>
 
-      </div> -->
+        </div> -->
 
         <div class="items-header-prog" [class.hide]="progressBarHidden">
             <div class="custom-progress-bar">
                 <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
             </div>
-            <ng-container *ngIf="calculateProgress() === 100">
-                <p>Congratulations! You have completed the course. <a (click)="navigateToCertificate()">View
-                        Certificate</a></p>
+            @if(progress==100){
+            <ng-container>
+                <div>Congratulations! You have completed all lessons.</div>
+                <a routerLink="/certificate">Go to certificate page</a>
             </ng-container>
+            }
         </div>
 
 
