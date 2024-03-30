@@ -3,15 +3,17 @@ import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
+import { UserCoursesService } from '../../../Services/user-courses-service/user-courses.service';
 
 @Component({
   selector: 'app-course-slider',
   standalone: true,
-  imports: [CarouselModule,ButtonModule,RouterModule,TooltipModule  ],  
+  imports: [CarouselModule,ButtonModule,RouterModule,TooltipModule  ],
   templateUrl: './course-slider.component.html',
   styleUrl: './course-slider.component.css'
 })
 export class CourseSliderComponent {
+  courseId!:number;
 displayCourse(_t36: any) {
 throw new Error('Method not implemented.');
 }
@@ -20,7 +22,7 @@ throw new Error('Method not implemented.');
 }
   @Input() courses: any[] = [];
 
-
+constructor(private usercoursesService:UserCoursesService){}
   // Responsive options for the carousel
   responsiveOptions= [
     {
@@ -40,6 +42,20 @@ throw new Error('Method not implemented.');
     }
     // Add more responsive options as needed
   ];
+
+  AddToCart() {
+    // Call the addToCart function from the cart service when the button is clicked
+    this.usercoursesService.addToCart(this.courseId).subscribe(
+      response => {
+        // Handle success response if needed
+        console.log('Course added to cart successfully:', response);
+      },
+      error => {
+        // Handle error if needed
+        console.error('Error adding course to cart:', error);
+      }
+    );
+  }
 
   // Function to get the severity for the inventory status
   getStarArray(rating: number): number[] {

@@ -1,4 +1,5 @@
 export interface IcourseDetails {
+  id:number;
   categoryName:string;
   subcatName:string;
   topicName:string;
@@ -10,7 +11,7 @@ export interface IcourseDetails {
   LastUpdate:Date;
   videoUrl:string;
   price:number;
-  YouWillLearn:[{id:number,content:string}];//8
+  Objectives:[{id:number,content:string}];//8
   totalsection:number;
   totallecture:number;
   totalhours:number;

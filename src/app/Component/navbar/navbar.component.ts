@@ -51,8 +51,8 @@ export class NavbarComponent implements OnInit {
   ) { }
 
 
-  
-  
+
+
   ngOnInit() {
 
     this.loadCategories();
@@ -85,7 +85,7 @@ export class NavbarComponent implements OnInit {
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
       this.user = user;
-     
+
     });
   }
 
@@ -115,7 +115,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
- 
+
 
   setActiveCategory(category: any): void {
     this.activeCategory = category;
