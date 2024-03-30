@@ -3,13 +3,14 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
-import { NotificationService } from '../../Services/notification-service/notification.service';
+
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { SearchService } from '../../Services/search-service/search.service';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 import { IUser } from '../../Models/IUser';
 import { UserInfoService } from '../../Services/user-info-service/user-info.service';
+import { NotificationService } from '../../Services/Notification-service/notification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -50,8 +51,8 @@ export class NavbarComponent implements OnInit {
   ) { }
 
 
-  
-  
+
+
   ngOnInit() {
 
     this.loadCategories();
@@ -84,7 +85,7 @@ export class NavbarComponent implements OnInit {
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
       this.user = user;
-     
+
     });
   }
 
@@ -114,7 +115,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
- 
+
 
   setActiveCategory(category: any): void {
     this.activeCategory = category;

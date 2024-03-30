@@ -1,5 +1,5 @@
 <p-carousel [value]="courses" [numVisible]="5" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
-        
+
             <ng-template let-course pTemplate="item">
 
                 <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        
+
         <ng-template #tooltipContent>
             <div>
                 <p class="toolip-crs-name">{{ course.name}}</p>
@@ -38,16 +38,16 @@
                 }
                   </ul>
                   <div class="btns-wrapper">
-                <button class="cart-btn">Add to Cart</button>
+                <button class="cart-btn"(click)="AddToCart()">Add to Cart</button>
                 <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
             </div>
             </div>
         </ng-template>
     </ng-template>
-    
-    
-    
-            
+
+
+
+
             <ng-template pTemplate="footer">
             </ng-template>
             <ng-template pTemplate="previousicon">
