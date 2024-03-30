@@ -18,4 +18,7 @@ export class UserInfoService {
     return this.http.put<IUser>('/api/userinfo', user);
   }
 
+  deleteUser(): Observable<any> {
+    return this.http.delete<any>('/api/userinfo');
+  }
 }
