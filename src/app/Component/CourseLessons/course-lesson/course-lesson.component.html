@@ -12,38 +12,50 @@
 
     </div>
 
-    <div class="items-header-prog">
-        <p-progressBar [value]="85">
-            <ng-template pTemplate="content" let-value>
-                <span>85/100</span>
-            </ng-template>
-        </p-progressBar>
 
 
-    </div>
-
-    <div class="items-header-btn">
+    <!-- <div class="items-header-btn">
 
         <div class="circle" [style.width.px]="circleSize" [style.height.px]="circleSize"></div>
-        <i class="fa-solid fa-trophy" (click)="getCertificate()"></i>
-        <div class="certificate-card" *ngIf="showCertificate">
-            <div class="card-content">
-                Congratulations! You've earned a certificate in Angular.
-            </div>
+        <i class="fa-solid fa-trophy"></i>
+    </div> -->
+
+    <section style=" display: flex; margin-left: 600px;">
+
+
+        <div class="cup" (click)="toggleProgressBar()"> <i class="fa-solid fa-trophy"></i></div>
+
+
+        <!-- <div class="items-header-prog" [class.hide]="progressBarHidden">
+        <div class="custom-progress-bar">
+          <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
         </div>
 
-    </div>
+      </div> -->
+
+        <div class="items-header-prog" [class.hide]="progressBarHidden">
+            <div class="custom-progress-bar">
+                <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
+            </div>
+            <ng-container *ngIf="calculateProgress() === 100">
+                <p>Congratulations! You have completed the course. <a (click)="navigateToCertificate()">View
+                        Certificate</a></p>
+            </ng-container>
+        </div>
 
 
+        <P style="color: white;margin-right: 30px;margin-top: 11px; ">Your progress </P>
+
+        <button class="share-button"><i class="fa-solid fa-share"></i> Share</button>
+
+        <div class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i> </div>
+    </section>
 
 
-    <div class="items-header-btn">
-        <div class="btn-icon">
-            <i class="fa-solid fa-star"></i>
-    </div>
-    </div>
 
 </div>
+
+
 
 <div class="main">
     <div id="video-container">
@@ -69,11 +81,13 @@
                 </vg-controls>
                 <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin>
                     <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-                    <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
-                    <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
+                    <track kind="subtitles" label="English"
+                        src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt" srclang="en" default>
+                    <track kind="subtitles" label="Español"
+                        src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt" srclang="es">
                 </video>
             </vg-player>
-          </div>
+        </div>
 
 
 
@@ -102,10 +116,11 @@
             </ul>
             <div class="tab-content pt-5" id="tab-content">
                 <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
-                        <app-overview></app-overview>
+                    <app-overview></app-overview>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
-                    <app-q></app-q></div>
+                    <app-q></app-q>
+                </div>
                 <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
                     hello
                     <pre>
@@ -179,40 +194,72 @@
     </div>
 
 
-
     <div class="sidebar-wrapper">
         <div class="accordion fixed-header">
             <p>Course Content</p>
         </div>
         <div id="sidebar">
-            <!-- Sidebar content here -->
 
             <div class="sections-wrapper">
                 @for(section of sections;track $index){
 
                 <div class="accordion">
 
-                  <div class="accordion-header" (click)="toggleAccordion(section.title)">Section:{{ section.title }}</div>
-                  <div class="accordion-content" id="{{ section.title }}">
-                    <ul>
-                        @for(lesson of section.lessons;track $index){
-                          <div style="display: flex;margin: 10px;">
-                      <input type="checkbox" [(ngModel)]="lesson.watched" (change)="updateWatchedStatus(lesson.title)" (click)="watchVideo()"> <!-- Add checkbox -->
-                      <li (click)="loadVideo(lesson.url)" style="margin-left: 10px;">{{ lesson.title }}</li>
+                    <div class="accordion-header" (click)="toggleAccordion(section.title)">Section:{{ section.title }}
                     </div>
-                    <div style="margin-left: 30px;display: flex;">
-                        <p><i class="fa-solid fa-circle-play"></i></p>
-                        <p id="tim">{{lesson.time}}<span>min</span></p>
+                    <div class="accordion-content" id="{{ section.title }}">
+                        <ul>
+                            @for(lesson of section.lessons;track $index){
+                            <div style="display: flex;margin: 10px;">
+                                <input type="checkbox" [(ngModel)]="lesson.watched" (change)="updateWatchedStatus()">
+                                <li (click)="loadVideo(lesson.url)" style="margin-left: 10px;">{{ lesson.title }}</li>
+                            </div>
+                            <div style="margin-left: 30px;display: flex;">
+                                <p><i class="fa-solid fa-circle-play"></i></p>
+                                <p id="tim">{{lesson.time}}<span>min</span></p>
+                            </div>
+                            }
+                        </ul>
                     </div>
-                        }
-                    </ul>
-                  </div>
                 </div>
 
-            }
-              </div>
+                }
+            </div>
 
         </div>
     </div>
+
+
+
+    <!-- <div class="sidebar-wrapper">
+  <div class="accordion fixed-header">
+    <p>Course Content</p>
+  </div>
+  <div id="sidebar">
+    <div class="sections-wrapper">
+      <div *ngFor="let section of sections">
+        <div class="accordion">
+          <div class="accordion-header" (click)="toggleAccordion(section.title)">Section: {{ section.title }}</div>
+          <div class="accordion-content" id="{{ section.title }}">
+            <ul>
+              <div *ngFor="let lesson of section.lessons">
+                <div class="lesson-item">
+                  <input type="checkbox" [(ngModel)]="lesson.watched" (change)="updateWatchedStatus()">
+                  <li (click)="loadVideo(lesson.url)" class="lesson-title">{{ lesson.title }}</li>
+                </div>
+                <div class="lesson-details">
+                  <p><i class="fa-solid fa-circle-play"></i></p>
+                  <p>{{ lesson.time }}<span>min</span></p>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
 
 </div>

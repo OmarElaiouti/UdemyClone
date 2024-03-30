@@ -17,12 +17,12 @@ export class AccountProfileComponent {
 
   
   user: IUser = {
-    firstName: 'John',
-    lastName: 'Doe',
-    username: 'johndoe',
-    email: 'john@example.com',
-    headline: 'Software Engineer',
-    Biography: 'Lorem ipsum dolor sit amet, rrr adipiscing elit.',
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    headline: '',
+    Biography: '',
     image:'' 
   };
 
@@ -42,7 +42,33 @@ constructor(private userService:UserInfoService,private http:HttpClient){}
         console.error('Error fetching user information:', err);
       }
   });
+
   }
+
+ 
+  confirmClose() {
+   
+    const confirmed = confirm('Are you sure you want to close your account?');
+  
+    if (confirmed) {
+      this.closeaccount();
+    }
+  }
+
+
+  closeaccount() {
+    localStorage.removeItem('token');
+    this.userService.deleteUser().subscribe({
+      next: () => {
+        console.log( 'Account deletion request sent successfully!');
+      },
+      error: err => {
+        console.error( 'Error deleting user account:', err);
+      }
+    });
+  
+  }
+
 
   submitchanges() {
     this.userService.updateUser(this.user).subscribe({

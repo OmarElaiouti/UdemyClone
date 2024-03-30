@@ -1017,8 +1017,10 @@ white-space: nowrap;
 }
 .n2{
     visibility: visible;
-background-image: none;
+
 color: #2d2f31;
+
+
 }
 .btn2{
     font-weight: 700;
