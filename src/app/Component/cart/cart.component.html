@@ -25,24 +25,24 @@
               <div style="display: flex;">
               <div class="product">
                 <div>
-                <img class="image" src="{{item.img}}">
+                <img class="image" src="{{item.image}}">
                 </div>
                 <div id="mainText">
-                  <p class="courseName text">{{item.title}}</p>
-                  <p class="tutor text">{{item.instructor}}</p>
+                  <p class="courseName text">{{item.name}}</p>
+                  <p class="tutor text">{{item.instructorName}}</p>
                   <div class="star-ratings-css">
-                    <div class="star-ratings" [style.width]="(item.rating / 5) * 100 + '%'">
-                        <span><b>{{ item.rating }} </b> </span>
-                        <span *ngFor="let star of getStarArray(item.rating); let i = index">
+                    <div class="star-ratings" [style.width]="(item.rate / 5) * 100 + '%'">
+                        <span><b>{{ item.rate }} </b> </span>
+                        <span *ngFor="let star of getStarArray(item.rate); let i = index">
                             <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
                         </span>
-                        <span class="num-reviewers">({{ item.numReviewers }})</span>
+                        <span class="num-reviewers">({{ item.reviewersNumber }})</span>
                     </div>
                 </div>
                 <div style="display: flex;">
-                  <p style="opacity: 0.7;">total hours{{item.duration}}</p>
-                  <p class="left">lectures{{item.lectures}}</p>
-                  <p class="left">{{item.difficulity}}</p>
+                  <p style="opacity: 0.7;">total hours{{item.totalHours}}</p>
+                  <p class="left">lectures{{item.totalLessons}}</p>
+                  <p class="left">{{item.level}}</p>
                 </div>
 
                 </div>

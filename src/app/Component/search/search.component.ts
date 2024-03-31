@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
-import { Icourses } from '../../Models/ICourse';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LastsliderComponent } from '../lastslider/lastslider.component';
@@ -8,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { NavigationEnd, Router ,ActivatedRoute} from '@angular/router';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ButtonModule } from 'primeng/button';
+import { Icourselong } from '../../Models/ICourse';
 
 
 @Component({
@@ -20,8 +20,15 @@ import { ButtonModule } from 'primeng/button';
 export class SearchComponent implements OnInit {
 
 
-  results!:any[];
-
+  courses: Icourselong[] = []; // Assuming your course data structure
+  filteredCourses: Icourselong[] = [];
+  durationFilters: number[] = [];
+  
+  pagedCourses: Icourselong[] = [];
+  rows: number = 5;
+  first: number = 0;
+  
+  
   constructor(
     private searchService:SearchService, 
     private router: Router,
@@ -34,11 +41,13 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const searchValue = params['search'];
       if (searchValue) {
+        this.searchTerm = searchValue
         // Use the searchValue here, you can call your search service function or perform any other actions
         this.searchService.searchCoursesForSearchResult(searchValue).subscribe({
           next: (courses: any[]) => {
-            this.results = courses;
-            console.log(this.results.length);
+            this.courses = courses
+            this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
+            this.applyFilters();
           },
           error: (error) => {
             console.error('Error fetching courses:', error);
@@ -84,27 +93,10 @@ toggleSection() {
 
 
 
-courses: any[] = []; // Assuming your course data structure
-filteredCourses: any[] = [];
-durationFilters: number[] = [];
 
-pagedCourses: any[] = [];
-rows: number = 5;
-first: number = 0;
-
-
-
-
-fetchCourses() {
-    this.courses = this.results
-   this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
-    this.applyFilters();
-
- 
-}
 
 filterCourses(rating: number) {
-  this.filteredCourses = this.courses.filter(course => course.rating >= rating);
+  this.filteredCourses = this.courses.filter(course => course.rate >= rating);
 }
 
 
@@ -115,7 +107,7 @@ applyFilters() {
   this.filteredCourses = this.courses.filter(course => {
       if (this.durationFilters.length === 0) return true; // If no duration filter selected, include all courses
 
-      const duration = course.totalHour; // Assuming 'totalHour' is a property in your course object
+      const duration = course.totalHours; // Assuming 'totalHour' is a property in your course object
       for (const filter of this.durationFilters) {
           if (this.checkDuration(duration, filter)) return true;
       }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Icourse, Icourselong } from '../../Models/ICourse';
 
 @Component({
   selector: 'app-my-learning',
@@ -12,25 +13,48 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MyLearningComponent implements OnInit {
 
-  myCourses: any[] = [];
-  wishlistCourses: any[] = [];
+  myCourses: Icourselong[] = [];
+  wishlistCourses: Icourselong[] = [];
 
-  constructor(private userCoursesService: UserCoursesService,private route:ActivatedRoute) { }
+  constructor(private userCoursesService: UserCoursesService,private route:ActivatedRoute,private router:Router) { }
+  
   activeTab: string = 'myLearning';
   headTitle: string = 'My Learning'
 
   ngOnInit(): void {
+
 
     this.route.queryParams.subscribe(params => {
       this.activeTab = params['activeTab'];console.log(this.activeTab);
       
       if(this.activeTab == 'myLearning'){
         this.headTitle = 'My Learning';
+        this.userCoursesService.getMyLearningCourses().subscribe(
+          {
+            next: courses => {
+            this.myCourses = courses;
+          },
+          error: err => {
+            console.error('Error fetching courses:', err);
+          }
+        })
+    
       }
       else if(this.activeTab == 'wishlist'){
         this.headTitle = 'My Wishlist';
+        this.userCoursesService.getWishlist().subscribe(
+          {
+            next: courses => {
+            this.wishlistCourses = courses;
+          },
+          error: err => {
+            console.error('Error fetching courses:', err);
+          }
+        })
         
       }
+
+
       console.log(this.headTitle);
     });
     this.fetchCourses();
@@ -57,6 +81,19 @@ export class MyLearningComponent implements OnInit {
       }
     })
 
+  }
+
+
+  changeTitleToWishlist(){
+    this.headTitle = "My Wishlist"
+  }
+
+  changeTitleToMylearning(){
+    this.headTitle = "My Learning"
+  }
+
+  gotoLessons(id: number) {
+    this.router.navigate(['lessons', id]);
   }
 
   getStarArray(rating: number): number[] {

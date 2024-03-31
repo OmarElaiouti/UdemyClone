@@ -158,7 +158,7 @@
           <div class="course-card wishlist-card">
             <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
               <div class="course-img">
-                <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg"
+                <img src="{{course.image}}"
                   alt="Course Image">
               </div>
             </a>
@@ -167,13 +167,13 @@
               <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
                 <p>{{course.name}}</p>
               </a>
-              <p class="ins-font">{{course.instructor}}</p>
+              <p class="ins-font">{{course.instructorName}}</p>
               <p class="price-font">${{course.price}}</p>
             </div>
           </div>
 
           <div class="wishlist-btn">
-            <button class="header-white-btn bisns-btn">Add to cart</button>
+            <button (click)="AddToCart(course.id)" class="header-white-btn bisns-btn">Add to cart</button>
           </div>
         </div>
 
@@ -212,11 +212,11 @@
       </div>
       }
       @else{
-      @for(course of Cart.slice(0,3);track course.id){
+      @for(course of Cart.slice(0,5);track course.id){
       <div class="course-card">
         <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
           <div class="course-img">
-            <img src="https://www.treeguideuk.co.uk/wp-content/uploads/2021/07/cedar-of-lebanon-1-273x300.jpg"
+            <img src="{{course.image}}"
               alt="Course Image">
           </div>
         </a>
@@ -224,7 +224,7 @@
           <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
             <p>{{course.name}}</p>
           </a>
-          <p class="ins-font">{{course.instructor}}</p>
+          <p class="ins-font">{{course.instructorName}}</p>
           <p class="price-font">${{course.price}}</p>
         </div>
       </div>
@@ -295,7 +295,7 @@
       </div>
     </a>
 
-    @if(notifications.length != 0 || Cart.length != 0){
+    @if(notifications.length > 0 || Cart.length > 0 || Wishlist.length >0){
 
     <div class="alert alert-solid"></div>
 
@@ -309,7 +309,14 @@
           <span class="initials">{{GetLetters()}}</span>
         </div>
         <div class="list-refer">
-          <div class="profile-name">{{user.firstName}} {{user.lastName}}</div>
+          @if(user.firstName !== "" && user.lastName !== ""){
+          <div class="profile-name" ><span>{{user.firstName}} {{user.lastName}}</span></div>
+          }
+          
+          @if(user.userName !== ""){
+            <div class="profile-name"><span>{{user.userName}}</span></div>
+          }
+
           <div class="profile-email"><span>{{user.email}}</span></div>
         </div>
       </div></a>
@@ -325,9 +332,18 @@
         @else if (Cart.length>5) {
         <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
         }
-</div>
-        <a (click)="goToWishlist()"  class="Catbtn profile-list-link">Wishlist</a>
+</div >
+<div class="link-with-alert">
 
+        <a (click)="goToWishlist()"  class="Catbtn profile-list-link">Wishlist</a>
+        @if(Wishlist.length != 0 && Wishlist.length < 6){ 
+          <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{Wishlist.length}}
+        </div>
+        }
+        @else if (Wishlist.length>5) {
+        <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
+        }
+        </div>
       </div>
       <div class="note-list list-item">
         <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Account setting</a>

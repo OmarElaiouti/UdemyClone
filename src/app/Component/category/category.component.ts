@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { ActivatedRoute } from '@angular/router';
+import { HomeCourseService } from '../../Services/home-course-service/home-course.service';
+import { Icourselong } from '../../Models/ICourse';
 
 
 
@@ -22,15 +24,15 @@ import { ActivatedRoute } from '@angular/router';
 
 export class CategoryComponent implements OnInit {
   catName:string=''
-  courses: any[] = []; // Assuming your course data structure
-  filteredCourses: any[] = [];
+  courses: Icourselong[] = []; // Assuming your course data structure
+  filteredCourses: Icourselong[] = [];
   durationFilters: number[] = [];
 
-  pagedCourses: any[] = [];
+  pagedCourses: Icourselong[] = [];
   rows: number = 5;
   first: number = 0;
 
-  constructor(private route: ActivatedRoute,private categoryService:CategoryService) { }
+  constructor(private route: ActivatedRoute,private coursefillService:HomeCourseService) { }
 
   ngOnInit(): void {
     this.fetchCourses();
@@ -45,8 +47,8 @@ export class CategoryComponent implements OnInit {
       if (name) {
         this.catName=name;
         // Use the searchValue here, you can call your search service function or perform any other actions
-        this.categoryService.getCoursesInCategory(name).subscribe({
-          next: (courses: any[]) => {
+        this.coursefillService.getCoursesByCategory(name).subscribe({
+          next: (courses) => {
             this.courses = courses;            
             this.filteredCourses = this.courses; // Initialize filteredCourses with all courses
             this.applyFilters();          
@@ -63,7 +65,7 @@ export class CategoryComponent implements OnInit {
 
 
   filterCourses(rating: number) {
-    this.filteredCourses = this.courses.filter(course => course.rating >= rating);
+    this.filteredCourses = this.courses.filter(course => course.rate >= rating);
   }
 
   sectionVisible: boolean = true;
@@ -78,7 +80,7 @@ export class CategoryComponent implements OnInit {
     this.filteredCourses = this.courses.filter(course => {
       if (this.durationFilters.length === 0) return true; // If no duration filter selected, include all courses
 
-      const duration = course.totalHour; // Assuming 'totalHour' is a property in your course object
+      const duration = course.totalHours; // Assuming 'totalHour' is a property in your course object
       for (const filter of this.durationFilters) {
         if (this.checkDuration(duration, filter)) return true;
       }

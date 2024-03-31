@@ -1,7 +1,7 @@
 
 
 
-@if(results){
+@if(courses && courses.length>0){
 
 
 
@@ -9,7 +9,7 @@
 <section class="found" style="margin-left: 100px;margin-top: 50px;">
 
 
-  <h1> results</h1>
+  <h1> results for "{{searchTerm}}"</h1>
 
   <section class="fsort">
     <div (click)="toggleSection()" class="filter"><i class="fa-solid fa-bars"></i> Filter </div>
@@ -265,19 +265,19 @@
           <div class="two">
               <div style="display: flex;  justify-content:space-between;">
           <h4 style="margin-bottom: 0px;margin-top: 0px;margin-right: 100px;">{{ course.name }}</h4>  <h4  style="text-align: right;">E{{course.price |currency:"EUR"}}</h4>
-          </div><p style="margin-bottom: 0px;">{{ course.disc }}</p>
-          <p style="margin-bottom: 0px;"> {{ course.instructor }}</p>
+          </div><p style="margin-bottom: 0px;">{{ course.briefDescription }}</p>
+          <p style="margin-bottom: 0px;"> {{ course.instructorName }}</p>
           <div class="star-ratings-css">
-              <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
-                  <span><b>{{ course.rating }} </b> </span>
-          @for(star of getStarArray(course.rating);track $index){
+              <div class="star-ratings" [style.width]="(course.rate / 5) * 100 + '%'">
+                  <span><b>{{ course.rate }} </b> </span>
+          @for(star of getStarArray(course.rate);track $index){
           <span>
               <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
           </span> 
       }</div>
           </div>
           
-          <p>{{course.totalHour}} total Hour {{ course.totallectuer }} Lecture </p>
+          <p>{{course.totalHours}} total Hour . {{ course.totalLessons }} Lecture </p>
        
          
         </div>

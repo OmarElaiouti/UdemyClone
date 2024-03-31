@@ -3,7 +3,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { CommonModule } from '@angular/common';
-import { Icourses } from '../../Models/ICourse';
+import { Icourselong } from '../../Models/ICourse';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -25,7 +25,7 @@ export class LastsliderComponent {
   // ];
 
 
-  courses: Icourses[] = [];
+  courses: Icourselong[] = [];
 
   // constructor(private getcat: MyServiceService) {}
 

@@ -43,7 +43,7 @@ export class SignupComponent implements OnDestroy {
     this.signupService.signUp(this.username,this.mail,this.password).subscribe(result => {
       // Handle successful signup
       if (result ) {
-        alert("uitdegc"); // Update signup status
+        this.router.navigate([""])
       }else{
         alert("Form is invaild");
       }

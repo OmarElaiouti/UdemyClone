@@ -4,10 +4,11 @@ import { TabsToggleComponent } from "../TabsToggle/tabs-toggle/tabs-toggle.compo
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
-import { IcourseSmallCard } from '../../Models/ICourse';
 import { HomeCourseService } from '../../Services/home-course-service/home-course.service';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { SearchService } from '../../Services/search-service/search.service';
+import { Icourse, IcourseWithObjectives } from '../../Models/ICourse';
+import { Icategory } from '../../Models/ICategory';
 
 
 @Component({
@@ -19,16 +20,16 @@ import { SearchService } from '../../Services/search-service/search.service';
 })
 export class HomeComponent {
 
-    randomCourses: IcourseSmallCard[] = [];
-    randomCourses2: IcourseSmallCard[] = [];
+    randomCourses: IcourseWithObjectives[] = [];
+    randomCourses2: IcourseWithObjectives[] = [];
 
-    topRatedCourses: IcourseSmallCard[] = [];
-    searchedCourses: IcourseSmallCard[] = [];
+    topRatedCourses: IcourseWithObjectives[] = [];
+    searchedCourses: IcourseWithObjectives[] = [];
 
-    developmentCategories: any[] = [];
-    businessCategories: any[] = [];
-    itAndSoftwareCategories: any[] = []; 
-    designCategories: any[] = [];
+    developmentCategories: Icategory[] = [];
+    businessCategories: Icategory[] = [];
+    itAndSoftwareCategories: Icategory[] = []; 
+    designCategories: Icategory[] = [];
 
     lastSearchedKeyword: string | null = null;
 

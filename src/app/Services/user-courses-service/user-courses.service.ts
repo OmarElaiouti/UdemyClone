@@ -1,57 +1,61 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IcoursesMylearning } from '../../Models/ICourse';
+import { Observable, tap } from 'rxjs';
+import { Icourse, Icourselong } from '../../Models/ICourse';
 import { Icart } from '../../Models/icart';
+import { CommunicationService } from '../communication-service/communication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserCoursesService {
 
-  private apiUrl = '/api/user-courses'; // Replace this with your actual API endpoint
+  private apiUrl = 'http://localhost:5165'; // Replace this with your actual API endpoint
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private communication:CommunicationService) {}
 
-  getMyLearningCourses(): Observable<any[]> {
-    return this.http.get<IcoursesMylearning[]>(this.apiUrl);
+  getMyLearningCourses(): Observable<Icourselong[]> {
+    return this.http.get<Icourselong[]>(`${this.apiUrl}/api/Courses/enrolled-in`);
   }
 
   getCart(): Observable<Icart[]> {
-    return this.http.get<Icart[]>(`https://mocki.io/v1/2150ebba-5b7b-4bf4-b79c-4df41f5fe1db`);
+    return this.http.get<Icart[]>(`${this.apiUrl}/api/Courses/courses-in-cart`);
   }
 
-  getWishlist(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/wishlist`);
+  getWishlist(): Observable<Icourselong[]> {
+    return this.http.get<Icourselong[]>(`${this.apiUrl}/api/Courses/courses-in-wishlist`);
 
   }
 
 
-  addToCart(id: number): Observable<any> {
-    // Create a request body object containing the course ID
-    const requestBody = { courseId: id };
-
+  addToCart(id: number): Observable<Icourse> {
     // Make a POST request to the API endpoint with the request body
-    return this.http.post(`${this.apiUrl}/cart`, requestBody);
-  }
+    return this.http.get<Icourse>(`${this.apiUrl}/api/Courses/add-course-to-cart/${id}`).pipe(
+      tap((course: Icourse) => {
+          // Announce the product added to the cart
+          this.communication.announceProductAddedToCart(course);
+      })
+  );
+};
+  
 
-  addToWishlist(id: number): Observable<any> {
+  addToWishlist(id: number): Observable<Icourse> {
 
-    const requestBody = { courseId: id };
 
-    return this.http.post(`${this.apiUrl}/wishlist`, requestBody);
+    return this.http.get<Icourse>(`${this.apiUrl}/api/Courses/addCourseToWishlist/${id}`).pipe(
+      tap((course: Icourse) => {
+          // Announce the product added to the cart
+          this.communication.announceProductAddedToWishlist(course);
+      }));
   }
 
   removeFromCart(id:number): Observable<any> {
     // Assuming you have an API endpoint to remove items from the cart
-    const apiUrl = 'your_api_endpoint_here'; // Replace 'your_api_endpoint_here' with your actual API endpoint
-    return this.http.post<any>(apiUrl, id);
+    return this.http.post<any>(`${this.apiUrl}`, id);
   }
 
   CompeleteCheckOut():Observable<any> {
-    const requestBody ={};
-    const apiUrl = 'your_api_endpoint_here';
-    return this.http.post<any>(apiUrl,requestBody)
+    return this.http.post(`${this.apiUrl}/api/User/create-transaction`,{})
   }
 
 }

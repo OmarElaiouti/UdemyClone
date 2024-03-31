@@ -17,12 +17,13 @@ export class AccountProfileComponent {
 
   
   user: IUser = {
+    id:'',
     firstName: '',
     lastName: '',
-    username: '',
+    userName: '',
     email: '',
     headline: '',
-    Biography: '',
+    biography: '',
     image:'' 
   };
 
@@ -82,12 +83,17 @@ constructor(private userService:UserInfoService,private http:HttpClient){}
   }
 
   getRemainingCharacters(): number {
+    if(this.user.headline){
     return this.maxCharacters - this.user.headline.length;
+    }
+    else{
+      return 60;
+    }
   }
 
   onBiographyChange(value: string) {
     // Update the user's biography with the new value
-    this.user.Biography = value;
+    this.user.biography = value;
   }
 
   onFileSelected(event: any) {
@@ -103,7 +109,7 @@ constructor(private userService:UserInfoService,private http:HttpClient){}
     const formData = new FormData();
     formData.append('image', this.selectedFile);
 
-    this.http.post<any>('url', formData).subscribe({
+    this.http.post<any>('http://localhost:5165/api/User/upload-image', formData).subscribe({
       next: response => {
         console.log('Upload successful:', response);
       },

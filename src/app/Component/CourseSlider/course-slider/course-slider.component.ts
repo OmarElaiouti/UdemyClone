@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { UserCoursesService } from '../../../Services/user-courses-service/user-courses.service';
+import { Icourse, IcourseWithObjectives } from '../../../Models/ICourse';
+import { CommunicationService } from '../../../Services/communication-service/communication.service';
 
 @Component({
   selector: 'app-course-slider',
@@ -13,16 +15,16 @@ import { UserCoursesService } from '../../../Services/user-courses-service/user-
   styleUrl: './course-slider.component.css'
 })
 export class CourseSliderComponent {
-  courseId!:number;
+
 displayCourse(_t36: any) {
 throw new Error('Method not implemented.');
 }
 addToCart(_t36: any) {
 throw new Error('Method not implemented.');
 }
-  @Input() courses: any[] = [];
+  @Input() courses: IcourseWithObjectives[] = [];
 
-constructor(private usercoursesService:UserCoursesService){}
+constructor(private usercoursesService:UserCoursesService,private communicationService:CommunicationService){}
   // Responsive options for the carousel
   responsiveOptions= [
     {
@@ -43,19 +45,36 @@ constructor(private usercoursesService:UserCoursesService){}
     // Add more responsive options as needed
   ];
 
-  AddToCart() {
+  AddToCart(id:number) {
     // Call the addToCart function from the cart service when the button is clicked
-    this.usercoursesService.addToCart(this.courseId).subscribe(
-      response => {
-        // Handle success response if needed
+    this.usercoursesService.addToCart(id).subscribe({
+      next: response => {
+        this.communicationService.announceProductAddedToCart(response);
         console.log('Course added to cart successfully:', response);
       },
-      error => {
+      error: err => {
         // Handle error if needed
-        console.error('Error adding course to cart:', error);
+        console.error('Error adding course to cart:', err);
       }
+    }
     );
   }
+
+  AddToWishList(id:number) {
+    // Call the addToCart function from the cart service when the button is clicked
+    this.usercoursesService.addToWishlist(id).subscribe({
+      next: response => {
+        this.communicationService.announceProductAddedToWishlist(response);
+        console.log('Course added to cart successfully:', response);
+      },
+      error: err => {
+        // Handle error if needed
+        console.error('Error adding course to cart:', err);
+      }
+    }
+    );
+  }
+
 
   // Function to get the severity for the inventory status
   getStarArray(rating: number): number[] {

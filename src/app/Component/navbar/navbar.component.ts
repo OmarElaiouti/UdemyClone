@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
 import { UserCoursesService } from '../../Services/user-courses-service/user-courses.service';
@@ -10,6 +10,10 @@ import { Location } from '@angular/common';
 import { IUser } from '../../Models/IUser';
 import { UserInfoService } from '../../Services/user-info-service/user-info.service';
 import { NotificationService } from '../../Services/Notification-service/notification.service';
+import { Icourse } from '../../Models/ICourse';
+import { Icategory } from '../../Models/ICategory';
+import { CommunicationService } from '../../Services/communication-service/communication.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -25,18 +29,27 @@ export class NavbarComponent implements OnInit {
   @ViewChild('div2') div2!: ElementRef;
 
   searchValue: string = '';
-  categories!:any[];
-  subcategories!:any[];
-  topics!:any[];
-  Cart: any[] = [];
+  categories!:Icategory[];
+  subcategories!:Icategory[];
+  topics!:Icategory[];
+  Cart: Icourse[] = [];
   notifications: INotification[] = [];
-  Wishlist: any[] = [];
+  Wishlist: Icourse[] = [];
   activeCategory: any;
   activeSubCategory: any;
-  CartTotalPrice = 0;
+  CartTotalPrice!:String;
   signedin:boolean=false;
   isSidebarOpen: boolean = false;
-  user!:IUser;
+  user:IUser ={
+    id:"",
+    firstName:"dvdv",
+    lastName:"dvdv",
+    userName:"",
+    email:"",
+    headline:"",
+    biography:"",
+    image:"",   
+  };
 
   constructor(
     private catService: CategoryService,
@@ -45,7 +58,9 @@ export class NavbarComponent implements OnInit {
     private searchService: SearchService,
     private router: Router,
     private location: Location,
-    private userService: UserInfoService
+    private userService: UserInfoService,
+    private communication:CommunicationService
+
 
   ) { }
 
@@ -58,32 +73,49 @@ export class NavbarComponent implements OnInit {
     this.loadNotifications();
     this.loadCart();
     this.loadWishlist();
-    this.loadWishlist();
     this.loadUserdata();
 
-    // Set the first category as active by default
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd)
+    ).subscribe(event=> {
+      this.loadCart();
+      this.loadWishlist();
+      // Call your functions when the route changes
+    });
+  
+  
 
+
+
+    this.communication.productAddedToCart$.subscribe(addedProduct => {
+      // Update cart count
+      this.loadCart();
+  });
+  
+    // Set the first category as active by default
+    this.communication.productAddedToWishlist$.subscribe(addedProduct => {
+      // Update cart count
+      this.loadWishlist();
+    });
     // this.setActiveCategory(this.categories[0]);
     // this.setActiveSubCategory(this.subcategories[0]);
 
-    let flagValue = localStorage.getItem("token") ?? null;
+    let flagValue = localStorage.getItem("token");
 
     // Check if the value is not null before parsing it
     if (flagValue) {
       this.signedin = true;
     }
 
-    if (this.Cart.length != 0) {
-      let prices = this.Cart.map(item => item.price);
-      this.CartTotalPrice = prices.reduce((acc, curr) => acc + curr, 0);
-    }
-
+    
 
   }
 
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
       this.user = user;
+      console.log(user);
+      this.user.userName = user.userName
 
     });
   }
@@ -135,6 +167,8 @@ export class NavbarComponent implements OnInit {
   loadCart(): void {
     this.userCoursesService.getCart().subscribe(cart => {
       this.Cart = cart;
+      this.CartTotalPrice = this.calculateTotalPrice(this.Cart);
+
     });
   }
 
@@ -154,13 +188,36 @@ GetLetters(){
 return firstNameInitial;
   }
   else{
-    const usernameameInitial = this.user.username.charAt(0).toUpperCase();
+    const usernameameInitial = this.user.userName.charAt(0).toUpperCase();
     return usernameameInitial;
 
   }
 
 }
 
+private calculateTotalPrice(cart: Icourse[]): string {
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+  return totalPrice.toFixed(2);;
+}
+
+AddToCart(id:number) {
+  // Call the addToCart function from the cart service when the button is clicked
+  this.userCoursesService.addToCart(id).subscribe({
+    next: response => {
+this.Cart.push(response)      
+console.log('Course added to cart successfully:', response);
+    },
+    error: err => {
+      // Handle error if needed
+      console.error('Error adding course to cart:', err);
+    }
+  }
+  );
+}
+
+getusername(){
+  return this.user.userName
+}
 
   search(searchValue: string): void {
     if(searchValue.length>0)
