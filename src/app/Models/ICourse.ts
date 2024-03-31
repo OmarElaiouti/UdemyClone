@@ -1,13 +1,13 @@
-export interface Icourses {
+export interface Icourselong {
   id:number;
     name:string;
-    img:string;
-    disc:string;
-    instructor:string;
-    rating:number;
+    image:string;
+    briefDescription:string;
+    instructorName:string;
+    rate:number;
     price:number;
-    totallectuer:number;
-    totalHour:number;
+    totalLessons:number;
+    totalHours:number;
 
 }
 
@@ -24,24 +24,30 @@ export interface Instructor{
 }
    
 
-export interface IcoursesMylearning {
-  id:number
-  name:string;
-  Image:string;
-  instructor:string;
-  rating:number;
-  progress:number;
+export interface IcourseWithObjectives {
+  id:number;
+    name:string;
+    image:string;
+    instructorName:string;
+    rate:number;
+    price:number;
+    reviewersNumber:number;
+    objectives:Iobjective[]
 //for my learning
+}
+export interface Iobjective {
+id:number;
+content:string
 }
 
 
 
-export interface IcourseSmallCard {
+export interface Icourse {
     id:number;
     name:string;
-    img:string;
-    instructor:string;
-    rating:number;
+    image:string;
+    instructorName:string;
+    rate:number;
     price:number;
 }
 

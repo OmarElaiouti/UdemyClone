@@ -13,7 +13,7 @@ export class NotificationService {
 
   // Method to fetch notes from the API
   getNotifications(): Observable<INotification[]> {
-    return this.http.get<INotification[]>('/api/notifications');
+    return this.http.get<INotification[]>('http://localhost:5165/api/User/user-notifications');
   }
 
 }

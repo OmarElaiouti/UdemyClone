@@ -11,7 +11,7 @@ export class LoginService {
 
   login(email: string, password: string):Observable<boolean> {
     // Make API call to login endpoint
-    return this.http.post<any>('http://udemyclone.runasp.net/api/Register/Login', {email,password}).pipe(
+    return this.http.post<any>('http://localhost:5165/api/Register/Login', {email,password}).pipe(
       map(response => {
         // Store user authentication state (e.g., in local storage or session storage)
 

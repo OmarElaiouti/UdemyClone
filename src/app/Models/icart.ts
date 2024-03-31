@@ -1,12 +1,12 @@
 export interface Icart {
       id:number;
-      img:string;
-      title:string;   //coursename
+      image:string;
+      name:string;   //coursename
       price:number;
-      instructor:string;
-      duration:number;   //'19.5 total hours'
-      lectures:number;   //'. 188 lectures'
-      difficulity:string;
-      rating:number;
-      numReviewers:number;
+      instructorName:string;
+      totalHours:number;   //'19.5 total hours'
+      totalLessons:number;   //'. 188 lectures'
+      level:string;
+      rate:number;
+      reviewersNumber:number;
 }

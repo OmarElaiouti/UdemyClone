@@ -1,9 +1,10 @@
 export interface IUser{
+    id:string
     firstName:string;
     lastName:string;
-    username:string;
+    userName:string;
     email:string;
     headline:string;
-    Biography:string;
+    biography:string;
     image:string;   
 }

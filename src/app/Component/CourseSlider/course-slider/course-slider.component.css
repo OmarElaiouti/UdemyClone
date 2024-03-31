@@ -105,3 +105,9 @@ img {
 .cart-btn+.wishlist-btn {
   margin-left: 10px;
 }
+
+.no-reviews{
+  color: #b2bac0;
+    font-size: 0.7rem;
+}
+

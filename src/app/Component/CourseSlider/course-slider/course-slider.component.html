@@ -2,25 +2,34 @@
 
             <ng-template let-course pTemplate="item">
 
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" tooltipPosition="right" [autoHide]=false [pTooltip]="tooltipContent">
                     <div class="card">
                         <div class="mb-3">
-                            <a [routerLink]="'/coursedetails'" routerLinkActive="router-link-active" ><img src="https://media.geeksforgeeks.org/wp-content/uploads/20240304152903/python-tutorial-2.webp" [alt]="course.name" class="w-6 shadow-2" /></a>
+                            <a [routerLink]="'/coursedetails'" routerLinkActive="router-link-active" ><img src="{{course.image}}" [alt]="course.name" class="w-6 shadow-2" /></a>
                         </div>
                         <div>
                             <h5 class="mb-1 truncate">{{ course.name }}</h5>
-                                <p class="mb-1 truncate instr">Instructor: {{ course.instructor }}</p>
+                                <p class="mb-1 truncate instr">Instructor: {{ course.instructorName }}</p>
                             <div class="star-ratings-css">
-                                <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
-                                    <span><b>{{ course.rating }} </b> </span>
+                                @if(course.rate>0){
 
-                            @for(star of getStarArray(course.rating);track $index){
+                                <div class="star-ratings" [style.width]="(course.rate / 5) * 100 + '%'">
+                                    <span><b>{{ course.rate }} </b> </span>
+                            @for(star of getStarArray(course.rate);track $index){
                             <span>
                                 <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
                             </span>
                             }
-                            <span class="num-reviewers">({{ course.numReviewers }})</span>
+                            <span class="num-reviewers">({{ course.reviewersNumber }})</span>
+                        
                         </div>
+                    }@else{
+                        <div class="star-ratings" style="width: 100%;">
+
+                        <span class="no-reviews">No Reviews yet.</span>
+                    </div>
+
+                    }
                     </div>
                     <p class="mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
                 </div>
@@ -33,13 +42,13 @@
                 <ul class="objective-grid">
                     @for(objv of course.objectives;track $index){
                     <li>
-                      <i class="fa-solid fa-check"></i> {{ objv }}
+                      <i class="fa-solid fa-check"></i> {{ objv.content }}
                     </li>
                 }
                   </ul>
                   <div class="btns-wrapper">
-                <button class="cart-btn"(click)="AddToCart()">Add to Cart</button>
-                <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+                <button class="cart-btn"(click)="AddToCart(course.id)">Add to Cart</button>
+                <button class="wishlist-btn" (click)="AddToWishList(course.id)"><i class="fa-regular fa-heart"></i></button>
             </div>
             </div>
         </ng-template>

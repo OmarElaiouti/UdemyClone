@@ -7,13 +7,14 @@ import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 })
 export class SignupService {
   private userSignedUpSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {}
 
 
 
   signUp(username: string, email: string, password: string ): Observable<boolean> {
 
-    return this.http.post<any>(`http://udemyclone.runasp.net/api/Register/register`, { username,email,password}).pipe(
+    return this.http.post<any>(`http://localhost:5165/api/Register/register`, { username,email,password}).pipe(
       map(response => {
         // Store user authentication state (e.g., in local storage or session storage)
         console.log(response);

@@ -19,11 +19,11 @@
 <div style="padding: 10px;">
     <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="simple-tab-0" [class.active]="activeTab === 'myLearning'" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">ALL My Courses</a>
+          <a class="nav-link" id="simple-tab-0" (click)="changeTitleToMylearning()" [class.active]="activeTab === 'myLearning'" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab" aria-controls="simple-tabpanel-0" aria-selected="true">ALL My Courses</a>
         </li>
       
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="simple-tab-2" [class.active]="activeTab === 'wishlist'" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Wishlist</a>
+          <a class="nav-link" id="simple-tab-2" (click)="changeTitleToWishlist()" [class.active]="activeTab === 'wishlist'" data-bs-toggle="tab" href="#simple-tabpanel-2" role="tab" aria-controls="simple-tabpanel-2" aria-selected="false">Wishlist</a>
         </li>
       </ul>
       </div>
@@ -44,11 +44,11 @@
     <div><h5>{{course.name}}</h5>
       <hr></div>
     <div>
-      <a href="#">START COURSE</a>
+      <a (click)="gotoLessons(course.id)" routerLinkActive="router-link-active" >START COURSE</a>
     </div>
     <div>
       Your Rating : 
-      @for(star of getStarArray(course.rating);track $index){
+      @for(star of getStarArray(course.rate);track $index){
         <span>
             <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
         </span>
@@ -82,18 +82,18 @@
           <div class="descraption">
             <h4>{{course.name}}</h4>
           </div>
-          <div><h5>{{course.instructor}}</h5>
+          <div><h5>{{course.instructorName}}</h5>
             </div>
           <div>
-            <span>{{course.rating}}</span> 
-            @for(star of getStarArray(course.rating);track $index){
+            <span>{{course.rate}}</span> 
+            @for(star of getStarArray(course.rate);track $index){
               <span>
                   <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
               </span>
               }
            </div>
            <div>
-            <p>{{course.totalHour}} total hours.{{course.totallectuer}} lecture</p>
+            <p>{{course.totalHours}} total hours.{{course.totalLessons}} lecture</p>
            </div>
            <div class="price">
 <p>E£ {{course.price}}</p>
