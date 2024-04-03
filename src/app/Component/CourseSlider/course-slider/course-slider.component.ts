@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { UserCoursesService } from '../../../Services/user-courses-service/user-courses.service';
 import { Icourse, IcourseWithObjectives } from '../../../Models/ICourse';
-import { CommunicationService } from '../../../Services/communication-service/communication.service';
+import { NavRefreshService } from '../../../Services/nav-refresh-service/nav-refresh.service';
 
 @Component({
   selector: 'app-course-slider',
@@ -16,15 +16,18 @@ import { CommunicationService } from '../../../Services/communication-service/co
 })
 export class CourseSliderComponent {
 
-displayCourse(_t36: any) {
+displayCourse(_t36: any) {  
 throw new Error('Method not implemented.');
 }
 addToCart(_t36: any) {
 throw new Error('Method not implemented.');
 }
   @Input() courses: IcourseWithObjectives[] = [];
+  @Input() loggedIn!:boolean;
 
-constructor(private usercoursesService:UserCoursesService,private communicationService:CommunicationService){}
+constructor(private usercoursesService:UserCoursesService,
+  private navbarRefreshService:NavRefreshService
+  ){}
   // Responsive options for the carousel
   responsiveOptions= [
     {
@@ -49,22 +52,21 @@ constructor(private usercoursesService:UserCoursesService,private communicationS
     // Call the addToCart function from the cart service when the button is clicked
     this.usercoursesService.addToCart(id).subscribe({
       next: response => {
-        this.communicationService.announceProductAddedToCart(response);
-        console.log('Course added to cart successfully:', response);
+        console.log('Course added to the cart successfully:', response);
       },
       error: err => {
         // Handle error if needed
-        console.error('Error adding course to cart:', err);
+        console.error('Error adding course to the cart:', err);
       }
     }
     );
+
   }
 
   AddToWishList(id:number) {
     // Call the addToCart function from the cart service when the button is clicked
     this.usercoursesService.addToWishlist(id).subscribe({
       next: response => {
-        this.communicationService.announceProductAddedToWishlist(response);
         console.log('Course added to cart successfully:', response);
       },
       error: err => {
@@ -73,8 +75,20 @@ constructor(private usercoursesService:UserCoursesService,private communicationS
       }
     }
     );
+
   }
 
+  addToCartAnonymous(id: number): void {
+    let cartItems: number[] = JSON.parse(localStorage.getItem('anonymousCart') || '[]');
+  
+    if (!cartItems.includes(id)) {
+      cartItems.push(id);
+      localStorage.setItem('anonymousCart', JSON.stringify(cartItems));
+      this.navbarRefreshService.refreshNavbar();
+    } else {
+      console.log('ID already exists in the cart.');
+    }
+  }
 
   // Function to get the severity for the inventory status
   getStarArray(rating: number): number[] {

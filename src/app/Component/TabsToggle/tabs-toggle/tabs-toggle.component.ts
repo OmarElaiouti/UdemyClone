@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CourseSliderComponent } from "../../CourseSlider/course-slider/course-slider.component";
 import { HomeCourseService } from '../../../Services/home-course-service/home-course.service';
 
@@ -11,7 +11,7 @@ import { HomeCourseService } from '../../../Services/home-course-service/home-co
 })
 export class TabsToggleComponent implements OnInit {
     coursesByTab: any[] = [];
-  
+  @Input() loggedIn!:boolean;
   constructor(private homecourseService: HomeCourseService) {
     
   }

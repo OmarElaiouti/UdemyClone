@@ -1,5 +1,5 @@
 <h1 class="header23">Shopping Cart</h1>
-<div id="cartItems" class="section cart">
+<div class="cartItems" class="section cart">
   <div style="margin-bottom: 150px;">
     <p><span id="cartTotal">{{coursesInCart.length}}</span><span>Courses in Cart</span></p>
     <div class="bdLight ">
@@ -22,7 +22,7 @@
         <div class="bdLight inCart">
           <div id="cart" class="nonEmpty">
             @for (item of coursesInCart; track $index) {
-              <div style="display: flex;">
+              <div >
               <div class="product">
                 <div>
                 <img class="image" src="{{item.image}}">
@@ -31,6 +31,8 @@
                   <p class="courseName text">{{item.name}}</p>
                   <p class="tutor text">{{item.instructorName}}</p>
                   <div class="star-ratings-css">
+                    @if(item.rate>0){
+
                     <div class="star-ratings" [style.width]="(item.rate / 5) * 100 + '%'">
                         <span><b>{{ item.rate }} </b> </span>
                         <span *ngFor="let star of getStarArray(item.rate); let i = index">
@@ -38,7 +40,14 @@
                         </span>
                         <span class="num-reviewers">({{ item.reviewersNumber }})</span>
                     </div>
-                </div>
+                
+              }@else {
+                <div class="star-ratings" style="width: 100%;">
+
+                  <span class="no-reviews">No Reviews yet.</span>
+              </div>
+              }
+            </div>
                 <div style="display: flex;">
                   <p style="opacity: 0.7;">total hours{{item.totalHours}}</p>
                   <p class="left">lectures{{item.totalLessons}}</p>
@@ -49,46 +58,42 @@
                 <div class="cartButtons">
 
                   <button class="rBtn1 rBtn"(click)="removeFromCart(item)" >Remove</button>
+                  @if(loggedIn){
                   <button class="rBtn3 rBtn" (click)="moveToWishlist(item)">Move to Wishlist</button>
+                  }
                 </div>
                 <div class="price">
-                  <p>E£{{item.price}}</p>
+                  <p>${{item.price}}</p>
                 </div>
 
               </div>
-              <hr>
 
-             <div class="check">
-              <div class="checkout nonEmpty" style="margin-left: 120px;">
-                <p>Total:</p>
-                <h1><span>E£</span><span id="totalBill">0</span></h1>
-                <div id="priceOff"></div>
-                <button id="checkout" type="submit" class="btn blueBtn maxWidth"routerLink="/checkout" (click)="checkout()">
-                  Checkout
-                </button>
-                <h3>Promotions</h3>
-                <div>
-                  <a class="cross" href=""><img class="icon" src="../images/cancel.png" /></a>
-                  <span id="couponName">No Coupon</span><span> is Applied</span>
-                </div>
-                <form id="coupon">
-                  <input type="text" placeholder="Enter Coupon" id="couponCode" />
-                  <input class="btn blueBtn couponBtn" type="submit" value="Apply" id="applyCoupon" />
-                </form>
-
-              </div>
-              </div>
+          
               </div>
 
             }
           </div>
+          <div class="check">
+            <div class="checkout nonEmpty" style="margin-left: 120px;">
+              <p>Total:</p>
+              <h1><span>$</span><span id="totalBill">{{totalBill}}</span></h1>
+              <div id="priceOff"></div>
+              <button id="checkout" type="submit" class="btn blueBtn maxWidth"routerLink="/checkout" (click)="checkout()">
+                Checkout
+              </button>
+              <h3>Promotions</h3>
+              <div>
+                <span id="couponName">No Coupon</span><span> is Applied</span>
+              </div>
+              <form id="coupon">
+                <input type="text" placeholder="Enter Coupon" id="couponCode" />
+                <input class="btn blueBtn couponBtn"  value="Apply" id="applyCoupon" />
+              </form>
+
+            </div>
+            </div>
         </div>
-        <div>
-          <p style="font-size: 20px;font-weight: bold;">You might also like</p>
-          <div>
-            <app-course-slider></app-course-slider>
-          </div>
-        </div>
+       
 
       }
     </div>
@@ -115,5 +120,64 @@
 
   </div> -->
 
+</div>
+@if(loggedIn){
+<div class="section slider ">
+  <p style="font-size: 20px;font-weight: bold;">Moved to wishlist</p>
+  <hr>
+  <div id="cart" class="nonEmpty wishlist" >
+    @for (item of coursesInCart; track $index) {
+      <div >
+      <div class="product">
+        <div>
+        <img class="image" src="{{item.image}}">
+        </div>
+        <div id="mainText">
+          <p class="courseName text">{{item.name}}</p>
+          <p class="tutor text">{{item.instructorName}}</p>
+          <div class="star-ratings-css">
+            @if(item.rate>0){
+
+            <div class="star-ratings" [style.width]="(item.rate / 5) * 100 + '%'">
+                <span><b>{{ item.rate }} </b> </span>
+                <span *ngFor="let star of getStarArray(item.rate); let i = index">
+                    <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+                </span>
+                <span class="num-reviewers">({{ item.reviewersNumber }})</span>
+            </div>
+        
+      }@else {
+        <div class="star-ratings" style="width: 100%;">
+
+          <span class="no-reviews">No Reviews yet.</span>
+      </div>
+      }
+    </div>
+        <div style="display: flex;">
+          <p style="opacity: 0.7;">total hours{{item.totalHours}}</p>
+          <p class="left">lectures{{item.totalLessons}}</p>
+          <p class="left">{{item.level}}</p>
+        </div>
+
+        </div>
+        
+        <div class="price">
+          <p>${{item.price}}</p>
+        </div>
+
+      </div>
+
+  
+      </div>
+
+    }
+  </div>
+</div>
+}
+<div class="section slider">
+  <p style="font-size: 20px;font-weight: bold;">You might also like</p>
+  <div>
+    <app-course-slider [courses]="randomCourses"></app-course-slider>
+  </div>
 </div>
 

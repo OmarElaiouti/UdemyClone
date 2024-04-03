@@ -24,14 +24,14 @@
       <div class="one">
         <h3>Payment method</h3>
         <p style="margin-left: 100px;margin-top: 20px;">Secured connection</p>
-        <p><i class="fa-solid fa-lock i"></i></p>
+        <i class="fa-solid fa-lock i"></i>
       </div>
       <div id="accordion" >
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0" style="display: flex;">
               <input type="radio" style="font-weight: bold;transform: scale(1.5); " class="btn btn-link" (click)="toggleCollapse('collapseOne')" [attr.aria-expanded]="isExpanded('collapseOne')" aria-controls="collapseOne">
-              <i class="fa-solid fa-credit-card"></i><p style="margin-top: 10px;font-size: 15px;">Cridet/DeptCard</p>
+              <i class="fa-solid fa-credit-card payment-fa"></i><p style="margin-top: 10px;font-size: 15px;">Cridet/DeptCard</p>
 
               <h4 id="ico"><i class="fa-brands fa-cc-amex"></i></h4>
               <h4 style="margin-left: 5px;color: red;"><i class="fa-brands fa-cc-discover"></i></h4>
@@ -87,7 +87,9 @@
               <div class="card-header" id="headingTwo">
                 <h5 class="mb-0" style="display: flex;">
                   <input type="radio" style="font-weight: bold;transform: scale(1.5);" class="btn btn-link" (click)="toggleCollapse('collapseTwo')" [attr.aria-expanded]="isExpanded('collapseTwo')" aria-controls="collapseTwo">
-                    <div style="width: 30px;height: 25px;background-color:rgb(214, 214, 186);margin-left: 5px;text-align: center;"><i class="fa-brands fa-paypal"></i></div>Paypale
+                    <!-- <div style="width: 30px;height: 25px;background-color:rgb(214, 214, 186);margin-left: 5px;text-align: center;"> -->
+                      <!-- <i class="fa-brands fa-paypal"></i></div>Paypale -->
+                      <i class="fa-brands fa-paypal payment-fa"></i><p style="margin-top: 10px;font-size: 15px;">Paypale</p>
 
 
                 </h5>
@@ -113,10 +115,12 @@
     <h1>Order details</h1>
     </div>
     <div *ngFor="let course of checkoutCart">
-    <div style="display: flex;margin-top: 20px;">
-      <img id='im' src={{course.img}}/>
-      <p id="pa">{{course.title}}</p>
-      <p id="par">{{course.price}}</p>
+    <div style="display: flex;justify-content: space-between;margin-top: 20px;">
+      <div style="display: flex;">
+      <img id='im' src={{course.image}}/>
+      <p id="pa">{{course.name}}</p>
+    </div>
+      <p id="par">${{course.price}}</p>
     </div>
     </div>
   </div>
@@ -124,21 +128,21 @@
   <div class="right">
     <div style="margin-left: 40px;">
     <h3 style="margin-top: 70px;">Summary</h3>
-    <div style="display: flex;">
+    <div style="display: flex; justify-content: space-between;">
       <p>Original Price:</p>
-      <p style="margin-left: 210px;">E£349.99</p>
+      <p style="margin-left: 210px;" >${{totalPrice}}</p>
     </div>
-    <div style="display: flex;">
+    <div style="display: flex; justify-content: space-between;">
       <p>Discounts:</p>
-      <p style="margin-left: 225px;">-E£150.00</p>
+      <p style="margin-left: 225px;">${{totalDiscount}}</p>
     </div>
-    <hr>
-    <div style="display: flex;">
+    <hr class="payment-item">
+    <div style="display: flex; justify-content: space-between;">
       <p>Total:</p>
-      <p style="margin-left: 270px;">E£199.99</p>
+      <p style="margin-left: 270px;" >${{FinalPrice()}}</p>
     </div>
     <p style="margin-top: 20px;">By completing your purchase you agree to these Terms of Service.</p>
-    <button class="righ"(click)="compelete()">Compelete Checkout</button>
+    <button class="righ payment-item"(click)="compelete()">Compelete Checkout</button>
     <p style="text-align: center;">30-Day Money-Back Guarantee</p>
     </div >
   </div>

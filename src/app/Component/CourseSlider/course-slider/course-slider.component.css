@@ -111,3 +111,7 @@ img {
     font-size: 0.7rem;
 }
 
+.btn-full{
+  width: 100%;
+  padding: 1rem;
+}

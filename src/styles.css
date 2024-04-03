@@ -39,8 +39,9 @@
 {
     font-size: 2rem;
 }
-
-
+.p-element{
+    max-width: 295.531px;
+}
 
 .p-tooltip {
     max-width: 20rem;

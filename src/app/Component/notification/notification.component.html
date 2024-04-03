@@ -20,20 +20,25 @@
       <h1>Notifications</h1>
     </div>
     <div class="Main">
-      <div *ngFor="let item of notifications; let i = index; trackBy: trackById">
-        <div class="notification" [class.black-background]="isContentHidden[i]" (click)="toggleContent(i)">
+      <div *ngFor="let item of notifications;track: $index">
+        <!-- <div class="notification" [class.black-background]="isContentHidden[i]" (click)="toggleContent(i)"> -->
+          <div class="notification" >
+
             <img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Image">
           <div class="notification-text">
             <p>{{ item.content }}</p>
+            <p class="date">{{item.date}}</p>
           </div>
-          <div class="notification-badge" [hidden]="isContentHidden[i]"></div>
+          <!-- <div class="notification-badge" [hidden]="isContentHidden[i]"></div> -->
+          <div class="notification-badge" ></div>
+
         </div>
         <hr>
       </div>
     </div>
-    <div class="Button">
+    <!-- <div class="Button">
       <button class="btn" (click)="markAllAsRead()"> Mark all as read</button>
-    </div>
+    </div> -->
   </div>
   
 

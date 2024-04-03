@@ -53,7 +53,7 @@ background-color: #581C7E;
   padding: 4% 5%;
   margin: 0%;
 }
-#cartItems{
+.cartItems{
   display: grid;
   grid-template-columns: 72% 26%;
   gap: 4%;
@@ -62,7 +62,7 @@ background-color: #581C7E;
   margin-bottom: 60px;
   border: none;
 }
-#cartItems > div{
+.cartItems > div{
   flex-grow: 2;
   margin:  0%;
 }
@@ -90,6 +90,10 @@ margin: 2% 0%;
 .couponBtn{
   padding: 2%;
   max-height: 100%;
+}
+
+#couponCode{
+  width: 200%;
 }
 #coupon > input{
   padding: 3%;
@@ -150,7 +154,7 @@ margin-top: 0;
 .cartButtons{
   /* display: flex; */
   flex-direction: column;
-  width: 400px;
+  width: 15rem;
 }
 .courseName{
   /* grid-area: b; */
@@ -190,6 +194,8 @@ padding: 7%;
 }
 .product{
   display: flex;
+  justify-content: space-between;
+
 }
 .fa-star {
   color: gold;
@@ -207,13 +213,19 @@ padding: 7%;
   margin-left: 20px;
   opacity: 0.7;
 }
-.check
-{
-  position: absolute;
-  top: 280px;
-  right: 130px;
-  margin-bottom: 200px;
-}
-.bord{
 
+
+
+.no-reviews{
+  color: #b2bac0;
+    font-size: 0.7rem;
+}
+
+.slider{
+  display: block;
+  padding: 0.5% 6%;
+}
+
+.wishlist{
+  padding: 1.5rem;
 }

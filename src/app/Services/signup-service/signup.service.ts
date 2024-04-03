@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
+import { NavRefreshService } from '../nav-refresh-service/nav-refresh.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { BehaviorSubject, Observable, catchError, map, of } from 'rxjs';
 export class SignupService {
   private userSignedUpSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private navbarRefreshService:NavRefreshService) {}
 
 
 
@@ -18,9 +19,10 @@ export class SignupService {
       map(response => {
         // Store user authentication state (e.g., in local storage or session storage)
         console.log(response);
+
         localStorage.setItem('token', response.token);
-        alert("iyfi");
-        return true; // Sign-up and sign-in successful
+this.navbarRefreshService.refreshNavbar();
+   return true; // Sign-up and sign-in successful
       }),
       catchError(error => {
         console.error('Sign-up and sign-in error:', error);
