@@ -13,7 +13,15 @@ export class NotificationService {
 
   // Method to fetch notes from the API
   getNotifications(): Observable<INotification[]> {
-    return this.http.get<INotification[]>('http://localhost:5165/api/User/user-notifications');
+    return this.http.get<INotification[]>('http://localhost:5165/api/Notifications/user-notifications');
+  }
+
+  setNotificationsLastFiveStatus(notifications:INotification[]): Observable<INotification[]> {
+    return this.http.put<INotification[]>('http://localhost:5165/api/Notifications/notifications-status-last-five',{notifications});
+  }
+
+  setNotificationsAllStatus(): Observable<any> {
+    return this.http.put('http://localhost:5165/api/Notifications/notifications-status',{});
   }
 
 }

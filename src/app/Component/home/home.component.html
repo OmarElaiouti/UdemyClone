@@ -12,7 +12,7 @@
       <p>We're still changing learning for the better — <br> now we just look better doing it</p>
       <br>
 
-      <input type="text" placeholder="    What do you want to learn?">
+      <!-- <input type="text" placeholder="    What do you want to learn?"> -->
 
     </div>
 
@@ -26,7 +26,7 @@
   </div>
 
   <div>
-    <app-tabs-toggle></app-tabs-toggle>
+    <app-tabs-toggle [loggedIn]="loggedIn"></app-tabs-toggle>
   </div>
 </div>
 
@@ -104,12 +104,12 @@
     <div class="first-info">
       @if(lastSearchedKeyword){
       <h2>Because you searched for "{{lastSearchedKeyword}}"</h2>
-      <app-course-slider [courses]="searchedCourses"></app-course-slider>
+      <app-course-slider [loggedIn]="loggedIn" [courses]="searchedCourses"></app-course-slider>
       }
       @else {
 
         <h2>Browse our collections</h2>
-      <app-course-slider [courses]="randomCourses2"></app-course-slider>
+      <app-course-slider [loggedIn]="loggedIn" [courses]="randomCourses2"></app-course-slider>
       }
     </div>
   <!-- second slider ends -->
@@ -230,13 +230,13 @@
 
   <div class="first-info">
     <h2>Short and sweet courses for you</h2>
-    <app-course-slider [courses]="randomCourses"></app-course-slider>
+    <app-course-slider  [loggedIn]="loggedIn" [courses]="randomCourses"></app-course-slider>
   </div>
 
   <div class="first-info">
 
   <h2>Our top courses</h2>
-    <app-course-slider [courses]="topRatedCourses"></app-course-slider>
+    <app-course-slider [loggedIn]="loggedIn" [courses]="topRatedCourses"></app-course-slider>
   </div>
   <!-- udemy main business section starts -->
 

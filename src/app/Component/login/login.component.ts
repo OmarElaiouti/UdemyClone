@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { LoginService } from '../../Services/login-service/login.service';
 import { FormsModule } from '@angular/forms';
 import { SignupService } from '../../Services/signup-service/signup.service';
+import { NavRefreshService } from '../../Services/nav-refresh-service/nav-refresh.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,13 @@ export class LoginComponent {
   email: string='' ;
   password: string='' ;
 
-  constructor(private loginService: LoginService,private signupservice: SignupService,private router:Router) {}
+  constructor(
+    private loginService: LoginService,
+    private signupservice: SignupService,
+    private router:Router,
+    private navbarRefreshService:NavRefreshService
+    
+    ) {}
 
   login() {
 
@@ -26,7 +33,13 @@ export class LoginComponent {
     // If signed up, proceed with login
     this.loginService.login(this.email,this.password).subscribe(response => {
 if(response){
+  this.navbarRefreshService.refreshNavbar();
+  
+  if(localStorage.getItem("checkoutCart")){
+  this.router.navigate(['checkout']);
+}else{
   this.router.navigate(['']);
+}
 }
 else{
       alert("hggj");

@@ -17,13 +17,13 @@
   <div class="tab-content pt-5" id="tab-content">
     <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
 
-      <app-course-slider [courses]="coursesByTab[0]"></app-course-slider>
+      <app-course-slider [loggedIn]="loggedIn" [courses]="coursesByTab[0]"></app-course-slider>
     </div>
     <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
-      <app-course-slider [courses]="coursesByTab[1]"></app-course-slider>
+      <app-course-slider [loggedIn]="loggedIn" [courses]="coursesByTab[1]"></app-course-slider>
     </div>
     <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
-      <app-course-slider [courses]="coursesByTab[2]"></app-course-slider>
+      <app-course-slider [loggedIn]="loggedIn" [courses]="coursesByTab[2]"></app-course-slider>
     </div>
 
   </div>
