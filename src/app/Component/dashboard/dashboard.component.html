@@ -1,0 +1,136 @@
+
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="simple-tab-0" data-bs-toggle="tab" href="#simple-tabpanel-0" role="tab"
+      aria-controls="simple-tabpanel-0" aria-selected="true" >Previous</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="simple-tab-1" data-bs-toggle="tab" href="#simple-tabpanel-1" role="tab"
+      aria-controls="simple-tabpanel-1" aria-selected="false">Next</a>
+  </li>
+
+</ul>
+<div class="tab-content pt-5" id="tab-content">
+  <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
+    <section>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+        <label style="position: relative;top:-30px;right: -60px;">Course ID:</label>
+        <input formControlName="id" placeholder="Course ID" class="d">
+        <label class="a">Title:</label>
+        <input formControlName="courseTitle" placeholder="" class="d">
+        <div class="b">
+          <label style="position: relative;top:-60px;right: -70px;">Description:</label>
+        <textarea formControlName="courseDisc" placeholder="" class="c"></textarea>
+        </div>
+        <label style="position: relative;top:-30px; right: -100px;margin-top: 30px;">Category Name:</label>
+        <input formControlName="categoryName" placeholder="" style="margin-top: 30px;">
+        <label class="h">Sub Name:</label>
+        <input formControlName="subcatName" placeholder="" class="g">
+        <label class="h">Topic Name:</label>
+        <input formControlName="topicName" placeholder="" class="g" style="margin-right: 10px;">
+        <div style="margin-top: 20px;">
+          <label style="position: relative;left: -250px;">Objectives</label>
+          <div class="obj">
+          <input formControlName="Objectives" >
+          </div>
+          <div class="obj">
+          <input formControlName="Objectives" >
+          </div>
+          <div class="obj">
+          <input formControlName="Objectives" >
+          </div>
+          <div class="obj">
+          <input formControlName="Objectives" >
+          </div>
+          <div class="obj">
+          <input formControlName="Objectives" >
+        </div>
+        </div>
+        <div style="margin-top: 20px;">
+          <label style="position: relative;left: -230px;">Full Description</label>
+        </div>
+        <div class="full">
+          <textarea formControlName="FullDescription"></textarea>
+        </div>
+      </form>
+      </section>
+
+  </div>
+  <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
+    <section>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <label style="position: relative;top: -30px;right: -100px;">Section Number </label>
+        <input formControlName="sectionnum">
+        <label style="position: relative;top: -30px;right: -80px;">Total Lecture</label>
+        <input formControlName="totallecture">
+        <label style="position: relative;top: -30px;right: -80px;">Total Houres</label>
+        <input formControlName="totalhoures">
+        <label style="position: relative;top: -30px;right: -60px;">Total Min</label>
+        <input formControlName="totalmin">
+        <div style="margin-top: 20px;">
+          <label style="position: relative;left: -360px;">Requirements</label>
+        </div>
+        <div class="req">
+          <input formControlName="requirement">
+        </div>
+        <div class="req">
+          <input formControlName="requirement">
+        </div>
+        <div class="req" style="margin-bottom: 20px;">
+          <input formControlName="requirement">
+        </div>
+
+        <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
+        <input class="sec" formControlName="secName">
+        <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
+        <input  class="sec"formControlName="secLecNum">
+        <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
+        <input class="sec" formControlName="secHourNum">
+        <div style="margin-top: 20px;">
+          <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
+          <input class="sec" formControlName="secName">
+          <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
+          <input  class="sec"formControlName="secLecNum">
+          <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
+          <input class="sec" formControlName="secHourNum">
+        </div>
+        <div style="margin-top: 20px;">
+          <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
+          <input class="sec" formControlName="secName">
+          <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
+          <input  class="sec"formControlName="secLecNum">
+          <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
+          <input class="sec" formControlName="secHourNum">
+        </div>
+        <div style="margin-top: 40px;">
+          <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
+          <input class="les" formControlName="lessonName">
+          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
+          <input  class="les"formControlName="lessonTime">
+        </div>
+        <div style="margin-top: 40px;">
+          <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
+          <input class="les" formControlName="lessonName">
+          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
+          <input  class="les"formControlName="lessonTime">
+        </div>
+        <div style="margin-top: 40px;">
+          <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
+          <input class="les" formControlName="lessonName">
+          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
+          <input  class="les"formControlName="lessonTime">
+        </div>
+        <div style="margin-top: 40px;">
+          <label style="position: relative;top: -60px;right: -100px;">Announcement </label>
+          <textarea class="text" formControlName="announcement"></textarea>
+        </div>
+        <button type="submit">Save</button>
+        </form>
+        </section>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,21 @@
+export interface IData {
+  id:number;
+  categoryName:string;
+  subcatName:string;
+  topicName:string;
+  courseTitle:string;
+  courseDisc:string;
+  Objectives:string;
+  FullDescription:string;
+  sectionnum:number;
+  totallecture:number;
+  totalhoures:number;
+  totalmin:number;
+  secName:string;
+  secLecNum:number;
+  secHourNum:number;
+  lessonName:string;
+  lessonTime:number;
+  announcement:string;
+  requirement:string;
+}

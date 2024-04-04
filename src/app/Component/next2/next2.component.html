@@ -1,0 +1,10 @@
+<section>
+<h1>How about a working title?</h1>
+<p>It's ok if you can't think of a good title now. You can change it later.</p>
+<input type="text" (input)="checkInput()" [(ngModel)]="inputText"  placeholder="e.g.learn photoshop CS6 from Scratch">
+</section>
+<div class="bt">
+  <button class="pre" routerLink="/next1">Previous</button>
+  <button id="continueButton" [style.opacity]="buttonActive ? 1 : 0.5" [disabled]="!buttonActive" routerLink="/next3">Continue</button>
+
+</div>
