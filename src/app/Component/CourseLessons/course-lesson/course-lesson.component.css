@@ -5,6 +5,9 @@
   align-items: center;
   /* justify-content: space-between; */
   color: #fff;
+  overflow: hidden; /* لتجنب التداخل مع العناصر التي تأخذ تنسيق العناصر المنسلة */
+  width: 100%;
+
 }
 
 .items-header-logo {
@@ -20,9 +23,13 @@
 
 
 .items-header-prog {
-  width: 150px;
-  position: relative; 
-
+  width: 200px;
+  /* position: relative;  */
+  align-items: center;
+  display: flex;
+  margin:auto 10px;
+  margin-left: 650px;
+ 
 }
 
 .items-header-btn {
@@ -40,6 +47,8 @@
   padding: 5px 15px;
   text-align: right;
   margin-right: 10px;
+  height: 40px;
+  align-items: center;
 }
 
 .main {
@@ -314,7 +323,7 @@ vg-mute {
 }
 
 .share-button {
-  padding: 8px 10px;
+  padding: 4px 4px;
   margin-right: 10px;
   text-align: center;
   text-decoration: none;
@@ -323,6 +332,12 @@ vg-mute {
   color: #fff;
   background-color: #383737;
   border: 1px white solid;
+  height: 40px;
+  vertical-align: middle;
+
+
+  
+
 }
 
 /* /// */
@@ -366,3 +381,23 @@ vg-mute {
   margin-right: 20px;
 
 }
+/* note */
+
+.notes-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.note {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+#video-container {
+  position: relative;
+}
+
