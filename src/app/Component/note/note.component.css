@@ -1,0 +1,26 @@
+/* note.component.css */
+.note-container {
+    margin-bottom: 10px;
+  }
+  input{
+    width:500px;
+    height:48px
+  }
+  .add{
+    width:50px;
+    height:48px
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  button {
+    margin-left: 5px;
+  }
+  

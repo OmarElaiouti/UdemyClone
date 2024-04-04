@@ -1,0 +1,25 @@
+<!-- comment.component.html -->
+<section style="margin-left: 55px;">
+
+<div class="comment-container">
+    <input type="text" [(ngModel)]="newComment" placeholder="Add a comment">
+    <button (click)="addComment()">Add</button>
+  </div>
+  
+  @if(comments.length > 0){
+  <div>
+    <div *ngFor="let comment of comments; let i = index" class="comment">
+      <img [src]="comment.personPictureUrl" alt="Person's Picture">
+      <div class="comment-content">
+        <p>{{ comment.personName }}</p>
+        <p>{{ comment.content }}</p>
+      </div>
+      <button (click)="deleteComment(i)">Delete</button>
+    </div>
+  </div>}
+
+  @else {
+      <p>No comments available.</p>
+  }
+
+</section>
