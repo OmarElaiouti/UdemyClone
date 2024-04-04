@@ -1,0 +1,43 @@
+h1{
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 30px;
+}
+.active {
+  opacity: 1;
+
+}
+.div.active {
+  border: 5px solid black; /* Adjust the color as needed */
+}
+.div:hover{
+  background-color:#d1d7dc;
+}
+button{
+  width: 100px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.div{
+  width: 250px;
+  height: 300px;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: 600px;
+  margin-bottom: 100px;
+}
+h3{
+  font-weight: bold;
+}
+.bt{
+  height: 100px;
+  box-shadow :0 -2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  border :1px solid #d1d7dc;
+  width: 100%;
+  margin-bottom: 20px;
+}

@@ -14,6 +14,11 @@ import { AccountProfileComponent } from './Component/account-profile/account-pro
 import { MyLearningComponent } from './Component/my-learning/my-learning.component';
 import { NotificationComponent } from './Component/notification/notification.component';
 import { CheckOutComponent } from './Component/check-out/check-out.component';
+import { Next1Component } from './Component/next1/next1.component';
+import { UpdateCourseComponent } from './Component/update-course/update-course.component';
+import { InstructorCoursesComponent } from './Component/instructor-courses/instructor-courses.component';
+import { Next2Component } from './Component/next2/next2.component';
+import { Next3Component } from './Component/next3/next3.component';
 
 SignupComponent
 export const routes: Routes = [
@@ -37,8 +42,9 @@ export const routes: Routes = [
   { path: 'lessons', component: CourseDetailsComponent },
   { path: 'notifications', component: NotificationComponent },
   { path: 'checkout', component: CheckOutComponent },
-
-
-
-
+  { path: 'next1', component: Next1Component },
+  { path: 'Update', component: UpdateCourseComponent },
+  { path: 'instructor-courses', component: InstructorCoursesComponent },
+  { path: 'next2', component: Next2Component },
+  { path: 'next3', component: Next3Component },
 ];

@@ -1,0 +1,37 @@
+<h1>Your Courses</h1>
+@if(courses.length>0){
+@for(course of courses ; track course.id){
+  <div class="photo">
+<div >
+    <img src={{course.img}}
+        [alt]="course.name" class="w-100 shadow-2" />
+</div>
+<div class="col-md-8  two right">
+    <div class="card-body">
+        <h5 class="card-title">{{ course.name }}</h5>
+        <p class="card-text mb-1">Instructor: {{ course.instructor }}</p>
+        <p class="card-text mb-1"> {{ course.disc }}</p>
+
+        <div class="star-ratings-css">
+            <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
+                <span><b>{{ course.rating }} </b> </span>
+                <span *ngFor="let star of getStarArray(course.rating); let i = index">
+                    <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+                </span>
+                <span class="num-reviewers">({{ course.numReviewers }})</span>
+            </div>
+        </div>
+        <p class="card-text mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>
+    </div>
+    <div>
+      <button class="up" routerLink="/Update">Update</button>
+      <button class="del" (click)="Delete()">Delete</button>
+    </div>
+</div>
+</div>
+<hr>
+}
+}
+@else {
+  <h1>You Have'nt any courses yet</h1>
+}

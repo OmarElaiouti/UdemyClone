@@ -1,0 +1,11 @@
+<h1>First, let's find out what type of course you're making.</h1>
+<div (click)="activateButton()" [ngClass]="{ 'active': buttonActive }"class="div">
+  <div style="margin-top: 40px;">
+  <img src="\assets\Teach\a.jpeg"/>
+  <h3>Course</h3>
+  <p>Create rich learning experiences with the help of video lectures quezes,coding exercises,etc.</p>
+</div>
+</div>
+<div class="bt">
+<button id="continueButton" [style.opacity]="buttonActive ? 1 : 0.5" [disabled]="!buttonActive" routerLink="/next2">Continue</button>
+</div>

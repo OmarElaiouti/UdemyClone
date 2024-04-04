@@ -1,0 +1,78 @@
+.one
+{
+  width: 90%;
+  height: 150px;
+  box-shadow :0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  border :1px solid #d1d7dc;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: 80px;
+}
+.btn
+{
+  background-color: blueviolet;
+  color: white;
+  height: 3rem;
+  min-width: 20rem;
+}
+.cont{
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+}
+#img{
+  width: 200px;
+  height: 200px;
+}
+.two{
+  width: 90%;
+  height: 300px;
+  box-shadow :0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  border :1px solid #d1d7dc;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: 80px;
+
+}
+.left
+{
+  width: 44%;
+  height: 300px;
+  box-shadow :0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  border :1px solid #d1d7dc;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: 80px;
+  display: flex;
+
+}
+.right{
+  width: 44%;
+  height: 300px;
+  box-shadow :0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+  border :1px solid #d1d7dc;
+  margin-top: 40px;
+  align-items: center;
+  margin-left: 30px;
+  display: flex;
+}
+#im{
+  width: 150px;
+  height: 150px;
+  margin-left: 10px;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+.bt{
+
+  background-color: blueviolet;
+  color: white;
+  height: 3rem;
+  min-width: 20rem;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
