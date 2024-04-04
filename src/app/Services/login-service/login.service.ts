@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
+import { UserCoursesService } from '../user-courses-service/user-courses.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private userCourses:UserCoursesService) {}
 
   login(email: string, password: string):Observable<boolean> {
     // Make API call to login endpoint
@@ -16,7 +17,20 @@ export class LoginService {
         // Store user authentication state (e.g., in local storage or session storage)
 
         localStorage.setItem('token', response.token);
-        alert("iyfi");
+        const cartItems = JSON.parse(localStorage.getItem('anonymousCart') || '[]');
+    if (cartItems.length != 0) {
+      cartItems.map((CourseId: number) => this.userCourses.addToCart(CourseId).subscribe({
+        next: r=>{
+          console.log("Courses added to cart successfully");
+          localStorage.removeItem("anonymousCart")
+        },
+        error:err=>{
+          console.log("error adding courses to cart");
+          
+        }
+    }));
+    }
+   
         return true; // Sign-up and sign-in successful
       }),
       catchError(error => {

@@ -10,11 +10,13 @@ import html2canvas from 'html2canvas';
   styleUrl: './certificate.component.css'
 })
 export class CertificateComponent {
-  todayDate: Date = new Date();
+
   course = {
     id: 1, name: 'Python for Data Science and Machine Learning Bootcamp', instructor: 'Instructor 1', rating: 4.5, totallectuer: 15,
-    totalHour: 15,student_name:"Eman Salah",Img:"https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
+    totalHour: 15,student_name:"Eman Salah",date:1/20/2023,Img:"https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
   }
+  
+
   @ViewChild('contentToDownload') contentToDownload!: ElementRef;
   @ViewChild('contentToShare') contentToShare!: ElementRef;
 

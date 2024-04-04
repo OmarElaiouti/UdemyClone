@@ -1,0 +1,26 @@
+/* comment.component.css */
+.comment-container {
+    margin-bottom: 10px;
+  }
+  
+  .comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .comment img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 50%; /* Make the image circular */
+    margin-right: 10px;
+  }
+  
+  .comment-content {
+    flex-grow: 1; /* Allow content to expand */
+  }
+  
+  .comment button {
+    margin-left: 10px;
+  }
+  

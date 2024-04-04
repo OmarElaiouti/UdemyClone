@@ -1,4 +1,4 @@
-<p-carousel [value]="courses" [numVisible]="5" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+<p-carousel [value]="courses" [numVisible]="4" [numScroll]="3" [showIndicators]="false" [responsiveOptions]="responsiveOptions">
 
             <ng-template let-course pTemplate="item">
 
@@ -47,8 +47,14 @@
                 }
                   </ul>
                   <div class="btns-wrapper">
-                <button class="cart-btn"(click)="AddToCart(course.id)">Add to Cart</button>
+                    @if(!loggedIn){
+                        <button class="cart-btn btn-full"  (click)="addToCartAnonymous(course.id)">Add to Cart</button>
+
+                    }@else{
+                <button class="cart-btn" (click)="AddToCart(course.id)">Add to Cart</button>
                 <button class="wishlist-btn" (click)="AddToWishList(course.id)"><i class="fa-regular fa-heart"></i></button>
+
+            }
             </div>
             </div>
         </ng-template>

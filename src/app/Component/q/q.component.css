@@ -1,66 +1,43 @@
-.one
-{
-  display: flex;
-  margin-left: 180px;
+/* question.component.css */
+.question-container {
+  margin-bottom: 10px;
 }
-.search{
+.ask{
   width: 50px;
-  height: 50px;
-  background-color: black;
-  text-align: center;
+  height: 48px;
+}
+.input{
+  height: 48px;
+  width: 500px;
 
 }
-i
-{
-  color: white;
-  margin-top: 15px;
-}
-input
-{
-  width: 700px;
-}
-.two{
+
+.question {
   display: flex;
-  margin-top: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 80px;
 }
-.p{
-  font-weight: bold;
+.question:hover{
+  background-color: rgb(239, 240, 241);
+  cursor: pointer;
 }
-select{
-  width: 170px;
-  height: 40px;
+
+.question img {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%; /* Make the image circular */
+  margin-right: 10px;
+  margin-left: 15px;
 }
-img{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+
+.question-content {
+  flex-grow: .8; /* Allow content to expand */
 }
-.arrow{
-  width: 40px;
-  height: 40px;
-  background-color: black;
-  margin-left: 700px;
-  text-align: center;
-  border-radius: 50%;
- position: absolute;
- top: 800px;
+
+.question button {
+  margin-left: 10px;
 }
-.arro
-{
-  width: 40px;
-  height: 40px;
-  margin-left: 700px;
-  text-align: center;
-  border-radius: 50%;
- position: absolute;
- top: 840px;
-}
-.i
-{
-color: gray;
-font-size: 30px;
-}
-span
-{
-  font-weight: bold;
+.delete{
+  background-color: crimson;
 }

@@ -22,7 +22,8 @@ export class CheckOutComponent {
   }
 
   checkoutCart: any[] = [];
-
+  totalPrice!:string;
+  totalDiscount:string="0.00"
   constructor(private usercoursesService:UserCoursesService,private router:Router) { }
 
   ngOnInit(): void {
@@ -30,11 +31,13 @@ export class CheckOutComponent {
     const checkoutCartString = localStorage.getItem('checkoutCart');
     this.checkoutCart = checkoutCartString ? JSON.parse(checkoutCartString) : [];
     console.log(this.checkoutCart);
+    this.totalPrice= this.calculateTotalPrice(this.checkoutCart);
   }
 
   compelete():void{
     this.usercoursesService.CompeleteCheckOut().subscribe({
       next:() => {
+        localStorage.removeItem("checkoutCart");
         this.router.navigate([''])
       },
       error:(error) => {
@@ -43,4 +46,24 @@ export class CheckOutComponent {
       }
 });
   }
+
+  private calculateTotalPrice(courses: any[]): string {
+    const totalPrice = courses.reduce((total, item) => total + item.price, 0)
+    return totalPrice.toFixed(2);;
+  }
+
+  FinalPrice() {
+    // Convert strings to numbers
+    const totalPrice = parseFloat(this.totalPrice);
+    const totalDiscount = parseFloat(this.totalDiscount);
+    
+    // Check if conversion is successful
+    if (isNaN(totalPrice) || isNaN(totalDiscount)) {
+        console.error("Error: Invalid input. Please provide numeric values.");
+        return NaN; // or any other error handling mechanism
+    }
+    
+    // Perform the subtraction
+    const finalPrice = totalPrice - totalDiscount;
+    return finalPrice.toString();}
 }

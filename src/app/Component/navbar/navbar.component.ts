@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../Services/category-service/category.service';
 import { INotification } from '../../Models/INotification';
@@ -9,11 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 import { IUser } from '../../Models/IUser';
 import { UserInfoService } from '../../Services/user-info-service/user-info.service';
-import { NotificationService } from '../../Services/Notification-service/notification.service';
+import { NotificationService } from '../../Services/notification-service/notification.service';
 import { Icourse } from '../../Models/ICourse';
 import { Icategory } from '../../Models/ICategory';
-import { CommunicationService } from '../../Services/communication-service/communication.service';
-import { filter } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
+import { NavRefreshService } from '../../Services/nav-refresh-service/nav-refresh.service';
+import { LogoutService } from '../../Services/logout-service/logout.service';
+import { Icart } from '../../Models/icart';
 
 @Component({
   selector: 'app-navbar',
@@ -27,6 +29,7 @@ export class NavbarComponent implements OnInit {
 
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
+  @Output() logoutEvent: EventEmitter<void> = new EventEmitter<void>();
 
   searchValue: string = '';
   categories!:Icategory[];
@@ -42,14 +45,15 @@ export class NavbarComponent implements OnInit {
   isSidebarOpen: boolean = false;
   user:IUser ={
     id:"",
-    firstName:"dvdv",
-    lastName:"dvdv",
-    userName:"",
+    firstName:"",
+    lastName:"",
+    userName:"Student",
     email:"",
     headline:"",
     biography:"",
-    image:"",   
+    image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",   
   };
+  private navbarRefreshSubscription!: Subscription;
 
   constructor(
     private catService: CategoryService,
@@ -59,7 +63,8 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private location: Location,
     private userService: UserInfoService,
-    private communication:CommunicationService
+    private navbarRefreshService: NavRefreshService,
+    private logoutService:LogoutService
 
 
   ) { }
@@ -68,48 +73,79 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.loadCategories();
-    this.loadNotifications();
-    this.loadCart();
-    this.loadWishlist();
-    this.loadUserdata();
-
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd)
-    ).subscribe(event=> {
-      this.loadCart();
-      this.loadWishlist();
-      // Call your functions when the route changes
-    });
-  
-  
-
-
-
-    this.communication.productAddedToCart$.subscribe(addedProduct => {
-      // Update cart count
-      this.loadCart();
-  });
-  
-    // Set the first category as active by default
-    this.communication.productAddedToWishlist$.subscribe(addedProduct => {
-      // Update cart count
-      this.loadWishlist();
-    });
-    // this.setActiveCategory(this.categories[0]);
-    // this.setActiveSubCategory(this.subcategories[0]);
-
     let flagValue = localStorage.getItem("token");
 
-    // Check if the value is not null before parsing it
-    if (flagValue) {
-      this.signedin = true;
-    }
+      // Check if the value is not null before parsing it
+      if (flagValue) {
+        this.signedin = true;
+  
+        // Load additional data only if the user is signed in
+        this.loadCategories();
+        this.loadNotifications();
+        this.loadCart();
+        this.loadWishlist();
+        this.loadUserdata();
+      } else {
+        this.signedin = false;
+        this.loadCart();
 
+      }
     
+      
+    
+    this.navbarRefreshSubscription = this.navbarRefreshService.refreshSubjectAsObservable$.subscribe(() => {
 
+
+      let flagValue = localStorage.getItem("token");
+      
+          // Check if the value is not null before parsing it
+          if (flagValue) {
+            this.signedin = true;
+            // Load additional data only if the user is signed in
+            this.loadCategories();
+            this.loadNotifications();
+            this.loadCart();
+            this.loadWishlist();
+            this.loadUserdata();
+          } else {
+            this.signedin = false;
+            this.loadCart();
+            // Reset signedin status if token is null
+          }
+        })
+        
+  
+    // Subscribe to router navigation events to refresh navbar on route changes
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe({
+      // Call your functions when the route changes
+      next: responce=>{
+      this.loadCart();
+      this.loadWishlist();
+    }, error: err =>{
+      console.error('Error in router navigation events subscription:', err);
+    }
+  });
+  
+    // // Subscribe to product added to cart event
+    // this.communication.getCartSignal().subscribe({
+    //   next: r =>{
+    //   this.loadCart();
+    // }, error: err => {
+    //   console.error('Error in productAddedToCart$ subscription:', err);
+    // }});
+  
+    // // Subscribe to product added to wishlist event
+    // this.communication.getWishlistSignal().subscribe({
+    //   next: r=>{
+    //   // Update wishlist count
+    //   this.loadWishlist();
+    // }, error:err => {
+    //   console.error('Error in productAddedToWishlist$ subscription:', err);
+    // }});
   }
+  
 
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
@@ -147,7 +183,6 @@ export class NavbarComponent implements OnInit {
   }
 
 
-
   setActiveCategory(category: any): void {
     this.activeCategory = category;
     this.loadSubcategories(category.name);
@@ -165,13 +200,46 @@ export class NavbarComponent implements OnInit {
   }
 
   loadCart(): void {
-    this.userCoursesService.getCart().subscribe(cart => {
-      this.Cart = cart;
-      this.CartTotalPrice = this.calculateTotalPrice(this.Cart);
+if(this.signedin){
+    this.userCoursesService.getCart().subscribe({
+      next:(data)=>{
+        this.Cart=data;
+        this.CartTotalPrice = this.calculateTotalPrice(this.Cart);
 
-    });
+      }
+    })
+  }else{
+    this.userCoursesService.getAnonymousCart().subscribe({
+      next:(data)=>{
+        this.Cart=data;
+        this.CartTotalPrice = this.calculateTotalPrice(this.Cart);
+      },
+      error: err=>{console.log(err);
+      }
+    })
+
+  }
   }
 
+
+  // loadAnonymousCart() {
+  //   this.userCoursesService.getAnonymousCart().subscribe({
+
+  //     next:cartItems => {
+  //       this.Cart = cartItems;
+        
+  //        // Update Cart array with the fetched cart items
+  //     },
+  //     error:err => {
+  //       console.error('Error loading anonymous cart:', err);
+  //     }
+  // });
+  // }
+
+
+  getNumOfNotificationsWithFalseStatus(): number {
+    return this.notifications.filter(notification => !notification.status).length;
+  }
   loadWishlist(): void {
     this.userCoursesService.getWishlist().subscribe(wishlist => {
       this.Wishlist = wishlist;
@@ -224,6 +292,19 @@ getusername(){
     this.router.navigate(['/searchresult'], { queryParams: { search: searchValue } });
 }
 
+hoverButton() {
+if(this.notifications.length>0 ){  
+  const lastFive = this.notifications.slice(-5);
+  lastFive.forEach(notification => {
+    notification.status = true;
+  });
+  this.notifService.setNotificationsLastFiveStatus(lastFive).subscribe({
+    next: response =>{},
+    error: err => {}
+  })
+}
+}
+
 GotoCategory(name: string): void {
   if(name.length>0)
   this.router.navigate(['/category'], { queryParams: { name: name } });
@@ -262,6 +343,14 @@ GotoCategory(name: string): void {
   }
 
 
+logOut(){
+  
+  this.logoutService.logout();
+  this.router.navigate([""]);
 
+}
+ngOnDestroy(): void {
+  this.navbarRefreshSubscription.unsubscribe();
+}
 
 }

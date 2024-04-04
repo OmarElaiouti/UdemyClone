@@ -30,10 +30,15 @@ h1{
     width: 70px;
     height: 70px;
     margin-right: 10px;
+    padding: 0.5rem;
     border-radius: 50%;
+    border: 1px solid #ccc;
 }
 .notification-text {
     flex: 1;
+}
+.notification-text p{
+    margin: 0;
 }
 .Main{
     border: 2px solid #ccc;
@@ -64,11 +69,11 @@ text-align: center;
 }
 .notification {
     position: relative; 
-    background-color:#dfe4e6;
+    /* background-color:#dfe4e6; */
     padding: 10px;
     margin-bottom: 10px;
   }
-  
+/*   
   .notification-badge {
     position: absolute;
     top: 20px;
@@ -77,7 +82,7 @@ text-align: center;
     height: 10px;
     background-color: purple; 
     border-radius: 50%;
-  }
+  } */
  
   
   .black-background {
@@ -89,5 +94,8 @@ text-align: center;
   
   
 
-
+.date{
+    color: #ccc;
+    font-size: 0.8rem;
+}
     

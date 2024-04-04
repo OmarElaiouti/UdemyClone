@@ -119,6 +119,14 @@ hr{
 }
 #par
 {
-  margin-left: 160px;
-  margin-bottom: 100px;
+  margin-left: 8rem;
+    margin-bottom: 3rem;
+}
+
+.payment-item{
+  width: 100%;
+}
+
+.payment-fa{
+  margin: 1rem;
 }

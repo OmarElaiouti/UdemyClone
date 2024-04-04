@@ -1,0 +1,27 @@
+<!-- review2.component.html -->
+<div class="container">
+    <h2>Add Review</h2>
+    <div class="rating-section">
+      <span class="stars" (click)="setRating(1)" [ngClass]="{'highlight': selectedRating >= 1}">★</span>
+      <span class="stars" (click)="setRating(2)" [ngClass]="{'highlight': selectedRating >= 2}">★</span>
+      <span class="stars" (click)="setRating(3)" [ngClass]="{'highlight': selectedRating >= 3}">★</span>
+      <span class="stars" (click)="setRating(4)" [ngClass]="{'highlight': selectedRating >= 4}">★</span>
+      <span class="stars" (click)="setRating(5)" [ngClass]="{'highlight': selectedRating >= 5}">★</span>
+    </div>
+    <textarea [(ngModel)]="reviewText" placeholder="Write your review here..."></textarea>
+    <button (click)="submitReview()">Add Review</button>
+  
+    <h2>All Reviews</h2>
+    @for (review of reviews; track $index) {
+    <div class="review">
+      <div class="review-header">
+        <img [src]="review.reviewerPhoto" alt="Reviewer Photo">
+        <span>{{ review.reviewerName }}</span>
+        <span class="review-rating">
+          <span *ngFor="let _ of getStarArray(review.rating)">★</span>
+        </span>
+      </div>
+      <p>{{ review.comment }}</p>
+    </div>}
+  </div>
+  

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FooterComponent } from "../../footer/footer.component";
 import { ProgressBarModule } from 'primeng/progressbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -12,6 +12,15 @@ import { OverviewComponent } from '../../overview/overview.component';
 import { QComponent } from "../../q/q.component";
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
+import { ReviewsComponent } from "../../reviews/reviews.component";
+import { HttpClient } from '@angular/common/http';
+import { Subscription, interval, switchMap } from 'rxjs';
+import { NoteComponent } from "../../note/note.component";
+import { CommentComponent } from "../../comment/comment.component";
+import { AnnouncementComponent } from "../../announcement/announcement.component";
+import { Review2Component } from "../../review2/review2.component";
+
+
 
 
 interface Lesson {
@@ -21,19 +30,31 @@ interface Lesson {
   time: number;
 }
 
+interface Note {
+  videoId: string;
+  timestamp: number;
+  content: string;
+}
+
+interface Video {
+  id: string;
+  // Add other properties of the video as needed
+}
+
+
 @Component({
-  selector: 'app-course-lesson',
-  standalone: true,
-  templateUrl: './course-lesson.component.html',
-  styleUrl: './course-lesson.component.css',
-  imports: [FooterComponent,
-    AccordionModule,
-    OverlayPanelModule,
-    ProgressBarModule,
-    VgCoreModule,
-    VgControlsModule,
-    VgOverlayPlayModule,
-    VgBufferingModule, FormsModule, OverviewComponent, QComponent, MatCardModule,]
+    selector: 'app-course-lesson',
+    standalone: true,
+    templateUrl: './course-lesson.component.html',
+    styleUrl: './course-lesson.component.css',
+    imports: [FooterComponent,
+        AccordionModule,
+        OverlayPanelModule,
+        ProgressBarModule,
+        VgCoreModule,
+        VgControlsModule,
+        VgOverlayPlayModule,
+        VgBufferingModule, FormsModule, OverviewComponent, QComponent, MatCardModule, ReviewsComponent, NoteComponent, CommentComponent, AnnouncementComponent, Review2Component]
 })
 
 export class CourseLessonComponent {
@@ -56,27 +77,26 @@ export class CourseLessonComponent {
       title: 'Introduction',
       numsection: [{ num: 1 }, { num: 2 }],
       lessons: [
-        { title: '1. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 22 },
-        { title: '2. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 55 },
-        { title: '3. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 32 },
+        {videoId:1, title: '1. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 22 },
+        {videoId:2, title: '2. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 55 },
+        {videoId:3, title: '3. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 32 },
       ],
     },
     {
       title: 'Accordion 2',
       lessons: [
-        { title: '4. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 30 },
-        {
+        {videoId:4, title: '4. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 30 },
+        {videoId:5,
           title: '5. Video',
           url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
           watched: false,
           time: 35,
         },
-        { title: '6. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 60 },
+        {videoId:6, title: '6. Video', url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4', watched: false, time: 60 },
       ],
     },
   ];
 
-  // constructor() {}
 
   loadVideo(videoUrl: string) {
     const videoPlayer = document.getElementById('singleVideo') as HTMLVideoElement;
@@ -155,72 +175,17 @@ export class CourseLessonComponent {
   }
 
   ///////////////
-  // constructor(private router: Router) { } // Inject the Router service
+ 
 
-  // calculateProgress(): number {
-  //   if (this.totalLessons === 0) {
-  //     return 0;
-  //   }
-  //   const progress = (this.watchedLessons / this.totalLessons) * 100;
-  //   if (progress === 100) {
-  //     this.navigateToCertificate(); // Navigate to certificate page when progress reaches 100%
-  //   }
-  //   return progress;
-  // }
-  // constructor(private router: Router) {
-  //   console.log('watchedLessons:', this.watchedLessons);
-  //   console.log('totalLessons:', this.totalLessons);
-  // }
-  // calculateProgress(): { percentage: number, completed: boolean } {
-  //   const totalLessons = this.sections.reduce((total, section) => {
-  //     return total + section.lessons.length;
-  //   }, 0);
-  //   if (totalLessons === 0) {
-  //     return { percentage: 0, completed: false };
-  //   }
-  //   const progress = (this.watchedLessons / totalLessons) * 100;
-  //   return { percentage: progress, completed: progress >= 100 };
-  // }
-  
+constructor( private router:Router ,private http: HttpClient) {
 
-//   progress: number = 0;
-
-// calculateProgress(): number {
-//     if (this.totalLessons === 0) {
-//       return 0;
-//     }
-//     const progress = (this.watchedLessons / this.totalLessons) * 100;
-//     if (progress === 100) {
-//       this.navigateToCertificate(); // Navigate to certificate page when progress reaches 100%
-//     }
-//     return progress;
-// }
-
-// ngOnInit() {
-//     this.progress = this.calculateProgress();
-// }
-
-constructor( private router:Router) {
 }
 
-// ngOnInit(): void {
-//   // Calculate progress when the component is initialized
-//   this.calculateProgress();
-// }
+
 progress: number = 0; // Declare the progress property
 completed: boolean = false;
 
-// calculateProgress(): void {
-//   const totalLessons = this.sections.reduce((total, section) => {
-//     return total + section.lessons.length;
-//   }, 0);
-//   if (totalLessons === 0) {
-//     this.progress = 0;
-//   } else {
-//     this.progress = (this.watchedLessons / totalLessons) * 100;
-//   }
-//    this.completed = this.progress >= 100;
-// }
+
 
 calculateProgress(): number {
   const totalLessons = this.sections.reduce((total, section) => {
@@ -236,12 +201,11 @@ calculateProgress(): number {
 
 }
 
-  
-
 
 
   navigateToCertificate() {
     this.router.navigate(['/certificate']); // Navigate to certificate page
   }
 
+  
 }

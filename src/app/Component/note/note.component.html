@@ -1,0 +1,23 @@
+<!-- note.component.html -->
+<section style="margin-left: 55px;">
+
+  <div class="note-container">
+    <input class=".input" type="text" [(ngModel)]="newNote" placeholder="Add a new note">
+    <button class="add" (click)="addNote()">Add</button>
+  </div>
+  @if(notes.length > 0){
+  <div>
+    <ul>
+      @for(note of notes;track $index){
+      <li >
+        {{ note.content }}
+        <!-- <button (click)="deleteNote(i)">Delete</button> -->
+      </li>}
+    </ul>
+  </div>
+  }
+
+  @else{
+  <p>No notes available.</p>
+  }
+</section>

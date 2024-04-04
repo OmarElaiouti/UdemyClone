@@ -649,3 +649,19 @@ a {
     width: 100%;
     justify-content: space-between;
   }
+
+  .profile-image{
+    width: 100%;
+    height: 100%;
+  }
+
+  .span-alert{
+    position: unset;
+  }
+
+  .see-all-internal-btn{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
