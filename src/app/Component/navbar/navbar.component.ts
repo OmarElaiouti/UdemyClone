@@ -110,6 +110,7 @@ export class NavbarComponent implements OnInit {
           } else {
             this.signedin = false;
             this.loadCart();
+
             // Reset signedin status if token is null
           }
         })
@@ -167,7 +168,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadSubcategories(parentName: string): void {
-    this.catService.getSubcategoriesByParent(parentName).subscribe(subcategories => {
+    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(subcategories => {
       this.subcategories = subcategories;
       if (this.subcategories.length > 0) {
         this.activeSubCategory = this.subcategories[0];
@@ -177,7 +178,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadTopics(parentName: string): void {
-    this.catService.getHighestScoreTopicByParent(parentName).subscribe(topics => {
+    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(topics => {
       this.topics = topics;
     });
   }

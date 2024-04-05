@@ -87,19 +87,19 @@ export class HomeComponent {
   }
 
   getfeatuerdCategories(): void {
-    this.categoryService.getHighestScoreTopicByParent('Development').subscribe(categories => {
+    this.categoryService.getSubcategoriesOrTopicsByParentName('Development').subscribe(categories => {
       this.developmentCategories = categories;
     });
 
-    this.categoryService.getHighestScoreTopicByParent('Business').subscribe(categories => {
+    this.categoryService.getSubcategoriesOrTopicsByParentName('Business').subscribe(categories => {
       this.businessCategories = categories;
     });
 
-    this.categoryService.getHighestScoreTopicByParent('IT and Software').subscribe(categories => {
+    this.categoryService.getSubcategoriesOrTopicsByParentName('IT and Software').subscribe(categories => {
       this.itAndSoftwareCategories = categories;
     });
 
-    this.categoryService.getHighestScoreTopicByParent('Design').subscribe(categories => {
+    this.categoryService.getSubcategoriesOrTopicsByParentName('Design').subscribe(categories => {
       this.designCategories = categories;
     });
   }
