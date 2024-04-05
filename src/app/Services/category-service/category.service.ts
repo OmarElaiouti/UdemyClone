@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Icourselong } from '../../Models/ICourse';
+import { Icourselong, Instructor } from '../../Models/ICourse';
 import { Icategory } from '../../Models/ICategory';
 
 @Injectable({
@@ -25,5 +25,8 @@ export class CategoryService {
     return this.http.get<Icategory[]>(`/api/subcategories?parentId=${parentName}`);
   }
 
+  getInstructors(): Observable<Instructor[]> {
+    return this.http.get<Instructor[]>('YOUR_API_ENDPOINT_HERE');
+  }
  
 }

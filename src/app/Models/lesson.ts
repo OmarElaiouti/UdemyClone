@@ -61,3 +61,31 @@ export interface IAnnouncement {
   personPictureUrl: string;
   // date: Date;
 }
+
+export interface IvideoLesson{
+  courseId:number,
+
+  section:[{
+    sectionId:number,
+    sectionName:string,
+    totalLessons:number,
+    totalMinutes:number,
+
+    lessons:[{
+      lessonId:number,
+      lessonName:string,
+      lessonTimeInMinutes:number,
+      lessonVideo:string,
+      inCompleted:true,
+      
+      notes:[{
+        id:number,
+        content:string
+      }]
+
+
+    }]
+    
+  }]
+
+}
