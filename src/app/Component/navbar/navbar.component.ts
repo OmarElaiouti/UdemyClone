@@ -15,7 +15,7 @@ import { Icategory } from '../../Models/ICategory';
 import { Subscription, filter } from 'rxjs';
 import { NavRefreshService } from '../../Services/nav-refresh-service/nav-refresh.service';
 import { LogoutService } from '../../Services/logout-service/logout.service';
-import { Icart } from '../../Models/icart';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-navbar',
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
   @Output() logoutEvent: EventEmitter<void> = new EventEmitter<void>();
+  userRoles!: string[];
 
   searchValue: string = '';
   categories!:Icategory[];
@@ -64,7 +65,8 @@ export class NavbarComponent implements OnInit {
     private location: Location,
     private userService: UserInfoService,
     private navbarRefreshService: NavRefreshService,
-    private logoutService:LogoutService
+    private logoutService:LogoutService,
+    private jwtHelper: JwtHelperService
 
 
   ) { }
@@ -85,6 +87,15 @@ export class NavbarComponent implements OnInit {
         this.loadCart();
         this.loadWishlist();
         this.loadUserdata();
+
+        const token = localStorage.getItem('token');
+    if (token) {
+      // Decode token to get user roles
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      this.userRoles = decodedToken.roles; // Assuming roles are stored as an array in 'roles' field
+    }
+  
+        
       } else {
         this.signedin = false;
         this.loadCart();
@@ -107,6 +118,14 @@ export class NavbarComponent implements OnInit {
             this.loadCart();
             this.loadWishlist();
             this.loadUserdata();
+
+            const token = localStorage.getItem('token');
+            if (token) {
+              // Decode token to get user roles
+              const decodedToken = this.jwtHelper.decodeToken(token);
+              this.userRoles = decodedToken.roles; // Assuming roles are stored as an array in 'roles' field
+            }
+
           } else {
             this.signedin = false;
             this.loadCart();
@@ -129,24 +148,12 @@ export class NavbarComponent implements OnInit {
     }
   });
   
-    // // Subscribe to product added to cart event
-    // this.communication.getCartSignal().subscribe({
-    //   next: r =>{
-    //   this.loadCart();
-    // }, error: err => {
-    //   console.error('Error in productAddedToCart$ subscription:', err);
-    // }});
   
-    // // Subscribe to product added to wishlist event
-    // this.communication.getWishlistSignal().subscribe({
-    //   next: r=>{
-    //   // Update wishlist count
-    //   this.loadWishlist();
-    // }, error:err => {
-    //   console.error('Error in productAddedToWishlist$ subscription:', err);
-    // }});
   }
   
+  userIsInstructor(): boolean {
+    return this.userRoles && this.userRoles.includes('Instructor');
+  }
 
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
