@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Review, ReviewData } from '../../Models/lesson';
+import { Review } from '../../Models/lesson';
 import { ReviewService } from '../../Services/review.service';
 import { FormsModule } from '@angular/forms';
 import { Review2Service } from '../../Services/review2/review2.service';
@@ -14,10 +14,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './review2.component.css'
 })
 export class Review2Component implements OnInit {
-  @Input() courseId!: number;
-
   selectedRating: number = 0;
-  reviewText: string = '';
+  comment: string = '';
   reviews: Review[] = [];
 
   constructor(private reviewService: Review2Service) { }
@@ -26,41 +24,46 @@ export class Review2Component implements OnInit {
     this.fetchReviews();
   }
 
-  setRating(rating: number) {
+  setRating(rating: number): void {
     this.selectedRating = rating;
   }
 
-  // reviews.component.ts
-  submitReview() {
-    const newReviewData: ReviewData = {
-      rating: this.selectedRating,
-      comment: this.reviewText,
-      courseId: this.courseId
+  submitReview(): void {
+    if (this.selectedRating === 0) {
+      // Display error message or prevent submission
+      return;
+    }
+    const newReview: Review = {
+      studentName: 'John Doe', // Get actual user name
+      rate: this.selectedRating,
+      studentImage: 'path/to/image', // Get actual user image
+      date: new Date().toDateString(), // Get current date
+      reviewComment: this.comment
     };
-
-    // Call the service method to submit the review data
-    this.reviewService.submitReview(newReviewData).subscribe(savedReview => {
-      // Once the review is successfully saved in the database, 
-      // fetch the full review with additional information from the backend
-      this.reviewService.getReview(savedReview.id).subscribe(fullReview => {
-        // Add the retrieved review to the reviews array
-        this.reviews.unshift(fullReview);
-        // Reset selected rating and review text
-        this.selectedRating = 0;
-        this.reviewText = '';
-      });
+    this.reviewService.postReview(newReview).subscribe({
+      next: response => {
+        console.log('Review submitted successfully:', response);
+        this.fetchReviews(); // Refresh reviews after submission
+        this.selectedRating = 0; // Reset selected rating
+        this.comment = ''; // Clear comment box
+      },
+      error: error => {
+        console.error('Error submitting review:', error);
+      }
     });
+    
   }
 
-  fetchReviews() {
-    this.reviewService.getReviews().subscribe(reviews => {
-      this.reviews = reviews;
+  fetchReviews(): void {
+    this.reviewService.getReviews().subscribe({
+      next: reviews => {
+        this.reviews = reviews;
+      },
+      error: error => {
+        console.error('Error fetching reviews:', error);
+      }
     });
+    
   }
-
-  getStarArray(rating: number): number[] {
-    return Array.from({ length: rating }, (_, index) => index + 1);
-  }
-
 
 }

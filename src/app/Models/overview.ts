@@ -1,18 +1,26 @@
 export interface ICourseOverview {
     id: number;
     courseId:number,
-    aboutThisCourse: string;
-    Captions: string;
-    SkillLevel: string;
-    NofStudents: number;
+    brifDescription: string;
+    level: string;
+    numStudents: number;
     Languages: string;
-    NofLectures: number;
-    totalHours: number;
-    Description: string;
-    WhatLearn: string;
-    courseRequirements: string;
-    InstructorName: string;
-    InstructorDescription: string;
-    InstructorRank: string;
-    img: string;
+    totalLessons: number;
+    totalTimeInMinute: number;
+    fullDescription: string;
+    instructorName: string;
+    instructorBiography: string;
+    InstrucHeadline: string;
+    instructorImage: string;
+    instractorRate:number;
+    objective:[
+      {id:number,
+        content:string
+
+      }
+    ],
+    requirements:[{
+      id:number,
+      content:string
+    }]
   }

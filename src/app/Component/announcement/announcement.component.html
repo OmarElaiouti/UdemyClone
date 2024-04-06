@@ -5,11 +5,11 @@
       @for(announcement of announcements; track $index ){
 
       <div  class="announcement">
-        <img src={{announcement.personPictureUrl}} alt="Instructor's Picture">
+        <img src={{announcement.instructorImage}} alt="Instructor's Picture">
         <div class="announcement-details">
-          <p style="margin-bottom: 0px;font-weight: bold;">{{ announcement.personName }}</p>
+          <p style="margin-bottom: 0px;font-weight: bold;">{{ announcement.instructorName }}</p>
           <p>{{ announcement.content }}</p>
-          <!-- <p>Date: {{ announcement.date | date }}</p> -->
+          <!-- <p>Date: {{ announcement.date }}</p> -->
         </div>
         <!-- <button (click)="deleteAnnouncement($index)">Delete</button> -->
       </div>}

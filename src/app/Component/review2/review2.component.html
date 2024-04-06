@@ -1,27 +1,28 @@
-<!-- review2.component.html -->
-<div class="container">
-    <h2>Add Review</h2>
-    <div class="rating-section">
-      <span class="stars" (click)="setRating(1)" [ngClass]="{'highlight': selectedRating >= 1}">★</span>
-      <span class="stars" (click)="setRating(2)" [ngClass]="{'highlight': selectedRating >= 2}">★</span>
-      <span class="stars" (click)="setRating(3)" [ngClass]="{'highlight': selectedRating >= 3}">★</span>
-      <span class="stars" (click)="setRating(4)" [ngClass]="{'highlight': selectedRating >= 4}">★</span>
-      <span class="stars" (click)="setRating(5)" [ngClass]="{'highlight': selectedRating >= 5}">★</span>
-    </div>
-    <textarea [(ngModel)]="reviewText" placeholder="Write your review here..."></textarea>
-    <button (click)="submitReview()">Add Review</button>
-  
-    <h2>All Reviews</h2>
-    @for (review of reviews; track $index) {
-    <div class="review">
+<div class="review">
+  <h2>Rate this course:</h2>
+  <div class="stars">
+    <span class="stars" (click)="setRating(1)" [ngClass]="{'highlight': selectedRating >= 1}">★</span>
+    <span class="stars" (click)="setRating(2)" [ngClass]="{'highlight': selectedRating >= 2}">★</span>
+    <span class="stars" (click)="setRating(3)" [ngClass]="{'highlight': selectedRating >= 3}">★</span>
+    <span class="stars" (click)="setRating(4)" [ngClass]="{'highlight': selectedRating >= 4}">★</span>
+    <span class="stars" (click)="setRating(5)" [ngClass]="{'highlight': selectedRating >= 5}">★</span>
+     </div>
+     
+  <textarea [(ngModel)]="comment" placeholder="Write your comment"></textarea>
+  <button (click)="submitReview()">Submit Review</button>
+
+  <div class="all-reviews">
+    <h2>All Reviews:</h2>
+    <div *ngFor="let review of reviews" class="review-item">
       <div class="review-header">
-        <img [src]="review.reviewerPhoto" alt="Reviewer Photo">
-        <span>{{ review.reviewerName }}</span>
-        <span class="review-rating">
-          <span *ngFor="let _ of getStarArray(review.rating)">★</span>
-        </span>
+        <img [src]="review.studentImage" alt="Student Image">
+        <span>{{ review.studentName }}</span>
+        <span>{{ review.date }}</span>
       </div>
-      <p>{{ review.comment }}</p>
-    </div>}
+      <div class="review-content">
+        <div class="star-rating">Rating: {{ review.rate }}/5</div>
+        <div class="comment">{{ review.reviewComment }}</div>
+      </div>
+    </div>
   </div>
-  
+</div>

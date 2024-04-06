@@ -23,9 +23,9 @@ export class QComponent implements OnInit {
 
   @Input() courseId!: number;
 
-  // questions:IQuestion[] =[]
-    // [{ id: 1, content: "What is class in C# interview questions?", personName: "eman salah", personPictureUrl: "/assets/course_img/4898526_657d_2.jpg" }
-    // ];
+  // questions:IQuestion[] =
+  //   [{ id: 1, content: "What is class in C# interview questions?", studentName: "eman salah", studentImage: "/assets/course_img/4898526_657d_2.jpg" }
+  //   ];
     // courseId: number = 1; // Example courseId
     questions: IQuestion[] = [];
   newAnswerText: string = '';

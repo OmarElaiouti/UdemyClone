@@ -12,7 +12,6 @@ import { OverviewComponent } from '../../overview/overview.component';
 import { QComponent } from "../../q/q.component";
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
-import { ReviewsComponent } from "../../reviews/reviews.component";
 import { HttpClient } from '@angular/common/http';
 import { Subscription, interval, switchMap } from 'rxjs';
 import { NoteComponent } from "../../note/note.component";
@@ -90,7 +89,8 @@ const videoLesson: IVideoLesson = {
         VgCoreModule,
         VgControlsModule,
         VgOverlayPlayModule,
-        VgBufferingModule, FormsModule, OverviewComponent, MatCardModule, ReviewsComponent, NoteComponent, CommentComponent, AnnouncementComponent, Review2Component]
+        VgBufferingModule, FormsModule, OverviewComponent,
+        MatCardModule, NoteComponent, CommentComponent, AnnouncementComponent, Review2Component, QComponent]
 })
 
 export class CourseLessonComponent {

@@ -3,7 +3,7 @@
 
 <div class="one">
   <h1 style="font-weight: bold;">About this course</h1>
-  <p style="margin-top: 20px;">{{overview.aboutThisCourse}}</p>
+  <p style="margin-top: 20px;">{{overview.brifDescription}}</p>
 </div>
 <hr>
 <div class="two">
@@ -11,14 +11,13 @@
     <p class="b">By the numbers</p>
   </div>
   <div  style="margin-left: 150px;">
-    <p class="b">Skill level: {{ overview.SkillLevel}}
-    <br>Students: {{ overview.NofStudents}}
+    <p class="b">Skill level: {{ overview.level}}
+    <br>Students: {{ overview.numStudents}}
     <br>Languages: {{overview.Languages}}
-    <br>Captions: {{overview.Captions }} </p>
   </div>
   <div style="margin-left: 150px;">
-    <p class="b">Lectures: {{overview.NofLectures}}
-    <br>Video: {{overview.totalHours}}
+    <p class="b">Lectures: {{overview.numStudents}}
+    <br>Video: {{overview.totalTimeInMinute}}
     </p>
   </div>
 </div>
@@ -50,20 +49,23 @@
   </div>
   <div style="width: 650px;margin-left: 195px;">
     <p>
-{{  overview.Description}}
+{{  overview.fullDescription}}
     </p>
   </div>
 </div>
 <div class="dic">
 <h6>What you’ll learn</h6>
 <ul>
-  <li> {{ overview.WhatLearn}} </li>
+  @for(objective of overview.objective; track $index){
 
+    <li >{{ objective.content }}</li>}
 </ul>
 <h6>Are there any course requirements or prerequisites?</h6>
 <ul>
-  <li>{{ overview.courseRequirements}}</li>
-</ul>
+  @for(requirement of overview.requirements; track $index){
+
+    <li >{{ requirement.content }}</li>}
+  </ul>
 </div>
 <hr>
 <div class="two">
@@ -73,11 +75,11 @@
 
   <div class="two" style="margin-left: 200px;">
     <div>
-      <img src={{overview.img}}/>
+      <img src={{overview.instructorImage}}/>
     </div>
     <div style="margin-left: 20px;margin-top: 10px;">
-      <p><span class="s"> {{overview.InstructorName}} </span>
-      <br> {{overview.InstructorRank}} </p>
+      <p><span class="s"> {{overview.instructorName}} </span>
+      <br> {{overview.InstrucHeadline}} </p>
     </div>
   </div>
 </div>
@@ -87,6 +89,6 @@
   <i class="fa-brands fa-square-youtube i"></i>
 </div>
 <div style="margin-left: 300px;margin-top: 20px;width: 550px;">
-  <p>{{overview.InstructorDescription}}</p>
+  <p>{{overview.instructorBiography}}</p>
 </div>
 </section>

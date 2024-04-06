@@ -14,12 +14,14 @@ export interface IComment {
   personPictureUrl: string;
 }
 
-// export interface Review {
-//   id: number;
-//   videoId: string;
-//   rating: number;
-//   comment: string;
-// }
+export interface Review {
+  // id: number;
+  studentName: string;
+  rate: number;
+  studentImage: string;
+  date:string;
+  reviewComment:string;
+}
 
 // review.interface.ts
 // export interface Review {
@@ -32,17 +34,17 @@ export interface IComment {
 // }
 
 // review.interface.ts
-export interface ReviewData {
-  rating: number;
-  comment: string;
-  courseId: number;
-}
+// export interface ReviewData {
+//   rating: number;
+//   comment: string;
+//   courseId: number;
+// }
 
-export interface Review extends ReviewData {
-  id: number;
-  reviewerName: string;
-  reviewerPhoto: string;
-}
+// export interface Review extends ReviewData {
+//   id: number;
+//   reviewerName: string;
+//   reviewerPhoto: string;
+// }
 
 
 export interface IQuestion {
