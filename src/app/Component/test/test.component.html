@@ -71,7 +71,7 @@
           <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
           <input type="text" class="les" name="lessonName{{i}}" [(ngModel)]="course.sections[i].lessons[i].lessonName">
           <label style="position: relative;top: -30px;right: -90px;">Lesson Video</label>
-          <input type="file" (change)="onFilesSelected($event)" class="les"name="lessonVideo{{i}}" [(ngModel)]="course.sections[i].lessons[i].lessonVideo" >
+          <input type="file" class="les"name="lessonVideo{{i}}" [(ngModel)]="course.sections[i].lessons[i].lessonVideo" >
         </div>
         <div>
         <label>Price</label>
@@ -91,4 +91,5 @@
 
 
 </div>
-<input type="file" (change)="onFilesSelected($event)">
+
+

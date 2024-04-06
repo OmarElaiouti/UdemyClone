@@ -1,18 +1,21 @@
 export interface Icollaps {
   courseId:number;
-  sections:section[];
+  sections:[{
+    sectionId: number;
+    sectionName: string;
+    totalLessons:number;
+    totalMinutes: number;
+    lessons:[{
+      LessonId: number;
+      LessonName: string;
+      lessonTimeInMinutes: string;
+      lessonVideo:string;
+      isCompeleted:true;
+      notes:[{
+        id:number;
+        content:string
+      }]
+    }];
+  }];
 }
 
-export interface section {
-  sectionId: number;
-  sectionName: string;
-  lectureNum:string;
-  time: number;
-  Lessons:Lesson[];
-}
-
-export interface Lesson {
-    LessonId: number;
-    LessonName: string;
-    LessonTime: string;
-}

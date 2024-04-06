@@ -9,16 +9,16 @@
 <div class="col-md-8  two right">
     <div class="card-body">
         <h5 class="card-title">{{ course.name }}</h5>
-        <p class="card-text mb-1">Instructor: {{ course.instructor }}</p>
-        <p class="card-text mb-1"> {{ course.disc }}</p>
+        <p class="card-text mb-1">Instructor: {{ course.instructorName }}</p>
+        <p class="card-text mb-1"> {{ course.briefDescription}}</p>
 
         <div class="star-ratings-css">
-            <div class="star-ratings" [style.width]="(course.rating / 5) * 100 + '%'">
-                <span><b>{{ course.rating }} </b> </span>
-                <span *ngFor="let star of getStarArray(course.rating); let i = index">
+            <div class="star-ratings" [style.width]="(course.rate / 5) * 100 + '%'">
+                <span><b>{{ course.rate }} </b> </span>
+                <span *ngFor="let star of getStarArray(course.rate); let i = index">
                     <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
                 </span>
-                <span class="num-reviewers">({{ course.numReviewers }})</span>
+                <span class="num-reviewers">({{ course.reviewersNumber }})</span>
             </div>
         </div>
         <p class="card-text mt-0 mb-1"><b>{{ '$' + course.price }}</b></p>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IData } from '../../Models/idata';
+import { IData, Idata } from '../../Models/idata';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseService } from '../../Services/dashboard/course.service';
 
 @Component({
@@ -15,6 +15,37 @@ import { CourseService } from '../../Services/dashboard/course.service';
 export class UpdateCourseComponent {
   courseId!: number;
   course!: IData;
+  courseTo!:Idata;
+  numInputs: number = 0;
+  inputsArray: any[] = [];
+  inputsArr: any[] = [];
+  inputsArrr: any[] = [];
+  inputsArrrr: any[] = [];
+  reqnum!: number;
+  sectionnum!: number;
+  secLecNum!: number;
+  createInputs() {
+    console.log(this.numInputs);
+    this.inputsArray = Array.from({ length: this.numInputs }, (_, i) => '');
+  }
+  fun(){
+    console.log(this.numInputs);
+  }
+
+  createInput() {
+    this.inputsArr = Array.from({ length: this.reqnum }, (_, i) => '');
+  }
+
+  createInputss() {
+    this.inputsArrr = Array.from({ length: this.sectionnum }, (_, i) => '');
+  }
+
+  createInputsss() {
+    this.inputsArrrr = Array.from({ length: this.secLecNum }, (_, i) => '');
+  }
+
+
+
 
   constructor(private route: ActivatedRoute, private courseService: CourseService) { }
 

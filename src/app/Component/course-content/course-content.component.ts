@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
+import { Itwo } from '../../Models/itwo';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CourseContentComponent {
     {id:4, name: 'Course 4', instructor: 'Instructor 4', rating: 4.2, price: 55, inventoryStatus: 'Out of Stock', numReviewers: 4567,disc:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
     {id:5, name: 'Course 5', instructor: 'Instructor 5', rating: 4.7, price: 65, inventoryStatus: 'In Stock', numReviewers: 7890 ,disc:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg'},
     { name: 'Course 6', instructor: 'Instructor 6', rating: 4.1, price: 40, inventoryStatus: 'Out of Stock', numReviewers: 2345,disc:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
-    // Add more courses as needed
+
 ];
 
   // Responsive options for the carousel

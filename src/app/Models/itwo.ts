@@ -1,0 +1,24 @@
+export interface Itwo {
+  instructorId:string;
+  name:string;
+  image:string;
+  headline:string;
+  rate:number;
+  coursesCount:number;
+  studentsCount:number;
+  feedbacksCount:number;
+  boiography:string;
+  courses:[{
+    id:number;
+    image:string;
+    name:string;
+    instructorName:string;
+    price:number;
+    rate:number;
+    reviewersNumber:number
+    objectives:[{
+      id:number;
+      content:string;
+    }]
+  }]
+}
