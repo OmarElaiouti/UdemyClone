@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Review } from '../../Models/lesson';
-import { ReviewService } from '../../Services/review.service';
 import { FormsModule } from '@angular/forms';
 import { Review2Service } from '../../Services/review2/review2.service';
-import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 @Component({

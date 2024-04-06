@@ -1,0 +1,10 @@
+.stars {
+    color: #000; /* Default color for the stars */
+    cursor: pointer;
+    margin-right: 5px; /* Specify the spacing between the stars */
+  }
+  
+  .highlight {
+    color: gold; /* Color for the stars when selected */
+  }
+  

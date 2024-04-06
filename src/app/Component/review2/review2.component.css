@@ -57,6 +57,8 @@ button {
 .comment {
   margin-top: 5px;
 }
+
+
 .stars {
   color: #000; /* Default star color */
   cursor: pointer;
@@ -65,3 +67,4 @@ button {
 .highlight {
   color: gold; /* Highlighted star color */
 }
+

@@ -21,6 +21,7 @@ import { Next3Component } from "./Component/next3/next3.component";
 import { DashboardComponent } from "./Component/dashboard/dashboard.component";
 import { InstructorCoursesComponent } from "./Component/instructor-courses/instructor-courses.component";
 import { UpdateCourseComponent } from "./Component/update-course/update-course.component";
+import { BbComponent } from "./Component/bb/bb.component";
 
 
 
@@ -31,10 +32,10 @@ import { UpdateCourseComponent } from "./Component/update-course/update-course.c
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
         SearchComponent, CourseLessonComponent,
-         CheckOutComponent, LastsliderComponent, 
-         NotificationComponent, CertificateComponent, InstructorDashboardComponent,
-          Next1Component, Next2Component, Next3Component, DashboardComponent,
-           InstructorCoursesComponent, UpdateCourseComponent]
+        CheckOutComponent, LastsliderComponent,
+        NotificationComponent, CertificateComponent, InstructorDashboardComponent,
+        Next1Component, Next2Component, Next3Component, DashboardComponent,
+        InstructorCoursesComponent, UpdateCourseComponent, BbComponent]
 })
 export class AppComponent {
   title = 'graduation_proj';

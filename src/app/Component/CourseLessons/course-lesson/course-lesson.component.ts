@@ -49,7 +49,7 @@ const lesson2: ILesson = {
   lessonName: 'Lesson 2',
   lessonTimeInMinutes: 45,
   lessonVideo: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-  inCompleted: true,
+  inCompleted: false,
   notes: [note2]
 };
 
@@ -225,7 +225,7 @@ export class CourseLessonComponent {
 
   updateWatchedStatus() {
     this.watchedLessons = this.sections.reduce((total, section) => {
-      return total + section.lessons.filter(lesson => !lesson.inCompleted).length; // Changed to check inCompleted field
+      return total + section.lessons.filter(lesson => lesson.inCompleted).length; // Changed to check inCompleted field
     }, 0);
   }
 
