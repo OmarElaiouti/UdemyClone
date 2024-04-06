@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Icoursecontent } from '../../Models/icoursecontent';
 import { CourseService } from '../../Services/dashboard/course.service';
+import { IinstructorCourse } from '../../Models/idata';
 
 @Component({
   selector: 'app-instructor-courses',
@@ -12,20 +13,20 @@ import { CourseService } from '../../Services/dashboard/course.service';
 })
 export class InstructorCoursesComponent {
   courses = [
-    {id:1, name: 'Course 1',img:'https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg', instructor: 'Instructor 1', rating: 4.5, price: 50, numReviewers: 5651,disc:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
-    {id:2,name: 'Course 2 with a very long name',img:'https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg', instructor: 'Instructor 2 with a very long name', rating: 4.8, price: 60, numReviewers: 8723,disc:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
+    {id:1, name: 'Course 1',img:'https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg', instructorName: 'Instructor 1', rate: 4.5, price: 50, reviewersNumber: 5651,briefDescription:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
+    {id:2,name: 'Course 2 with a very long name',img:'https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg', instructorName: 'Instructor 2 with a very long name', rate: 4.8, price: 60, reviewersNumber: 8723,briefDescription:'dygfoe dpuywejhdw pw97d8wd pd9ywtdg' },
 
 ];
 
 instructorId!:number;
 courseId!:number;
-course!:Icoursecontent;
+course!:IinstructorCourse;
 constructor(private courseService: CourseService){}
 ngOnit():void{
 this.instructorCourse();
 }
 instructorCourse(){
-    this.courseService.getAllCourses(this.instructorId).subscribe(
+    this.courseService.getAllCourses().subscribe(
       (data:any)=>{
         this.course = data.course;
       }

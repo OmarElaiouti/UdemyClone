@@ -1,17 +1,15 @@
-<!-- note.component.html -->
-<section style="margin-left: 55px;">
+<!-- <section style="margin-left: 55px;">
 
   <div class="note-container">
-    <input class=".input" type="text" [(ngModel)]="newNote" placeholder="Add a new note">
+    <input class=".input" type="text" [(ngModel)]="newNoteContent" placeholder="Add a new note">
     <button class="add" (click)="addNote()">Add</button>
   </div>
-  @if(notes.length > 0){
+  @if(videoNotes.length > 0){
   <div>
     <ul>
-      @for(note of notes;track $index){
+      @for(note of videoNotes;track $index){
       <li >
         {{ note.content }}
-        <!-- <button (click)="deleteNote(i)">Delete</button> -->
       </li>}
     </ul>
   </div>
@@ -20,4 +18,16 @@
   @else{
   <p>No notes available.</p>
   }
-</section>
+</section> -->
+
+<div>
+  <h3>Notes</h3>
+  <ul>
+    @for(note of lesson.notes; track $index){
+    <li >{{ note.content }}</li>
+    }
+  </ul>
+  <input type="text" [(ngModel)]="newNoteContent" placeholder="Enter your note">
+  <button (click)="addNote()">Add Note</button>
+</div>
+

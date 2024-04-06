@@ -3,6 +3,11 @@ import { IQuestion } from '../../Models/lesson';
 import { QuestionService } from '../../Services/Questions/question.service';
 import { FormsModule } from '@angular/forms';
 
+interface UserProfile {
+  name: string;
+  // Add other properties as needed (e.g., pictureUrl)
+}
+
 @Component({
   selector: 'app-q',
   standalone: true,
@@ -10,59 +15,62 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './q.component.html',
   styleUrl: './q.component.css'
 })
+
+
 export class QComponent implements OnInit {
 
-  // comment=[
-  //   {id:1,ProblemName:'problem in VS code',problem:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo consectetur',arrow:'<i class="fa-solid fa-arrow-up"></i>'},
-  //   {id:2,ProblemName:'problem in VS code',problem:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo consectetur'},
-  //   {id:3,ProblemName:'problem in VS code',problem:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo consectetur'},
-  //   {id:4,ProblemName:'problem in VS code',problem:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo consectetur'},
-  //   {id:5,ProblemName:'problem in VS code',problem:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo consectetur'}
-  // ];
 
-  @Input() courseId!: Number;
 
-  questions:IQuestion[] =[]
+  @Input() courseId!: number;
+
+  // questions:IQuestion[] =[]
     // [{ id: 1, content: "What is class in C# interview questions?", personName: "eman salah", personPictureUrl: "/assets/course_img/4898526_657d_2.jpg" }
     // ];
-  newQuestion: string = '';
-  personName: string = '';
-  personPictureUrl: string = '';
+    // courseId: number = 1; // Example courseId
+    questions: IQuestion[] = [];
+  newAnswerText: string = '';
 
   constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
-      this.fetchQuestions();
+    this.fetchQuestions();
   }
 
   fetchQuestions() {
-    this.questionService.getQuestions(this.courseId).subscribe(questions => {
-      this.questions = questions;
+    this.questionService.getQuestions(this.courseId).subscribe({
+      next: questions => {
+        this.questions = questions;
+      },
+      error: error => {
+        console.error('Error fetching questions:', error);
+      }
     });
   }
-  askQuestion() {
-    if (this.newQuestion.trim() !== '') {
-      const newQuestion: IQuestion = {
-        id: 1,
-        courseId: this.courseId,
-        content: this.newQuestion.trim(),
-        personName: this.personName,
-        personPictureUrl: this.personPictureUrl
-      };
 
-      this.questionService.askQuestion(newQuestion).subscribe(() => {
-        this.fetchQuestions();
-        this.newQuestion = '';
+  submitAnswer(question: IQuestion) {
+    const newAnswer: string = this.newAnswerText.trim();
+    if (newAnswer) {
+      this.questionService.getUserProfile().subscribe({
+        next: (userProfile: UserProfile) => {
+          question.answer = newAnswer;
+          question.answeredBy = userProfile.name;
+          question.answerDate = new Date().toLocaleString(); // Current date/time
+          this.questionService.updateQuestion(question).subscribe({
+            next: response => {
+              console.log('Answer submitted successfully:', response);
+              // Clear the answer input
+              this.newAnswerText = '';
+            },
+            error: error => {
+              console.error('Error submitting answer:', error);
+            }
+          });
+        },
+        error: error => {
+          console.error('Error fetching user profile:', error);
+        }
       });
     }
-  }
 
-  deleteQuestion(index: number) {
-    const questionId = this.questions[index].id;
-    this.questionService.deleteQuestion(this.courseId, questionId).subscribe(() => {
-      this.fetchQuestions();
-    });
-  }
-
-}
+}}
 

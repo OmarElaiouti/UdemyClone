@@ -1,43 +1,37 @@
-/* question.component.css */
-.question-container {
-  margin-bottom: 10px;
-}
-.ask{
-  width: 50px;
-  height: 48px;
-}
-.input{
-  height: 48px;
-  width: 500px;
-
+.question-list {
+  margin-top: 20px;
 }
 
 .question {
-  display: flex;
-  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
   margin-bottom: 10px;
-  height: 80px;
-}
-.question:hover{
-  background-color: rgb(239, 240, 241);
-  cursor: pointer;
-}
-
-.question img {
-  width: 50px; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
-  border-radius: 50%; /* Make the image circular */
-  margin-right: 10px;
-  margin-left: 15px;
 }
 
 .question-content {
-  flex-grow: .8; /* Allow content to expand */
+  margin-bottom: 10px;
 }
 
-.question button {
-  margin-left: 10px;
+.answer-section textarea {
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+  margin-bottom: 10px;
 }
-.delete{
-  background-color: crimson;
+
+.answer-section button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.answer {
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.answer p {
+  margin: 0;
 }

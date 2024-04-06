@@ -1,6 +1,8 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
+import { Icertificate } from '../../Models/certificate';
+import { CertificateService } from '../../Services/certificate/certificate.service';
 
 @Component({
   selector: 'app-certificate',
@@ -9,12 +11,13 @@ import html2canvas from 'html2canvas';
   templateUrl: './certificate.component.html',
   styleUrl: './certificate.component.css'
 })
-export class CertificateComponent {
+export class CertificateComponent implements OnInit {
 
-  course = {
-    id: 1, name: 'Python for Data Science and Machine Learning Bootcamp', instructor: 'Instructor 1', rating: 4.5, totallectuer: 15,
-    totalHour: 15,student_name:"Eman Salah",date:1/20/2023,Img:"https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
-  }
+
+  // course = {
+  //   id: 1, name: 'Python for Data Science and Machine Learning Bootcamp', instructor: 'Instructor 1', rating: 4.5, totallectuer: 15,
+  //   totalHour: 15,student_name:"Eman Salah",date:1/20/2023,Img:"https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
+  // }
   
 
   @ViewChild('contentToDownload') contentToDownload!: ElementRef;
@@ -46,6 +49,27 @@ export class CertificateComponent {
       console.log('Web Share API not supported');
     }
   }
+
+
+    course!: Icertificate;
+  
+    constructor(private certificateService: CertificateService) {}
+  
+    ngOnInit(): void {
+      this.fetchCertificateData();
+    }
+  
+    fetchCertificateData(): void {
+      this.certificateService.getCertificateData().subscribe(
+        (data) => {
+          this.course = data;
+        },
+        (error) => {
+          console.error('Error fetching data from API:', error);
+        }
+      );
+    }
+
 
   // Function to get the severity for the inventory status
   getStarArray(rating: number): number[] {
