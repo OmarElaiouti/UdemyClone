@@ -1,20 +1,29 @@
-<div class="question-list">
-  @for(question of questions; track $index){
 
-  <div class="question">
-    <div class="question-content">
-      <p>{{ question.content }}</p>
-      <small>Asked by {{ question.studentName }} on {{ question.date }}</small>
+
+<div class="question-list">
+  <!-- Add textarea for adding a new question -->
+  <div class="add-question">
+    <textarea [(ngModel)]="newQuestionText" placeholder="Write your question here"></textarea>
+    <button (click)="submitQuestion()">Submit Question</button>
+  </div>
+
+  <!-- Existing questions loop -->
+  @for(question of questions; track $index){
+    <div class="question">
+      <div class="question-content">
+        <p>{{ question.content }}</p>
+        <small>Asked by {{ question.studentName }} on {{ question.date }}</small>
+      </div>
+      @if(!question.answer){
+      <div class="answer-section">
+        <textarea [(ngModel)]="newAnswerText" placeholder="Write your answer here"></textarea>
+        <button (click)="submitAnswer(question)">Submit Answer</button>
+      </div>}
+      @if(question.answer){
+      <div class="answer">
+        <p><strong>Answer:</strong> {{ question.answer }}</p>
+        <small>Answered by {{ question.answeredBy }} on {{ question.answerDate }}</small>
+      </div>}
     </div>
-    @if(!question.answer){
-    <div class="answer-section">
-      <textarea [(ngModel)]="newAnswerText" placeholder="Write your answer here"></textarea>
-      <button (click)="submitAnswer(question)">Submit Answer</button>
-    </div>}
-    @if(question.answer){
-    <div class="answer">
-      <p><strong>Answer:</strong> {{ question.answer }}</p>
-      <small>Answered by {{ question.answeredBy }} on {{ question.answerDate }}</small>
-    </div>}
-  </div>}
+  }
 </div>

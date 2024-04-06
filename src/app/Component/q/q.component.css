@@ -1,37 +1,78 @@
+/* Style for the question list */
 .question-list {
-  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  margin-left: 50px;
 }
 
-.question {
-  border: 1px solid #ccc;
-  padding: 10px;
+/* Style for adding a new question */
+.add-question {
+  margin-bottom: 20px;
+}
+
+.add-question textarea {
+  width: 800px;
+  height: 100px;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
+.add-question button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-question button:hover {
+  background-color: #0056b3;
+}
+
+/* Style for individual questions */
+.question {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* Style for question content */
 .question-content {
   margin-bottom: 10px;
 }
 
+/* Style for answer section */
 .answer-section textarea {
-  width: 100%;
+  width: 800px;
   height: 100px;
-  resize: vertical;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
 .answer-section button {
-  padding: 5px 10px;
+  padding: 8px 16px;
   background-color: #007bff;
   color: #fff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.answer {
-  background-color: #f9f9f9;
-  padding: 10px;
+.answer-section button:hover {
+  background-color: #0056b3;
 }
 
-.answer p {
-  margin: 0;
+/* Style for answer */
+.answer {
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* Style for small text */
+small {
+  color: #666;
 }

@@ -28,7 +28,9 @@ export class QComponent implements OnInit {
   //   ];
     // courseId: number = 1; // Example courseId
     questions: IQuestion[] = [];
+  newQuestionText: string = '';
   newAnswerText: string = '';
+
 
   constructor(private questionService: QuestionService) { }
 
@@ -46,6 +48,28 @@ export class QComponent implements OnInit {
       }
     });
   }
+
+  // Function to submit a new question
+  submitQuestion() {
+    const newQuestion: string = this.newQuestionText.trim();
+    if (newQuestion) {
+      // Assuming you have a method in questionService to add a new question
+      this.questionService.addQuestion(newQuestion).subscribe({
+        next: response => {
+          console.log('Question submitted successfully:', response);
+          // Clear the question input
+          this.newQuestionText = '';
+          // Refetch questions to update the list
+          this.fetchQuestions();
+        },
+        error: error => {
+          console.error('Error submitting question:', error);
+        }
+      });
+    }
+  }
+
+
 
   submitAnswer(question: IQuestion) {
     const newAnswer: string = this.newAnswerText.trim();
