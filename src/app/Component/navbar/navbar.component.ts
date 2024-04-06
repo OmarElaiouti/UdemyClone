@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit {
     email:"",
     headline:"",
     biography:"",
-    image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",   
+    image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",
   };
   private navbarRefreshSubscription!: Subscription;
 
@@ -80,7 +80,7 @@ export class NavbarComponent implements OnInit {
       // Check if the value is not null before parsing it
       if (flagValue) {
         this.signedin = true;
-  
+
         // Load additional data only if the user is signed in
         this.loadCategories();
         this.loadNotifications();
@@ -101,14 +101,14 @@ export class NavbarComponent implements OnInit {
         this.loadCart();
 
       }
-    
-      
-    
+
+
+
     this.navbarRefreshSubscription = this.navbarRefreshService.refreshSubjectAsObservable$.subscribe(() => {
 
 
       let flagValue = localStorage.getItem("token");
-      
+
           // Check if the value is not null before parsing it
           if (flagValue) {
             this.signedin = true;
@@ -127,14 +127,15 @@ export class NavbarComponent implements OnInit {
             }
 
           } else {
-            this.signedin = false;
+            // this.signedin = false;
+            this.loadCategories();
             this.loadCart();
 
             // Reset signedin status if token is null
           }
         })
-        
-  
+
+
     // Subscribe to router navigation events to refresh navbar on route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -147,7 +148,7 @@ export class NavbarComponent implements OnInit {
       console.error('Error in router navigation events subscription:', err);
     }
   });
-  
+
   
   }
   
@@ -235,7 +236,7 @@ if(this.signedin){
 
   //     next:cartItems => {
   //       this.Cart = cartItems;
-        
+
   //        // Update Cart array with the fetched cart items
   //     },
   //     error:err => {
@@ -280,7 +281,7 @@ AddToCart(id:number) {
   // Call the addToCart function from the cart service when the button is clicked
   this.userCoursesService.addToCart(id).subscribe({
     next: response => {
-this.Cart.push(response)      
+this.Cart.push(response)
 console.log('Course added to cart successfully:', response);
     },
     error: err => {
@@ -301,7 +302,7 @@ getusername(){
 }
 
 hoverButton() {
-if(this.notifications.length>0 ){  
+if(this.notifications.length>0 ){
   const lastFive = this.notifications.slice(-5);
   lastFive.forEach(notification => {
     notification.status = true;
@@ -352,7 +353,7 @@ GotoCategory(name: string): void {
 
 
 logOut(){
-  
+
   this.logoutService.logout();
   this.router.navigate([""]);
 

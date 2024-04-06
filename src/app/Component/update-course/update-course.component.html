@@ -1,22 +1,3 @@
-<!-- <h2>Update Course</h2>
-
-<form>
-  <div>
-    <label>Title:</label>
-    <input type="text" [(ngModel)]="course.courseTitle" name="title">
-  </div>
-  <div>
-    <label>Description:</label>
-    <textarea [(ngModel)]="course.categoryName" name="description"></textarea>
-  </div>
-  <div>
-    <label>Duration:</label>
-    <input type="text" [(ngModel)]="course.courseDisc" name="duration">
-  </div>
-
-  <button type="submit">Update</button>
-</form> -->
-
 
 
 <ul class="nav nav-tabs" role="tablist">
@@ -33,45 +14,34 @@
 <div class="tab-content pt-5" id="tab-content">
   <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
     <section>
-      <form (ngSubmit)="onSubmit()">
+      <form>
+        <label style="position: relative;top: -30px;right: -30px;">Title</label>
+        <input class="ti" type="text" value="{{course.courseTitle}}" name="courseTitle" [(ngModel)]="courseTo.courseTitle">
 
-        <label style="position: relative;top:-30px;right: -60px;">Course ID:</label>
-        <input type="text" Name="id" [(ngModel)]="course.id" placeholder="Course ID" class="d">
-        <label class="a">Title:</label>
-        <input type="text" Name="courseTitle" [(ngModel)]="course.courseTitle" placeholder="" class="d">
-        <div class="b">
-          <label style="position: relative;top:-60px;right: -70px;">Description:</label>
-        <textarea Name="courseDisc" [(ngModel)]="course.courseDisc" placeholder="" class="c"></textarea>
+        <div style="margin-left: -350px;">
+          <label for="numberInput" style="position: relative;top: -30px;right: -45px;">Enter a number of object:</label>
+          <input type="number" id="numberInput" [(ngModel)]="numInputs" name="numInputs" (ngModelChange)="createInputs()" min="1" max="8">
         </div>
-        <label style="position: relative;top:-30px; right: -100px;margin-top: 30px;">Category Name:</label>
-        <input type="text" Name="categoryName" [(ngModel)]="course.categoryName" placeholder="" style="margin-top: 30px;">
-        <label class="h">Sub Name:</label>
-        <input type="text" Name="subcatName" [(ngModel)]="course.subcatName" placeholder="" class="g">
-        <label class="h">Topic Name:</label>
-        <input type="text" Name="topicName" [(ngModel)]="course.topicName" placeholder="" class="g" style="margin-right: 10px;">
-        <div style="margin-top: 20px;">
-          <label style="position: relative;left: -250px;">Objectives</label>
-          <div class="obj">
-          <input type="text" Name="Objectives" [(ngModel)]="course.Objectives" >
+          <!-- @for(input of inputsArray;track $index){ -->
+        <div *ngFor="let input of inputsArray; let i = index" >
+          <input id="in" type="text" value="{{courseTo.Objectives[i].content}}"  [(ngModel)]="course.Objectives[i].content" name="content{{i}}">
+        <!-- } -->
           </div>
-          <div class="obj">
-          <input type="text" Name="Objectives" [(ngModel)]="course.Objectives" >
-          </div>
-          <div class="obj">
-          <input type="text" Name="Objectives" [(ngModel)]="course.Objectives" >
-          </div>
-          <div class="obj">
-          <input type="text"  Name="Objectives" [(ngModel)]="course.Objectives" >
-          </div>
-          <div class="obj">
-          <input type="text" Name="Objectives" [(ngModel)]="course.Objectives" >
+        <div>
+          <label style="position: relative;top: -30px;right: -100px;">Category Name:</label>
+          <input type="text" name="categoryName" value="{{courseTo.categoryName}}" [(ngModel)]="course.categoryName">
+          <label class="a">Sub Name:</label>
+          <input type="text" name="subcatName" value="{{courseTo.subcatName}}" [(ngModel)]="course.subcatName">
+          <label class="a">Topic Name :</label>
+          <input type="text" name="topicName" value="{{courseTo.topicName}}" [(ngModel)]="course.topicName">
         </div>
+        <div style="margin-top: 30px;">
+          <label style="position: relative;top: -50px;right: -55px;margin-bottom: 20px;">Braif Description </label>
+          <textarea class="de" name="courseDisc" value="{{courseTo.courseDisc}}" [(ngModel)]="course.courseDisc"></textarea>
         </div>
-        <div style="margin-top: 20px;">
-          <label style="position: relative;left: -230px;">Full Description</label>
-        </div>
-        <div class="full">
-          <textarea Name="FullDescription" [(ngModel)]="course.FullDescription"></textarea>
+        <div style="margin-top: 30px;">
+          <label style="position: relative;top: -50px;right: -55px;margin-bottom: 20px;">Full Description </label>
+          <textarea class="de" name="FullDescription" value="{{courseTo.fullDescription}}" [(ngModel)]="course.fullDescription"></textarea>
         </div>
       </form>
       </section>
@@ -80,72 +50,42 @@
   <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
     <section>
       <form (ngSubmit)="onSubmit()">
-        <label style="position: relative;top: -30px;right: -100px;">Section Number </label>
-        <input type="text" Name="sectionnum" [(ngModel)]="course.sectionnum">
-        <label style="position: relative;top: -30px;right: -80px;">Total Lecture</label>
-        <input type="text" Name="totallecture" [(ngModel)]="course.totallecture">
-        <label style="position: relative;top: -30px;right: -80px;">Total Houres</label>
-        <input type="text"  Name="totalhoures" [(ngModel)]="course.totalhoures">
-        <label style="position: relative;top: -30px;right: -60px;">Total Min</label>
-        <input type="text" Name="totalmin" [(ngModel)]="course.totalmin">
+        <label style="position: relative;top: -30px;right: -100px;">Requirement Number </label>
+        <input type="number" name="reqnum" id="num" [(ngModel)]="reqnum" (ngModelChange)="createInput()" min="1" max="3">
         <div style="margin-top: 20px;">
           <label style="position: relative;left: -360px;">Requirements</label>
         </div>
-        <div class="req">
-          <input type="text" Name="requirement" [(ngModel)]="course.requirement">
+        <div class="req"*ngFor="let input of inputsArr; let i = index">
+          <input type="text" name="content" value="{{courseTo.requirements[i].content}}" [(ngModel)]="course.requirements[i].content" >
         </div>
-        <div class="req">
-          <input type="text" Name="requirement" [(ngModel)]="course.requirement">
+        <label style="position: relative;top: -30px;right: -100px;margin-top: 30px;">Section Number </label>
+        <input type="number" name="sectionnum" id="number" value="{{courseTo.sectionnum}}" [(ngModel)]="course.sectionnum" (ngModelChange)="createInputss()" min="1" max="8">
+        <div>
+        <label style="position: relative;left: -360px;">Section Name</label>
+        <div *ngFor="let input of inputsArrr; let i = index">
+        <input class="sec" type="text" name="sectionName" value="{{courseTo.sections[i].sectionName}}" [(ngModel)]="course.sections[i].sectionName">
         </div>
-        <div class="req" style="margin-bottom: 20px;">
-          <input type="text" Name="requirement" [(ngModel)]="course.requirement">
         </div>
-
-        <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
-        <input class="sec" type="text" [(ngModel)]="course.secName" Name="secName">
         <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
-        <input type="text" class="sec" Name="secLecNum" [(ngModel)]="course.secLecNum">
-        <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
-        <input type="text" class="sec" Name="secHourNum" [(ngModel)]="course.secHourNum">
-        <div style="margin-top: 20px;">
-          <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
-          <input class="sec" type="text" [(ngModel)]="course.secName" Name="secName">
-          <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
-          <input type="text" class="sec" Name="secLecNum" [(ngModel)]="course.secLecNum">
-          <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
-          <input type="text" class="sec" Name="secHourNum" [(ngModel)]="course.secHourNum">
-        </div>
-        <div style="margin-top: 20px;">
-          <label style="position: relative;top: -30px;right: -100px;">Section Name</label>
-          <input class="sec" type="text" [(ngModel)]="course.secName" Name="secName">
-          <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
-          <input type="text" class="sec"Name="secLecNum" [(ngModel)]="course.secLecNum">
-          <label style="position: relative;top: -30px;right: -110px;">Houres Number</label>
-          <input type="text" class="sec" Name="secHourNum" [(ngModel)]="course.secHourNum">
-        </div>
-        <div style="margin-top: 40px;">
+        <input type="number" class="lec"name="secLecNum" [(ngModel)]="secLecNum" (ngModelChange)="createInputsss()" min="1" max="8">
+        <div style="margin-top: 40px;" *ngFor="let input of inputsArrrr; let i = index">
           <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
-          <input type="text" class="les" Name="lessonName" [(ngModel)]="course.lessonName">
-          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
-          <input type="text" class="les" Name="lessonTime" [(ngModel)]="course.lessonTime">
+          <input type="text" class="les" name="lessonName" value="{{courseTo.sections[i].lessons[i].lessonName}}" [(ngModel)]="course.sections[i].lessons[i].lessonName">
+
         </div>
-        <div style="margin-top: 40px;">
-          <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
-          <input type="text" class="les" Name="lessonName" [(ngModel)]="course.lessonName">
-          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
-          <input  type="text" class="les" Name="lessonTime" [(ngModel)]="course.lessonTime">
-        </div>
-        <div style="margin-top: 40px;">
-          <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
-          <input type="text" class="les" Name="lessonName" [(ngModel)]="course.lessonName">
-          <label style="position: relative;top: -30px;right: -90px;">Lesson Time</label>
-          <input type="text" class="les" Name="lessonTime" [(ngModel)]="course.lessonTime">
-        </div>
-        <div style="margin-top: 40px;">
-          <label style="position: relative;top: -60px;right: -100px;">Announcement </label>
-          <textarea  class="text" Name="announcement" [(ngModel)]="course.announcement"></textarea>
-        </div>
-        <button type="submit">Save</button>
+        <div>
+          <label>Price</label>
+          <input type="text" name="price" value="{{courseTo.price}}"  [(ngModel)]="course.price">
+          <label>Languege</label>
+          <input type="text" name="language" value="{{courseTo.language}}" [(ngModel)]="course.language">
+          <label>Level</label>
+          <input type="text" name="level" value="{{courseTo.level}}" [(ngModel)]="course.level">
+          <button type="submit" style="margin-top: 50px;position: relative;bottom: -50px;">Save</button>
+  </div>
+  <div>
+    <input type="text" name="cover" value="{{courseTo.cover}}" [(ngModel)]="course.cover">
+  </div>
+        <button type="submit" style="margin-top: 50px;position: relative;bottom: -50px;">Save</button>
         </form>
         </section>
   </div>

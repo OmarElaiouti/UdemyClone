@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
+import { CourseService } from '../../Services/dashboard/course.service';
 
 @Component({
   selector: 'app-instructor-dashboard',
@@ -9,5 +10,17 @@ import { RouterModule } from '@angular/router';
   styleUrl: './instructor-dashboard.component.css'
 })
 export class InstructorDashboardComponent {
-
+  id!:number;
+  constructor(private courseService: CourseService,private router:Router){}
+  
+quesion(){
+  this.courseService.InstructorQuestion(this.id).subscribe(response=>{
+    if(response){
+      this.router.navigate(['/next1']);
+    }
+    else{
+      alert("You Must compelete you profile");
+    }
+  })
+}
 }
