@@ -105,6 +105,13 @@
 
 
   <!--Become An instructor button-->
+
+  @if(userIsInstructor()){
+    <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
+      instructor
+    </button>
+  }
+  @else {
   <div class="dropdownC d-none d-lg-block ">
     <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
       Teach on Udemy
@@ -120,7 +127,7 @@
     </div>
   </div>
 
-
+  }
 
 
 

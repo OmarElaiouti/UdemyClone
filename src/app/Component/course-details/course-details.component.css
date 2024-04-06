@@ -31,8 +31,25 @@
             apple color emoji, segoe ui emoji, segoe ui symbol;
           font-weight: 700;
 }
+.fet{
+  margin-top: 2%;
+      font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
+        segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
+        segoe ui emoji, segoe ui symbol;
+      font-weight: 400;
+      color: #6a6f73;
+}
+.fa-star {
+  color: gold;
+  /* Color of full stars */
+}
 
-
+.half-star::before {
+  content: '\f089';
+  /* Unicode character for half star (adjust as needed) */
+  font-family: 'FontAwesome';
+  /* Assuming you're using FontAwesome for icons */
+}
 
 
 

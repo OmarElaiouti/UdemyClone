@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Icollaps } from '../../Models/icollaps';
+import { CourseDetailsService } from '../../Services/Course-Details/course-details.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-section',
@@ -21,23 +24,47 @@ export class CourseSectionComponent {
 
 
   sections=[
-    {id:1,sectionName:'course content',lectureNum:4,time:21,
+    {sectionId:1,sectionName:'course content',totalLessons:4,totalMinutes:21,courseId:1,
     Lessons:[
-      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
-      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
-      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
-      {id:1,LessonName:'Leeson 1',LessonTime:'00:04'},
-
+      {LessonId:1,LessonName:'Leeson 1',lessonTimeInMinutes:'00:04',lessonVideo:'',
+      // {sectionId:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      // {sectionId:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      // {sectionId:1,LessonName:'Leeson 1',LessonTime:'00:04'},
+      notes:[{
+        id:1,
+        content:'',
+      }]}
     ]
   },
-  {id:2,sectionName:'course conten',lectureNum:4,time:21,
+  {sectionId:1,sectionName:'course content',totalLessons:4,totalMinutes:21,courseId:1,
     Lessons:[
-      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
-      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
-      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
-      {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
-
+      {LessonId:1,LessonName:'Leeson 2',lessonTimeInMinutes:'00:04',lessonVideo:'',isCompeleted:'',
+      // {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      // {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      // {id:1,LessonName:'Lesson 2',LessonTime:'00:04'},
+      notes:[{
+        id:1,
+        content:''
+      }]}
     ]
   },
   ]
+  IsEneolled:boolean = true;
+  courseId!:number;
+  constructor(private coursedetailsService:CourseDetailsService,private route:ActivatedRoute){}
+  section!:Icollaps;
+  ngOnit():void{
+    this.courseId = this.route.snapshot.params['id'];
+    this.Sections();
+  }
+  Sections(){
+    this.coursedetailsService.getSection(this.courseId).subscribe(
+      (data:any)=>{
+        this.section = data.section;
+        this.IsEneolled=data.IsEneolled;
+
+      }
+    )
+  }
 }
+

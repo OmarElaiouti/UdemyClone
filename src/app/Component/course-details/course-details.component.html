@@ -3,11 +3,11 @@
   <div class="sticky_sidebar">
     <div id="sticky-br">
       <video controls style="width: 300px;height: 150px;">
-        <source src={{video.videoUrl}} type="video/mp4">
+        <source src={{top.introVideo}} type="video/mp4">
         Your browser does not support the video tag.
       </video>
 
-      <h1 style="font-size: 40px">₹{{video.price}}</h1>
+      <h1 style="font-size: 40px">₹{{top.price}}</h1>
       @if(IsEneolled){
         <button id="add_to_cart"class="cartBtn">
           Go To Course
@@ -55,7 +55,7 @@
             apple color emoji, segoe ui emoji, segoe ui symbol;
         "
       >
-        {{total.totalhours}} hours on-demand video
+        {{top.totalMinutes}} hours on-demand video
       </p>
       <!-- <p
         style="
@@ -120,21 +120,21 @@
   <div class="page_2">
     <div class="ni">
     <div id="source_head">
-      <p><b>{{top.categoryName}} &nbsp; ></b></p>
-      <p><b>{{top.subcatName}} &nbsp;></b></p>
-      <p><b>{{top.topicName}}</b></p>
+      <p><b>{{top.category}} &nbsp; ></b></p>
+      <p><b>{{top.subCategory}} &nbsp;></b></p>
+      <p><b>{{top.topic}}</b></p>
     </div>
-    <h1 class="course">{{top.courseTitle}}</h1>
-    <p>{{top.courseDisc}}</p>
+    <h1 class="course">{{top.name}}</h1>
+    <p>{{top.briefDescription}}</p>
     <div id="course_rating">
       <button><b>Bestseller</b></button>
-      <p>{{top.rating}}⭐⭐⭐⭐⭐</p>
-      <p><a href="#">(367,223 ratings)</a></p>
-      <p>{{top.numStudent}} students</p>
+      <p>{{top.rate}}⭐⭐⭐⭐⭐</p>
+      <p><a href="#">({{top.numFeedback}} ratings)</a></p>
+      <p>{{top.numStudents}} students</p>
     </div>
-    <p id="course_teach">created by <a href="#">{{top.instractor}}</a></p>
+    <p id="course_teach">created by <a href="#">{{instructor.name}}</a></p>
     <div id="course_timing">
-      <p>⏳ last update {{top.LastUpdate}}</p>
+      <p>⏳ last update {{top.lastUpdateDate}}</p>
       <p>🌐 English</p>
       <p>© English[Auto], french[Auto], 5more</p>
     </div>
@@ -158,7 +158,7 @@
     <div class="learn_2">
       <div class="left-column">
         <ul>
-          @for(item of Objectives.slice(0,4); track $index){
+          @for(item of feature.objectives.slice(0,4); track $index){
           <li class="li">
             <p>✓</p>
             <p>
@@ -170,7 +170,7 @@
       </div>
       <div class="right-column">
         <ul>
-          @for(item of Objectives.slice(3); track $index ){
+          @for(item of feature.objectives.slice(3); track $index ){
           <li class="li">
             <p>✓</p>
             <p>
@@ -192,7 +192,7 @@
 
 <h1 id="content_head">Course content</h1>
 <div class="content_down">
-  <p style="margin-bottom: 20px;">.{{total.totalsection}} sections .{{total.totallecture}} lectures .{{total.totalhours}}h {{total.totalmin}}m total length</p>
+  <p style="margin-bottom: 20px;">.{{top.totalSections}} sections .{{top.totalLessons}} lectures .{{top.totalMinutes}}h total length</p>
   <h3 style="font-size: large; margin-left: 90px;"><a href="" style="text-decoration-line: none;">Expand all sections</a></h3>
 </div>
 
@@ -212,7 +212,7 @@
 <br />
 
 <h1 id="con-head" style="margin-left: 10%; margin-top: 2%">Requirements</h1>
-@for(item of Requirement ; track $index){
+@for(item of feature.requirements ; track $index){
 <li id="con-con" style="margin-left: 10%; margin-top: 1%">
   {{item.content}}
 </li>
@@ -283,33 +283,31 @@
   <div style="display: flex; gap: 1%">
     <img
       style="width: 15%; border-radius: 50%"
-      src={{feature.imgReviewer}}
+      src={{feature.studentImage}}
       alt=""
     />
     <div id="review_profile">
       <p style="margin-top: 5%; font-size: 1.4rem; font-weight: 700">
-        <b>{{feature.ReviewerName}}.</b>
+        <b>{{feature.studentName}}.</b>
       </p>
-      <p style="margin-top: 5%; font-size: 1rem; font-weight: 400">
+      <!-- <p style="margin-top: 5%; font-size: 1rem; font-weight: 400">
         {{feature.NumberOfCourse}} courses
-      </p>
-      <p style="margin-top: 5%; font-size: 1rem; font-weight: 400">
+      </p> -->
+      <!-- <p style="margin-top: 5%; font-size: 1rem; font-weight: 400">
         {{feature.NumberOfReview}} reviews
-      </p>
+      </p> -->
     </div>
   </div>
-  <p
-    style="
-      margin-top: 2%;
-      font-family: sf pro display, -apple-system, BlinkMacSystemFont, Roboto,
-        segoe ui, Helvetica, Arial, sans-serif, apple color emoji,
-        segoe ui emoji, segoe ui symbol;
-      font-weight: 400;
-      color: #6a6f73;
-    "
-  >
-    ⭐⭐⭐⭐⭐ {{feature.reviewDate}} months ago
-  </p>
+  <div class="star-ratings" [style.width]="(feature.rate / 5) * 100 + '%'">
+    <span><b>{{ feature.rate }} </b> </span>
+@for(star of getStarArray(feature.rate);track $index){
+<span>
+<i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
+</span>
+}
+</div>
+  <p class="fet"> {{feature.date}} months ago</p>
+
   <p
     style="
       margin-top: 2%;
@@ -320,7 +318,7 @@
       font-weight: 400;
     "
   >
-    {{feature.review}}
+    {{feature.reviewComment}}
   </p>
   <br />
   <p
@@ -338,23 +336,23 @@
 </div>
 
 <div>
-  <app-course-content></app-course-content>
+  <app-course-slider [courses]="instructor.courses"></app-course-slider>
 </div>
 
 
 <div class="big">
   <h2 style="margin-bottom: 10px;">Instructor</h2>
-  <a href="">{{instructor.instlink}}</a>
-  <h5>{{instructor.instwork}}</h5>
+  <a href="">{{instructor.name}}</a>
+  <h5>{{instructor.headline}}</h5>
   <div class="ins">
     <div >
-      <img class="left" src={{instructor.instImg}}/>
+      <img class="left" src={{instructor.image}}/>
     </div>
     <div class="r">
-      <p class="pa"><i class="fa-solid fa-star"></i>{{instructor.instractorRating}}Instructor Rating</p>
-      <p class="pa"><i class="fa-solid fa-award"></i>{{instructor.totalReview}}Reviews </p>
-      <p class="pa"><i class="fa-solid fa-users"></i>{{instructor.numstudent}}Students</p>
-      <p class="pa"><i class="fa-brands fa-youtube"></i>{{instructor.instCourseNum}} Courses</p>
+      <p class="pa"><i class="fa-solid fa-star"></i>{{instructor.rate}}Instructor Rating</p>
+      <p class="pa"><i class="fa-solid fa-award"></i>{{instructor.feedbacksCount}}Reviews </p>
+      <p class="pa"><i class="fa-solid fa-users"></i>{{instructor.studentsCount}}Students</p>
+      <p class="pa"><i class="fa-brands fa-youtube"></i>{{instructor.coursesCount}} Courses</p>
     </div>
   </div>
   <div class="und">

@@ -15,7 +15,7 @@ import { Icategory } from '../../Models/ICategory';
 import { Subscription, filter } from 'rxjs';
 import { NavRefreshService } from '../../Services/nav-refresh-service/nav-refresh.service';
 import { LogoutService } from '../../Services/logout-service/logout.service';
-import { Icart } from '../../Models/icart';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-navbar',
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('div1') div1!: ElementRef;
   @ViewChild('div2') div2!: ElementRef;
   @Output() logoutEvent: EventEmitter<void> = new EventEmitter<void>();
+  userRoles!: string[];
 
   searchValue: string = '';
   categories!:Icategory[];
@@ -51,7 +52,7 @@ export class NavbarComponent implements OnInit {
     email:"",
     headline:"",
     biography:"",
-    image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",   
+    image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",
   };
   private navbarRefreshSubscription!: Subscription;
 
@@ -64,7 +65,8 @@ export class NavbarComponent implements OnInit {
     private location: Location,
     private userService: UserInfoService,
     private navbarRefreshService: NavRefreshService,
-    private logoutService:LogoutService
+    private logoutService:LogoutService,
+    private jwtHelper: JwtHelperService
 
 
   ) { }
@@ -78,26 +80,35 @@ export class NavbarComponent implements OnInit {
       // Check if the value is not null before parsing it
       if (flagValue) {
         this.signedin = true;
-  
+
         // Load additional data only if the user is signed in
         this.loadCategories();
         this.loadNotifications();
         this.loadCart();
         this.loadWishlist();
         this.loadUserdata();
+
+        const token = localStorage.getItem('token');
+    if (token) {
+      // Decode token to get user roles
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      this.userRoles = decodedToken.roles; // Assuming roles are stored as an array in 'roles' field
+    }
+  
+        
       } else {
         this.signedin = false;
         this.loadCart();
 
       }
-    
-      
-    
+
+
+
     this.navbarRefreshSubscription = this.navbarRefreshService.refreshSubjectAsObservable$.subscribe(() => {
 
 
       let flagValue = localStorage.getItem("token");
-      
+
           // Check if the value is not null before parsing it
           if (flagValue) {
             this.signedin = true;
@@ -107,14 +118,24 @@ export class NavbarComponent implements OnInit {
             this.loadCart();
             this.loadWishlist();
             this.loadUserdata();
+
+            const token = localStorage.getItem('token');
+            if (token) {
+              // Decode token to get user roles
+              const decodedToken = this.jwtHelper.decodeToken(token);
+              this.userRoles = decodedToken.roles; // Assuming roles are stored as an array in 'roles' field
+            }
+
           } else {
-            this.signedin = false;
+            // this.signedin = false;
+            this.loadCategories();
             this.loadCart();
+
             // Reset signedin status if token is null
           }
         })
-        
-  
+
+
     // Subscribe to router navigation events to refresh navbar on route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -127,25 +148,13 @@ export class NavbarComponent implements OnInit {
       console.error('Error in router navigation events subscription:', err);
     }
   });
+
   
-    // // Subscribe to product added to cart event
-    // this.communication.getCartSignal().subscribe({
-    //   next: r =>{
-    //   this.loadCart();
-    // }, error: err => {
-    //   console.error('Error in productAddedToCart$ subscription:', err);
-    // }});
-  
-    // // Subscribe to product added to wishlist event
-    // this.communication.getWishlistSignal().subscribe({
-    //   next: r=>{
-    //   // Update wishlist count
-    //   this.loadWishlist();
-    // }, error:err => {
-    //   console.error('Error in productAddedToWishlist$ subscription:', err);
-    // }});
   }
   
+  userIsInstructor(): boolean {
+    return this.userRoles && this.userRoles.includes('Instructor');
+  }
 
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
@@ -167,7 +176,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadSubcategories(parentName: string): void {
-    this.catService.getSubcategoriesByParent(parentName).subscribe(subcategories => {
+    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(subcategories => {
       this.subcategories = subcategories;
       if (this.subcategories.length > 0) {
         this.activeSubCategory = this.subcategories[0];
@@ -177,7 +186,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadTopics(parentName: string): void {
-    this.catService.getHighestScoreTopicByParent(parentName).subscribe(topics => {
+    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(topics => {
       this.topics = topics;
     });
   }
@@ -227,7 +236,7 @@ if(this.signedin){
 
   //     next:cartItems => {
   //       this.Cart = cartItems;
-        
+
   //        // Update Cart array with the fetched cart items
   //     },
   //     error:err => {
@@ -272,7 +281,7 @@ AddToCart(id:number) {
   // Call the addToCart function from the cart service when the button is clicked
   this.userCoursesService.addToCart(id).subscribe({
     next: response => {
-this.Cart.push(response)      
+this.Cart.push(response)
 console.log('Course added to cart successfully:', response);
     },
     error: err => {
@@ -293,7 +302,7 @@ getusername(){
 }
 
 hoverButton() {
-if(this.notifications.length>0 ){  
+if(this.notifications.length>0 ){
   const lastFive = this.notifications.slice(-5);
   lastFive.forEach(notification => {
     notification.status = true;
@@ -344,7 +353,7 @@ GotoCategory(name: string): void {
 
 
 logOut(){
-  
+
   this.logoutService.logout();
   this.router.navigate([""]);
 
