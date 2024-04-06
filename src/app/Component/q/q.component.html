@@ -1,25 +1,20 @@
-<!-- question.component.html -->
-<section style="margin-left: 55px;">
-<div class="question-container">
-  <input class="input" type="text" [(ngModel)]="newQuestion" placeholder="Ask a question">
-  <button class="ask" (click)="askQuestion()">Ask</button>
-</div>
+<div class="question-list">
+  @for(question of questions; track $index){
 
-@if(questions.length > 0){
-<div  >
-  <h2 style="margin-top: 30px; font-weight: bold;"> All questions in this cours </h2>
-  @for(question of questions; track $index ){
-  <div  class="question">
-    <img src={{question.personPictureUrl}} alt="Person's Picture">
+  <div class="question">
     <div class="question-content">
-      <p style="margin-bottom: 0px; font-weight: bold;">{{ question.personName }}</p>
       <p>{{ question.content }}</p>
+      <small>Asked by {{ question.studentName }} on {{ question.date }}</small>
     </div>
-    <!-- <button class="delete" (click)="deleteQuestion($index)">Delete</button> -->
+    @if(!question.answer){
+    <div class="answer-section">
+      <textarea [(ngModel)]="newAnswerText" placeholder="Write your answer here"></textarea>
+      <button (click)="submitAnswer(question)">Submit Answer</button>
+    </div>}
+    @if(question.answer){
+    <div class="answer">
+      <p><strong>Answer:</strong> {{ question.answer }}</p>
+      <small>Answered by {{ question.answeredBy }} on {{ question.answerDate }}</small>
+    </div>}
   </div>}
 </div>
-}
-@else{
-  <p>No questions available.</p>
-}
-</section>

@@ -16,32 +16,32 @@
 
     <!-- <section style=" display: flex; margin-left: 700px;"> -->
 
- <!-- <div class="items-header-prog" [class.hide]="progressBarHidden"> -->
-        <div class="items-header-prog" >
-            <div class="custom-progress-bar">
-                <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
-            </div>
-            @if(progress==100){
-            <ng-container>
-                <!-- <div>Congratulations!</div> -->
-                <a routerLink="/certificate">Congratulations!</a>
-            </ng-container>
-            }
+    <!-- <div class="items-header-prog" [class.hide]="progressBarHidden"> -->
+    <div class="items-header-prog">
+        <div class="custom-progress-bar">
+            <div class="progress-bar" [style.width]="calculateProgress() + '%'"></div>
         </div>
+        @if(progress==100){
+        <ng-container>
+            <!-- <div>Congratulations!</div> -->
+            <a routerLink="/certificate">Congratulations!</a>
+        </ng-container>
+        }
+    </div>
 
 
-        
-        <!-- <div class="cup" (click)="toggleProgressBar()"> <i class="fa-solid fa-trophy"></i></div> -->
-        <div style="align-items: center;" > <i class="fa-solid fa-trophy"></i></div>
 
-       
+    <!-- <div class="cup" (click)="toggleProgressBar()"> <i class="fa-solid fa-trophy"></i></div> -->
+    <div style="align-items: center;"> <i class="fa-solid fa-trophy"></i></div>
 
 
-        <P style="color: white;margin-right: 30px;margin-top: 11px; align-items: center; ">Your progress </P>
 
-        <button class="share-button"><i class="fa-solid fa-share"></i> Share</button>
 
-        <div class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i> </div>
+    <P style="color: white;margin-right: 30px;margin-top: 11px; align-items: center; ">Your progress </P>
+
+    <button class="share-button"><i class="fa-solid fa-share"></i> Share</button>
+
+    <div class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i> </div>
     <!-- </section> -->
 
 
@@ -133,14 +133,23 @@
                     <app-q></app-q>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
-<app-review2></app-review2>
+                    <app-review2></app-review2>
 
                     <!-- <app-reviews></app-reviews> -->
                 </div>
 
 
                 <div class="tab-pane" id="simple-tabpanel-3" role="tabpanel" aria-labelledby="simple-tab-3">
-                    <app-note></app-note>
+
+                    @for(section of sections ;track $index){
+
+                    @for(lesson of section.lessons;track $index){
+
+                    @if(selectedLesson && selectedLesson.lessonId === lesson.lessonId) {
+
+                    <app-note [lesson]="lesson"></app-note>
+                    }}}
+
 
                 </div>
 
@@ -151,7 +160,7 @@
                 <div class="tab-pane" id="simple-tabpanel-5" role="tabpanel" aria-labelledby="simple-tabpanel-5">
                     <app-announcement></app-announcement>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -164,23 +173,27 @@
         <div id="sidebar">
 
             <div class="sections-wrapper">
-                @for(section of sections;track $index){
+                @for(section of sections ;track $index){
 
                 <div class="accordion">
 
-                    <div class="accordion-header" (click)="toggleAccordion(section.title)">Section:{{ section.title }}
+                    <div class="accordion-header" (click)="toggleAccordion(section.sectionName)">Section:{{
+                        section.sectionName }}
                     </div>
-                    <div class="accordion-content" id="{{ section.title }}">
+                    <div class="accordion-content" id="{{ section.sectionName }}">
                         <ul>
                             @for(lesson of section.lessons;track $index){
                             <div style="display: flex;margin: 10px;">
-                                <input type="checkbox" [(ngModel)]="lesson.watched" (change)="updateWatchedStatus()">
-                                <li (click)="loadVideo(lesson.url)" style="margin-left: 10px;">{{ lesson.title }}</li>
+                                <input type="checkbox" [(ngModel)]="lesson.inCompleted"
+                                    (change)="updateWatchedStatus()">
+                                <li (click)="loadVideo(lesson.lessonVideo)" style="margin-left: 10px;">{{
+                                    lesson.lessonName }}</li>
                             </div>
                             <div style="margin-left: 30px;display: flex;">
                                 <p><i class="fa-solid fa-circle-play"></i></p>
-                                <p id="tim">{{lesson.time}}<span>min</span></p>
+                                <p id="tim">{{lesson.lessonTimeInMinutes}}<span>min</span></p>
                             </div>
+
                             }
                         </ul>
                     </div>
@@ -194,7 +207,7 @@
 
 
 
-   
+
 
 
 </div>
