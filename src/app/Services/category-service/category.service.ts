@@ -18,15 +18,15 @@ export class CategoryService {
 
   getAllCategories(): Observable<Icategory[]> {
     // Replace '/api/allCategories' with your actual API endpoint for fetching all categories
-    return this.http.get<Icategory[]>('/api/Category/get-categories');
+    return this.http.get<Icategory[]>('http://localhost:5165/api/Category/get-categories');
   }
   getSubcategoriesOrTopicsByParentName(parentName: string): Observable<Icategory[]> {
     // Replace '/api/subcategories' with your actual API endpoint for fetching subcategories by parent
-    return this.http.get<Icategory[]>(`/api/Category/${parentName}/subcategories-or-topics`);
+    return this.http.get<Icategory[]>(`http://localhost:5165/api/Category/${parentName}/subcategories-or-topics`);
   }
 
   getInstructors(): Observable<Instructor[]> {
-    return this.http.get<Instructor[]>('YOUR_API_ENDPOINT_HERE');
+    return this.http.get<Instructor[]>('http://localhost:5165');
   }
  
 }

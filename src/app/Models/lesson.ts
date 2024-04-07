@@ -6,14 +6,6 @@
 // }
 
 
-export interface IComment {
-  id: Number;
-  courseId: Number;
-  content: string;
-  personName: string;
-  personPictureUrl: string;
-}
-
 // export interface Review {
 //   id: number;
 //   videoId: string;
@@ -32,39 +24,24 @@ export interface IComment {
 // }
 
 // review.interface.ts
-export interface ReviewData {
-  rating: number;
-  comment: string;
-  courseId: number;
-}
+export interface Review {
+  studentName: string;
+  rate: number;
+  date: string;
+  reviewComment: string;
+  studentImage: string;
 
-export interface Review extends ReviewData {
-  id: number;
-  reviewerName: string;
-  reviewerPhoto: string;
 }
 
 
-export interface IQuestion {
-  // id: number;
-  // courseId: number;
-  // content: string;
-  // studentName: string;
-  // studentImage: string;
-  // answerTo: number | null;
-  // isReply: boolean; 
-  // isUserComment: boolean; 
-  // isUpdated: boolean; 
-  // date: string; 
 
+export interface IComment {
   id: number;
   courseId: number;
   content: string;
   studentName: string;
   studentImage: string;
-  answer?: string; // Make answer optional
-  answeredBy?: string; // Make answeredBy optional
-  answerDate?: string; // Make answerDate optional
+  answerTo: number; // Make answer optional
   isReply: boolean;
   isUserComment: boolean;
   isUpdated: boolean;
@@ -137,8 +114,7 @@ export interface ISection {
   lessons: ILesson[];
 }
 
-export interface IVideoLesson {
-  courseId: number;
-  section: ISection[];
+export interface ICourseSectionsData {
+  sections: ISection[];
   
 }

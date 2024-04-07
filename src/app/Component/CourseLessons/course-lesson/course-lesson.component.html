@@ -24,7 +24,7 @@
         @if(progress==100){
         <ng-container>
             <!-- <div>Congratulations!</div> -->
-            <a routerLink="/certificate">Congratulations!</a>
+            <a [routerLink]="['/certificate', courseId]">Congratulations!</a>
         </ng-container>
         }
     </div>
@@ -127,15 +127,14 @@
             </ul>
             <div class="tab-content pt-5" id="tab-content">
                 <div class="tab-pane active" id="simple-tabpanel-0" role="tabpanel" aria-labelledby="simple-tab-0">
-                    <app-overview></app-overview>
+                    <app-overview [courseId]="courseId"></app-overview>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
-                    <app-q></app-q>
+                    <app-q [courseId]="courseId"></app-q>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
-                    <app-review2></app-review2>
+                    <app-review2 [courseId]="courseId"></app-review2>
 
-                    <!-- <app-reviews></app-reviews> -->
                 </div>
 
 
@@ -154,11 +153,10 @@
                 </div>
 
                 <div class="tab-pane" id="simple-tabpanel-4" role="tabpanel" aria-labelledby="simple-tab-4">
-                    <app-comment></app-comment>
                 </div>
 
                 <div class="tab-pane" id="simple-tabpanel-5" role="tabpanel" aria-labelledby="simple-tabpanel-5">
-                    <app-announcement></app-announcement>
+                    <app-announcement [courseId]="courseId" ></app-announcement>
                 </div>
 
             </div>

@@ -1,12 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IQuestion } from '../../Models/lesson';
-import { QuestionService } from '../../Services/Questions/question.service';
 import { FormsModule } from '@angular/forms';
+import { IComment } from '../../Models/lesson';
 
-interface UserProfile {
-  name: string;
-  // Add other properties as needed (e.g., pictureUrl)
-}
+// interface UserProfile {
+//   name: string;
+//   // Add other properties as needed (e.g., pictureUrl)
+// }
 
 @Component({
   selector: 'app-q',
@@ -27,7 +26,7 @@ export class QComponent implements OnInit {
     // [{ id: 1, content: "What is class in C# interview questions?", personName: "eman salah", personPictureUrl: "/assets/course_img/4898526_657d_2.jpg" }
     // ];
     // courseId: number = 1; // Example courseId
-    questions: IQuestion[] = [];
+    questions: IComment[] = [];
   newAnswerText: string = '';
 
   constructor(private questionService: QuestionService) { }
@@ -47,7 +46,7 @@ export class QComponent implements OnInit {
     });
   }
 
-  submitAnswer(question: IQuestion) {
+  submitAnswer(question: IComment) {
     const newAnswer: string = this.newAnswerText.trim();
     if (newAnswer) {
       this.questionService.getUserProfile().subscribe({

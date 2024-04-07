@@ -14,5 +14,5 @@ export interface Ione {
   numStudents:number;
   lastUpdateDate:string;
   fullDescribtion:string;
-  introVideo:string
+  Image:string
 }

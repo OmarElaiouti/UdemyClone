@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IData, Idata } from '../../Models/idata';
+import { IData, Idata, IinstructorCourse } from '../../Models/idata';
 import { Observable } from 'rxjs';
 import { Icoursecontent } from '../../Models/icoursecontent';
 import { InstructorComponent } from '../../Component/instructor/instructor.component';
@@ -11,31 +11,31 @@ import { InstructorComponent } from '../../Component/instructor/instructor.compo
 export class CourseService {
 
 
-  private apiUrl = 'http://your-api-url'; // Replace this with your API URL
+  private apiUrl = 'http://localhost:5165'; // Replace this with your API URL
 
   constructor(private http: HttpClient) { }
 
-  getAllCourses(): Observable<Icoursecontent> {
-    return this.http.get<Icoursecontent>(`${this.apiUrl}/instructorCourse`);
+  getAllCourses(): Observable<IinstructorCourse> {
+    return this.http.get<IinstructorCourse>(`${this.apiUrl}/api/InstructorDashboard/instructor-courses`);
   }
 
   getCourseById(courseId: number): Observable<IData> {
-    return this.http.get<IData>(`${this.apiUrl}/courses/${courseId}`);
+    return this.http.get<IData>(`${this.apiUrl}/api/InstructorDashboard/course/${courseId}`);
   }
 
   createCourse(course: Idata): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/courses`, course);
+    return this.http.post<any>(`${this.apiUrl}/api/InstructorDashboard/create-or-update-course`, course);
   }
 
   updateCourse(id: number, course: IData): Observable<IData> {
-    return this.http.put<IData>(`${this.apiUrl}/courses/${id}`, course);
+    return this.http.put<IData>(`${this.apiUrl}/api/InstructorDashboard/create-or-update-course`, course);
   }
 
   deleteCourse(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/courses/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/api/InstructorDashboard/delete-courses/${id}`);
   }
 
-  InstructorQuestion(id: number): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/instructor/${id}`);
+  InstructorQuestion(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/api/InstructorDashboard/check-instructor-profile`);
   }
 }

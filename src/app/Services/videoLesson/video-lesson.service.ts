@@ -1,69 +1,53 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ILesson, INote, ISection, IVideoLesson } from '../../Models/lesson';
+import { IAnnouncement, IComment, ICourseSectionsData, Review } from '../../Models/lesson';
+import { ICourseOverview } from '../../Models/overview';
+import { ILessonStatus } from '../../Models/ILessonStatus';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoLessonService {
+  apiUrl = 'http://localhost:5165/'
+  constructor(private http:HttpClient){}
 
-  // private apiUrl = 'YOUR_API_ENDPOINT'; // Replace this with your API endpoint
-
-  // constructor(private http: HttpClient) { }
-
-  // getVideoLessons(): Observable<IVideoLesson> {
-  //   return this.http.get<IVideoLesson>(this.apiUrl);
-  // }
-
-  sections: ISection[] = [
-    {
-      sectionId: 1,
-      sectionName: 'Section 1',
-      totalLessons: 2,
-      totalMinutes: 75,
-      lessons: [
-        {
-          lessonId: 1,
-          lessonName: 'Lesson 1',
-          lessonTimeInMinutes: 30,
-          lessonVideo: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-          inCompleted: false,
-          notes: [
-            { id: 1, content: 'Note 1 content' }
-          ]
-        },
-        {
-          lessonId: 2,
-          lessonName: 'Lesson 2',
-          lessonTimeInMinutes: 45,
-          lessonVideo: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-          inCompleted: true,
-          notes: [
-            { id: 2, content: 'Note 2 content' }
-          ]
-        }
-      ]
-    }
-  ];
-
-  constructor() { }
-
-  addNoteToLesson(sectionId: number, lessonId: number, newNote: INote): void {
-    const sectionIndex = this.sections.findIndex(section => section.sectionId === sectionId);
-    if (sectionIndex !== -1) {
-      const lessonIndex = this.sections[sectionIndex].lessons.findIndex(lesson => lesson.lessonId === lessonId);
-      if (lessonIndex !== -1) {
-        this.sections[sectionIndex].lessons[lessonIndex].notes.push(newNote);
-      }
-    }
+  FillSections(courseId: number):Observable<ICourseSectionsData>{
+    return this.http.get<ICourseSectionsData>(`${this.apiUrl}/api/course-data/api/course-sections/${courseId}`)
   }
 
-  addLessonToSection(sectionId: number, newLesson: ILesson): void {
-    const sectionIndex = this.sections.findIndex(section => section.sectionId === sectionId);
-    if (sectionIndex !== -1) {
-      this.sections[sectionIndex].lessons.push(newLesson);
+  getAnnouncements(courseId: number): Observable<IAnnouncement[]> {
+    return this.http.get<IAnnouncement[]>(`${this.apiUrl}/api/course-data/api/course-announcements/${courseId}`);
+  }
+  
+  FillReviews(courseId:number):Observable<Review[]>{
+    return this.http.get<Review[]>(`${this.apiUrl}/api/course-data/api/course-sections/${courseId}`)
+  }
+
+  
+  GetStudentReviews(courseId:number):Observable<Review>{
+    return this.http.get<Review>(`${this.apiUrl}/api/course-data/api/course-sections/${courseId}`)
+  }
+
+  SetStudentReviews(courseId:number,review:Review):Observable<Review>{
+    return this.http.post<Review>(`${this.apiUrl}/api/course-data/api/course-sections/${courseId}`,review)
+  }
+
+  GetComments(courseId: number): Observable<IComment[]> {
+    return this.http.get<IComment[]>(`${this.apiUrl}/api/course-data/api/${courseId}/get-q&a`);
+  }
+
+  SetStudentComment(courseId: number,comment:IComment):Observable<any>{      // Assuming your API endpoint for updating a question is '/questions/update'
+      return this.http.put<any>(`${this.apiUrl}/api/course-data/api/${courseId}/update-q&a`, comment);
     }
+
+    getOverviewData(courseId: number): Observable<ICourseOverview> {
+      return this.http.get<ICourseOverview>(`${this.apiUrl}/api/course-data/api/${courseId}/get-overview`);
+    }
+  
+
+  SetLesoonsStatus(courseId: number,LessonStatus:ILessonStatus[]):Observable<any>{
+    return this.http.put<any>(`${this.apiUrl}/api/course-data/api/${courseId}/set-student-lessons-status`,LessonStatus)
   }
 
 }

@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Review, ReviewData } from '../../Models/lesson';
 import { ReviewService } from '../../Services/review.service';
 import { FormsModule } from '@angular/forms';
 import { Review2Service } from '../../Services/review2/review2.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { VideoLessonService } from '../../Services/videoLesson/video-lesson.service';
+import { Review } from '../../Models/lesson';
 
 @Component({
   selector: 'app-review2',
@@ -19,8 +20,9 @@ export class Review2Component implements OnInit {
   selectedRating: number = 0;
   reviewText: string = '';
   reviews: Review[] = [];
+  studentReview!: Review;
 
-  constructor(private reviewService: Review2Service) { }
+  constructor(private reviewService: VideoLessonService) { }
 
   ngOnInit(): void {
     this.fetchReviews();
@@ -32,30 +34,36 @@ export class Review2Component implements OnInit {
 
   // reviews.component.ts
   submitReview() {
-    const newReviewData: ReviewData = {
-      rating: this.selectedRating,
-      comment: this.reviewText,
-      courseId: this.courseId
+    const newReviewData: Review = {
+    
+      studentName: "",
+      rate: this.studentReview.rate,
+      date: "",
+      reviewComment: this.studentReview.reviewComment,
+      studentImage: ""
     };
 
     // Call the service method to submit the review data
-    this.reviewService.submitReview(newReviewData).subscribe(savedReview => {
-      // Once the review is successfully saved in the database, 
-      // fetch the full review with additional information from the backend
-      this.reviewService.getReview(savedReview.id).subscribe(fullReview => {
-        // Add the retrieved review to the reviews array
-        this.reviews.unshift(fullReview);
-        // Reset selected rating and review text
-        this.selectedRating = 0;
-        this.reviewText = '';
+    this.reviewService.SetStudentReviews(this.courseId,newReviewData).subscribe(savedReview => {
+
+      this.reviewService.FillReviews(this.courseId).subscribe(reviews => {
+        this.reviews = reviews;
       });
-    });
+      this.reviewService.GetStudentReviews(this.courseId).subscribe(r => {
+        this.studentReview = r;
+      });        // Reset selected rating and review text
+       
+      });
   }
 
   fetchReviews() {
-    this.reviewService.getReviews().subscribe(reviews => {
+    this.reviewService.FillReviews(this.courseId).subscribe(reviews => {
       this.reviews = reviews;
     });
+    this.reviewService.GetStudentReviews(this.courseId).subscribe(r => {
+      this.studentReview = r;
+    });
+    
   }
 
   getStarArray(rating: number): number[] {

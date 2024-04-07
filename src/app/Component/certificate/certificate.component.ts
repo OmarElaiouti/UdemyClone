@@ -59,8 +59,8 @@ export class CertificateComponent implements OnInit {
       this.fetchCertificateData();
     }
   
-    fetchCertificateData(): void {
-      this.certificateService.getCertificateData().subscribe(
+    fetchCertificateData(courseID:number): void {
+      this.certificateService.getCertificateData(courseID).subscribe(
         (data) => {
           this.course = data;
         },

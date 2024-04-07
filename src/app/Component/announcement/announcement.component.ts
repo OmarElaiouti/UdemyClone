@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IAnnouncement } from '../../Models/lesson';
-import { AnnouncementService } from '../../Services/Announcement/announcement.service';
 import { DatePipe } from '@angular/common';
+import { VideoLessonService } from '../../Services/videoLesson/video-lesson.service';
 
 @Component({
   selector: 'app-announcement',
@@ -20,7 +20,7 @@ export class AnnouncementComponent implements OnInit {
   // personName: string = ''; 
   // personPictureUrl: string = ''; 
 
-  constructor(private announcementService: AnnouncementService) { }
+  constructor(private announcementService: VideoLessonService) { }
 
   ngOnInit(): void {
     this.fetchAnnouncements();
@@ -32,29 +32,6 @@ export class AnnouncementComponent implements OnInit {
     });
   }
 
-  // postAnnouncement() {
-  //   if (this.newAnnouncementContent.trim() !== '') {
-  //     const newAnnouncement: IAnnouncement = {
-  //       id: 0, // Assign any initial value to the id, might get overridden by the server
-  //       courseId: this.courseId, 
-  //       content: this.newAnnouncementContent.trim(),
-  //       personName: this.personName,
-  //       personPictureUrl: this.personPictureUrl,
-  //       date: new Date() // Use the current date for the announcement
-  //     };
 
-  //     this.announcementService.postAnnouncement(newAnnouncement).subscribe(() => {
-  //       this.fetchAnnouncements();
-  //       this.newAnnouncementContent = '';
-  //     });
-  //   }
-  // }
-
-  // deleteAnnouncement(index: number) {
-  //   const announcementId = this.announcements[index].id;
-  //   this.announcementService.deleteAnnouncement(this.courseId, announcementId).subscribe(() => {
-  //     this.fetchAnnouncements();
-  //   });
-  // }
 
 }

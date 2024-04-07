@@ -10,7 +10,7 @@ export class AddRoleServiceService {
   constructor(private http: HttpClient) { }
 
   addRoleToUser(): Observable<any> {
-    return this.http.get<any>('your-api-url/add-role')
+    return this.http.get<any>('http://localhost:5165/api/User/add-instructor-role')
       }
     
 

@@ -1,9 +1,12 @@
 export interface Ifour {
-  studentName:string;
-  rate:number;
-  studentImage:string;
-  date:string;
-  reviewComment:string;
+  featuredFeedback:{
+
+    studentName:string;
+    rate:number;
+    studentImage:string;
+    date:string;
+    reviewComment:string;
+  }
   // feedbacks:[{
   // studentName:string;
   // rate:number;

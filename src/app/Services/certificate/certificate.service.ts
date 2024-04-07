@@ -10,6 +10,6 @@ export class CertificateService {
 
   constructor(private http: HttpClient) { }
 
-  getCertificateData(): Observable<Icertificate> {
-    return this.http.get<Icertificate>('YOUR_API_ENDPOINT_HERE');
+  getCertificateData(courseId:number): Observable<Icertificate> {
+    return this.http.get<Icertificate>(`http://localhost:5165/api/Category/api/course-data/api/${courseId}/get-or-create-certificate`);
   }}
