@@ -130,7 +130,7 @@
                     <app-overview [courseId]="courseId"></app-overview>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-1" role="tabpanel" aria-labelledby="simple-tab-1">
-                    <app-q [courseId]="courseId"></app-q>
+                    <app-comment [courseId]="courseId"></app-comment>
                 </div>
                 <div class="tab-pane" id="simple-tabpanel-2" role="tabpanel" aria-labelledby="simple-tab-2">
                     <app-review2 [courseId]="courseId"></app-review2>
@@ -152,8 +152,8 @@
 
                 </div>
 
-                <div class="tab-pane" id="simple-tabpanel-4" role="tabpanel" aria-labelledby="simple-tab-4">
-                </div>
+                <!-- <div class="tab-pane" id="simple-tabpanel-4" role="tabpanel" aria-labelledby="simple-tab-4">
+                </div> -->
 
                 <div class="tab-pane" id="simple-tabpanel-5" role="tabpanel" aria-labelledby="simple-tabpanel-5">
                     <app-announcement [courseId]="courseId" ></app-announcement>
@@ -182,8 +182,8 @@
                         <ul>
                             @for(lesson of section.lessons;track $index){
                             <div style="display: flex;margin: 10px;">
-                                <input type="checkbox" [(ngModel)]="lesson.inCompleted"
-                                    (change)="updateWatchedStatus()">
+                                <input type="checkbox" [(ngModel)]="lesson.isCompleted"
+                                    (change)="updateWatchedStatus(lesson)">
                                 <li (click)="loadVideo(lesson.lessonVideo)" style="margin-left: 10px;">{{
                                     lesson.lessonName }}</li>
                             </div>

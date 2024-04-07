@@ -19,6 +19,8 @@ import { UpdateCourseComponent } from './Component/update-course/update-course.c
 import { InstructorCoursesComponent } from './Component/instructor-courses/instructor-courses.component';
 import { Next2Component } from './Component/next2/next2.component';
 import { Next3Component } from './Component/next3/next3.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { InstructorDashboardComponent } from './Component/instructor-dashboard/instructor-dashboard.component';
 
 SignupComponent
 export const routes: Routes = [
@@ -31,7 +33,7 @@ export const routes: Routes = [
   { path: 'contactus', component: ContactusComponent, title: 'contactus' },
   { path: 'techOnUdemy', component: TechOnUdemyComponent, title: 'techOnUdemy' },
   { path: 'support', component: SupportComponent, title: 'support' },
-  { path: 'coursedetails', component: CourseDetailsComponent },
+  { path: 'coursedetails/:id', component: CourseDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'searchresult', component: SearchComponent },
   { path: 'profile', component: AccountProfileComponent },
@@ -42,9 +44,12 @@ export const routes: Routes = [
   { path: 'lessons', component: CourseDetailsComponent },
   { path: 'notifications', component: NotificationComponent },
   { path: 'checkout', component: CheckOutComponent },
-  { path: 'next1', component: Next1Component },
   { path: 'Update', component: UpdateCourseComponent },
   { path: 'instructor-courses', component: InstructorCoursesComponent },
+  { path: 'next1', component: Next1Component },
   { path: 'next2', component: Next2Component },
   { path: 'next3', component: Next3Component },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'instructor-dashboard', component: InstructorDashboardComponent },
+
 ];

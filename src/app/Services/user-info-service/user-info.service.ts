@@ -15,7 +15,14 @@ export class UserInfoService {
   }
 
   updateUser(user: IUser): Observable<any> {
-    return this.http.put<IUser>('http://localhost:5165/api/User/edit-user-data', user);
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Methods': 'PUT',
+    //     // Add any other required headers here
+    //   })
+    // };
+    return this.http.post<IUser>('http://localhost:5165/api/User/edit-user-data', user);
   }
 
   deleteUser(): Observable<any> {

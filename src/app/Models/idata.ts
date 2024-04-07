@@ -37,7 +37,6 @@ export interface Idata{    //create
   courseDisc:string;
   price:number;
   level:string;
-  cover:string;
   language:string;
   Objectives:[{
     id:number;
@@ -45,14 +44,13 @@ export interface Idata{    //create
   }];
   fullDescription:string;
   sectionnum:number;
-  sections:[{
+  section:{
     sectionName:string;
     lessons:[{
       lessonName:string;
       lessonTimeInMinutes:number;
-      lessonVideo:string
     }]
-  }]
+  }
   requirements:[{
     id:number;
     content:string;

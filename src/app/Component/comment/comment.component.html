@@ -9,12 +9,12 @@
   @if(comments.length > 0){
   <div>
     <div *ngFor="let comment of comments; let i = index" class="comment">
-      <img [src]="comment.personPictureUrl" alt="Person's Picture">
+      <img [src]="comment.studentImage" alt="Person's Picture">
       <div class="comment-content">
-        <p>{{ comment.personName }}</p>
+        <p>{{ comment.studentName }}</p>
         <p>{{ comment.content }}</p>
       </div>
-      <button (click)="deleteComment(i)">Delete</button>
+      <button >Delete</button>
     </div>
   </div>}
 

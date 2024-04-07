@@ -54,7 +54,6 @@ export class CartComponent {
   //   this.calculateTotalBill();
   //   this.showWishlist();
   // }
-  private navbarRefreshSubscription!: Subscription;
 
   loggedIn: boolean = false;
   coursesInCart: Icart[] = [];
@@ -186,6 +185,8 @@ private refreshNavbar(): void {
         next: () => {
 
           console.log('Course moved to wishlist successfully');
+          this.refreshNavbar();
+
           // Implement any additional logic here, such as updating UI
         },
         error: (error) => {
@@ -205,10 +206,10 @@ private refreshNavbar(): void {
   //   this.totalBill = this.coursesInCart.reduce((acc, course) => acc + course.price, 0);
   // }
 
-  showWishlist(): void {
-    const wishedItemsString = localStorage.getItem('wishlist');
-    this.wishedItems = wishedItemsString ? JSON.parse(wishedItemsString) : [];
-  }
+  // showWishlist(): void {
+  //   const wishedItemsString = localStorage.getItem('wishlist');
+  //   this.wishedItems = wishedItemsString ? JSON.parse(wishedItemsString) : [];
+  // }
 
   // applyCoupon(): void {
   //   if (!this.couponApplied) {
@@ -238,9 +239,8 @@ private refreshNavbar(): void {
     return starArray;
   }
 
-  ngOnDestroy(): void {
-    this.navbarRefreshSubscription.unsubscribe();
-  }
+
+
 }
 
 

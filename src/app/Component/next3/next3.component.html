@@ -20,7 +20,7 @@
   </select>
 </section>
 <div class="bt">
-  <button class="pre" routerLink="/next2">Previous</button>
-  <button id="continueButton" routerLink="/dashboard">Continue</button>
+  <button class="pre" [routerLink]="['/next2']" routerLinkActive="router-link-active" >Previous</button>
+  <button id="continueButton" class="pre"  [routerLink]="['/dashboard']">Continue</button>
 
 </div>

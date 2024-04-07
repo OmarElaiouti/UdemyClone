@@ -17,11 +17,11 @@ export class NotificationService {
   }
 
   setNotificationsLastFiveStatus(notifications:INotification[]): Observable<INotification[]> {
-    return this.http.put<INotification[]>('http://localhost:5165/api/Notifications/notifications-status-last-five',{notifications});
+    return this.http.post<INotification[]>('http://localhost:5165/api/Notifications/notifications-status-last-five',{notifications});
   }
 
   setNotificationsAllStatus(): Observable<any> {
-    return this.http.put('http://localhost:5165/api/Notifications/notifications-status',{});
+    return this.http.get<any>('http://localhost:5165/api/Notifications/notifications-status');
   }
 
 }

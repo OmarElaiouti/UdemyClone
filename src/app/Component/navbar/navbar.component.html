@@ -32,13 +32,13 @@
 
   <!--Main maineu of website-->
   <div class="dropdown d-none d-md-block px-1">
-    <button class="Catbtn category-btn dropdown-toggle" id="dropdownSec" data-mdb-toggle="dropdown"
+    <button class="Catbtn category-btn dropdown-toggle" (mouseleave)="SetDefaultCategory()" id="dropdownSec" data-mdb-toggle="dropdown"
       aria-expanded="false" ><span>Categories</span></button>
     <div class="dropdown-menu double" aria-labelledby="dropdownSec">
       <div class="dropdown-section fsection">
         <ul>
           @for(category of categories;track category.id){
-          <li class="" (mouseover)="setActiveCategory(category)"><a class="CatAnch"
+          <li class="" (mouseenter)="setActiveCategory(category)"><a class="CatAnch"
               (click)="GotoCategory(category.name)"
               [ngClass]="{ 'active': activeCategory==category }">{{category.name}}</a></li>
 
@@ -48,7 +48,7 @@
       </div>
       <div class="dropdown-section with-hover secsection">
         <ul>
-          @for(sub of subcategories;track sub.id){
+          @for(sub of filteredSubcategories;track sub.id){
 
           <li class="" (mouseover)="setActiveSubCategory(sub)"><a (click)="GotoCategory(sub.name)">{{sub.name}}</a></li>
           }
@@ -57,7 +57,7 @@
         <div class="dropdown-section third-dropdown thdsection">
 
           <ul>
-            @for(topic of topics;track topic.id){
+            @for(topic of filteredTopics;track topic.id){
 
             <li class=""><a (click)="GotoCategory(topic.name)" routerLinkActive="router-link-active">{{topic.name}}</a>
             </li>
@@ -298,7 +298,7 @@
 
 <div class="dropdownC  dropdownB d-none d-md-block">
   <button class="Catbtn dropdown-toggle" id="dropdownCard" aria-haspopup="true" aria-expanded="false">
-    <a [routerLink]="['/profile']" routerLinkActive="router-link-active">
+    <a >
       @if(user.image.length > 0 ){
       <div class="circle">
         <img class="profile-image" src="{{user.image}}">
@@ -334,9 +334,7 @@
         <div class="list-refer">
           @if(user.firstName !== "" && user.lastName !== ""){
           <div class="profile-name" ><span>{{user.firstName}} {{user.lastName}}</span></div>
-          }
-          
-          @if(user.userName !== ""){
+          }@else{
             <div class="profile-name"><span>{{user.userName}}</span></div>
           }
 

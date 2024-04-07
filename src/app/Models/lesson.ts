@@ -102,7 +102,7 @@ export interface ILesson {
   lessonName: string;
   lessonTimeInMinutes: number;
   lessonVideo: string;
-  inCompleted: boolean;
+  isCompleted: boolean;
   notes: INote[];
 }
 

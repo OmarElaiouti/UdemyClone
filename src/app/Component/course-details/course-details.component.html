@@ -2,13 +2,12 @@
 <div id="page_1">
   <div class="sticky_sidebar">
     <div id="sticky-br">
-      <video controls style="width: 300px;height: 150px;">
-        <source src={{top.introVideo}} type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <img  style="width: 300px;height: 150px;"
+         src={{top.Image}} >
+        
 
       <h1 style="font-size: 40px">₹{{top.price}}</h1>
-      @if(IsEneolled){
+      @if(IsEnrolled){
         <button id="add_to_cart"class="cartBtn">
           Go To Course
           </button>
@@ -283,12 +282,12 @@
   <div style="display: flex; gap: 1%">
     <img
       style="width: 15%; border-radius: 50%"
-      src={{feature.studentImage}}
+      src={{feature.featuredFeedback.studentImage}}
       alt=""
     />
     <div id="review_profile">
       <p style="margin-top: 5%; font-size: 1.4rem; font-weight: 700">
-        <b>{{feature.studentName}}.</b>
+        <b>{{feature.featuredFeedback.studentName}}</b>
       </p>
       <!-- <p style="margin-top: 5%; font-size: 1rem; font-weight: 400">
         {{feature.NumberOfCourse}} courses
@@ -298,15 +297,15 @@
       </p> -->
     </div>
   </div>
-  <div class="star-ratings" [style.width]="(feature.rate / 5) * 100 + '%'">
-    <span><b>{{ feature.rate }} </b> </span>
-@for(star of getStarArray(feature.rate);track $index){
+  <div class="star-ratings" [style.width]="(feature.featuredFeedback.rate / 5) * 100 + '%'">
+    <span><b>{{ feature.featuredFeedback.rate }} </b> </span>
+@for(star of getStarArray(feature.featuredFeedback.rate);track $index){
 <span>
 <i class="fa fa-star" [ngClass]="{'half-star': star >= 0.5}"></i>
 </span>
 }
 </div>
-  <p class="fet"> {{feature.date}} months ago</p>
+  <p class="fet"> {{feature.featuredFeedback.date}} months ago</p>
 
   <p
     style="
@@ -318,7 +317,7 @@
       font-weight: 400;
     "
   >
-    {{feature.reviewComment}}
+    {{feature.featuredFeedback.reviewComment}}
   </p>
   <br />
   <p

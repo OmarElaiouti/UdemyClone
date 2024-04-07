@@ -16,7 +16,7 @@
     <section>
       <form>
         <label style="position: relative;top: -30px;right: -30px;">Title</label>
-        <input class="ti" type="text" name="courseTitle" [(ngModel)]="courseTitle">
+        <input class="ti" type="text" name="courseTitle" [(ngModel)]="course.courseTitle">
 
         <div style="margin-left: -350px;">
           <label for="numberInput" style="position: relative;top: -30px;right: -45px;">Enter a number of objects:</label>
@@ -27,12 +27,25 @@
 </div>
 </div>
         <div>
-          <label style="position: relative;top: -30px;right: -100px;">Category Name:</label>
-          <input type="text" name="categoryName" [(ngModel)]="course.categoryName">
-          <label class="a">Sub Name:</label>
-          <input type="text" name="subcatName" [(ngModel)]="course.subcatName">
-          <label class="a">Topic Name :</label>
-          <input type="text" name="topicName" [(ngModel)]="course.topicName">
+            <label style="position: relative; top: -30px; right: -100px;">Category Name:</label>
+            <select name="categoryName" [(ngModel)]="activeCategory" (change)="setActiveCategory()">
+              <option value="" disabled>Choose a category</option>
+
+              <option *ngFor="let category of categories" >{{ category.name }}</option>
+            </select>
+          
+            <label style="position: relative; top: -30px; right: -100px;" class="a">Sub Name:</label>
+            <select name="subcatName" [(ngModel)]="activeSubCategory" (change)="setActiveSubCategory()">
+              <option  disabled>Choose a subcategory</option>
+              <option *ngFor="let subcategory of filteredSubcategories">{{ subcategory.name }}</option>
+            </select>
+          
+            <label style="position: relative; top: -30px; right: -100px;" class="a">Topic Name:</label>
+            <select name="topicName" [(ngModel)]="activeTopic" (change)="setActiveTopic()">
+              <option value="" disabled>Choose a topic</option>
+              <option *ngFor="let topic of filteredTopics">{{ topic.name }}</option>
+            </select>
+          
         </div>
         <div style="margin-top: 30px;">
           <label style="position: relative;top: -50px;right: -55px;margin-bottom: 20px;">Braif Description </label>
@@ -50,7 +63,7 @@
     <section>
       <form (ngSubmit)="onSubmit()">
         <label style="position: relative;top: -30px;right: -100px;">Requirement Number </label>
-        <input type="number" name="reqnum" id="num" #reqnumInput (input)="createInput(reqnumInput.value)" min="1" max="3">
+        <input type="number" id="num" [(ngModel)]="reqnum" name="reqnum" (ngModelChange)="createInput()" min="1" max="4">
         <div style="margin-top: 20px;">
           <label style="position: relative;left: -360px;">Requirements</label>
         </div>
@@ -58,32 +71,43 @@
           <input type="text" name="requirements{{i}}" [(ngModel)]="course.requirements[i].content" >
         </div>
         <label style="position: relative;top: -30px;right: -100px;margin-top: 30px;">Section Number </label>
-        <input type="number" name="sectionnum" id="number" [(ngModel)]="course.sectionnum" (ngModelChange)="createInputss()" min="1" max="8">
+        <input type="number" id="number" [(ngModel)]="sectionnum" name="sectionnum" (ngModelChange)="createInputss()" min="1" max="1">
+
         <div>
         <label style="position: relative;left: -360px;">Section Name</label>
         <div *ngFor="let input of inputsArrr; let i = index">
-        <input class="sec" type="text" name="sectionName{{i}}" [(ngModel)]="course.sections[i].sectionName">
+        <input class="sec" type="text" name="sectionName{{i}}" [(ngModel)]="course.section.sectionName">
         </div>
         </div>
         <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
         <input type="number" class="lec"name="secLecNum" [(ngModel)]="secLecNum" (ngModelChange)="createInputsss()" min="1" max="8">
         <div style="margin-top: 40px;" *ngFor="let input of inputsArrrr; let i = index">
           <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
-          <input type="text" class="les" name="lessonName{{i}}" [(ngModel)]="course.sections[i].lessons[i].lessonName">
+          <input type="text" class="les" name="lessonName{{i}}" (input)="changeName($event,course.section.lessons[i])">
           <label style="position: relative;top: -30px;right: -90px;">Lesson Video</label>
-          <input type="file" (change)="onFilesSelected($event)" class="les"name="lessonVideo{{i}}" [(ngModel)]="course.sections[i].lessons[i].lessonVideo" >
+          <input type="file" (change)="onLessonVideoSelected($event,course.section.lessons[i])" class="les"name="lessonVideo{{i}}"  >
         </div>
         <div>
         <label>Price</label>
         <input type="text" name="price" [(ngModel)]="course.price">
-        <label>Languege</label>
-        <input type="text" name="language" [(ngModel)]="course.language">
-        <label>Level</label>
-        <input type="text" name="level" [(ngModel)]="course.level">
+        <label>Language:</label>
+<select name="language" [(ngModel)]="course.language">
+  <option value="" disabled selected>Choose a language</option>
+  <option value="Arabic">Arabic</option>
+  <option value="English">English</option>
+</select>
+
+<label>Level:</label>
+<select name="level" [(ngModel)]="course.level">
+  <option value="" disabled selected>Choose a level</option>
+  <option value="Beginner">Beginner</option>
+  <option value="Intermediate">Intermediate</option>
+  <option value="Professional">Professional</option>
+</select>
         <button type="submit" style="margin-top: 50px;position: relative;bottom: -50px;">Save</button>
 </div>
 <div>
-  <input type="file" name="cover" [(ngModel)]="course.cover">
+<input type="file" name="cover" (change)="onCoverFileSelected($event)"  accept="image/*">
 </div>
       </form>
         </section>
@@ -91,4 +115,4 @@
 
 
 </div>
-<input type="file" (change)="onFilesSelected($event)">
+<input type="file">

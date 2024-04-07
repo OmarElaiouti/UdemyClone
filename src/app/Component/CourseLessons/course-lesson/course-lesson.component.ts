@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FooterComponent } from "../../footer/footer.component";
 import { ProgressBarModule } from 'primeng/progressbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -16,10 +16,10 @@ import { Subscription, interval, switchMap } from 'rxjs';
 import { NoteComponent } from "../../note/note.component";
 import { CommentComponent } from "../../comment/comment.component";
 import { AnnouncementComponent } from "../../announcement/announcement.component";
-import { QComponent } from "../../q/q.component";
 import { Review2Component } from "../../review2/review2.component";
 import { VideoLessonService } from '../../../Services/videoLesson/video-lesson.service';
 import { ICourseSectionsData, ILesson, ISection } from '../../../Models/lesson';
+import { ILessonStatus } from '../../../Models/ILessonStatus';
 
 
 
@@ -36,22 +36,23 @@ import { ICourseSectionsData, ILesson, ISection } from '../../../Models/lesson';
         VgCoreModule,
         VgControlsModule,
         VgOverlayPlayModule,
-        VgBufferingModule, 
-        FormsModule, 
-        OverviewComponent, 
-        MatCardModule, 
-        NoteComponent, 
-        AnnouncementComponent, 
+        VgBufferingModule,
+        FormsModule,
+        OverviewComponent,
+        MatCardModule,
+        NoteComponent,
+        AnnouncementComponent,
         Review2Component,
         RouterModule,
-      QComponent]
+        CommentComponent]
 })
 
-export class CourseLessonComponent implements OnInit{
+export class CourseLessonComponent implements OnInit,OnDestroy{
   course!:ICourseSectionsData;
   sections:ISection[]=this.course.sections;
   videoItems: ILesson[] = [];
   courseId!:number;
+  lesseonStatus!:ILessonStatus[];
 
   constructor(private router:Router ,
     private http: HttpClient,
@@ -64,14 +65,30 @@ export class CourseLessonComponent implements OnInit{
      
 
   ngOnInit(): void {
-    this.courseId = Number(this.route.snapshot.paramMap.get('id'));
-  
+    this.route.params.subscribe(params => {
+      this.courseId = +params['id']; // Convert to number
+    });  
     this.lessons.FillSections(this.courseId).subscribe(respone => {
       this.course = respone;
     });
     
    
 
+  }
+
+  ngOnDestroy(): void {
+    // Populating lesseonStatus array
+    this.videoItems.forEach(i => {
+      this.lesseonStatus.push({
+        lessonId: i.lessonId,
+        isCompleted: i.isCompleted
+      });
+    });
+
+    // Calling SetLesoonsStatus method and subscribing to the response
+    this.lessons.SetLesoonsStatus(this.courseId, this.lesseonStatus).subscribe(response => {
+      // Handle response if needed
+    });
   }
 
   circleSize = 40;
@@ -102,10 +119,11 @@ export class CourseLessonComponent implements OnInit{
     this.selectedLesson = this.videoItems.find(lesson => lesson.lessonVideo === videoUrl) || null;
   }
 
-  updateWatchedStatus() {
-    this.watchedLessons = this.sections.reduce((total, section) => {
-      return total + section.lessons.filter(lesson => !lesson.inCompleted).length; // Changed to check inCompleted field
-    }, 0);
+  updateWatchedStatus(lesson:any) {
+    lesson.isCompleted = !lesson.isCompleted; 
+
+    this.watchedLessons = this.videoItems.filter(lesson => lesson.isCompleted).length;
+
   }
 
   // Extract lessons from sections
@@ -167,20 +185,33 @@ completed: boolean = false;
 
 
 
+// calculateProgress(): number {
+//   const totalLessons = this.videoItems.reduce((total, videoItems) => {
+//     return total + videoItems.length;
+//   }, 0);
+//   if (totalLessons === 0) {
+//     return 0;
+    
+//   }
+//   this.progress = (this.watchedLessons / totalLessons) * 100;
+//   this.completed = this.progress >= 100;
+//   return (this.watchedLessons / totalLessons) * 100;
+
+// }
 calculateProgress(): number {
-  const totalLessons = this.sections.reduce((total, section) => {
-    return total + section.lessons.length;
-  }, 0);
+  const totalLessons = this.videoItems.length; // Corrected to get the total number of lessons
   if (totalLessons === 0) {
     return 0;
-    
   }
+  
+  // Calculate progress
   this.progress = (this.watchedLessons / totalLessons) * 100;
+
+  // Determine if all lessons are completed
   this.completed = this.progress >= 100;
-  return (this.watchedLessons / totalLessons) * 100;
 
+  return this.progress;
 }
-
 
 
   navigateToCertificate() {

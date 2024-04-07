@@ -10,11 +10,10 @@ import { CourseService } from '../../Services/dashboard/course.service';
   styleUrl: './instructor-dashboard.component.css'
 })
 export class InstructorDashboardComponent {
-  id!:number;
   constructor(private courseService: CourseService,private router:Router){}
   
 quesion(){
-  this.courseService.InstructorQuestion(this.id).subscribe(response=>{
+  this.courseService.InstructorQuestion().subscribe(response=>{
     if(response){
       this.router.navigate(['/next1']);
     }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostBinding } from '@angular/core';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './Component/footer/footer.component';
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { HomeComponent } from './Component/home/home.component';
@@ -21,7 +21,6 @@ import { Next3Component } from "./Component/next3/next3.component";
 import { DashboardComponent } from "./Component/dashboard/dashboard.component";
 import { InstructorCoursesComponent } from "./Component/instructor-courses/instructor-courses.component";
 import { UpdateCourseComponent } from "./Component/update-course/update-course.component";
-import { TestComponent } from "./Component/test/test.component";
 
 
 
@@ -31,7 +30,7 @@ import { TestComponent } from "./Component/test/test.component";
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     imports: [RouterOutlet, FooterComponent, NavbarComponent, HomeComponent, MyLearningComponent, AccountProfileComponent, CartComponent, CategoryComponent, CourseDetailsComponent,
-        SearchComponent, CourseLessonComponent, CheckOutComponent, LastsliderComponent, NotificationComponent, CertificateComponent, InstructorDashboardComponent, Next1Component, Next2Component, Next3Component, DashboardComponent, InstructorCoursesComponent, UpdateCourseComponent, TestComponent]
+        SearchComponent, CourseLessonComponent , CheckOutComponent, LastsliderComponent, NotificationComponent, CertificateComponent, InstructorDashboardComponent, Next1Component, Next2Component, Next3Component, DashboardComponent, InstructorCoursesComponent, UpdateCourseComponent]
 })
 export class AppComponent {
   title = 'graduation_proj';
@@ -44,5 +43,16 @@ export class AppComponent {
 
   isExpanded(collapseId: string): boolean {
     return this.expandedItems[collapseId] || false;
+  }
+
+  @HostBinding('class.hide') hideNavbar = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Check if the current route is the one where you want to hide the navbar
+        this.hideNavbar = event.url === '/specific-route';
+      }
+    });
   }
 }

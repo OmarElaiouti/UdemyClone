@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { Icertificate } from '../../Models/certificate';
 import { CertificateService } from '../../Services/certificate/certificate.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-certificate',
@@ -19,6 +20,7 @@ export class CertificateComponent implements OnInit {
   //   totalHour: 15,student_name:"Eman Salah",date:1/20/2023,Img:"https://i.pinimg.com/564x/79/2a/80/792a808b9b5caae17aa382fc080c469d.jpg"
   // }
   
+  courseId!:number;
 
   @ViewChild('contentToDownload') contentToDownload!: ElementRef;
   @ViewChild('contentToShare') contentToShare!: ElementRef;
@@ -53,10 +55,13 @@ export class CertificateComponent implements OnInit {
 
     course!: Icertificate;
   
-    constructor(private certificateService: CertificateService) {}
+    constructor(private certificateService: CertificateService,private route:ActivatedRoute) {}
   
     ngOnInit(): void {
-      this.fetchCertificateData();
+      this.route.params.subscribe(params => {
+        this.courseId = +params['id']; // Convert to number
+      });  
+      this.fetchCertificateData(this.courseId);
     }
   
     fetchCertificateData(courseID:number): void {

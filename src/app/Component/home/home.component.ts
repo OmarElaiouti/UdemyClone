@@ -72,9 +72,16 @@ export class HomeComponent {
       this.randomCourses2 = courses;
     });
 
-    this.homecourseService.getTopRatedCourses().subscribe(courses => {
+    this.homecourseService.getTopRatedCourses().subscribe({
+      next:r=>{
+      this.topRatedCourses = r;
+    },
+  error:err=>{
+    this.homecourseService.getRandomCourses().subscribe(courses => {
       this.topRatedCourses = courses;
     });
+  }
+  });
 
     // Fetch searched courses
     

@@ -1,92 +1,94 @@
 <section style="margin-left: 55px;">
 
 
-<div class="one">
-  <h1 style="font-weight: bold;">About this course</h1>
-  <p style="margin-top: 20px;">{{overview.aboutThisCourse}}</p>
-</div>
-<hr>
-<div class="two">
-  <div style="margin-left: 30px;" >
-    <p class="b">By the numbers</p>
+  <div class="one">
+    <h1 style="font-weight: bold;">About this course</h1>
+    <p style="margin-top: 20px;">{{overview.briefDescription}}</p>
   </div>
-  <div  style="margin-left: 150px;">
-    <p class="b">Skill level: {{ overview.SkillLevel}}
-    <br>Students: {{ overview.NofStudents}}
-    <br>Languages: {{overview.Languages}}
-    <br>Captions: {{overview.Captions }} </p>
-  </div>
-  <div style="margin-left: 150px;">
-    <p class="b">Lectures: {{overview.NofLectures}}
-    <br>Video: {{overview.totalHours}}
-    </p>
-  </div>
-</div>
-<hr>
-<div class="two">
-  <div style="margin-left: 30px;">
-    <p>Certificates</p>
-  </div>
-  <div style="margin-left: 180px;">
-    <p>Get Udemy certificate by completing entire course</p>
-    <div class="three">
-    <a style="margin-top: 10px;position: relative;top: 6px;opacity: 0.6;">Udemy certificate</a>
+  <hr>
+  <div class="two">
+    <div style="margin-left: 30px;" >
+      <p class="b">By the numbers</p>
+    </div>
+    <div  style="margin-left: 150px;">
+      <p class="b">Skill level: {{ overview.level}}
+      <br>Students: {{ overview.numStudent}}
+      <br>Languages: {{overview.language}}
+    </div>
+    <div style="margin-left: 150px;">
+      <p class="b">Lectures: {{overview.totalLessons}}
+      <br>Video: {{overview.totalHours}}
+      </p>
     </div>
   </div>
-</div>
-<hr>
-<div class="two">
-  <div style="margin-left: 30px;">
-    <p>Features</p>
-  </div>
-  <div style="margin-left: 195px;">
-    <p>Available on <span class="span">iOS</span> and <span class="span">Android</span></p>
-  </div>
-</div>
-<hr>
-<div class="two">
-  <div style="margin-left: 30px;">
-    <p>Description</p>
-  </div>
-  <div style="width: 650px;margin-left: 195px;">
-    <p>
-{{  overview.Description}}
-    </p>
-  </div>
-</div>
-<div class="dic">
-<h6>What you’ll learn</h6>
-<ul>
-  <li> {{ overview.WhatLearn}} </li>
-
-</ul>
-<h6>Are there any course requirements or prerequisites?</h6>
-<ul>
-  <li>{{ overview.courseRequirements}}</li>
-</ul>
-</div>
-<hr>
-<div class="two">
-  <div style="margin-left: 30px;">
-    <p>Instructor</p>
-  </div>
-
-  <div class="two" style="margin-left: 200px;">
-    <div>
-      <img src={{overview.img}}/>
+  <hr>
+  <div class="two">
+    <div style="margin-left: 30px;">
+      <p>Certificates</p>
     </div>
-    <div style="margin-left: 20px;margin-top: 10px;">
-      <p><span class="s"> {{overview.InstructorName}} </span>
-      <br> {{overview.InstructorRank}} </p>
+    <div style="margin-left: 180px;">
+      <p>Get Udemy certificate by completing entire course</p>
+      <div class="three">
+      <a style="margin-top: 10px;position: relative;top: 6px;opacity: 0.6;">Udemy certificate</a>
+      </div>
     </div>
   </div>
-</div>
-<div class="two icon">
-  <i class="fa-brands fa-square-facebook i"></i>
-  <i class="fa-brands fa-linkedin i"></i>
-  <i class="fa-brands fa-square-youtube i"></i>
-</div>
-<div style="margin-left: 300px;margin-top: 20px;width: 550px;">
-  <p>{{overview.InstructorDescription}}</p>
-</div>
-</section>
+  <hr>
+  <div class="two">
+    <div style="margin-left: 30px;">
+      <p>Features</p>
+    </div>
+    <div style="margin-left: 195px;">
+      <p>Available on <span class="span">iOS</span> and <span class="span">Android</span></p>
+    </div>
+  </div>
+  <hr>
+  <div class="two">
+    <div style="margin-left: 30px;">
+      <p>Description</p>
+    </div>
+    <div style="width: 650px;margin-left: 195px;">
+      <p>
+  {{  overview.fullDescription}}
+      </p>
+    </div>
+  </div>
+  <div class="dic">
+  <h6>What you’ll learn</h6>
+  <ul>
+    @for(objective of objectives; track $index){
+  
+      <li >{{ objective.content }}</li>}
+  </ul>
+  <h6>Are there any course requirements or prerequisites?</h6>
+  <ul>
+    @for(requirement of requirements; track $index){
+  
+      <li >{{ requirement.content }}</li>}
+    </ul>
+  </div>
+  <hr>
+  <div class="two">
+    <div style="margin-left: 30px;">
+      <p>Instructor</p>
+    </div>
+  
+    <div class="two" style="margin-left: 200px;">
+      <div>
+        <img src={{overview.instructorImage}}/>
+      </div>
+      <div style="margin-left: 20px;margin-top: 10px;">
+        <p><span class="s"> {{overview.instructorName}} </span>
+        <br> {{overview.instrucHeadlind}} </p>
+      </div>
+    </div>
+  </div>
+  <div class="two icon">
+    <i class="fa-brands fa-square-facebook i"></i>
+    <i class="fa-brands fa-linkedin i"></i>
+    <i class="fa-brands fa-square-youtube i"></i>
+  </div>
+  <div style="margin-left: 300px;margin-top: 20px;width: 550px;">
+    <p>{{overview.instructorBiography}}</p>
+  </div>
+  </section>

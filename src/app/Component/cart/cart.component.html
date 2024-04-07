@@ -78,7 +78,7 @@
               <p>Total:</p>
               <h1><span>$</span><span id="totalBill">{{totalBill}}</span></h1>
               <div id="priceOff"></div>
-              <button id="checkout" type="submit" class="btn blueBtn maxWidth"routerLink="/checkout" (click)="checkout()">
+              <button id="checkout" type="submit" class="btn blueBtn maxWidth" (click)="checkout()">
                 Checkout
               </button>
               <h3>Promotions</h3>
@@ -126,7 +126,7 @@
   <p style="font-size: 20px;font-weight: bold;">Moved to wishlist</p>
   <hr>
   <div id="cart" class="nonEmpty wishlist" >
-    @for (item of coursesInCart; track $index) {
+    @for (item of wishedItems; track $index) {
       <div >
       <div class="product">
         <div>

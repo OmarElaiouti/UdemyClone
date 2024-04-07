@@ -23,7 +23,8 @@ export class CourseService {
     return this.http.get<IData>(`${this.apiUrl}/api/InstructorDashboard/course/${courseId}`);
   }
 
-  createCourse(course: Idata): Observable<any> {
+  createCourse(course: FormData): Observable<any> {
+
     return this.http.post<any>(`${this.apiUrl}/api/InstructorDashboard/create-or-update-course`, course);
   }
 

@@ -33,14 +33,22 @@ export class NavbarComponent implements OnInit {
   userRoles!: string[];
 
   searchValue: string = '';
+
   categories!:Icategory[];
   subcategories!:Icategory[];
   topics!:Icategory[];
+
+  subcategoriesMap!:any;
+  topicsMap!:any;
+
   Cart: Icourse[] = [];
   notifications: INotification[] = [];
   Wishlist: Icourse[] = [];
+
   activeCategory: any;
   activeSubCategory: any;
+  activeTopic!:any;
+  
   CartTotalPrice!:String;
   signedin:boolean=false;
   isSidebarOpen: boolean = false;
@@ -55,6 +63,8 @@ export class NavbarComponent implements OnInit {
     image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",
   };
   private navbarRefreshSubscription!: Subscription;
+  filteredSubcategories!: any[];
+  filteredTopics!: any[];
 
   constructor(
     private catService: CategoryService,
@@ -72,6 +82,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
 
+ 
 
 
   ngOnInit() {
@@ -83,6 +94,7 @@ export class NavbarComponent implements OnInit {
 
         // Load additional data only if the user is signed in
         this.loadCategories();
+        this.filterData()
         this.loadNotifications();
         this.loadCart();
         this.loadWishlist();
@@ -98,60 +110,27 @@ export class NavbarComponent implements OnInit {
         
       } else {
         this.signedin = false;
+        this.loadCategories();
+            this.filterData()
         this.loadCart();
 
       }
 
 
 
-    this.navbarRefreshSubscription = this.navbarRefreshService.refreshSubjectAsObservable$.subscribe(() => {
-
-
-      let flagValue = localStorage.getItem("token");
-
-          // Check if the value is not null before parsing it
-          if (flagValue) {
-            this.signedin = true;
-            // Load additional data only if the user is signed in
-            this.loadCategories();
-            this.loadNotifications();
-            this.loadCart();
-            this.loadWishlist();
-            this.loadUserdata();
-
-            const token = localStorage.getItem('token');
-            if (token) {
-              // Decode token to get user roles
-              const decodedToken = this.jwtHelper.decodeToken(token);
-              this.userRoles = decodedToken.roles; // Assuming roles are stored as an array in 'roles' field
-            }
-
-          } else {
-            // this.signedin = false;
-            this.loadCategories();
-            this.loadCart();
-
-            // Reset signedin status if token is null
-          }
-        })
-
-
-    // Subscribe to router navigation events to refresh navbar on route changes
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe({
-      // Call your functions when the route changes
-      next: responce=>{
-      this.loadCart();
-      this.loadWishlist();
-    }, error: err =>{
-      console.error('Error in router navigation events subscription:', err);
-    }
-  });
-
-  
   }
   
+
+  SetDefaultCategory(){
+    this.activeCategory = this.categories[0];
+    this.activeSubCategory = null;
+    this.activeTopic = null;
+  
+    // Filter data when active category changes
+    this.filterData();
+  }
+
+
   userIsInstructor(): boolean {
     return this.userRoles && this.userRoles.includes('Instructor');
   }
@@ -159,7 +138,6 @@ export class NavbarComponent implements OnInit {
   loadUserdata(): void {
     this.userService.getUser().subscribe(user => {
       this.user = user;
-      console.log(user);
       this.user.userName = user.userName
 
     });
@@ -168,38 +146,65 @@ export class NavbarComponent implements OnInit {
   loadCategories(): void {
     this.catService.getAllCategories().subscribe(categories => {
       this.categories = categories;
-      if (this.categories.length > 0) {
-        this.activeCategory = this.categories[0];
-        this.loadSubcategories(this.activeCategory.name);
-      }
+      this.activeCategory = categories[0];
+
+      // Initialize maps to store subcategories and topics
+      this.subcategoriesMap = new Map<string, Icategory[]>();
+      this.topicsMap = new Map<string, Icategory[]>();
+  
+      categories.forEach(category => {
+        // Load subcategories for each category
+        this.catService.getSubcategoriesOrTopicsByParentName(category.name).subscribe(subcategories => {
+          this.subcategoriesMap.set(category.name, subcategories);
+          
+          // Load topics for each subcategory
+          subcategories.forEach(subcategory => {
+            this.catService.getSubcategoriesOrTopicsByParentName(subcategory.name).subscribe(topics => {
+              this.topicsMap.set(subcategory.name, topics);
+            });
+          });
+        });
+      });
     });
   }
 
-  loadSubcategories(parentName: string): void {
-    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(subcategories => {
-      this.subcategories = subcategories;
-      if (this.subcategories.length > 0) {
-        this.activeSubCategory = this.subcategories[0];
-        this.loadTopics(this.activeSubCategory.name);
-      }
-    });
+
+  filterData(): void {
+    // Filter subcategories based on the active category
+    if (this.activeCategory) {
+      this.filteredSubcategories = this.subcategoriesMap.get(this.activeCategory.name) || [];
+    } else {
+      this.filteredSubcategories = [];
+    }
+  
+    // Filter topics based on the active subcategory
+    if (this.activeSubCategory) {
+      this.filteredTopics = this.topicsMap.get(this.activeSubCategory.name) || [];
+    } else {
+      this.filteredTopics = [];
+    }
   }
-
-  loadTopics(parentName: string): void {
-    this.catService.getSubcategoriesOrTopicsByParentName(parentName).subscribe(topics => {
-      this.topics = topics;
-    });
-  }
-
-
-  setActiveCategory(category: any): void {
+  
+  setActiveCategory(category: Icategory): void {
     this.activeCategory = category;
-    this.loadSubcategories(category.name);
+    
+    this.activeSubCategory = null;
+    this.activeTopic = null;
+  
+    // Filter data when active category changes
+    this.filterData();
   }
-
-  setActiveSubCategory(sub: any): void {
-    this.activeSubCategory = sub;
-    this.loadTopics(sub.name);
+  
+  setActiveSubCategory(subcategory: Icategory): void {
+    this.activeSubCategory = subcategory;
+    this.activeTopic = null;
+  
+    // Filter data when active subcategory changes
+    this.filterData();
+  }
+  
+  setActiveTopic(topic: Icategory): void {
+    this.activeTopic = topic;
   }
 
   loadNotifications(): void {
@@ -312,6 +317,8 @@ if(this.notifications.length>0 ){
     error: err => {}
   })
 }
+this.navbarRefreshService.refreshNavbar();
+
 }
 
 GotoCategory(name: string): void {

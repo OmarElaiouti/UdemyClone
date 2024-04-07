@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReviewService } from '../../Services/review.service';
 import { FormsModule } from '@angular/forms';
-import { Review2Service } from '../../Services/review2/review2.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { VideoLessonService } from '../../Services/videoLesson/video-lesson.service';

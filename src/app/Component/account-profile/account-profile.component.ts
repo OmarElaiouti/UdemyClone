@@ -27,7 +27,7 @@ export class AccountProfileComponent {
     image:'' 
   };
 
-  selectedFile: File | null = null;
+  selectedFile!: File;
 
 
   maxCharacters: number = 60;
@@ -107,7 +107,7 @@ constructor(private userService:UserInfoService,private http:HttpClient){}
     }
 
     const formData = new FormData();
-    formData.append('image', this.selectedFile);
+    formData.append('file', this.selectedFile);
 
     this.http.post<any>('http://localhost:5165/api/User/upload-image', formData).subscribe({
       next: response => {

@@ -1,7 +1,7 @@
 import { Component,ElementRef, ViewChild, AfterViewInit, OnInit, HostListener, SimpleChanges, Input  } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { UserCoursesService } from '../../../Services/user-courses-service/user-courses.service';
 import { Icourse, IcourseWithObjectives } from '../../../Models/ICourse';
@@ -26,7 +26,9 @@ throw new Error('Method not implemented.');
   @Input() loggedIn!:boolean;
 
 constructor(private usercoursesService:UserCoursesService,
-  private navbarRefreshService:NavRefreshService
+  private navbarRefreshService:NavRefreshService,
+  private route:Router,
+
   ){}
   // Responsive options for the carousel
   responsiveOptions= [
@@ -100,6 +102,8 @@ constructor(private usercoursesService:UserCoursesService,
     }
     return starArray;
 }
-
+RouteToDetails(id: number): void {
+  this.route.navigate(['/coursedetails', id]);
+}
 
 }

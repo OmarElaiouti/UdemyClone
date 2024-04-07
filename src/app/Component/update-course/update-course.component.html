@@ -63,14 +63,14 @@
         <div>
         <label style="position: relative;left: -360px;">Section Name</label>
         <div *ngFor="let input of inputsArrr; let i = index">
-        <input class="sec" type="text" name="sectionName" value="{{courseTo.sections[i].sectionName}}" [(ngModel)]="course.sections[i].sectionName">
+        <input class="sec" type="text" name="sectionName" value="{{courseTo.section.sectionName}}" [(ngModel)]="course.sections[i].sectionName">
         </div>
         </div>
         <label style="position: relative;top: -30px;right: -110px;">Lecture Number</label>
         <input type="number" class="lec"name="secLecNum" [(ngModel)]="secLecNum" (ngModelChange)="createInputsss()" min="1" max="8">
         <div style="margin-top: 40px;" *ngFor="let input of inputsArrrr; let i = index">
           <label style="position: relative;top: -30px;right: -100px;">Lesson Name</label>
-          <input type="text" class="les" name="lessonName" value="{{courseTo.sections[i].lessons[i].lessonName}}" [(ngModel)]="course.sections[i].lessons[i].lessonName">
+          <input type="text" class="les" name="lessonName" value="{{courseTo.section.lessons[i].lessonName}}" [(ngModel)]="course.sections[i].lessons[i].lessonName">
 
         </div>
         <div>
@@ -83,7 +83,7 @@
           <button type="submit" style="margin-top: 50px;position: relative;bottom: -50px;">Save</button>
   </div>
   <div>
-    <input type="text" name="cover" value="{{courseTo.cover}}" [(ngModel)]="course.cover">
+    <!-- <input type="text" name="cover" value="{{courseTo.cover}}" [(ngModel)]="course.cover"> -->
   </div>
         <button type="submit" style="margin-top: 50px;position: relative;bottom: -50px;">Save</button>
         </form>
