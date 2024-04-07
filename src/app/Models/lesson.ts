@@ -48,25 +48,14 @@ export interface Review {
 
 
 export interface IQuestion {
-  // id: number;
-  // courseId: number;
-  // content: string;
-  // studentName: string;
-  // studentImage: string;
-  // answerTo: number | null;
-  // isReply: boolean; 
-  // isUserComment: boolean; 
-  // isUpdated: boolean; 
-  // date: string; 
-
   id: number;
   courseId: number;
   content: string;
   studentName: string;
   studentImage: string;
-  answer?: string; // Make answer optional
-  answeredBy?: string; // Make answeredBy optional
-  answerDate?: string; // Make answerDate optional
+  answer?: string; 
+  answeredBy?: string; 
+  answerDate?: string; 
   isReply: boolean;
   isUserComment: boolean;
   isUpdated: boolean;

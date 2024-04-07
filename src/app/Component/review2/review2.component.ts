@@ -32,9 +32,9 @@ export class Review2Component implements OnInit {
       return;
     }
     const newReview: Review = {
-      studentName: 'John Doe', // Get actual user name
+      studentName: '', // Get actual user name
       rate: this.selectedRating,
-      studentImage: 'path/to/image', // Get actual user image
+      studentImage: '', // Get actual user image
       date: new Date().toDateString(), // Get current date
       reviewComment: this.comment
     };
