@@ -120,8 +120,8 @@
       <div class="dropdown-card">
         <div class="text-btn">
           Turn what you know into an opportunity and reach millions around the world.
-        </div>
-        <a [routerLink]="['/teachUdemy']" routerLinkActive="router-link-active"><button
+        </div>o
+        <a [routerLink]="['/teachUdemy']" routerLinkActive="ruter-link-active"><button
             class="header-black-btn bisns-btn">Learn More</button></a>
       </div>
     </div>
@@ -162,8 +162,8 @@
 
         @for(course of Wishlist.slice(0,3);track course.id){
         <div class="item-in-wishlist">
-          <div class="course-card wishlist-card">
-            <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+          <div class="course-card wishlist-card" [routerLink]="['/coursedetails',course.id]">
+            <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
               <div class="course-img">
                 <img src="{{course.image}}"
                   alt="Course Image">
@@ -171,7 +171,7 @@
             </a>
 
             <div class="course-details">
-              <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+              <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
                 <p>{{course.name}}</p>
               </a>
               <p class="ins-font">{{course.instructorName}}</p>
@@ -215,20 +215,20 @@
         <div class="text-btn text-empty">
           Your Cart is Empty.
         </div>
-        <a [routerLink]="['']"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
+        <a [routerLink]="['']" routerLinkActive="ruter-link-active"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
       </div>
       }
       @else{
       @for(course of Cart.slice(-5);track course.id){
       <div class="course-card">
-        <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+        <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
           <div class="course-img">
             <img src="{{course.image}}"
               alt="Course Image">
           </div>
         </a>
-        <div class="course-details">
-          <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+        <div class="course-details" [routerLink]="['/coursedetails',course.id]">
+          <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
             <p>{{course.name}}</p>
           </a>
           <p class="ins-font">{{course.instructorName}}</p>
@@ -272,7 +272,7 @@
       }
       @else {
       @for(n of notifications.slice(-5);track n.id){
-      <div class="note-list">
+      <div class="note-list" [routerLink]="['/notifications']" routerLinkActive="ruter-link-active">
         <div class="note-content">
           <p>{{n.content}}</p>
         </div>
@@ -367,26 +367,26 @@
         </div>
       </div>
       <div class="note-list list-item">
-        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Account setting</a>
-        <a [routerLink]="['/profile']" class="Catbtn profile-list-link">Edit profile</a>
+        <a [routerLink]="['/profile']" routerLinkActive="ruter-link-active" class="Catbtn profile-list-link">Account setting</a>
+        <a [routerLink]="['/profile']" routerLinkActive="ruter-link-active" class="Catbtn profile-list-link">Edit profile</a>
 
       </div>
       <div class="note-list list-item">
         <div class="link-with-alert">
-        <a [routerLink]="['/notifications']" class="Catbtn profile-list-link ">Notifications</a>
-        @if(notifications.length != 0 && notifications.length < 6){ 
+        <a [routerLink]="['/notifications']" routerLinkActive="ruter-link-active" class="Catbtn profile-list-link ">Notifications</a>
+        @if(notifications.length != 0 && notifications.length < 6 && ntificationAlert >0){ 
           <div class="alert alert-cart alert-list" style="width: 1.5rem;">{{notifications.length}}
         </div>
         }
-        @else if (notifications.length>5) {
+        @else if (notifications.length>5&& ntificationAlert >0) {
         <div class="alert alert-cart alert-list" style="width: fit-content;">+5</div>
         }     
        </div>
-        <a [routerLink]="['']" class="Catbtn profile-list-link">Purchase history</a>
+        <a [routerLink]="['']" routerLinkActive="ruter-link-active" class="Catbtn profile-list-link">Purchase history</a>
 
       </div>
       <div class="note-list list-last list-item">
-        <a [routerLink]="['/support']" class="Catbtn profile-list-link">Help & Support</a>
+        <a [routerLink]="['/support']" routerLinkActive="ruter-link-active" class="Catbtn profile-list-link">Help & Support</a>
         <a (click)="logOut()" class="Catbtn profile-list-link">Log out</a>
 
       </div>
@@ -418,20 +418,20 @@
       <div class="text-btn text-empty">
         Your Cart is Empty.
       </div>
-      <a [routerLink]="['']"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
+      <a [routerLink]="['']" routerLinkActive="ruter-link-active"><button class="bisns-btn header-cart-keep-shopping-btn">Keep shopping</button></a>
     </div>
     }
     @else{
     @for(course of Cart.slice(-5);track course.id){
     <div class="course-card">
-      <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+      <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
         <div class="course-img">
           <img src="{{course.image}}"
             alt="Course Image">
         </div>
       </a>
       <div class="course-details">
-        <a [routerLink]="['/coursedetails']" routerLinkActive="router-link-active">
+        <a [routerLink]="['/coursedetails',course.id]" routerLinkActive="router-link-active">
           <p>{{course.name}}</p>
         </a>
         <p class="ins-font">{{course.instructorName}}</p>
@@ -467,11 +467,11 @@
 
 </div>
 <div #div2></div>
-<div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
+<!-- <div class="sidebar" [ngClass]="{ 'active': isSidebarOpen }">
   <div class="close-btn" (click)="toggleSidebar()" [ngClass]="{ 'active': isSidebarOpen }">
     <i class="fas fa-times"></i>
   </div>
   <div class="py-1" ><a>Log in</a></div>
   <div class="py-1"><a>Sign in</a></div>
 
-</div>
+</div> -->

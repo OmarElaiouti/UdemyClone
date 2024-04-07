@@ -63,8 +63,13 @@ export class NavbarComponent implements OnInit {
     image:"https://www.udemy.com/staticx/udemy/images/v7/logo-udemy-inverted.svg",
   };
   private navbarRefreshSubscription!: Subscription;
+  private navbarRefreshSubscriptioncart!: Subscription;
+  private navbarRefreshSubscriptionwishlist!: Subscription;
+  private navbarRefreshSubscriptionnot!: Subscription;
+
   filteredSubcategories!: any[];
   filteredTopics!: any[];
+  ntificationAlert=0;
 
   constructor(
     private catService: CategoryService,
@@ -91,7 +96,7 @@ export class NavbarComponent implements OnInit {
       // Check if the value is not null before parsing it
       if (flagValue) {
         this.signedin = true;
-
+        this.ntificationAlert=0
         // Load additional data only if the user is signed in
         this.loadCategories();
         this.filterData()
@@ -116,7 +121,69 @@ export class NavbarComponent implements OnInit {
 
       }
 
+      this.navbarRefreshSubscription = this.navbarRefreshService.refreshSubjectAsObservable$.subscribe({
+        next:r=>{
+          let flagValue = localStorage.getItem("token");
 
+      if (flagValue) {
+        this.signedin = true;
+        this.ntificationAlert=0
+
+          this.loadCart;
+          this.loadNotifications;
+          this.loadUserdata;
+          this.loadWishlist
+        }else{
+          this.signedin = false;
+          this.loadCart;
+
+        }
+
+      }}
+    )
+
+    this.navbarRefreshSubscriptioncart = this.navbarRefreshService.refreshSubjectAsObservableCart$.subscribe({
+      next:r=>{
+        let flagValue = localStorage.getItem("token");
+
+    if (flagValue) {
+      this.signedin = true;
+        this.loadCart;
+      }else{
+        this.signedin = false;
+        this.loadCart;
+
+      }
+
+    }}
+  )
+
+  this.navbarRefreshSubscriptionnot = this.navbarRefreshService.refreshSubjectAsObservableNotification$.subscribe({
+    next:r=>{
+      let flagValue = localStorage.getItem("token");
+
+  if (flagValue) {
+    this.signedin = true;
+    this.ntificationAlert=0
+
+      this.loadNotifications;
+    }
+
+  }}
+)
+
+this.navbarRefreshSubscriptionwishlist = this.navbarRefreshService.refreshSubjectAsObservableWhishlist$.subscribe({
+  next:r=>{
+    let flagValue = localStorage.getItem("token");
+
+if (flagValue) {
+  this.signedin = true;
+
+    this.loadWishlist
+  }
+
+}}
+)
 
   }
   
@@ -139,7 +206,10 @@ export class NavbarComponent implements OnInit {
     this.userService.getUser().subscribe(user => {
       this.user = user;
       this.user.userName = user.userName
-
+this.notifications.forEach(n=>{
+  if(n.status=false)
+    this.ntificationAlert++
+})
     });
   }
 
@@ -236,19 +306,6 @@ if(this.signedin){
   }
 
 
-  // loadAnonymousCart() {
-  //   this.userCoursesService.getAnonymousCart().subscribe({
-
-  //     next:cartItems => {
-  //       this.Cart = cartItems;
-
-  //        // Update Cart array with the fetched cart items
-  //     },
-  //     error:err => {
-  //       console.error('Error loading anonymous cart:', err);
-  //     }
-  // });
-  // }
 
 
   getNumOfNotificationsWithFalseStatus(): number {
@@ -287,6 +344,7 @@ AddToCart(id:number) {
   this.userCoursesService.addToCart(id).subscribe({
     next: response => {
 this.Cart.push(response)
+this.navbarRefreshService.refreshNavbarCart();
 console.log('Course added to cart successfully:', response);
     },
     error: err => {
@@ -367,6 +425,9 @@ logOut(){
 }
 ngOnDestroy(): void {
   this.navbarRefreshSubscription.unsubscribe();
+  this.navbarRefreshSubscriptioncart.unsubscribe()
+  this.navbarRefreshSubscriptionnot.unsubscribe()
+  this.navbarRefreshSubscriptionwishlist.unsubscribe()
 }
 
 }

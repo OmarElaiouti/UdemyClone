@@ -58,13 +58,14 @@ courseCover:any;
       topicName: '',
       courseTitle: '',
       courseDisc: '',
+      courseCover:'',
       price: 0,
       level: '',
       language: '',
       Objectives: [{ id: 0, content: '' }],
       fullDescription: '',
       sectionnum: 0,
-      section: { sectionName: '', lessons: [{ lessonName: '', lessonTimeInMinutes: 0}] },
+      section: { sectionName: '', lessons: [{ lessonName: '', lessonTimeInMinutes: 0 ,lessonVideo: ''}] },
       requirements: [{ id: 0, content: '' }]
     };
 

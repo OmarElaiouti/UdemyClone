@@ -13,6 +13,11 @@
   background-color: #fff;
 }
 
+.ruter-link-active{
+  cursor: pointer;
+}
+
+
 .categories-nav{
   height: 50px;
 }

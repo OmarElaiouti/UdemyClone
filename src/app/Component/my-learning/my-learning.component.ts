@@ -16,7 +16,11 @@ export class MyLearningComponent implements OnInit {
   myCourses: Icourselong[] = [];
   wishlistCourses: Icourselong[] = [];
 
-  constructor(private userCoursesService: UserCoursesService,private route:ActivatedRoute,private router:Router) { }
+  constructor(
+    private userCoursesService: UserCoursesService,
+    private route:ActivatedRoute,
+    private router:Router
+  ) { }
   
   activeTab: string = 'myLearning';
   headTitle: string = 'My Learning'
@@ -65,6 +69,8 @@ export class MyLearningComponent implements OnInit {
       {
         next: courses => {
         this.myCourses = courses;
+        console.log(this.myCourses);
+        
       },
       error: err => {
         console.error('Error fetching courses:', err);
