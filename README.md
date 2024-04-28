@@ -2,8 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
-# Udemy Clone Frontend
-
 ## Project Overview
 
 This repository contains the frontend codebase for a Udemy clone website, developed using Angular. The project aims to replicate key features of the Udemy platform, including course listings, user authentication, course enrollment, and user profile management.
