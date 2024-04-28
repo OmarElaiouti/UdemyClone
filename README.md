@@ -1,27 +1,31 @@
-# GraduationProj
+# UdemyCloneFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
 
-## Development server
+# Udemy Clone Frontend
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project Overview
 
-## Code scaffolding
+This repository contains the frontend codebase for a Udemy clone website, developed using Angular. The project aims to replicate key features of the Udemy platform, including course listings, user authentication, course enrollment, and user profile management.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Status
 
-## Build
+The frontend is currently under development to enhance the user interface and user experience. Additional features and optimizations are being implemented to provide a seamless browsing and learning experience for users.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Key Features
 
-## Running unit tests
+1. **User Authentication and Authorization:** Secure authentication and authorization mechanisms are implemented to ensure user data privacy and access control.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Course Listing and Search Functionality:** Users can browse through a variety of courses and search for specific topics based on their interests.
 
-## Running end-to-end tests
+3. **Course Enrollment:** Users can enroll in courses of their choice, allowing them to access course materials and participate in learning activities.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. **User Profile Management:** Users can manage their profiles, update personal information, and track their course progress.
 
-## Further help
+## Technologies Used
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular
+- HTML/CSS
+- JavaScript/TypeScript
+- Bootstrap
+
